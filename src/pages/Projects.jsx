@@ -150,31 +150,36 @@ const Projects = () => {
             {filteredProjects.map((project, index) => (
               <div key={index} className="col-md-6 col-lg-4">
                 <div className="card h-100" style={{ 
-                  backgroundColor: '#ffffff',
+                  backgroundColor: isDarkTheme ? 'rgba(33, 37, 41, 0.7)' : 'rgba(255, 255, 255, 0.7)',
                   border: 'none',
                   borderRadius: '1rem',
                   overflow: 'hidden',
                   position: 'relative',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+                  boxShadow: isDarkTheme ? 
+                    '0 4px 20px rgba(0, 0, 0, 0.3)' : 
+                    '0 4px 20px rgba(0, 0, 0, 0.1)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   minHeight: '400px'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.15)';
+                  e.currentTarget.style.boxShadow = isDarkTheme ? 
+                    '0 8px 30px rgba(0, 0, 0, 0.4)' : 
+                    '0 8px 30px rgba(0, 0, 0, 0.15)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-                }}
-                >
+                  e.currentTarget.style.boxShadow = isDarkTheme ? 
+                    '0 4px 20px rgba(0, 0, 0, 0.3)' : 
+                    '0 4px 20px rgba(0, 0, 0, 0.1)';
+                }}>
                   {/* Image container */}
                   <div style={{ 
                     position: 'relative',
                     paddingTop: '66.67%', // 3:2 aspect ratio
                     overflow: 'hidden',
                     borderRadius: '1rem 1rem 0 0',
-                    background: '#f8f9fa'
+                    background: isDarkTheme ? '#1a1a1a' : '#f8f9fa'
                   }}>
                     <img 
                       src={project.image} 
@@ -204,12 +209,12 @@ const Projects = () => {
                   {/* App name */}
                   <div className="app-name" style={{
                     padding: '1rem',
-                    backgroundColor: '#ffffff',
+                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff',
                     borderBottomLeftRadius: '1rem',
                     borderBottomRightRadius: '1rem'
                   }}>
                     <h5 className="app-name-title" style={{
-                      color: '#000000',
+                      color: isDarkTheme ? '#ffffff' : '#333333',
                       fontSize: '1.25rem',
                       fontWeight: '600',
                       marginBottom: '0.5rem',
@@ -221,10 +226,10 @@ const Projects = () => {
                   {/* Card body with description, and tags */}
                   <div className="card-body" style={{
                     padding: '1.5rem',
-                    backgroundColor: '#ffffff'
+                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff'
                   }}>
                     <p className="card-text" style={{ 
-                      color: '#333333',
+                      color: isDarkTheme ? '#ffffff' : '#666666',
                       fontSize: "1rem",
                       marginBottom: "1.5rem",
                       lineHeight: "1.6"
@@ -232,8 +237,8 @@ const Projects = () => {
                     <div className="d-flex flex-wrap gap-2 mb-3">
                       {project.tags.map((tag, index) => (
                         <span key={index} className="badge" style={{
-                          backgroundColor: 'rgba(255, 126, 95, 0.1)',
-                          color: '#333333',
+                          backgroundColor: isDarkTheme ? 'rgba(255, 126, 95, 0.2)' : 'rgba(255, 126, 95, 0.1)',
+                          color: isDarkTheme ? '#ffffff' : '#333333',
                           padding: '0.35rem 0.75rem',
                           borderRadius: '0.5rem',
                           fontSize: '0.875rem',
