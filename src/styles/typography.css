@@ -1,0 +1,155 @@
+/* Typography System */
+:root {
+  /* Font Families */
+  --font-primary: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-secondary: 'Space Grotesk', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  /* Font Sizes */
+  --font-size-xxs: 0.625rem;  /* 10px */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  --font-size-6xl: 3.75rem;   /* 60px */
+  --font-size-7xl: 4.5rem;    /* 72px */
+  --font-size-8xl: 6rem;      /* 96px */
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-primary);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+}
+
+/* Headings */
+h1, .h1 {
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: -0.02em;
+}
+
+h2, .h2 {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: -0.01em;
+}
+
+h3, .h3 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
+
+h4, .h4 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+h5, .h5 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+h6, .h6 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+/* Text Styles */
+.lead {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-primary {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Card Text */
+.card-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+.card-text {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Button Text */
+.btn {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Badge Text */
+.badge {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  text-transform: uppercase;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1, .h1 {
+    font-size: var(--font-size-5xl);
+  }
+  
+  h2, .h2 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h3, .h3 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h4, .h4 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  h5, .h5 {
+    font-size: var(--font-size-xl);
+  }
+  
+  h6, .h6 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .lead {
+    font-size: var(--font-size-base);
+  }
+}

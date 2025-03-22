@@ -1,0 +1,229 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './styles/typography.css';
+@import './styles/buttons.css';
+
+:root {
+  font-family: var(--font-primary);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+  
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #24242c;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #ff7e5f;
+  --secondary-color: #feb47b;
+}
+
+/* Dark mode styles */
+.dark {
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+}
+
+/* Light mode styles */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fafc;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+}
+
+/* Theme transition styles */
+body {
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.dark body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Custom Typography Classes */
+.text-display {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-headline {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-title {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+.text-subtitle {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-body {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+.text-caption {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-tight);
+  font-size: var(--font-size-sm);
+}
+
+.text-overline {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .text-display {
+    font-size: var(--font-size-5xl);
+  }
+  
+  .text-headline {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .text-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .text-subtitle {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Theme toggle button styles */
+.theme-toggle-btn {
+  border: 2px solid currentColor;
+  background: transparent;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Add smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Image hover zoom effect - improved version */
+.card-img-zoom {
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card:hover .card-img-zoom,
+.img-container:hover .card-img-zoom {
+  transform: scale(1.1);
+}
+
+/* Ensure containers maintain their shape during zoom */
+.card, .img-container {
+  overflow: hidden;
+  position: relative;
+  border-radius: inherit;
+}
+
+/* Preserve border radius on image containers */
+.img-container {
+  border-radius: 0.375rem;
+}
+
+/* Set the same border radius for images with rounded-3 class */
+.img-container .rounded-3,
+.card-img-top {
+  border-radius: 0.375rem !important;
+}
+
+/* Add a subtle shadow effect on hover */
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
