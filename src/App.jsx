@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import { useTheme } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -18,22 +17,13 @@ import StudentProfile from './pages/StudentProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 
-const AppContent = () => {
-  const { isDarkTheme } = useTheme();
-
+function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className={isDarkTheme ? 'dark' : 'light'}>
-        <div 
-          className="min-vh-100 d-flex flex-column"
-          style={{
-            backgroundColor: 'var(--bg-primary)',
-            color: 'var(--text-primary)',
-            transition: 'background-color 0.3s ease, color 0.3s ease'
-          }}
-        >
+    <ThemeProvider>
+      <Router>
+        <div className="app">
           <Navbar />
+          <ScrollToTop />
           <main className="flex-grow-1">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -50,15 +40,7 @@ const AppContent = () => {
           </main>
           <Footer />
         </div>
-      </div>
-    </Router>
-  );
-};
-
-function App() {
-  return (
-    <ThemeProvider>
-      <AppContent />
+      </Router>
     </ThemeProvider>
   );
 }

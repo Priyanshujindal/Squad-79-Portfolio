@@ -16,7 +16,8 @@ const Home = () => {
       description: "A clone of the popular music streaming platform, Spotify. This project allows users to search for songs, albums, and playlists, and play them in the browser.",
       image: spotifyImage,
       tags: ["HTML", "CSS", "JavaScript"],
-      link: "/projects/1"
+      link: "/projects/1",
+      demoLink: "https://spotifyfree.netlify.app/"
     },
     {
       id: 2,
@@ -32,7 +33,8 @@ const Home = () => {
       title: "LeetCode Events",
       description: "Event based on the real life coding questions.",
       image: "/images/leetcode.jpg",
-      tags: ["Figma", "React", "GSAP"],
+      tags: ["Python"],
+      link: "/projects/3"
     }
   ];
 
@@ -266,6 +268,32 @@ const Home = () => {
                         }}>{tag}</span>
                       ))}
                     </div>
+                    {project.demoLink && (
+                      <a 
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline-danger"
+                        style={{
+                          marginTop: '1rem',
+                          padding: '0.5rem 1.5rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.9rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = 'translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      >
+                        View App
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

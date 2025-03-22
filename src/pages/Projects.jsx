@@ -50,7 +50,7 @@ const Projects = () => {
     {
       id: 5,
       title: "Money Tracking Website",
-      description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization, budget tracking, and visual analytics.",
+      description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization.",
       image: "/images/MoneyTracker.png",
       category: "Web Development",
       tags: ["HTML", "CSS", "JavaScript","React"],
@@ -70,7 +70,7 @@ const Projects = () => {
     {
       id: 7,
       title: "Netflix Clone",
-      description: "A modern streaming platform clone with movie and TV show browsing, search functionality, and responsive design. Features include movie trailers, user ratings, and watchlist functionality.",
+      description: "A modern streaming platform login page UI clone",
       image: "/images/netflix-clone.png",
       category: "Web Development",
       tags: ["HTML", "CSS"],
@@ -83,7 +83,7 @@ const Projects = () => {
     activeFilter === 'All' ? true : project.category === activeFilter
   );
 
-  return (
+  const content = (
     <div>
       {/* Hero Section */}
       <section className={`text-white py-5 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'}`} style={{ backgroundColor: '#ff6b6b' }}>
@@ -281,6 +281,8 @@ const Projects = () => {
       </section>
     </div>
   );
+
+  return content;
 };
 
 export default Projects;
