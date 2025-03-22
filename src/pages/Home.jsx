@@ -71,6 +71,11 @@ const Home = () => {
       name: "MySQL",
       icon: "bi bi-database",
       color: "#4479A1"
+    },
+    {
+      name: "Tailwind CSS",
+      icon: "bi bi-filetype-css",
+      color: "#38B2AC"
     }
   ];
 

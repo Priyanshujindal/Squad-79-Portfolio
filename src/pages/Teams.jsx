@@ -20,7 +20,7 @@ const Teams = () => {
       role: "Frontend Developer",
       image: "/images/raksham.jpg",
       description: "Creative frontend developer passionate about creating beautiful and user-friendly interfaces.",
-      skills: ["React", "JavaScript", "CSS", 'react'],
+      skills: ["React", "JavaScript", "CSS", "Tailwind CSS", 'react'],
       linkedin: "https://www.linkedin.com/in/raksham-sharma-715629330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
     },
     {

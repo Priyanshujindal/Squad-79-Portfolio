@@ -6,7 +6,7 @@ const students = [
   {
     id: 1,
       name: "Priyanshu Jindal",
-      role: "Team Lead",
+      role: "Frontend Developer",
       image: "/images/priyanshu.jpg",
       description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/priyanshu-jindal-18a103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
@@ -21,7 +21,7 @@ const students = [
   },
   {
     id: 3,
-    name: "Rajat Pandi",
+    name: "Rajatvir Pandhi",
     role: "Backend Developer",
     image: "/images/rajat3.jpg",
     description: "Student of 1st Year at Chitkara",
@@ -33,7 +33,7 @@ const students = [
       role: "UI/UX Designer",
       image: "/images/riya.jpg",
       description: "Student of 1st Year at Chitkara",
-     linkedin: 'https://www.linkedin.com/in/sarah-wilson'
+     linkedin: 'https://www.linkedin.com/in/riya-garg-98a09a334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
     id: 5,
@@ -49,10 +49,10 @@ const students = [
     role: "UI/UX Designer",
     image: "/images/pasth.jpg",
     description: "Student of 1st Year at Chitkara",
-    linkedin: 'https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+    linkedin: 'https://www.linkedin.com/in/parth-doomra-444585357',
   },
   {
-    id: 5,
+    id: 7,
     name: "Ramanpreet Singh",
     role: "UI/UX Designer",
     image: "/images/raman2.jpg",
@@ -60,7 +60,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
   },
   {
-    id: 5,
+    id: 8,
     name: "Rakshit",
     role: "UI/UX Designer",
     image: "/images/rakshit.jpg",
@@ -68,7 +68,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
   },
   {
-    id: 6,
+    id: 9,
     name: "Shivani Jindal",
     role: "UI/UX Designer",
     image: "/images/shivani.jpg",
@@ -76,7 +76,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/shivani-jindal-7b6066329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 7,
+    id: 10,
     name: "Riddhi Garg",
     role: "Figma",
     image: "/images/riddhi.jpg",
@@ -84,7 +84,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/riddhi-garg-4951b234b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 8,
+    id: 11,
     name: "Pranav Arora",
     role: "Hacker",
     image: "/images/pranav2.jpg",
@@ -92,7 +92,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/pranav-arora-?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 9,
+    id: 12,
     name: "Priyansh Thakur",
     role: "Frontend Developer",
     image: "/images/priyansh.jpg",
@@ -100,7 +100,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/priyansh-thakur-504a38308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 10,
+    id: 13,
     name: "Raghav Sharma",
     role: "React Developer",
     image: "/images/raghav.jpg",
@@ -108,23 +108,23 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/raghav-sharma-9861a6347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 11,
-    name: "Rishab L",
-    role: "VELA",
+    id: 14,
+    name: "Rishab Bansal",
+    role: "Dance Enthusiast",
     image: "/images/rishab.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/rahul-verma-7b6066329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 12,
+    id: 15,
     name: "Piyanshi",
     role: "Frontend Developer",
     image: "/images/priyanshi.jpg",
     description: "Student of 1st Year at Chitkara",
-    linkedin: 'https://www.linkedin.com/in/piyanshi-56ab00330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_apphttps://www.linkedin.com/in/rishabh-166103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    linkedin: 'https://www.linkedin.com/in/piyanshi-56ab00330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 13,
+    id: 16,
     name: "Sarthak Khurana",
     role: "UI/UX Designer",
     image: "/images/sarthak2.jpg",
@@ -132,7 +132,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/sarthak-khurana-279399325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 14,
+    id: 17,
     name: "Sanchita Bhandari",
     role: "Frontend Developer",
     image: "/images/sanchita.jpg",
@@ -140,7 +140,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/sanchita-bhandari-901207332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 15,
+    id: 18,
     name: "Pranay Obero",
     role: "Designer",
     image: "/images/pranay.jpg",
@@ -148,7 +148,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/pranay-oberoi-058747312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 16,
+    id: 19,
     name: "Prachi Behal",
     role: "Python Developer",
     image: "/images/prachi.jpg",
@@ -156,7 +156,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/prachi-behal-36944a331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 17,
+    id: 20,
     name: "Pavitar Kumar",
     role: "Java Developer",
     image: "/images/team2.jpg",
@@ -164,7 +164,7 @@ const students = [
     linkedin: 'https://www.linkedin.com/in/pavitar-kumar-915b79325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
   {
-    id: 18,
+    id: 21,
     name: "Radhil Narula",
     role: "C++ Developer",
     image: "/images/radil.jpg",

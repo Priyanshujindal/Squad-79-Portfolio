@@ -12,11 +12,12 @@ const Projects = () => {
     {
       id: 1,
       title: "Spotify Clone",
-      description: "A clone of the popular music streaming platform, Spotify. This project allows users to search for songs, albums, and playlists, and play them in the browser.",
+      description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
       image: "/images/soptify.png",
       category: "Web Development",
       tags: ["HTML", "CSS", "JavaScript"],
       team: ["Raksham", "Priyanshu"],
+      demoLink: "https://spotifyfree.netlify.app/"
     },
     {
       id: 2,
@@ -28,6 +29,16 @@ const Projects = () => {
       team: ["Raksham", "Priyanshu" , 'Rehat' , "Rajat"],
     },
     {
+      id: 3,
+      title: "Tic Tac Toe Game",
+      description: "A classic two-player game built with modern web technologies. Features include responsive design, player turn indicators, and win detection logic.",
+      image: "/images/TickTacToe.png",
+      category: "Web Development",
+      tags: ["HTML", "CSS", "JavaScript"],
+      team: ["Raksham", "Priyanshu"],
+      demoLink: "https://relastic-tac-toe.netlify.app/"
+    },
+    {
       id: 4,
       title: "Leetcode Event by Kalvium",
       description: "A coding event on real life coding questions to improve coding skills.",
@@ -35,6 +46,36 @@ const Projects = () => {
       category: "Events",
       tags: ["Python"],
       team: ["Raksham", "Priyanshu" , 'Rehat' , "Rajat"],
+    },
+    {
+      id: 5,
+      title: "Money Tracking Website",
+      description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization, budget tracking, and visual analytics.",
+      image: "/images/MoneyTracker.png",
+      category: "Web Development",
+      tags: ["HTML", "CSS", "JavaScript","React"],
+      team: ["Raksham", "Priyanshu", "Rajat"],
+      demoLink: "https://moneytrackering.netlify.app/",
+    },
+    {
+      id: 6,
+      title: "Classic Dino Game",
+      description: "A fun and engaging endless runner game inspired by the classic Chrome Dino game. Features include smooth animations, score tracking, and obstacle avoidance mechanics.",
+      image: "/images/DinoGame.png",
+      category: "Web Development",
+      tags: ["HTML", "CSS", "JavaScript"],
+      team: ["Raksham", "Priyanshu"],
+      demoLink: "https://classic-dinogame.netlify.app/"
+    },
+    {
+      id: 7,
+      title: "Netflix Clone",
+      description: "A modern streaming platform clone with movie and TV show browsing, search functionality, and responsive design. Features include movie trailers, user ratings, and watchlist functionality.",
+      image: "/images/netflix-clone.png",
+      category: "Web Development",
+      tags: ["HTML", "CSS"],
+      team: ["Raksham", "Priyanshu", "Rajat"],
+      demoLink: "https://netlify-79.netlify.app/"
     }
   ];
 
@@ -45,7 +86,7 @@ const Projects = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-dark text-white py-5" style={{ backgroundColor: '#ff6b6b' }}>
+      <section className={`text-white py-5 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'}`} style={{ backgroundColor: '#ff6b6b' }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
@@ -109,28 +150,22 @@ const Projects = () => {
             {filteredProjects.map((project, index) => (
               <div key={index} className="col-md-6 col-lg-4">
                 <div className="card h-100" style={{ 
-                  backgroundColor: isDarkTheme ? 'rgba(33, 37, 41, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+                  backgroundColor: '#ffffff',
                   border: 'none',
                   borderRadius: '1rem',
                   overflow: 'hidden',
                   position: 'relative',
-                  boxShadow: isDarkTheme ? 
-                    '0 4px 20px rgba(0, 0, 0, 0.3)' : 
-                    '0 4px 20px rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   minHeight: '400px'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = isDarkTheme ? 
-                    '0 8px 30px rgba(0, 0, 0, 0.4)' : 
-                    '0 8px 30px rgba(0, 0, 0, 0.15)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.15)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = isDarkTheme ? 
-                    '0 4px 20px rgba(0, 0, 0, 0.3)' : 
-                    '0 4px 20px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
                 }}
                 >
                   {/* Image container */}
@@ -139,7 +174,7 @@ const Projects = () => {
                     paddingTop: '66.67%', // 3:2 aspect ratio
                     overflow: 'hidden',
                     borderRadius: '1rem 1rem 0 0',
-                    background: isDarkTheme ? '#1a1a1a' : '#f8f9fa'
+                    background: '#f8f9fa'
                   }}>
                     <img 
                       src={project.image} 
@@ -169,12 +204,12 @@ const Projects = () => {
                   {/* App name */}
                   <div className="app-name" style={{
                     padding: '1rem',
-                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff',
+                    backgroundColor: '#ffffff',
                     borderBottomLeftRadius: '1rem',
                     borderBottomRightRadius: '1rem'
                   }}>
                     <h5 className="app-name-title" style={{
-                      color: isDarkTheme ? '#ffffff' : '#333333',
+                      color: '#000000',
                       fontSize: '1.25rem',
                       fontWeight: '600',
                       marginBottom: '0.5rem',
@@ -186,10 +221,10 @@ const Projects = () => {
                   {/* Card body with description, and tags */}
                   <div className="card-body" style={{
                     padding: '1.5rem',
-                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff'
+                    backgroundColor: '#ffffff'
                   }}>
                     <p className="card-text" style={{ 
-                      color: isDarkTheme ? '#ffffff' : '#666666',
+                      color: '#333333',
                       fontSize: "1rem",
                       marginBottom: "1.5rem",
                       lineHeight: "1.6"
@@ -197,15 +232,41 @@ const Projects = () => {
                     <div className="d-flex flex-wrap gap-2 mb-3">
                       {project.tags.map((tag, index) => (
                         <span key={index} className="badge" style={{
-                          backgroundColor: isDarkTheme ? 'rgba(255, 126, 95, 0.2)' : 'rgba(255, 126, 95, 0.1)',
-                          color: isDarkTheme ? '#ffffff' : '#333333',
-                          padding: "0.5rem 1rem",
-                          borderRadius: "0.5rem",
-                          fontSize: "0.875rem",
-                          fontWeight: "500"
+                          backgroundColor: 'rgba(255, 126, 95, 0.1)',
+                          color: '#333333',
+                          padding: '0.35rem 0.75rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.875rem',
+                          fontWeight: '500'
                         }}>{tag}</span>
                       ))}
                     </div>
+                    {project.demoLink && (
+                      <a 
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline-danger"
+                        style={{
+                          marginTop: '1rem',
+                          padding: '0.5rem 1.5rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.9rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = 'translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      >
+                        View App
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
