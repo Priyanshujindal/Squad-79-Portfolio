@@ -172,13 +172,15 @@ const Home = () => {
           <div className="row g-4">
             {projects.map((project, index) => (
               <div key={index} className="col-md-4">
-                <div className="card h-100" style={{ 
-                  backgroundColor: isDarkTheme ? 'rgba(33, 37, 41, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+                <div className="card h-100" style={{
+                  backgroundColor: 'var(--card-bg)',
                   border: 'none',
                   borderRadius: '1rem',
                   overflow: 'hidden',
                   position: 'relative',
-                  boxShadow: isDarkTheme ? '0 4px 20px rgba(0, 0, 0, 0.3)' : '0 4px 20px rgba(0, 0, 0, 0.1)',
+                  boxShadow: isDarkTheme ? 
+                    '0 4px 20px rgba(0, 0, 0, 0.3)' : 
+                    '0 4px 20px rgba(0, 0, 0, 0.1)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   minHeight: '400px'
                 }}
@@ -196,17 +198,17 @@ const Home = () => {
                 }}
                 >
                   {/* Image container */}
-                  <div style={{ 
+                  <div style={{
                     position: 'relative',
                     paddingTop: '66.67%', // 3:2 aspect ratio
                     overflow: 'hidden',
                     borderRadius: '1rem 1rem 0 0',
-                    background: isDarkTheme ? '#1a1a1a' : '#f8f9fa'
+                    background: 'var(--card-bg)'
                   }}>
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      style={{ 
+                      style={{
                         position: 'absolute',
                         top: 0,
                         left: 0,
@@ -231,7 +233,7 @@ const Home = () => {
                   {/* App name */}
                   <div className="app-name" style={{
                     padding: '1rem',
-                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff',
+                    backgroundColor: 'var(--card-bg)',
                     borderBottomLeftRadius: '1rem',
                     borderBottomRightRadius: '1rem'
                   }}>
@@ -248,10 +250,10 @@ const Home = () => {
                   {/* Card body with description, and tags */}
                   <div className="card-body" style={{
                     padding: '1.5rem',
-                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff'
+                    backgroundColor: 'var(--card-bg)'
                   }}>
                     <p className="card-text" style={{ 
-                      color: isDarkTheme ? '#ffffff' : '#666666',
+                      color: isDarkTheme ? '#ffffff' : '#333333',
                       fontSize: "1rem",
                       marginBottom: "1.5rem",
                       lineHeight: "1.6"

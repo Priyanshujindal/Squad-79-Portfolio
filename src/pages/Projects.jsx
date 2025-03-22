@@ -110,7 +110,7 @@ const Projects = () => {
                 style={{
                   backgroundColor: activeFilter === category ? 
                     (isDarkTheme ? '#ff6b6b' : '#ff6b6b') : 
-                    (isDarkTheme ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'),
+                    'var(--card-bg)',
                   color: activeFilter === category ? '#ffffff' : 
                     (isDarkTheme ? '#ffffff' : '#000000'),
                   border: 'none',
@@ -123,22 +123,6 @@ const Projects = () => {
                     '0 2px 8px rgba(0, 0, 0, 0.2)' : 
                     '0 2px 8px rgba(0, 0, 0, 0.1)'
                 }}
-                onMouseEnter={(e) => {
-                  if (activeFilter !== category) {
-                    e.currentTarget.style.backgroundColor = isDarkTheme ? 
-                      'rgba(255, 255, 255, 0.15)' : 
-                      'rgba(0, 0, 0, 0.1)';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (activeFilter !== category) {
-                    e.currentTarget.style.backgroundColor = isDarkTheme ? 
-                      'rgba(255, 255, 255, 0.1)' : 
-                      'rgba(0, 0, 0, 0.05)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }
-                }}
               >
                 {category}
               </button>
@@ -150,7 +134,7 @@ const Projects = () => {
             {filteredProjects.map((project, index) => (
               <div key={index} className="col-md-6 col-lg-4">
                 <div className="card h-100" style={{ 
-                  backgroundColor: isDarkTheme ? 'rgba(33, 37, 41, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+                  backgroundColor: 'var(--card-bg)',
                   border: 'none',
                   borderRadius: '1rem',
                   overflow: 'hidden',
@@ -172,14 +156,15 @@ const Projects = () => {
                   e.currentTarget.style.boxShadow = isDarkTheme ? 
                     '0 4px 20px rgba(0, 0, 0, 0.3)' : 
                     '0 4px 20px rgba(0, 0, 0, 0.1)';
-                }}>
+                }}
+                >
                   {/* Image container */}
                   <div style={{ 
                     position: 'relative',
                     paddingTop: '66.67%', // 3:2 aspect ratio
                     overflow: 'hidden',
                     borderRadius: '1rem 1rem 0 0',
-                    background: isDarkTheme ? '#1a1a1a' : '#f8f9fa'
+                    background: 'var(--card-bg)'
                   }}>
                     <img 
                       src={project.image} 
@@ -209,7 +194,7 @@ const Projects = () => {
                   {/* App name */}
                   <div className="app-name" style={{
                     padding: '1rem',
-                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff',
+                    backgroundColor: 'var(--card-bg)',
                     borderBottomLeftRadius: '1rem',
                     borderBottomRightRadius: '1rem'
                   }}>
@@ -226,10 +211,10 @@ const Projects = () => {
                   {/* Card body with description, and tags */}
                   <div className="card-body" style={{
                     padding: '1.5rem',
-                    backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff'
+                    backgroundColor: 'var(--card-bg)'
                   }}>
                     <p className="card-text" style={{ 
-                      color: isDarkTheme ? '#ffffff' : '#666666',
+                      color: isDarkTheme ? '#ffffff' : '#333333',
                       fontSize: "1rem",
                       marginBottom: "1.5rem",
                       lineHeight: "1.6"
