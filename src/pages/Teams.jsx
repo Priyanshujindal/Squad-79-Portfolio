@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 
 const Teams = () => {
+  const { isDarkTheme } = useTheme();
   const people = [
     {
       id: 1,
@@ -53,7 +55,7 @@ const Teams = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-dark text-white py-5" style={{ backgroundColor: '#ff6b6b' }}>
+      <section className={`text-white py-5 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'} `} style={{ backgroundColor: '#ff6b6b' }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
@@ -72,7 +74,7 @@ const Teams = () => {
       
 
       {/* Team Members */}
-      <section className="py-5">
+      <section className={`py-5`}>
         <div className="container">
           <div className="row g-4">
             {people.map(person => (

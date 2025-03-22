@@ -61,9 +61,9 @@ const Mentors = () => {
   ];
 
   return (
-    <div className={`min-h-screen ${isDarkTheme ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
+    <div className={`min-h-screen ${isDarkTheme ? ' text-white' : ' text-dark'}`}>
       {/* Header */}
-      <section className="py-20" style={{ backgroundColor: '#000000' }}>
+      <section className={`py-20 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'} `} style={{ backgroundColor: '#ff6b6b' }}>
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#ffffff' }}>Our Mentors</h1>
