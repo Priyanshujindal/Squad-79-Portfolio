@@ -140,9 +140,12 @@ const TeamProfile = () => {
               </ul>
             </div>
             <div className="col-lg-4">
-              <div className="card border-0 shadow-sm" style={{ borderRadius: '1rem' }}>
-                <div className="card-body">
-                  <h3 className="h4 mb-4">Skills</h3>
+              <div className="card border-0 shadow-sm" style={{ 
+                borderRadius: '1rem', 
+                backgroundColor: '#ffffff'
+              }}>
+                <div className="card-body" style={{ backgroundColor: '#ffffff' }}>
+                  <h3 className="h4 mb-4" style={{ color: '#333333' }}>Skills</h3>
                   <div className="d-flex flex-wrap gap-2">
                     {person.skills.map((skill, index) => (
                       <span key={index} className="badge bg-danger">
@@ -150,8 +153,8 @@ const TeamProfile = () => {
                       </span>
                     ))}
                   </div>
-                  <h3 className="h4 mt-4 mb-3">Education</h3>
-                  <p className="mb-0">{person.education}</p>
+                  <h3 className="h4 mt-4 mb-3" style={{ color: '#333333' }}>Education</h3>
+                  <p className="mb-0" style={{ color: '#333333' }}>{person.education}</p>
                 </div>
               </div>
             </div>

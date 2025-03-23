@@ -81,43 +81,55 @@ const Mentors = () => {
             <h2 className={`text-3xl font-bold mb-8 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Benefits of Our Mentorship</h2>
             <div className="row g-4">
               <div className="col-md-4">
-                <div className={`card border-0 shadow-sm h-100 ${isDarkTheme ? 'bg-gray-900 text-black' : 'bg-white text-black'}`} style={{ borderRadius: '1rem' }}>
+                <div className="card border-0 shadow-sm h-100" style={{ 
+                  borderRadius: '1rem', 
+                  backgroundColor: '#ffffff',
+                  color: '#333333'
+                }}>
                   <div className="card-body text-center">
                     <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
                       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3">Expert Guidance</h3>
-                    <p>Learn from industry professionals with years of practical experience in their respective fields.</p>
+                    <h3 className="text-xl font-semibold mb-3" style={{ color: '#333333' }}>Expert Guidance</h3>
+                    <p style={{ color: '#666666' }}>Learn from industry professionals with years of practical experience in their respective fields.</p>
                   </div>
                 </div>
               </div>
 
               <div className="col-md-4">
-                <div className={`card border-0 shadow-sm h-100 ${isDarkTheme ? 'bg-gray-900 text-black' : 'bg-white text-black'}`} style={{ borderRadius: '1rem' }}>
+                <div className="card border-0 shadow-sm h-100" style={{ 
+                  borderRadius: '1rem', 
+                  backgroundColor: '#ffffff',
+                  color: '#333333'
+                }}>
                   <div className="card-body text-center">
                     <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
                       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3">Personalized Guidance</h3>
-                    <p>Receive tailored advice and feedback specific to your projects and career growth.</p>
+                    <h3 className="text-xl font-semibold mb-3" style={{ color: '#333333' }}>Personalized Guidance</h3>
+                    <p style={{ color: '#666666' }}>Receive tailored advice and feedback specific to your projects and career growth.</p>
                   </div>
                 </div>
               </div>
 
               <div className="col-md-4">
-                <div className={`card border-0 shadow-sm h-100 ${isDarkTheme ? 'bg-gray-900 text-black' : 'bg-white text-black'}`} style={{ borderRadius: '1rem' }}>
+                <div className="card border-0 shadow-sm h-100" style={{ 
+                  borderRadius: '1rem', 
+                  backgroundColor: '#ffffff',
+                  color: '#333333'
+                }}>
                   <div className="card-body text-center">
                     <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
                       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 019-9"></path>
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3">Network Building</h3>
-                    <p>Connect with professionals in the industry and build valuable relationships for your future career.</p>
+                    <h3 className="text-xl font-semibold mb-3" style={{ color: '#333333' }}>Network Building</h3>
+                    <p style={{ color: '#666666' }}>Connect with professionals in the industry and build valuable relationships for your future career.</p>
                   </div>
                 </div>
               </div>
@@ -134,7 +146,12 @@ const Mentors = () => {
           <div className="row g-5">
             {mentors.map(mentor => (
               <div key={mentor.id} className="col-sm-12 col-md-6">
-                <div className={`card border-0 shadow h-100 ${isDarkTheme ? 'bg-gray-800 text-black' : 'bg-white text-black'}`} style={{ borderRadius: '1rem', overflow: 'hidden' }}>
+                <div className="card border-0 shadow h-100" style={{ 
+                  borderRadius: '1rem', 
+                  overflow: 'hidden',
+                  backgroundColor: '#ffffff',
+                  color: '#333333'
+                }}>
                   <div className="row g-0 h-100">
                     <div className="col-4 col-md-4 position-relative" style={{ minHeight: '100%' }}>
                       <img 
@@ -153,15 +170,31 @@ const Mentors = () => {
                     </div>
                     <div className="col-8 col-md-8">
                       <div className="card-body">
-                        <h3 className={`card-title h4 fw-bold text-black`} style={{ fontSize: 'clamp(1.1rem, 4vw, 1.5rem)' }}>{mentor.name}</h3>
+                        <h3 className="card-title h4 fw-bold" style={{ 
+                          fontSize: 'clamp(1.1rem, 4vw, 1.5rem)',
+                          color: '#333333'
+                        }}>{mentor.name}</h3>
                         <p className="text-danger mb-3" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>{mentor.role}</p>
-                        <p className={`mb-3 text-black`} style={{ fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)' }}><small>{mentor.company}</small></p>
-                        <p className={`mb-4 text-black`} style={{ fontSize: 'clamp(0.8rem, 3vw, 1rem)' }}>{mentor.bio}</p>
+                        <p className="mb-3" style={{ 
+                          fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)',
+                          color: '#333333'
+                        }}><small>{mentor.company}</small></p>
+                        <p className="mb-4" style={{ 
+                          fontSize: 'clamp(0.8rem, 3vw, 1rem)',
+                          color: '#333333'
+                        }}>{mentor.bio}</p>
                         <div className="mb-4">
-                          <h4 className={`text-sm font-semibold mb-2 text-black`} style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>Specialties:</h4>
+                          <h4 className="text-sm font-semibold mb-2" style={{ 
+                            fontSize: 'clamp(0.85rem, 3vw, 1rem)',
+                            color: '#333333'
+                          }}>Specialties:</h4>
                           <div className="d-flex flex-wrap gap-1 gap-md-2">
                             {mentor.specialties.map((specialty, index) => (
-                              <span key={index} className={`badge me-1 me-md-2 mb-2 bg-gray-200 text-black`} style={{ fontSize: 'clamp(0.7rem, 2.5vw, 0.8rem)' }}>{specialty}</span>
+                              <span key={index} className="badge me-1 me-md-2 mb-2 bg-gray-200" style={{ 
+                                fontSize: 'clamp(0.7rem, 2.5vw, 0.8rem)',
+                                color: '#333333',
+                                backgroundColor: '#f8f9fa'
+                              }}>{specialty}</span>
                             ))}
                           </div>
                         </div>
