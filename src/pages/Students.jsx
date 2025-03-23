@@ -7,7 +7,7 @@ const students = [
     id: 1,
       name: "Priyanshu Jindal",
       role: "Frontend Developer",
-      image: "/images/priyanshu.jpg",
+      image: "/priyanshu.jpg",
       description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/priyanshu-jindal-18a103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
   },

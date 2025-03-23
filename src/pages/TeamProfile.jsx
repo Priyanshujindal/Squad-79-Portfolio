@@ -11,7 +11,7 @@ const TeamProfile = () => {
       id: 1,
       name: "Priyanshu Jindal",
       role: "Team Lead",
-      image: "/priyanshu.jpg",
+      image: "/images/priyanshu.jpg",
       description: "Experienced team lead with expertise in project management and technical leadership.",
       skills: ["Project Management", "Technical Leadership", "Team Building"],
       bio: "Experienced team lead with expertise in project management and technical leadership",
