@@ -13,7 +13,7 @@ const TeamMemberProfile = () => {
       id: 1,
       name: "Priyanshu Jindal",
       role: "Team Lead",
-      image: "/images/priyanshu.jpg",
+      image: "/priyanshu.jpg",
       description: "Experienced team lead with expertise in project management and technical leadership",
       experiences: [
         "Worked on multiple projects",
@@ -29,7 +29,7 @@ const TeamMemberProfile = () => {
       id: 2,
       name: "Raksham Sharma",
       role: "Frontend Developer",
-      image: "/images/raksham.jpg",
+      image: "/raksham.jpg",
       description: "Creative frontend developer passionate about creating beautiful and user-friendly interfaces",
       experiences: [
         "Created responsive web applications",
@@ -45,7 +45,7 @@ const TeamMemberProfile = () => {
       id: 3,
       name: "Rajatvir Pandhi",
       role: "Backend Developer",
-      image: "/images/rajat3.jpg",
+      image: "/rajat3.jpg",
       description: "Backend expert focused on scalable server architecture and database optimization",
       experiences: [
         "Designed RESTful APIs",
@@ -61,7 +61,7 @@ const TeamMemberProfile = () => {
       id: 4,
       name: "Riya Garg",
       role: "UI/UX Designer",
-      image: "/images/riya.jpg",
+      image: "/riya.jpg",
       description: "Creating intuitive, user-centered designs that combine functionality and visual appeal",
       experiences: [
         "Designed user interfaces",
@@ -77,7 +77,7 @@ const TeamMemberProfile = () => {
       id: 5,
       name: "Rehat Singh",
       role: "UI/UX Designer",
-      image: "/images/rehat.jpg",
+      image: "/rehat.jpg",
       description: "Designing clean, intuitive interfaces that prioritize user needs, ensuring a seamless experience",
       experiences: [
         "Created user journeys and flows",

@@ -9,7 +9,7 @@ const Teams = () => {
       id: 1,
       name: "Priyanshu Jindal",
       role: "Team Lead",
-      image: "/images/priyanshu.jpg",
+      image: "/priyanshu.jpg",
       description: "Experienced team lead with expertise in project management and technical leadership.",
       skills: ["Project Management", "Technical Leadership", "Team Building"],
       linkedin: "https://www.linkedin.com/in/priyanshu-jindal-18a103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
@@ -18,7 +18,7 @@ const Teams = () => {
       id: 2,
       name: "Raksham Sharma",
       role: "Frontend Developer",
-      image: "/images/raksham.jpg",
+      image: "/raksham.jpg",
       description: "Creative frontend developer passionate about creating beautiful and user-friendly interfaces.",
       skills: ["React", "JavaScript", "CSS", "Tailwind CSS", 'react'],
       linkedin: "https://www.linkedin.com/in/raksham-sharma-715629330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
@@ -27,7 +27,7 @@ const Teams = () => {
       id: 3,
       name: "Rajatvir Pandhi",
       role: "Backend Developer",
-      image: "/images/rajat3.jpg",
+      image: "/rajat3.jpg",
       description: "Backend expert focused on scalable server architecture and database optimization.",
       skills: ["Python", "Database Design"],
       linkedin: "http://www.linkedin.com/in/rajatvir-pandhi-444585357"
@@ -36,7 +36,7 @@ const Teams = () => {
       id: 4,
       name: "Riya Garg",
       role: "UI/UX Designer",
-      image: "/images/riya.jpg",
+      image: "/riya.jpg",
       description: "Creating intuitive, user-centered designs that combine functionality and visual appeal for optimal user experiences.",
       skills: ["UI Design", "User Research", "Prototyping"],
       linkedin: "https://www.linkedin.com/in/sarah-wilson"
@@ -45,7 +45,7 @@ const Teams = () => {
       id: 5,
       name: "Rehat Singh",
       role: "UI/UX Designer",
-      image: "/images/rehat.jpg",
+      image: "/rehat.jpg",
       description: "Designing clean, intuitive interfaces that prioritize user needs, ensuring a seamless and enjoyable experience across digital platforms",
       skills: ["UI/UX Design", "User Research", "Prototyping"],
       linkedin: "https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"

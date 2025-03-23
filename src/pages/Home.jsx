@@ -23,7 +23,7 @@ const Home = () => {
       id: 2,
       title: "2 days workshop",
       description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
-      image: '/images/workshop.JPG',
+      image: './images/workshop.JPG',
       category: "Workshops",
       tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
       link: "/experience/2"
@@ -32,7 +32,7 @@ const Home = () => {
       id: 3,
       title: "LeetCode Events",
       description: "Event based on the real life coding questions.",
-      image: "/images/leetcode.jpg",
+      image: "./images/leetcode.jpg",
       tags: ["Python"],
       link: "/experience/3"
     }
@@ -351,7 +351,7 @@ const Home = () => {
                 background: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5'
               }}>
                 <img
-                  src="/images/class2.jpg"
+                  src="./images/class2.jpg"
                   alt="About Image"
                   style={{ 
                     position: 'absolute',

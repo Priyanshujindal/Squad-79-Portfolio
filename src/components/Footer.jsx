@@ -89,7 +89,7 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-2">
-                    <Link to="/projects" className="text-white text-decoration-none">
+                    <Link to="/experience" className="text-white text-decoration-none">
                       <i className="bi bi-kanban me-2"></i>Experiences
                     </Link>
                   </li>
