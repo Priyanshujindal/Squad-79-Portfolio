@@ -5,8 +5,9 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import Projects from './pages/Projects';
+import Experience from './pages/Experience';
 import Teams from './pages/Teams';
+import TeamMemberProfile from './pages/TeamMemberProfile';
 import Students from './pages/Students';
 import Mentors from './pages/Mentors';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,18 +23,62 @@ const ScrollToTop = () => {
   return null;
 };
 
+const TitleUpdater = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    // Default title
+    let title = 'Squad 79 Portfolio';
+    
+    // Set page-specific titles
+    switch(pathname) {
+      case '/':
+        title = 'Home | Squad 79 Portfolio';
+        break;
+      case '/about':
+        title = 'About Us | Squad 79 Portfolio';
+        break;
+      case '/experience':
+        title = 'Experience | Squad 79 Portfolio';
+        break;
+      case '/teams':
+        title = 'Our Teams | Squad 79 Portfolio';
+        break;
+      case '/students':
+        title = 'Students | Squad 79 Portfolio';
+        break;
+      case '/mentors':
+        title = 'Mentors | Squad 79 Portfolio';
+        break;
+      default:
+        // Check if it's a team member profile page
+        if (pathname.match(/^\/teams\/\d+$/)) {
+          title = 'Team Member | Squad 79 Portfolio';
+        } else {
+          title = 'Squad 79 Portfolio';
+        }
+    }
+    
+    document.title = title;
+  }, [pathname]);
+  
+  return null;
+};
+
 function App() {
   return (
     <ThemeProvider>
       <Router>
         <ScrollToTop />
+        <TitleUpdater />
         <div className="app">
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
+            <Route path="/experience" element={<Experience />} />
             <Route path="/teams" element={<Teams />} />
+            <Route path="/teams/:id" element={<TeamMemberProfile />} />
             <Route path="/students" element={<Students />} />
             <Route path="/mentors" element={<Mentors />} />
           </Routes>

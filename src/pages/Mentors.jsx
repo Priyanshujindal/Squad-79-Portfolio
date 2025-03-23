@@ -129,35 +129,64 @@ const Mentors = () => {
       {/* Mentors Profiles */}
       <section className={`py-20 ${isDarkTheme ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
-          <h2 className={`text-3xl font-bold mb-16 text-center ${isDarkTheme ? 'text-white' : 'text-black'}`}>Meet Our Mentors</h2>
+          <h2 className={`text-3xl font-bold mb-16 text-center ${isDarkTheme ? 'text-white' : 'text-black'}`} style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>Meet Our Mentors</h2>
 
           <div className="row g-5">
             {mentors.map(mentor => (
-              <div key={mentor.id} className="col-md-6">
+              <div key={mentor.id} className="col-sm-12 col-md-6">
                 <div className={`card border-0 shadow h-100 ${isDarkTheme ? 'bg-gray-800 text-black' : 'bg-white text-black'}`} style={{ borderRadius: '1rem', overflow: 'hidden' }}>
-                  <div className="row g-0">
-                    <div className="col-md-4">
+                  <div className="row g-0 h-100">
+                    <div className="col-4 col-md-4 position-relative" style={{ minHeight: '100%' }}>
                       <img 
                         src={mentor.image} 
-                        className="img-fluid rounded-start h-100 object-cover card-img-zoom"
+                        className="card-img-zoom"
                         alt={mentor.name}
-                        style={{ objectFit: 'cover' }}
+                        style={{ 
+                          objectFit: 'cover',
+                          width: '100%',
+                          height: '100%',
+                          position: 'absolute',
+                          top: '0',
+                          left: '0'
+                        }}
                       />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-8 col-md-8">
                       <div className="card-body">
-                        <h3 className={`card-title h4 fw-bold text-black`}>{mentor.name}</h3>
-                        <p className="text-danger mb-3">{mentor.role}</p>
-                        <p className={`mb-3 text-black`}><small>{mentor.company}</small></p>
-                        <p className={`mb-4 text-black`}>{mentor.bio}</p>
+                        <h3 className={`card-title h4 fw-bold text-black`} style={{ fontSize: 'clamp(1.1rem, 4vw, 1.5rem)' }}>{mentor.name}</h3>
+                        <p className="text-danger mb-3" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>{mentor.role}</p>
+                        <p className={`mb-3 text-black`} style={{ fontSize: 'clamp(0.8rem, 2.5vw, 0.875rem)' }}><small>{mentor.company}</small></p>
+                        <p className={`mb-4 text-black`} style={{ fontSize: 'clamp(0.8rem, 3vw, 1rem)' }}>{mentor.bio}</p>
                         <div className="mb-4">
-                          <h4 className={`text-sm font-semibold mb-2 text-black`}>Specialties:</h4>
-                          {mentor.specialties.map((specialty, index) => (
-                            <span key={index} className={`badge me-2 mb-2 bg-gray-200 text-black`}>{specialty}</span>
-                          ))}
+                          <h4 className={`text-sm font-semibold mb-2 text-black`} style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>Specialties:</h4>
+                          <div className="d-flex flex-wrap gap-1 gap-md-2">
+                            {mentor.specialties.map((specialty, index) => (
+                              <span key={index} className={`badge me-1 me-md-2 mb-2 bg-gray-200 text-black`} style={{ fontSize: 'clamp(0.7rem, 2.5vw, 0.8rem)' }}>{specialty}</span>
+                            ))}
+                          </div>
                         </div>
-                        <a href={mentor.linkedin} className="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
-                          Connect on LinkedIn
+                        <a 
+                          href={mentor.linkedin} 
+                          className="btn d-inline-flex align-items-center justify-content-center gap-2" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            backgroundColor: '#0A66C2',
+                            color: 'white',
+                            borderRadius: '6px',
+                            padding: '7px 14px',
+                            fontWeight: '600',
+                            transition: 'all 0.3s ease',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                            border: 'none',
+                            fontSize: 'clamp(0.8rem, 3vw, 0.9rem)',
+                            minWidth: '120px'
+                          }}
+                          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#0077B5'}
+                          onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#0A66C2'}
+                        >
+                          <i className="bi bi-linkedin" style={{ fontSize: '1rem' }}></i>
+                          LinkedIn
                         </a>
                       </div>
                     </div>

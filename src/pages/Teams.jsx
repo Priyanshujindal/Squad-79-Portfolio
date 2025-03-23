@@ -78,7 +78,7 @@ const Teams = () => {
         <div className="container">
           <div className="row g-4">
             {people.map(person => (
-              <div key={person.id} className="col-lg-4">
+              <div key={person.id} className="col-sm-12 col-md-6 col-lg-4">
                 <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '1rem', overflow: 'hidden' }}>
                   <div className="img-container">
                     <img 
@@ -95,14 +95,39 @@ const Teams = () => {
                     />
                   </div>
                   <div className="card-body">
-                    <h3 className="h4 mb-2">{person.name}</h3>
-                    <p className="text-danger mb-3">{person.role}</p>
-                    <p className="text-muted mb-4">{person.description}</p>
+                    <h3 className="h4 mb-2" style={{ fontSize: 'clamp(1.25rem, 4vw, 1.5rem)' }}>{person.name}</h3>
+                    <p className="text-danger mb-3" style={{ fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}>{person.role}</p>
+                    <p className="text-muted mb-4" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>{person.description}</p>
                     
-                    <h4 className="h5 mb-3">Skills</h4>
+                    <h4 className="h5 mb-3" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>Skills</h4>
                     <div className="d-flex flex-wrap gap-2 mb-4">
                       {person.skills.map((skill, index) => (
-                        <span key={index} className="badge bg-danger">
+                        <span 
+                          key={index} 
+                          style={{ 
+                            backgroundColor: '#ff6b6b',
+                            color: 'white',
+                            padding: '0.4rem 0.8rem',
+                            borderRadius: '20px',
+                            fontSize: 'clamp(0.7rem, 2.5vw, 0.8rem)',
+                            fontWeight: '500',
+                            letterSpacing: '0.3px',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.06)',
+                            transition: 'all 0.2s ease',
+                            margin: '0.2rem',
+                            display: 'inline-block'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#ff5252';
+                            e.currentTarget.style.transform = 'translateY(-1px)';
+                            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = '#ff6b6b';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.06)';
+                          }}
+                        >
                           {skill}
                         </span>
                       ))}
@@ -111,10 +136,24 @@ const Teams = () => {
                     <div className="d-flex justify-content-between align-items-center mb-4">
                       <Link 
                         to={`/teams/${person.id}`} 
-                        className="btn btn-outline-danger"
+                        className="btn"
                         style={{
                           flex: "1",
-                          marginRight: "1rem"
+                          marginRight: "1rem",
+                          fontSize: 'clamp(0.8rem, 3vw, 0.9rem)',
+                          whiteSpace: 'nowrap',
+                          border: '1px solid #ff6b6b',
+                          color: '#ff6b6b',
+                          transition: 'all 0.3s ease',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
                         }}
                       >
                         View Profile
@@ -133,7 +172,8 @@ const Teams = () => {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          transition: "all 0.3s ease"
+                          transition: "all 0.3s ease",
+                          flexShrink: 0
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = "#ff5252";

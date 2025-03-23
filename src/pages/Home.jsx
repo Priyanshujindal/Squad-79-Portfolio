@@ -16,7 +16,7 @@ const Home = () => {
       description: "A clone of the popular music streaming platform, Spotify. This project allows users to search for songs, albums, and playlists, and play them in the browser.",
       image: spotifyImage,
       tags: ["HTML", "CSS", "JavaScript"],
-      link: "/projects/1",
+      link: "/experience/1",
       demoLink: "https://spotifyfree.netlify.app/"
     },
     {
@@ -26,7 +26,7 @@ const Home = () => {
       image: '/images/workshop.JPG',
       category: "Workshops",
       tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
-      link: "/projects/2"
+      link: "/experience/2"
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const Home = () => {
       description: "Event based on the real life coding questions.",
       image: "/images/leetcode.jpg",
       tags: ["Python"],
-      link: "/projects/3"
+      link: "/experience/3"
     }
   ];
 
@@ -42,42 +42,50 @@ const Home = () => {
     {
       name: "HTML",
       icon: "bi bi-filetype-html",
-      color: "#E34F26"
+      color: "#E34F26",
+      description: "The standard markup language for documents designed to be displayed in a web browser."
     },
     {
       name: "CSS",
       icon: "bi bi-filetype-css",
-      color: "#1572B6"
+      color: "#1572B6",
+      description: "A stylesheet language used for describing the presentation of a document written in HTML."
     },
     {
       name: "JavaScript",
       icon: "bi bi-filetype-js",
-      color: "#F7DF1E"
+      color: "#F7DF1E",
+      description: "A programming language that enables interactive web pages and is an essential part of web applications."
     },
     {
       name: "Python",
       icon: "bi bi-filetype-py",
-      color: "#3776AB"
+      color: "#3776AB",
+      description: "A high-level, general-purpose programming language known for its readability and versatility."
     },
     {
       name: "React",
       icon: "bi bi-filetype-jsx",
-      color: "#61DAFB"
+      color: "#61DAFB",
+      description: "A JavaScript library for building user interfaces, particularly single-page applications."
     },
     {
       name: "Bootstrap",
       icon: "bi bi-bootstrap",
-      color: "#7952B3"
+      color: "#7952B3",
+      description: "A popular CSS framework directed at responsive, mobile-first front-end web development."
     },
     {
       name: "MySQL",
       icon: "bi bi-database",
-      color: "#4479A1"
+      color: "#4479A1",
+      description: "An open-source relational database management system that uses structured query language."
     },
     {
       name: "Tailwind CSS",
       icon: "bi bi-filetype-css",
-      color: "#38B2AC"
+      color: "#38B2AC",
+      description: "A utility-first CSS framework packed with classes that can be composed to build any design."
     }
   ];
 
@@ -302,7 +310,7 @@ const Home = () => {
             ))}
           </div>
           <div className="text-center mt-5">
-            <Link to="/projects" className="btn btn-primary btn-lg" style={{ 
+            <Link to="/experience" className="btn btn-primary btn-lg" style={{ 
               color: "#ffffff", 
               backgroundColor: "rgba(255, 126, 95, 0.9)",
               borderColor: "transparent",
@@ -416,35 +424,86 @@ const Home = () => {
           <div className="row g-4">
             {technologies.map((tech, index) => (
               <div key={index} className="col-6 col-md-3">
-                <div className="tech-card text-center p-4" style={{ 
-                  backgroundColor: isDarkTheme ? 'var(--card-bg)' : '#ffffff',
-                  borderRadius: '1rem',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                <div className="flip-card" style={{ 
+                  height: '200px',
+                  perspective: '1000px',
+                  cursor: 'pointer',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  transformStyle: 'preserve-3d',
-                  position: 'relative',
-                  overflow: 'hidden'
+                  borderRadius: '1rem',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'scale(1.08) rotateY(2deg)';
+                  e.currentTarget.querySelector('.flip-card-inner').style.transform = 'rotateY(180deg)';
+                  e.currentTarget.style.transform = 'scale(1.08)';
                   e.currentTarget.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
                   e.currentTarget.style.zIndex = '1';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1) rotateY(0deg)';
+                  e.currentTarget.querySelector('.flip-card-inner').style.transform = 'rotateY(0deg)';
+                  e.currentTarget.style.transform = 'scale(1)';
                   e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
                   e.currentTarget.style.zIndex = '0';
                 }}>
-                  <i className={tech.icon} style={{ 
-                    fontSize: '2.5rem', 
-                    color: tech.color,
-                    marginBottom: '1rem',
-                    display: 'block'
-                  }}></i>
-                  <h3 className="h5" style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    marginBottom: '0'
-                  }}>{tech.name}</h3>
+                  <div className="flip-card-inner" style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    transition: 'transform 0.8s',
+                    transformStyle: 'preserve-3d'
+                  }}>
+                    {/* Front side */}
+                    <div className="flip-card-front" style={{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      backfaceVisibility: 'hidden',
+                      backgroundColor: isDarkTheme ? 'var(--card-bg)' : '#ffffff',
+                      borderRadius: '1rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      padding: '1.5rem'
+                    }}>
+                      <i className={tech.icon} style={{ 
+                        fontSize: '3rem', 
+                        color: tech.color,
+                        marginBottom: '1rem',
+                        display: 'block'
+                      }}></i>
+                      <h3 className="h5" style={{ 
+                        color: isDarkTheme ? '#ffffff' : '#333333',
+                        marginBottom: '0'
+                      }}>{tech.name}</h3>
+                    </div>
+                    
+                    {/* Back side */}
+                    <div className="flip-card-back" style={{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      backfaceVisibility: 'hidden',
+                      backgroundColor: tech.color,
+                      color: '#ffffff',
+                      transform: 'rotateY(180deg)',
+                      borderRadius: '1rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      padding: '1.5rem',
+                      textAlign: 'center'
+                    }}>
+                      <h3 className="h5 mb-3" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>{tech.name}</h3>
+                      <p style={{ 
+                        fontSize: '0.9rem',
+                        lineHeight: '1.4',
+                        fontWeight: '500',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                      }}>{tech.description}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

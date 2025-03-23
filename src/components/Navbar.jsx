@@ -148,7 +148,7 @@ const Navbar = () => {
                 className={({isActive}) => 
                   isActive ? "nav-link active" : "nav-link"
                 } 
-                to="/projects"
+                to="/experience"
               >
                 Experience
               </NavLink>

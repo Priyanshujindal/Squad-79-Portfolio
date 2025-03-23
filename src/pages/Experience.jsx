@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 
-const Projects = () => {
+const Experience = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const { isDarkTheme } = useContext(ThemeContext);
 
@@ -236,20 +236,27 @@ const Projects = () => {
                         href={project.demoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-outline-danger"
+                        className="btn"
                         style={{
                           marginTop: '1rem',
                           padding: '0.5rem 1.5rem',
                           borderRadius: '0.5rem',
                           fontSize: '0.9rem',
                           fontWeight: '500',
-                          transition: 'all 0.3s ease'
+                          transition: 'all 0.3s ease',
+                          border: '1px solid #ff6b6b',
+                          color: '#ff6b6b',
+                          backgroundColor: 'transparent'
                         }}
                         onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
                           e.currentTarget.style.transform = 'translateY(-2px)';
                           e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
                         }}
                         onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
                           e.currentTarget.style.transform = 'translateY(0)';
                           e.currentTarget.style.boxShadow = 'none';
                         }}
@@ -267,7 +274,9 @@ const Projects = () => {
     </div>
   );
 
-  return content;
+  return (
+    content
+  );
 };
 
-export default Projects;
+export default Experience; 
