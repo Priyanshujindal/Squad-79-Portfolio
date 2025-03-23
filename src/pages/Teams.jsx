@@ -79,7 +79,11 @@ const Teams = () => {
           <div className="row g-4">
             {people.map(person => (
               <div key={person.id} className="col-sm-12 col-md-6 col-lg-4">
-                <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '1rem', overflow: 'hidden' }}>
+                <div className="card h-100 border-0 shadow-sm" style={{ 
+                  borderRadius: '1rem', 
+                  overflow: 'hidden', 
+                  backgroundColor: '#ffffff'  // Always white background
+                }}>
                   <div className="img-container">
                     <img 
                       src={person.image} 
@@ -94,12 +98,21 @@ const Teams = () => {
                       }}
                     />
                   </div>
-                  <div className="card-body">
-                    <h3 className="h4 mb-2" style={{ fontSize: 'clamp(1.25rem, 4vw, 1.5rem)' }}>{person.name}</h3>
+                  <div className="card-body" style={{ backgroundColor: '#ffffff' }}>  {/* Always white background */}
+                    <h3 className="h4 mb-2" style={{ 
+                      fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
+                      color: '#333333'  // Always dark text
+                    }}>{person.name}</h3>
                     <p className="text-danger mb-3" style={{ fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}>{person.role}</p>
-                    <p className="text-muted mb-4" style={{ fontSize: 'clamp(0.85rem, 3vw, 1rem)' }}>{person.description}</p>
+                    <p className="mb-4" style={{ 
+                      fontSize: 'clamp(0.85rem, 3vw, 1rem)',
+                      color: '#6c757d'  // Always gray text for description
+                    }}>{person.description}</p>
                     
-                    <h4 className="h5 mb-3" style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)' }}>Skills</h4>
+                    <h4 className="h5 mb-3" style={{ 
+                      fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+                      color: '#333333'  // Always dark text
+                    }}>Skills</h4>
                     <div className="d-flex flex-wrap gap-2 mb-4">
                       {person.skills.map((skill, index) => (
                         <span 
