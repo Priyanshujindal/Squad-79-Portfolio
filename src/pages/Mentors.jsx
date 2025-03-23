@@ -5,7 +5,7 @@ import { useTheme } from '../context/ThemeContext';
 
 const Mentors = () => {
   const { isDarkTheme } = useTheme();
-  
+
   // Sample mentor data
   const mentors = [
     {
@@ -20,7 +20,7 @@ const Mentors = () => {
     },
     {
       id: 2,
-      name: 'Manav Verma ',
+      name: 'Manav Verma',
       role: 'Tech Mentor',
       image: '/images/manav.jpeg',
       bio: 'Full Stack Web Developer  | Skilled in HTML, CSS, JavaScript, Python, React.js, Node.js, Mongo DB.',
@@ -73,7 +73,7 @@ const Mentors = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Mentorship Benefits */}
       <section className={`py-16 ${isDarkTheme ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
@@ -93,7 +93,7 @@ const Mentors = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="col-md-4">
                 <div className={`card border-0 shadow-sm h-100 ${isDarkTheme ? 'bg-gray-900 text-black' : 'bg-white text-black'}`} style={{ borderRadius: '1rem' }}>
                   <div className="card-body text-center">
@@ -107,7 +107,7 @@ const Mentors = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="col-md-4">
                 <div className={`card border-0 shadow-sm h-100 ${isDarkTheme ? 'bg-gray-900 text-black' : 'bg-white text-black'}`} style={{ borderRadius: '1rem' }}>
                   <div className="card-body text-center">
@@ -125,12 +125,12 @@ const Mentors = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Mentors Profiles */}
       <section className={`py-20 ${isDarkTheme ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
           <h2 className={`text-3xl font-bold mb-16 text-center ${isDarkTheme ? 'text-white' : 'text-black'}`}>Meet Our Mentors</h2>
-          
+
           <div className="row g-5">
             {mentors.map(mentor => (
               <div key={mentor.id} className="col-md-6">
