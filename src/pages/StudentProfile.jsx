@@ -28,9 +28,9 @@ const StudentProfile = () => {
   };
 
   // This would typically come from an API or database
-  const students = [
-    {
-      id: 1,
+const students = [
+  {
+    id: 1,
       name: "Priyanshu Jindal",
       role: "Frontend Developer",
       image: "/priyanshu.jpg",
@@ -44,9 +44,9 @@ const StudentProfile = () => {
         "Good at problem solving and team collaboration"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
-    },
-    {
-      id: 2,
+  },
+  {
+    id: 2,
       name: "Raksham Sharma",
       role: "Frontend Developer",
       image: "/images/raksham.jpg",
@@ -60,9 +60,9 @@ const StudentProfile = () => {
         "Strong problem-solving skills"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
-    },
-    {
-      id: 3,
+  },
+  {
+    id: 3,
       name: "Rajatvir Pandhi",
       role: "Backend Developer",
       image: "/images/rajat3.jpg",
@@ -76,9 +76,9 @@ const StudentProfile = () => {
         "Server-side application development"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
-    },
-    {
-      id: 4,
+  },
+  {
+    id: 4,
       name: "Riya Garg",
       role: "UI/UX Designer",
       image: "/images/riya.jpg", 
@@ -92,9 +92,9 @@ const StudentProfile = () => {
         "Created interactive prototypes"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
-    },
-    {
-      id: 5,
+  },
+  {
+    id: 5,
       name: "Rehat Singh",
       role: "UI/UX Designer",
       image: "/images/rehat.jpg",
@@ -410,10 +410,10 @@ const StudentProfile = () => {
                 <Link to="/students" className="btn btn-outline-light" onClick={scrollToTop}>
                   <i className="bi bi-arrow-left me-2"></i>Back to Students
                 </Link>
-                <a 
-                  href={student.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  <a 
+                    href={student.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   className="btn btn-outline-light"
                 >
                   <i className="bi bi-linkedin me-2"></i>LinkedIn Profile
@@ -443,7 +443,7 @@ const StudentProfile = () => {
                   <li 
                     key={index} 
                     className="mb-3 d-flex align-items-start"
-                    style={{ 
+                    style={{
                       color: isDarkTheme ? '#ffffff' : '#333333',
                       transition: 'color 2s ease',
                       animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
@@ -893,4 +893,4 @@ const StudentProfile = () => {
   );
 };
 
-export default StudentProfile; 
+export default StudentProfile;

@@ -62,14 +62,14 @@ const Footer = () => {
               Empowering students with industry-relevant skills and real-world experience. Join our community of learners and innovators to build the future together.
             </p>
             <div className="d-flex gap-3 mb-3">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
-                <i className="bi bi-twitter fs-5"></i>
+              <a href="https://youtube.com/@kalvium" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
+                <i className="bi bi-youtube fs-5"></i>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
+              <a href="https://linkedin.com/company/kalvium" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
                 <i className="bi bi-linkedin fs-5"></i>
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
-                <i className="bi bi-github fs-5"></i>
+              <a href="https://instagram.com/kalvium" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
+                <i className="bi bi-instagram fs-5"></i>
               </a>
             </div>
           </div>

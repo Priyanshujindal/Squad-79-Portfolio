@@ -8,6 +8,24 @@ const About = () => {
     <div>
       {/* Hero Section */}
       <div className="hero">
+        <div className="stars">
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+        </div>
+        <div className="twinkling"></div>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 img-container" style={{ position: 'relative' }}>
@@ -232,6 +250,24 @@ const About = () => {
         backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5',
         marginBottom: '-3rem'  
       }}>
+        <div className="stars">
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+          <div className="star"></div>
+        </div>
+        <div className="twinkling"></div>
         <div className="container">
           <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>Our Team</h2>
           <div className="row g-4">
@@ -394,6 +430,246 @@ const About = () => {
           </div>
         </div>
       </section>
+      <style>
+        {`
+          .hero {
+            background-image: linear-gradient(to bottom, #0a0a0a, #141414);
+            background-size: 100% 300px;
+            background-position: 0% 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+          }
+          .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+          .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: move 20s linear infinite;
+          }
+          .star:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-name: star1;
+            animation-duration: 15s;
+            animation-delay: 0s;
+          }
+          .star:nth-child(2) {
+            top: 30%;
+            left: 40%;
+            animation-name: star2;
+            animation-duration: 20s;
+            animation-delay: 1s;
+          }
+          .star:nth-child(3) {
+            top: 50%;
+            left: 60%;
+            animation-name: star3;
+            animation-duration: 25s;
+            animation-delay: 2s;
+          }
+          .star:nth-child(4) {
+            top: 70%;
+            left: 80%;
+            animation-name: star4;
+            animation-duration: 30s;
+            animation-delay: 3s;
+          }
+          .star:nth-child(5) {
+            top: 90%;
+            left: 100%;
+            animation-name: star5;
+            animation-duration: 35s;
+            animation-delay: 4s;
+          }
+          .star:nth-child(6) {
+            top: 20%;
+            left: 30%;
+            animation-name: star6;
+            animation-duration: 18s;
+            animation-delay: 0.5s;
+          }
+          .star:nth-child(7) {
+            top: 40%;
+            left: 50%;
+            animation-name: star7;
+            animation-duration: 22s;
+            animation-delay: 1.5s;
+          }
+          .star:nth-child(8) {
+            top: 60%;
+            left: 70%;
+            animation-name: star8;
+            animation-duration: 27s;
+            animation-delay: 2.5s;
+          }
+          .star:nth-child(9) {
+            top: 80%;
+            left: 90%;
+            animation-name: star9;
+            animation-duration: 32s;
+            animation-delay: 3.5s;
+          }
+          .star:nth-child(10) {
+            top: 10%;
+            left: 70%;
+            animation-name: star10;
+            animation-duration: 37s;
+            animation-delay: 4.5s;
+          }
+          .star:nth-child(11) {
+            top: 15%;
+            left: 45%;
+            animation-name: star11;
+            animation-duration: 28s;
+            animation-delay: 0.7s;
+          }
+          .star:nth-child(12) {
+            top: 35%;
+            left: 55%;
+            animation-name: star12;
+            animation-duration: 23s;
+            animation-delay: 1.7s;
+          }
+          .star:nth-child(13) {
+            top: 55%;
+            left: 75%;
+            animation-name: star13;
+            animation-duration: 29s;
+            animation-delay: 2.7s;
+          }
+          .star:nth-child(14) {
+            top: 75%;
+            left: 95%;
+            animation-name: star14;
+            animation-duration: 34s;
+            animation-delay: 3.7s;
+          }
+          .star:nth-child(15) {
+            top: 25%;
+            left: 65%;
+            animation-name: star15;
+            animation-duration: 39s;
+            animation-delay: 4.7s;
+          }
+          @keyframes star1 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -30px); }
+            50% { transform: translate(-30px, -50px); }
+            75% { transform: translate(30px, 40px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star2 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-40px, 20px); }
+            50% { transform: translate(30px, 30px); }
+            75% { transform: translate(-20px, -40px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star3 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(30px, 30px); }
+            50% { transform: translate(-40px, -20px); }
+            75% { transform: translate(20px, 40px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star4 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-30px, -30px); }
+            50% { transform: translate(40px, 20px); }
+            75% { transform: translate(-20px, -40px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star5 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(40px, 20px); }
+            50% { transform: translate(-30px, -30px); }
+            75% { transform: translate(30px, 40px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star6 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -40px); }
+            50% { transform: translate(-20px, -30px); }
+            75% { transform: translate(40px, 20px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star7 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-30px, 30px); }
+            50% { transform: translate(20px, 40px); }
+            75% { transform: translate(-40px, -20px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star8 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(40px, -20px); }
+            50% { transform: translate(-30px, -30px); }
+            75% { transform: translate(20px, 40px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star9 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-20px, 40px); }
+            50% { transform: translate(30px, -30px); }
+            75% { transform: translate(-40px, -20px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star10 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(20px, -40px); }
+            50% { transform: translate(-30px, 30px); }
+            75% { transform: translate(40px, -20px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star11 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(35px, -35px); }
+            50% { transform: translate(-25px, -45px); }
+            75% { transform: translate(25px, 35px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star12 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-35px, 25px); }
+            50% { transform: translate(25px, 35px); }
+            75% { transform: translate(-35px, -25px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star13 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(25px, 25px); }
+            50% { transform: translate(-35px, -25px); }
+            75% { transform: translate(35px, 35px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star14 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-25px, -25px); }
+            50% { transform: translate(35px, 25px); }
+            75% { transform: translate(-35px, -35px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes star15 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(35px, 25px); }
+            50% { transform: translate(-25px, -35px); }
+            75% { transform: translate(25px, 35px); }
+            100% { transform: translate(0, 0); }
+          }
+        `}
+      </style>
     </div>
   );
 };
