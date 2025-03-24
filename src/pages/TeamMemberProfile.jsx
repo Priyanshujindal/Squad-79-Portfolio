@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import rakshamImage from '../assets/img/raksham.jpg';
+import { useTheme } from '../context/ThemeContext';
 
 const TeamProfile = () => {
   const { id } = useParams();
+  const { isDarkTheme } = useTheme();
   
   // This would typically come from an API or database
   const people = [
@@ -100,7 +102,7 @@ const TeamProfile = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-dark text-white py-5">
+      <section className="text-white py-5" style={{ backgroundColor: isDarkTheme ? '#000000' : '#ff6b6b' }}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
@@ -114,7 +116,7 @@ const TeamProfile = () => {
             </div>
             <div className="col-lg-8">
               <h1 className="display-4 fw-bold mb-3">{person.name}</h1>
-              <p className="lead text-danger mb-4">{person.role}</p>
+              <p className="lead text-white mb-4">{person.role}</p>
               <p className="mb-4">{person.bio}</p>
               <Link to="/teams" className="btn btn-outline-light">
                 <i className="bi bi-arrow-left me-2"></i>Back to Team
@@ -125,7 +127,7 @@ const TeamProfile = () => {
       </section>
 
       {/* Details Section */}
-      <section className="py-5">
+      <section className="py-5" style={{ backgroundColor: isDarkTheme ? '#000000' : '#ffffff' }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8">

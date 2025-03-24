@@ -9,6 +9,7 @@ import Experience from './pages/Experience';
 import Teams from './pages/Teams';
 import TeamMemberProfile from './pages/TeamMemberProfile';
 import Students from './pages/Students';
+import StudentProfile from './pages/StudentProfile';
 import Mentors from './pages/Mentors';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
@@ -80,6 +81,7 @@ function App() {
             <Route path="/teams" element={<Teams />} />
             <Route path="/teams/:id" element={<TeamMemberProfile />} />
             <Route path="/students" element={<Students />} />
+            <Route path="/students/:id" element={<StudentProfile />} />
             <Route path="/mentors" element={<Mentors />} />
           </Routes>
           <Footer />

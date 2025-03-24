@@ -259,30 +259,57 @@ const Students = () => {
                     <h3 className="h4 mb-2 fw-bold" style={{ color: '#000000' }}>{student.name}</h3>
                     <p className="text-danger mb-2 fw-medium" style={{ color: '#000000' }}>{student.role}</p>
                     <p className="text-muted mb-4" style={{ fontSize: '0.9rem', color: '#000000' }}>{student.description}</p>
-                    <a 
-                      href={student.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline-danger"
-                      style={{
-                        padding: '8px 20px',
-                        borderRadius: '25px',
-                        fontSize: '0.9rem',
-                        color: '#000000',
-                        borderColor: '#ff6b6b',
-                        transition: 'all 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#ff6b6b';
-                        e.currentTarget.style.color = '#ffffff';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'transparent';
-                        e.currentTarget.style.color = '#000000';
-                      }}
-                    >
-                      <i className="bi bi-linkedin me-2"></i>LinkedIn
-                    </a>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <Link 
+                        to={`/students/${student.id}`} 
+                        className="btn"
+                        style={{
+                          flex: "1",
+                          marginRight: "1rem",
+                          fontSize: '0.9rem',
+                          whiteSpace: 'nowrap',
+                          border: '1px solid #ff6b6b',
+                          color: '#ff6b6b',
+                          transition: 'all 0.3s ease',
+                          borderRadius: '25px',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Profile
+                      </Link>
+                      <a 
+                        href={student.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline-danger"
+                        style={{
+                          padding: '8px 20px',
+                          borderRadius: '25px',
+                          fontSize: '0.9rem',
+                          color: '#000000',
+                          borderColor: '#ff6b6b',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = '#ffffff';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#000000';
+                        }}
+                      >
+                        <i className="bi bi-linkedin me-2"></i>LinkedIn
+                      </a>
+                    </div>
                   </div>
                   <div className="card-body p-4 hover-content" style={{
                     opacity: 0,
