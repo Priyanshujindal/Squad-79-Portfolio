@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
 const StudentProfile = () => {
   const { id } = useParams();
   const { isDarkTheme } = useTheme();
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
   
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setShouldAnimate(true);
+    const timer = setTimeout(() => {
+      setShouldAnimate(false);
+    }, 12000); // Reset after animation duration
+    return () => clearTimeout(timer);
+  }, [isDarkTheme]);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -367,12 +381,16 @@ const StudentProfile = () => {
   }
 
   return (
-    <div className={isDarkTheme ? 'bg-dark text-white' : ''} style={{ 
+    <div style={{ 
       backgroundColor: isDarkTheme ? '#000000' : '#ffffff',
-      minHeight: '100vh'
+      minHeight: '100vh',
+      transition: 'background-color 0.8s ease'
     }}>
       {/* Hero Section */}
-      <section className="text-white py-5" style={{ backgroundColor: '#ff6b6b' }}>
+      <section className="text-white py-5" style={{ 
+        backgroundColor: isDarkTheme ? '#000000' : '#ff6b6b',
+        transition: 'background-color 0.8s ease'
+      }}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
@@ -407,89 +425,379 @@ const StudentProfile = () => {
       </section>
 
       {/* Details Section */}
-      <section className={`py-5 ${isDarkTheme ? 'bg-dark' : 'bg-white'}`} style={{
-        backgroundColor: isDarkTheme ? '#000000' : '#ffffff'
+      <section style={{
+        backgroundColor: isDarkTheme ? '#000000' : '#ffffff',
+        transition: 'background-color 0.8s ease',
+        padding: '3rem 0'
       }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
               <h2 className="h3 mb-4" style={{ 
                 color: isDarkTheme ? '#ffffff' : '#333333',
-                transition: 'color 0.3s ease'
+                transition: 'color 2s ease',
+                animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
               }}>Experience</h2>
               <ul className="list-unstyled">
                 {student.experience.map((exp, index) => (
-                  <li key={index} className="mb-3" style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    transition: 'color 0.3s ease'
-                  }}>
-                    <i className="bi bi-check-circle-fill text-danger me-2"></i>
-                    {exp}
+                  <li 
+                    key={index} 
+                    className="mb-3 d-flex align-items-start"
+                    style={{ 
+                      color: isDarkTheme ? '#ffffff' : '#333333',
+                      transition: 'color 2s ease',
+                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+                    }}
+                  >
+                    <i className="bi bi-check-circle-fill text-danger me-2 mt-1"></i>
+                    <span>{exp}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="col-lg-4">
-              <div className={`card border-0 shadow-sm ${isDarkTheme ? 'bg-dark' : 'bg-white'}`} style={{ 
-                borderRadius: '1rem',
+              <div style={{ 
                 backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                transition: 'background-color 0.3s ease'
+                borderRadius: '1rem',
+                padding: '1.5rem',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                transition: 'background-color 0.8s ease'
               }}>
-                <div className={`card-body ${isDarkTheme ? 'bg-dark' : 'bg-white'}`} style={{
-                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                  transition: 'background-color 0.3s ease'
-                }}>
-                  <h3 className="h4 mb-4" style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    transition: 'color 0.3s ease'
-                  }}>Skills</h3>
-                  <div className="d-flex flex-wrap gap-2">
-                    {student.skills.map((skill, index) => (
-                      <span key={index} className="badge bg-danger">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="h4 mt-4 mb-3" style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    transition: 'color 0.3s ease'
-                  }}>Education</h3>
-                  <p className="mb-0" style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#6c757d',
-                    transition: 'color 0.3s ease'
-                  }}>{student.education}</p>
-                  <h3 className="h4 mt-4 mb-3" style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    transition: 'color 0.3s ease'
-                  }}>Contact</h3>
-                  <a 
-                    href={student.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-outline-danger w-100"
-                    style={{
-                      borderColor: '#ff6b6b',
-                      color: '#ff6b6b',
-                      transition: 'all 0.3s ease',
-                      backgroundColor: isDarkTheme ? 'transparent' : '#ffffff'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#ff6b6b';
-                      e.currentTarget.style.color = '#ffffff';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = isDarkTheme ? 'transparent' : '#ffffff';
-                      e.currentTarget.style.color = '#ff6b6b';
-                    }}
-                  >
-                    <i className="bi bi-linkedin me-2"></i>Connect on LinkedIn
-                  </a>
+                <h3 className="h4 mb-4" style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#333333',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+                }}>Skills</h3>
+                <div className="d-flex flex-wrap gap-2">
+                  {student.skills.map((skill, index) => (
+                    <span key={index} className="badge bg-danger">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
+                <h3 className="h4 mt-4 mb-3" style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#333333',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+                }}>Education</h3>
+                <p className="mb-0" style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#6c757d',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+                }}>{student.education}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Horizontal Scrolling Sections */}
+      <section style={{
+        backgroundColor: isDarkTheme ? '#000000' : '#ffffff',
+        transition: 'background-color 0.8s ease',
+        padding: '3rem 0'
+      }}>
+        <div className="container">
+          {/* Projects Section */}
+          <h2 className="h3 mb-4" style={{ 
+            color: isDarkTheme ? '#ffffff' : '#333333',
+            transition: 'color 2s ease',
+            animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+          }}>Web Development</h2>
+          <div className="horizontal-scroll mb-5" style={{
+            overflowX: 'auto',
+            paddingBottom: '1rem',
+            display: 'flex',
+            gap: '1.5rem'
+          }}>
+            {[
+              {
+                title: "Spotify Clone",
+                image: "/soptify.png",
+                description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
+                technologies: ["HTML", "CSS", "JavaScript"]
+              },
+              {
+                title: "Netflix Clone",
+                image: "/class.jpg",
+                description: "A streaming platform clone featuring a responsive design, dynamic content loading, and user authentication system.",
+                technologies: ["React", "Firebase", "CSS"]
+              },
+              {
+                title: "E-Commerce Website",
+                image: "/raksham.jpg",
+                description: "A full-featured online shopping platform with product catalog, cart functionality, and secure checkout process.",
+                technologies: ["React", "Node.js", "MongoDB"]
+              },
+              {
+                title: "Weather Dashboard",
+                image: "/priyanshu.jpg",
+                description: "Real-time weather application providing detailed forecasts, interactive maps, and location-based weather data.",
+                technologies: ["React", "API", "Bootstrap"]
+              },
+              {
+                title: "Task Management App",
+                image: "/images/raksham.jpg",
+                description: "A productivity tool for managing tasks, setting deadlines, and collaborating with team members.",
+                technologies: ["React", "Redux", "Firebase"]
+              },
+              {
+                title: "Social Media Dashboard",
+                image: "/images/rajat3.jpg",
+                description: "Analytics dashboard for tracking social media metrics across multiple platforms in real-time.",
+                technologies: ["React", "Chart.js", "API"]
+              },
+              {
+                title: "Recipe Finder",
+                image: "/images/riya.jpg",
+                description: "Search and discover recipes from around the world with filtering options and step-by-step instructions.",
+                technologies: ["React", "API", "Tailwind"]
+              },
+              {
+                title: "Portfolio Website",
+                image: "/images/rehat.jpg",
+                description: "Modern and responsive portfolio website showcasing projects, skills, and professional experience.",
+                technologies: ["React", "Three.js", "GSAP"]
+              }
+            ].map((project, index) => (
+              <div 
+                key={index}
+                style={{
+                  flex: '0 0 400px',
+                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                  borderRadius: '1rem',
+                  padding: '1.5rem',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  transform: 'translateY(0)',
+                  border: '1px solid transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
+                  e.currentTarget.style.borderColor = '#ff6b6b';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.borderColor = 'transparent';
+                }}
+              >
+                <div style={{
+                  width: '100%',
+                  height: '200px',
+                  marginBottom: '1.5rem',
+                  borderRadius: '0.5rem',
+                  overflow: 'hidden',
+                  backgroundColor: '#f8f9fa'
+                }}>
+                  <img 
+                    src={project.image}
+                    alt={project.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/images/project-placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <h4 style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#333333',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  fontSize: '1.25rem',
+                  marginBottom: '1rem'
+                }}>{project.title}</h4>
+                <p style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#6c757d',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5'
+                }}>{project.description}</p>
+                <div className="d-flex gap-2 flex-wrap">
+                  {project.technologies.map((tech, i) => (
+                    <span key={i} className="badge bg-danger">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Events Section */}
+          <h2 className="h3 mb-4" style={{ 
+            color: isDarkTheme ? '#ffffff' : '#333333',
+            transition: 'color 2s ease',
+            animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+          }}>Events</h2>
+          <div className="horizontal-scroll mb-5" style={{
+            overflowX: 'auto',
+            paddingBottom: '1rem',
+            display: 'flex',
+            gap: '1.5rem'
+          }}>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+              <div 
+                key={item}
+                style={{
+                  flex: '0 0 400px',
+                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                  borderRadius: '1rem',
+                  padding: '1.5rem',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  transform: 'translateY(0)',
+                  border: '1px solid transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
+                  e.currentTarget.style.borderColor = '#ff6b6b';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.borderColor = 'transparent';
+                }}
+              >
+                <div style={{
+                  width: '100%',
+                  height: '200px',
+                  marginBottom: '1.5rem',
+                  borderRadius: '0.5rem',
+                  overflow: 'hidden'
+                }}>
+                  <img 
+                    src="/images/class.jpg"
+                    alt={`Event ${item}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/images/project-placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <h4 style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#333333',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  fontSize: '1.25rem',
+                  marginBottom: '1rem'
+                }}>Hackathon {item}</h4>
+                <p style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#6c757d',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5'
+                }}>48-hour coding challenge to build innovative solutions. Join us for an exciting weekend of coding, learning, and collaboration.</p>
+                <div className="d-flex align-items-center" style={{ 
+                  color: isDarkTheme ? '#ff6b6b' : '#dc3545'
+                }}>
+                  <i className="bi bi-calendar-event-fill me-2"></i>
+                  <span>March 15-16, 2024</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Workshops Section */}
+          <h2 className="h3 mb-4" style={{ 
+            color: isDarkTheme ? '#ffffff' : '#333333',
+            transition: 'color 2s ease',
+            animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+          }}>Workshops</h2>
+          <div className="horizontal-scroll" style={{
+            overflowX: 'auto',
+            paddingBottom: '1rem',
+            display: 'flex',
+            gap: '1.5rem'
+          }}>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+              <div 
+                key={item}
+                style={{
+                  flex: '0 0 400px',
+                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                  borderRadius: '1rem',
+                  padding: '1.5rem',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                  transform: 'translateY(0)',
+                  border: '1px solid transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
+                  e.currentTarget.style.borderColor = '#ff6b6b';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.borderColor = 'transparent';
+                }}
+              >
+                <div style={{
+                  width: '100%',
+                  height: '200px',
+                  marginBottom: '1.5rem',
+                  borderRadius: '0.5rem',
+                  overflow: 'hidden'
+                }}>
+                  <img 
+                    src="/images/raksham.jpg"
+                    alt={`Workshop ${item}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/images/project-placeholder.jpg';
+                    }}
+                  />
+                </div>
+                <h4 style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#333333',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  fontSize: '1.25rem',
+                  marginBottom: '1rem'
+                }}>React Workshop {item}</h4>
+                <p style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#6c757d',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  marginBottom: '1rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.5'
+                }}>Hands-on workshop series covering React fundamentals, hooks, state management, and best practices.</p>
+                <div className="d-flex align-items-center" style={{ 
+                  color: isDarkTheme ? '#ff6b6b' : '#dc3545'
+                }}>
+                  <i className="bi bi-calendar-event-fill me-2"></i>
+                  <span>Every Tuesday & Thursday</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <style jsx="true">{`
         .profile-image-container {
           width: 300px;
@@ -505,6 +813,40 @@ const StudentProfile = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
+        }
+
+        .horizontal-scroll {
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+          display: none; /* WebKit */
+        }
+
+        /* Remove the unused scrollbar styles */
+        .horizontal-scroll::-webkit-scrollbar-track {
+          display: none;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+          display: none;
+        }
+
+        @keyframes fadeInOut {
+          0% {
+            opacity: 1;
+          }
+          15% {
+            opacity: 0;
+          }
+          30% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
         }
       `}</style>
     </div>
