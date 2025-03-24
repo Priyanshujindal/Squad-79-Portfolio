@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
@@ -11,6 +11,8 @@ import TeamMemberProfile from './pages/TeamMemberProfile';
 import Students from './pages/Students';
 import StudentProfile from './pages/StudentProfile';
 import Mentors from './pages/Mentors';
+import TeamProfile from './pages/TeamProfile';
+import LoadingAnimation from './components/LoadingAnimation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 
@@ -67,25 +69,43 @@ const TitleUpdater = () => {
 };
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <ThemeProvider>
       <Router>
-        <ScrollToTop />
-        <TitleUpdater />
-        <div className="app">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/teams" element={<Teams />} />
-            <Route path="/teams/:id" element={<TeamMemberProfile />} />
-            <Route path="/students" element={<Students />} />
-            <Route path="/students/:id" element={<StudentProfile />} />
-            <Route path="/mentors" element={<Mentors />} />
-          </Routes>
-          <Footer />
-        </div>
+        {isLoading ? (
+          <LoadingAnimation />
+        ) : (
+          <>
+            <ScrollToTop />
+            <TitleUpdater />
+            <div className="app">
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/experience" element={<Experience />} />
+                <Route path="/teams" element={<Teams />} />
+                <Route path="/teams/:id" element={<TeamMemberProfile />} />
+                <Route path="/students" element={<Students />} />
+                <Route path="/students/:id" element={<StudentProfile />} />
+                <Route path="/mentors" element={<Mentors />} />
+                <Route path="/team" element={<TeamProfile />} />
+              </Routes>
+              <Footer />
+            </div>
+          </>
+        )}
       </Router>
     </ThemeProvider>
   );
