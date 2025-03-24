@@ -571,17 +571,29 @@ const StudentProfile = () => {
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   transform: 'translateY(0)',
-                  border: '1px solid transparent'
+                  border: '1px solid transparent',
+                  position: 'relative',
+                  marginTop: '5px'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
                   e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
                   e.currentTarget.style.borderColor = '#ff6b6b';
+                  // Add zoom effect to the image
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    img.style.transform = 'scale(1.1)';
+                  }
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
                   e.currentTarget.style.borderColor = 'transparent';
+                  // Reset zoom effect on the image
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    img.style.transform = 'scale(1)';
+                  }
                 }}
               >
                 <div style={{
@@ -598,7 +610,8 @@ const StudentProfile = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover'
+                      objectFit: 'cover',
+                      transition: 'transform 0.3s ease'
                     }}
                     onError={(e) => {
                       e.target.onerror = null;
@@ -654,17 +667,29 @@ const StudentProfile = () => {
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   transform: 'translateY(0)',
-                  border: '1px solid transparent'
+                  border: '1px solid transparent',
+                  position: 'relative',
+                   marginTop: '5px'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
                   e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
                   e.currentTarget.style.borderColor = '#ff6b6b';
+                  // Add zoom effect to the image
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    img.style.transform = 'scale(1.1)';
+                  }
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
                   e.currentTarget.style.borderColor = 'transparent';
+                  // Reset zoom effect on the image
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    img.style.transform = 'scale(1)';
+                  }
                 }}
               >
                 <div style={{
@@ -680,7 +705,8 @@ const StudentProfile = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover'
+                      objectFit: 'cover',
+                      transition: 'transform 0.3s ease'
                     }}
                     onError={(e) => {
                       e.target.onerror = null;
@@ -737,17 +763,29 @@ const StudentProfile = () => {
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
                   transform: 'translateY(0)',
-                  border: '1px solid transparent'
+                  border: '1px solid transparent',
+                  position: 'relative',
+                   marginTop: '5px'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
                   e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
                   e.currentTarget.style.borderColor = '#ff6b6b';
+                  // Add zoom effect to the image
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    img.style.transform = 'scale(1.1)';
+                  }
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
                   e.currentTarget.style.borderColor = 'transparent';
+                  // Reset zoom effect on the image
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    img.style.transform = 'scale(1)';
+                  }
                 }}
               >
                 <div style={{
@@ -755,7 +793,8 @@ const StudentProfile = () => {
                   height: '200px',
                   marginBottom: '1.5rem',
                   borderRadius: '0.5rem',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  backgroundColor: '#f8f9fa'
                 }}>
                   <img 
                     src="/images/raksham.jpg"
@@ -763,7 +802,8 @@ const StudentProfile = () => {
                     style={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover'
+                      objectFit: 'cover',
+                      transition: 'transform 0.3s ease'
                     }}
                     onError={(e) => {
                       e.target.onerror = null;
