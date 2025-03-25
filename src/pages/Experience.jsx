@@ -16,7 +16,7 @@ const Experience = () => {
       image: "./images/soptify.png",
       category: "Web Development",
       tags: ["HTML", "CSS", "JavaScript"],
-      team: ["Raksham", "Priyanshu"],
+      team: ["Priyanshu", "Pranav"],
       demoLink: "https://spotifyfree.netlify.app/"
     },
     {
@@ -35,7 +35,7 @@ const Experience = () => {
       image: "./images/TickTacToe.png",
       category: "Web Development",
       tags: ["HTML", "CSS", "JavaScript"],
-      team: ["Raksham", "Priyanshu"],
+      team: ["Priyanshu"],
       demoLink: "https://relastic-tac-toe.netlify.app/"
     },
     {
@@ -45,7 +45,7 @@ const Experience = () => {
       image: "./images/leetcode.jpg",
       category: "Events",
       tags: ["Python"],
-      team: ["Raksham", "Priyanshu" , 'Rehat' , "Rajat"],
+      team: ["Raksham", 'Rehat' , "Rajat"],
     },
     {
       id: 5,
@@ -54,7 +54,7 @@ const Experience = () => {
       image: "./images/MoneyTracker.png",
       category: "Web Development",
       tags: ["HTML", "CSS", "JavaScript","React"],
-      team: ["Raksham", "Priyanshu", "Rajat"],
+      team: ["Priyanshu"],
       demoLink: "https://moneytrackering.netlify.app/",
     },
     {
@@ -64,7 +64,7 @@ const Experience = () => {
       image: "./images/DinoGame.png",
       category: "Web Development",
       tags: ["HTML", "CSS", "JavaScript"],
-      team: ["Raksham", "Priyanshu"],
+      team: [ "Priyanshu"],
       demoLink: "https://classic-dinogame.netlify.app/"
     },
     {
@@ -74,7 +74,7 @@ const Experience = () => {
       image: "./images/netflix-clone.png",
       category: "Web Development",
       tags: ["HTML", "CSS"],
-      team: ["Raksham", "Priyanshu", "Rajat"],
+      team: ["Priyanshu"],
       demoLink: "https://netlify-79.netlify.app/"
     }
   ];
@@ -256,39 +256,35 @@ const Experience = () => {
                         }}>{tag}</span>
                       ))}
                     </div>
-                    {project.demoLink && (
-                      <a 
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn"
-                        style={{
-                          marginTop: '1rem',
-                          padding: '0.5rem 1.5rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.9rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease',
-                          border: '1px solid #ff6b6b',
-                          color: '#ff6b6b',
-                          backgroundColor: 'transparent'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
-                          e.currentTarget.style.transform = 'translateY(-2px)';
-                          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
-                          e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.boxShadow = 'none';
-                        }}
-                      >
-                        View App
-                      </a>
-                    )}
+                    <Link 
+                      to={`/project/${project.id}`}
+                      className="btn"
+                      style={{
+                        marginTop: '1rem',
+                        padding: '0.5rem 1.5rem',
+                        borderRadius: '0.5rem',
+                        fontSize: '0.9rem',
+                        fontWeight: '500',
+                        transition: 'all 0.3s ease',
+                        border: '1px solid #ff6b6b',
+                        color: '#ff6b6b',
+                        backgroundColor: 'transparent'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#ff6b6b';
+                        e.currentTarget.style.color = 'white';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                        e.currentTarget.style.color = '#ff6b6b';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      View Detail
+                    </Link>
                   </div>
                 </div>
               </div>

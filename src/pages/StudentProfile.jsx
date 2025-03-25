@@ -1,12 +1,87 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+
+// Import projects data from Experience
+const projectsData = [
+  {
+    id: 1,
+    title: "Spotify Clone",
+    description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
+    image: "./images/soptify.png",
+    category: "Web Development",
+    tags: ["HTML", "CSS", "JavaScript"],
+    team: ["Priyanshu", "Pranav"],
+    demoLink: "https://spotifyfree.netlify.app/"
+  },
+  {
+    id: 2,
+    title: "2 days workshop",
+    description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
+    image: "./images/workshop.JPG",
+    category: "Workshops",
+    tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
+    team: ["Raksham", "Priyanshu", "Rehat", "Rajat"],
+  },
+  {
+    id: 3,
+    title: "Tic Tac Toe Game",
+    description: "A classic two-player game built with modern web technologies. Features include responsive design, player turn indicators, and win detection logic.",
+    image: "./images/TickTacToe.png",
+    category: "Web Development",
+    tags: ["HTML", "CSS", "JavaScript"],
+    team: ["Priyanshu"],
+    demoLink: "https://relastic-tac-toe.netlify.app/"
+  },
+  {
+    id: 4,
+    title: "Leetcode Event by Kalvium",
+    description: "A coding event on real life coding questions to improve coding skills.",
+    image: "./images/leetcode.jpg",
+    category: "Events",
+    tags: ["Python"],
+    team: ["Raksham", "Rehat", "Rajat"],
+  },
+  {
+    id: 5,
+    title: "Money Tracking Website",
+    description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization.",
+    image: "./images/MoneyTracker.png",
+    category: "Web Development",
+    tags: ["HTML", "CSS", "JavaScript", "React"],
+    team: ["Priyanshu"],
+    demoLink: "https://moneytrackking.netlify.app/"
+  },
+  {
+    id: 6,
+    title: "Classic Dino Game",
+    description: "A fun and engaging endless runner game inspired by the classic Chrome Dino game. Features include smooth animations, score tracking, and obstacle avoidance mechanics.",
+    image: "./images/DinoGame.png",
+    category: "Web Development",
+    tags: ["HTML", "CSS", "JavaScript"],
+    team: ["Priyanshu"],
+    demoLink: "https://dinooo-game.netlify.app/"
+  },
+  {
+    id: 7,
+    title: "Netflix Clone",
+    description: "A modern streaming platform login page UI clone",
+    image: "./images/netflix-clone.png",
+    category: "Web Development",
+    tags: ["HTML", "CSS"],
+    team: ["Priyanshu"],
+    demoLink: "https://netflix-clone-raksham.netlify.app/"
+  }
+];
 
 const StudentProfile = () => {
   const { id } = useParams();
+  const location = useLocation();
   const { isDarkTheme } = useTheme();
   const [isFirstRender, setIsFirstRender] = useState(true);
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [studentProjects, setStudentProjects] = useState([]);
+  const [student, setStudent] = useState(null);
   
   useEffect(() => {
     if (isFirstRender) {
@@ -19,6 +94,179 @@ const StudentProfile = () => {
     }, 12000); // Reset after animation duration
     return () => clearTimeout(timer);
   }, [isDarkTheme]);
+
+  // Find student and their projects
+  useEffect(() => {
+    // Find the student based on id
+    // Check which route we're using (students or more)
+    const isMoreRoute = location.pathname.includes('/more/');
+    
+    // Define team members from More page to match when coming from more route
+    const moreTeamMembers = [
+      {
+        id: 1,
+        name: "Priyanshu Jindal",
+        role: "Team Lead",
+        image: "/priyanshu.jpg",
+        description: "Experienced team lead with expertise in project management and technical leadership.",
+        skills: ["Project Management", "Technical Leadership", "Team Building"],
+        linkedin: "https://www.linkedin.com/in/priyanshu-jindal-18a103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        education: "B.Tech in Computer Science, Chitkara University",
+        experience: [
+          "Worked on multiple frontend projects",
+          "Proficient in React and modern JavaScript",
+          "Good at problem solving and team collaboration"
+        ]
+      },
+      {
+        id: 2,
+        name: "Raksham Sharma",
+        role: "Frontend Developer",
+        image: "/raksham.jpg",
+        description: "Creative frontend developer passionate about creating beautiful and user-friendly interfaces.",
+        skills: ["React", "JavaScript", "CSS", "Tailwind CSS"],
+        linkedin: "https://www.linkedin.com/in/raksham-sharma-715629330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        education: "B.Tech in Computer Science, Chitkara University",
+        experience: [
+          "Developed responsive web applications",
+          "Experienced in modern frontend frameworks",
+          "Strong problem-solving skills"
+        ]
+      },
+      {
+        id: 3,
+        name: "Rajatvir Pandhi",
+        role: "Backend Developer",
+        image: "/rajat3.jpg",
+        description: "Backend expert focused on scalable server architecture and database optimization.",
+        skills: ["Python", "Database Design"],
+        linkedin: "http://www.linkedin.com/in/rajatvir-pandhi-444585357",
+        education: "B.Tech in Computer Science, Chitkara University",
+        experience: [
+          "Developed RESTful APIs",
+          "Database optimization and management",
+          "Server-side application development"
+        ]
+      },
+      {
+        id: 4,
+        name: "Riya Garg",
+        role: "UI/UX Designer",
+        image: "/riya.jpg",
+        description: "Creating intuitive, user-centered designs that combine functionality and visual appeal for optimal user experiences.",
+        skills: ["UI Design", "User Research", "Prototyping"],
+        linkedin: "https://www.linkedin.com/in/sarah-wilson",
+        education: "B.Tech in Computer Science, Chitkara University",
+        experience: [
+          "Designed user interfaces for multiple applications",
+          "Conducted user research and usability testing",
+          "Created wireframes and prototypes"
+        ]
+      },
+      {
+        id: 5,
+        name: "Rehat Singh",
+        role: "UI/UX Designer",
+        image: "/rehat.jpg",
+        description: "Designing clean, intuitive interfaces that prioritize user needs, ensuring a seamless and enjoyable experience across digital platforms",
+        skills: ["UI/UX Design", "User Research", "Prototyping"],
+        linkedin: "https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        education: "B.Tech in Computer Science, Chitkara University",
+        experience: [
+          "Created intuitive user interfaces",
+          "Conducted usability testing and user research",
+          "Designed prototypes and wireframes"
+        ]
+      }
+    ];
+    
+    // Find the student based on ID - matching the correct data source based on route
+    const foundStudent = isMoreRoute 
+      ? moreTeamMembers.find(s => s.id === parseInt(id))
+      : students.find(s => s.id === parseInt(id));
+      
+    setStudent(foundStudent);
+
+    if (foundStudent) {
+      // Filter projects where this student is in the team
+      const filteredProjects = projectsData.filter(project => 
+        project.team.some(member => {
+          // More robust matching logic:
+          // 1. Check if student name contains team member name
+          // 2. Check if team member name contains student name
+          // 3. Check if first name matches (for partial matches)
+          const studentName = foundStudent.name.toLowerCase();
+          const memberName = member.toLowerCase();
+          const studentFirstName = studentName.split(' ')[0].toLowerCase();
+          const memberFirstName = memberName.split(' ')[0].toLowerCase();
+          
+          return studentName.includes(memberName) || 
+                 memberName.includes(studentName) || 
+                 studentName.includes(memberFirstName) || 
+                 memberName.includes(studentFirstName);
+        })
+      );
+      
+      setStudentProjects(filteredProjects);
+    }
+  }, [id, location.pathname]);
+
+  // Get events that the student participated in
+  const getStudentEvents = () => {
+    if (!student) return [];
+    
+    return projectsData.filter(project => 
+      project.category === "Events" && 
+      project.team.some(member => {
+        // More robust matching logic:
+        // 1. Check if student name contains team member name
+        // 2. Check if team member name contains student name
+        // 3. Check if first name matches (for partial matches)
+        const studentName = student.name.toLowerCase();
+        const memberName = member.toLowerCase();
+        const studentFirstName = studentName.split(' ')[0].toLowerCase();
+        const memberFirstName = memberName.split(' ')[0].toLowerCase();
+        
+        return studentName.includes(memberName) || 
+               memberName.includes(studentName) || 
+               studentName.includes(memberFirstName) || 
+               memberName.includes(memberFirstName);
+      })
+    );
+  };
+
+  // Get web development projects that the student worked on
+  const getWebDevelopmentProjects = () => {
+    if (!student) return [];
+    
+    return studentProjects.filter(project => 
+      project.category === "Web Development"
+    );
+  };
+
+  // Get workshops that the student participated in
+  const getStudentWorkshops = () => {
+    if (!student) return [];
+    
+    return projectsData.filter(project => 
+      project.category === "Workshops" && 
+      project.team.some(member => {
+        // More robust matching logic:
+        // 1. Check if student name contains team member name
+        // 2. Check if team member name contains student name
+        // 3. Check if first name matches (for partial matches)
+        const studentName = student.name.toLowerCase();
+        const memberName = member.toLowerCase();
+        const studentFirstName = studentName.split(' ')[0].toLowerCase();
+        const memberFirstName = memberName.split(' ')[0].toLowerCase();
+        
+        return studentName.includes(memberName) || 
+               memberName.includes(studentName) || 
+               studentName.includes(memberFirstName) || 
+               memberName.includes(memberFirstName);
+      })
+    );
+  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -49,7 +297,7 @@ const students = [
     id: 2,
       name: "Raksham Sharma",
       role: "Frontend Developer",
-      image: "/images/raksham.jpg",
+      image: "/raksham.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/raksham-sharma-715629330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       skills: ["React", "JavaScript", "UI/UX", "CSS"],
@@ -65,7 +313,7 @@ const students = [
     id: 3,
       name: "Rajatvir Pandhi",
       role: "Backend Developer",
-      image: "/images/rajat3.jpg",
+      image: "/rajat3.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'http://www.linkedin.com/in/rajatvir-pandhi-444585357',
       skills: ["Python", "Node.js", "Database Design", "API Development"],
@@ -81,7 +329,7 @@ const students = [
     id: 4,
       name: "Riya Garg",
       role: "UI/UX Designer",
-      image: "/images/riya.jpg", 
+      image: "/riya.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/riya-garg-98a09a334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       skills: ["UI Design", "User Research", "Prototyping", "Figma"],
@@ -367,8 +615,6 @@ const students = [
     }
   ];
 
-  const student = students.find(s => s.id === parseInt(id));
-
   if (!student) {
     return (
       <div className={`container py-5 ${isDarkTheme ? 'text-white' : ''}`}>
@@ -517,139 +763,180 @@ const students = [
             display: 'flex',
             gap: '1.5rem'
           }}>
-            {[
-              {
-                title: "Spotify Clone",
-                image: "/soptify.png",
-                description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
-                technologies: ["HTML", "CSS", "JavaScript"]
-              },
-              {
-                title: "Netflix Clone",
-                image: "/class.jpg",
-                description: "A streaming platform clone featuring a responsive design, dynamic content loading, and user authentication system.",
-                technologies: ["React", "Firebase", "CSS"]
-              },
-              {
-                title: "E-Commerce Website",
-                image: "/raksham.jpg",
-                description: "A full-featured online shopping platform with product catalog, cart functionality, and secure checkout process.",
-                technologies: ["React", "Node.js", "MongoDB"]
-              },
-              {
-                title: "Weather Dashboard",
-                image: "/priyanshu.jpg",
-                description: "Real-time weather application providing detailed forecasts, interactive maps, and location-based weather data.",
-                technologies: ["React", "API", "Bootstrap"]
-              },
-              {
-                title: "Task Management App",
-                image: "/images/raksham.jpg",
-                description: "A productivity tool for managing tasks, setting deadlines, and collaborating with team members.",
-                technologies: ["React", "Redux", "Firebase"]
-              },
-              {
-                title: "Social Media Dashboard",
-                image: "/images/rajat3.jpg",
-                description: "Analytics dashboard for tracking social media metrics across multiple platforms in real-time.",
-                technologies: ["React", "Chart.js", "API"]
-              },
-              {
-                title: "Recipe Finder",
-                image: "/images/riya.jpg",
-                description: "Search and discover recipes from around the world with filtering options and step-by-step instructions.",
-                technologies: ["React", "API", "Tailwind"]
-              },
-              {
-                title: "Portfolio Website",
-                image: "/images/rehat.jpg",
-                description: "Modern and responsive portfolio website showcasing projects, skills, and professional experience.",
-                technologies: ["React", "Three.js", "GSAP"]
-              }
-            ].map((project, index) => (
-              <div 
-                key={index}
-                style={{
-                  flex: '0 0 400px',
-                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                  borderRadius: '1rem',
-                  padding: '1.5rem',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  transform: 'translateY(0)',
-                  border: '1px solid transparent',
-                  position: 'relative',
-                  marginTop: '5px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
-                  e.currentTarget.style.borderColor = '#ff6b6b';
-                  // Add zoom effect to the image
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.transform = 'scale(1.1)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                  e.currentTarget.style.borderColor = 'transparent';
-                  // Reset zoom effect on the image
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.transform = 'scale(1)';
-                  }
-                }}
-              >
-                <div style={{
-                  width: '100%',
-                  height: '200px',
-                  marginBottom: '1.5rem',
-                  borderRadius: '0.5rem',
-                  overflow: 'hidden',
-                  backgroundColor: '#f8f9fa'
-                }}>
-                  <img 
-                    src={project.image}
-                    alt={project.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/images/project-placeholder.jpg';
-                    }}
-                  />
+            {getWebDevelopmentProjects().length > 0 ? (
+              getWebDevelopmentProjects().map((project, index) => (
+                <div 
+                  key={index}
+                  style={{
+                    flex: '0 0 400px',
+                    backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                    borderRadius: '1rem',
+                    padding: '1.5rem',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer',
+                    transform: 'translateY(0)',
+                    border: '1px solid transparent',
+                    position: 'relative',
+                     marginTop: '5px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.borderColor = '#ff6b6b';
+                    // Add zoom effect to the image
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.transform = 'scale(1.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.borderColor = 'transparent';
+                    // Reset zoom effect on the image
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.transform = 'scale(1)';
+                    }
+                  }}
+                >
+                  <div style={{
+                    width: '100%',
+                    height: '200px',
+                    marginBottom: '1.5rem',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    backgroundColor: '#f8f9fa'
+                  }}>
+                    <img 
+                      src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                      alt={project.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'transform 0.3s ease'
+                      }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/images/project-placeholder.jpg';
+                      }}
+                    />
+                  </div>
+                  <h4 style={{ 
+                    color: isDarkTheme ? '#ffffff' : '#333333',
+                    transition: 'color 2s ease',
+                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                    fontSize: '1.25rem',
+                    marginBottom: '1rem'
+                  }}>{project.title}</h4>
+                  <p style={{ 
+                    color: isDarkTheme ? '#ffffff' : '#6c757d',
+                    transition: 'color 2s ease',
+                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                    marginBottom: '1rem',
+                    fontSize: '0.9rem',
+                    lineHeight: '1.5'
+                  }}>{project.description}</p>
+                  <div className="d-flex gap-2 flex-wrap">
+                    {project.tags.map((tech, i) => (
+                      <span key={i} className="badge bg-danger">{tech}</span>
+                    ))}
+                  </div>
+                  
+                  {project.demoLink && (
+                    <div className="mt-3">
+                      <a 
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-sm"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Demo
+                      </a>
+                        
+                      <Link 
+                        to={`/project/${project.id}`}
+                        className="btn btn-sm ms-2"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Detail
+                      </Link>
+                    </div>
+                  )}
+                  
+                  {!project.demoLink && (
+                    <div className="mt-3">
+                      <Link 
+                        to={`/project/${project.id}`}
+                        className="btn btn-sm"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Detail
+                      </Link>
+                    </div>
+                  )}
                 </div>
-                <h4 style={{ 
-                  color: isDarkTheme ? '#ffffff' : '#333333',
-                  transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                  fontSize: '1.25rem',
-                  marginBottom: '1rem'
-                }}>{project.title}</h4>
-                <p style={{ 
-                  color: isDarkTheme ? '#ffffff' : '#6c757d',
-                  transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                  marginBottom: '1rem',
-                  fontSize: '0.9rem',
-                  lineHeight: '1.5'
-                }}>{project.description}</p>
-                <div className="d-flex gap-2 flex-wrap">
-                  {project.technologies.map((tech, i) => (
-                    <span key={i} className="badge bg-danger">{tech}</span>
-                  ))}
-                </div>
+              ))
+            ) : (
+              <div className="text-center">
+                <h4>No web development projects found.</h4>
               </div>
-            ))}
+            )}
           </div>
-
           {/* Events Section */}
           <h2 className="h3 mb-4" style={{ 
             color: isDarkTheme ? '#ffffff' : '#333333',
@@ -662,90 +949,180 @@ const students = [
             display: 'flex',
             gap: '1.5rem'
           }}>
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <div 
-                key={item}
-                style={{
-                  flex: '0 0 400px',
-                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                  borderRadius: '1rem',
-                  padding: '1.5rem',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  transform: 'translateY(0)',
-                  border: '1px solid transparent',
-                  position: 'relative',
-                   marginTop: '5px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
-                  e.currentTarget.style.borderColor = '#ff6b6b';
-                  // Add zoom effect to the image
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.transform = 'scale(1.1)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                  e.currentTarget.style.borderColor = 'transparent';
-                  // Reset zoom effect on the image
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.transform = 'scale(1)';
-                  }
-                }}
-              >
-                <div style={{
-                  width: '100%',
-                  height: '200px',
-                  marginBottom: '1.5rem',
-                  borderRadius: '0.5rem',
-                  overflow: 'hidden'
-                }}>
-                  <img 
-                    src="/images/class.jpg"
-                    alt={`Event ${item}`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/images/project-placeholder.jpg';
-                    }}
-                  />
+            {getStudentEvents().length > 0 ? (
+              getStudentEvents().map((project, index) => (
+                <div 
+                  key={index}
+                  style={{
+                    flex: '0 0 400px',
+                    backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                    borderRadius: '1rem',
+                    padding: '1.5rem',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer',
+                    transform: 'translateY(0)',
+                    border: '1px solid transparent',
+                    position: 'relative',
+                     marginTop: '5px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.borderColor = '#ff6b6b';
+                    // Add zoom effect to the image
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.transform = 'scale(1.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.borderColor = 'transparent';
+                    // Reset zoom effect on the image
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.transform = 'scale(1)';
+                    }
+                  }}
+                >
+                  <div style={{
+                    width: '100%',
+                    height: '200px',
+                    marginBottom: '1.5rem',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    backgroundColor: '#f8f9fa'
+                  }}>
+                    <img 
+                      src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                      alt={project.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'transform 0.3s ease'
+                      }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/images/project-placeholder.jpg';
+                      }}
+                    />
+                  </div>
+                  <h4 style={{ 
+                    color: isDarkTheme ? '#ffffff' : '#333333',
+                    transition: 'color 2s ease',
+                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                    fontSize: '1.25rem',
+                    marginBottom: '1rem'
+                  }}>{project.title}</h4>
+                  <p style={{ 
+                    color: isDarkTheme ? '#ffffff' : '#6c757d',
+                    transition: 'color 2s ease',
+                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                    marginBottom: '1rem',
+                    fontSize: '0.9rem',
+                    lineHeight: '1.5'
+                  }}>{project.description}</p>
+                  <div className="d-flex gap-2 flex-wrap">
+                    {project.tags.map((tech, i) => (
+                      <span key={i} className="badge bg-danger">{tech}</span>
+                    ))}
+                  </div>
+                  
+                  {project.demoLink && (
+                    <div className="mt-3">
+                      <a 
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-sm"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Demo
+                      </a>
+                        
+                      <Link 
+                        to={`/project/${project.id}`}
+                        className="btn btn-sm ms-2"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Detail
+                      </Link>
+                    </div>
+                  )}
+                  
+                  {!project.demoLink && (
+                    <div className="mt-3">
+                      <Link 
+                        to={`/project/${project.id}`}
+                        className="btn btn-sm"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Detail
+                      </Link>
+                    </div>
+                  )}
                 </div>
-                <h4 style={{ 
-                  color: isDarkTheme ? '#ffffff' : '#333333',
-                  transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                  fontSize: '1.25rem',
-                  marginBottom: '1rem'
-                }}>Hackathon {item}</h4>
-                <p style={{ 
-                  color: isDarkTheme ? '#ffffff' : '#6c757d',
-                  transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                  marginBottom: '1rem',
-                  fontSize: '0.9rem',
-                  lineHeight: '1.5'
-                }}>48-hour coding challenge to build innovative solutions. Join us for an exciting weekend of coding, learning, and collaboration.</p>
-                <div className="d-flex align-items-center" style={{ 
-                  color: isDarkTheme ? '#ff6b6b' : '#dc3545'
-                }}>
-                  <i className="bi bi-calendar-event-fill me-2"></i>
-                  <span>March 15-16, 2024</span>
-                </div>
+              ))
+            ) : (
+              <div className="text-center">
+                <h4>No events found.</h4>
               </div>
-            ))}
+            )}
           </div>
-
           {/* Workshops Section */}
           <h2 className="h3 mb-4" style={{ 
             color: isDarkTheme ? '#ffffff' : '#333333',
@@ -758,89 +1135,179 @@ const students = [
             display: 'flex',
             gap: '1.5rem'
           }}>
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-              <div 
-                key={item}
-                style={{
-                  flex: '0 0 400px',
-                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                  borderRadius: '1rem',
-                  padding: '1.5rem',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  transform: 'translateY(0)',
-                  border: '1px solid transparent',
-                  position: 'relative',
-                   marginTop: '5px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
-                  e.currentTarget.style.borderColor = '#ff6b6b';
-                  // Add zoom effect to the image
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.transform = 'scale(1.1)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                  e.currentTarget.style.borderColor = 'transparent';
-                  // Reset zoom effect on the image
-                  const img = e.currentTarget.querySelector('img');
-                  if (img) {
-                    img.style.transform = 'scale(1)';
-                  }
-                }}
-              >
-                <div style={{
-                  width: '100%',
-                  height: '200px',
-                  marginBottom: '1.5rem',
-                  borderRadius: '0.5rem',
-                  overflow: 'hidden',
-                  backgroundColor: '#f8f9fa'
-                }}>
-                  <img 
-                    src="/images/raksham.jpg"
-                    alt={`Workshop ${item}`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/images/project-placeholder.jpg';
-                    }}
-                  />
+            {getStudentWorkshops().length > 0 ? (
+              getStudentWorkshops().map((project, index) => (
+                <div 
+                  key={index}
+                  style={{
+                    flex: '0 0 400px',
+                    backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                    borderRadius: '1rem',
+                    padding: '1.5rem',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer',
+                    transform: 'translateY(0)',
+                    border: '1px solid transparent',
+                    position: 'relative',
+                     marginTop: '5px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.borderColor = '#ff6b6b';
+                    // Add zoom effect to the image
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.transform = 'scale(1.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.borderColor = 'transparent';
+                    // Reset zoom effect on the image
+                    const img = e.currentTarget.querySelector('img');
+                    if (img) {
+                      img.style.transform = 'scale(1)';
+                    }
+                  }}
+                >
+                  <div style={{
+                    width: '100%',
+                    height: '200px',
+                    marginBottom: '1.5rem',
+                    borderRadius: '0.5rem',
+                    overflow: 'hidden',
+                    backgroundColor: '#f8f9fa'
+                  }}>
+                    <img 
+                      src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                      alt={project.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'transform 0.3s ease'
+                      }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/images/project-placeholder.jpg';
+                      }}
+                    />
+                  </div>
+                  <h4 style={{ 
+                    color: isDarkTheme ? '#ffffff' : '#333333',
+                    transition: 'color 2s ease',
+                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                    fontSize: '1.25rem',
+                    marginBottom: '1rem'
+                  }}>{project.title}</h4>
+                  <p style={{ 
+                    color: isDarkTheme ? '#ffffff' : '#6c757d',
+                    transition: 'color 2s ease',
+                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                    marginBottom: '1rem',
+                    fontSize: '0.9rem',
+                    lineHeight: '1.5'
+                  }}>{project.description}</p>
+                  <div className="d-flex gap-2 flex-wrap">
+                    {project.tags.map((tech, i) => (
+                      <span key={i} className="badge bg-danger">{tech}</span>
+                    ))}
+                  </div>
+                  
+                  {project.demoLink && (
+                    <div className="mt-3">
+                      <a 
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-sm"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Demo
+                      </a>
+                        
+                      <Link 
+                        to={`/project/${project.id}`}
+                        className="btn btn-sm ms-2"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Detail
+                      </Link>
+                    </div>
+                  )}
+                  
+                  {!project.demoLink && (
+                    <div className="mt-3">
+                      <Link 
+                        to={`/project/${project.id}`}
+                        className="btn btn-sm"
+                        style={{
+                          padding: '0.5rem 1rem',
+                          borderRadius: '0.5rem',
+                          fontSize: '0.8rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
+                      >
+                        View Detail
+                      </Link>
+                    </div>
+                  )}
                 </div>
-                <h4 style={{ 
-                  color: isDarkTheme ? '#ffffff' : '#333333',
-                  transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                  fontSize: '1.25rem',
-                  marginBottom: '1rem'
-                }}>React Workshop {item}</h4>
-                <p style={{ 
-                  color: isDarkTheme ? '#ffffff' : '#6c757d',
-                  transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                  marginBottom: '1rem',
-                  fontSize: '0.9rem',
-                  lineHeight: '1.5'
-                }}>Hands-on workshop series covering React fundamentals, hooks, state management, and best practices.</p>
-                <div className="d-flex align-items-center" style={{ 
-                  color: isDarkTheme ? '#ff6b6b' : '#dc3545'
-                }}>
-                  <i className="bi bi-calendar-event-fill me-2"></i>
-                  <span>Every Tuesday & Thursday</span>
-                </div>
+              ))
+            ) : (
+              <div className="text-center">
+                <h4>No workshops found.</h4>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>

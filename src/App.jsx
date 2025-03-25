@@ -13,6 +13,7 @@ import StudentProfile from './pages/StudentProfile';
 import Mentors from './pages/Mentors';
 import TeamProfile from './pages/TeamProfile';
 import More from './pages/More';
+import ProjectDetails from './pages/ProjectDetails';
 import LoadingAnimation from './components/LoadingAnimation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
@@ -109,6 +110,7 @@ function App() {
                 <Route path="/team" element={<TeamProfile />} />
                 <Route path="/more" element={<More />} />
                 <Route path="/more/:id" element={<StudentProfile />} />
+                <Route path="/project/:id" element={<ProjectDetails />} />
               </Routes>
               <Footer />
             </div>
