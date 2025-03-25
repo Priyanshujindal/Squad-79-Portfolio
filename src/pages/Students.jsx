@@ -179,6 +179,8 @@ const students = [
 const Students = () => {
   const { isDarkTheme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredStudents, setFilteredStudents] = useState(students);
 
   useEffect(() => {
     // Simulate data loading
@@ -188,6 +190,14 @@ const Students = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    // Filter students based on search query
+    const filtered = students.filter(student =>
+      student.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredStudents(filtered);
+  }, [searchQuery]);
 
   if (isLoading) {
     return (
@@ -213,18 +223,60 @@ const Students = () => {
         </div>
       </section>
 
+      {/* Search Section */}
+      <section className="py-4" style={{ backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa' }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-6">
+              <div className="input-group">
+                <span className="input-group-text" style={{ 
+                  backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                  borderColor: isDarkTheme ? '#404040' : '#dee2e6',
+                  color: isDarkTheme ? '#ffffff' : '#000000'
+                }}>
+                  <i className="bi bi-search"></i>
+                </span>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search students by name..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{
+                    backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                    borderColor: isDarkTheme ? '#404040' : '#dee2e6',
+                    color: isDarkTheme ? '#ffffff' : '#000000',
+                    '::placeholder': {
+                      color: isDarkTheme ? '#808080' : '#6c757d'
+                    }
+                  }}
+                />
+              </div>
+              {searchQuery && (
+                <p className="mt-2 mb-0" style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#6c757d',
+                  fontSize: '0.9rem'
+                }}>
+                  Found {filteredStudents.length} student{filteredStudents.length !== 1 ? 's' : ''}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Student Cards */}
       <section className={`py-5 ${isDarkTheme ? 'bg-dark' : 'bg-light'}`}>
         <div className="container">
           <div className="row g-4">
-            {students.map(student => (
+            {filteredStudents.map(student => (
               <div key={student.id} className="col-lg-4">
                 <div className="card h-100 border-0 shadow-lg" style={{ 
                   borderRadius: '15px',
                   overflow: 'hidden',
                   transition: 'all 0.3s ease',
-                  backgroundColor: '#ffffff',
-                  color: '#000000'
+                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                  color: isDarkTheme ? '#ffffff' : '#000000'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
@@ -235,7 +287,7 @@ const Students = () => {
                     position: 'relative',
                     borderRadius: '15px',
                     transition: 'all 0.3s ease',
-                    backgroundColor: '#ffffff'
+                    backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff'
                   }}>
                     <img 
                       src={student.image} 
@@ -256,9 +308,9 @@ const Students = () => {
                     />
                   </div>
                   <div className="card-body p-4 text-center">
-                    <h3 className="h4 mb-2 fw-bold" style={{ color: '#000000' }}>{student.name}</h3>
-                    <p className="text-danger mb-2 fw-medium" style={{ color: '#000000' }}>{student.role}</p>
-                    <p className="text-muted mb-4" style={{ fontSize: '0.9rem', color: '#000000' }}>{student.description}</p>
+                    <h3 className="h4 mb-2 fw-bold" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>{student.name}</h3>
+                    <p className="text-danger mb-2 fw-medium" style={{ color: isDarkTheme ? '#ff6b6b' : '#dc3545' }}>{student.role}</p>
+                    <p className="text-muted mb-4" style={{ fontSize: '0.9rem', color: isDarkTheme ? '#b3b3b3' : '#6c757d' }}>{student.description}</p>
                     <div className="d-flex justify-content-between align-items-center">
                       <Link 
                         to={`/students/${student.id}`} 
@@ -268,19 +320,19 @@ const Students = () => {
                           marginRight: "1rem",
                           fontSize: '0.9rem',
                           whiteSpace: 'nowrap',
-                          border: '1px solid #ff6b6b',
-                          color: '#ff6b6b',
+                          border: `1px solid ${isDarkTheme ? '#ff6b6b' : '#ff6b6b'}`,
+                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
                           transition: 'all 0.3s ease',
                           borderRadius: '25px',
                           backgroundColor: 'transparent'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.color = '#ffffff';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.color = isDarkTheme ? '#ff6b6b' : '#ff6b6b';
                         }}
                       >
                         View Profile
@@ -294,7 +346,7 @@ const Students = () => {
                           padding: '8px 20px',
                           borderRadius: '25px',
                           fontSize: '0.9rem',
-                          color: '#000000',
+                          color: isDarkTheme ? '#ffffff' : '#000000',
                           borderColor: '#ff6b6b',
                           transition: 'all 0.3s ease'
                         }}
@@ -304,7 +356,7 @@ const Students = () => {
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#000000';
+                          e.currentTarget.style.color = isDarkTheme ? '#ffffff' : '#000000';
                         }}
                       >
                         <i className="bi bi-linkedin me-2"></i>LinkedIn
@@ -321,8 +373,8 @@ const Students = () => {
                     transform: 'translate(-50%, -50%)',
                     width: '100%',
                     padding: '20px',
-                    backgroundColor: '#ffffff',
-                    color: '#000000'
+                    backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                    color: isDarkTheme ? '#ffffff' : '#000000'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.opacity = 1;
@@ -339,7 +391,8 @@ const Students = () => {
                         height: '100px',
                         borderRadius: '50%',
                         overflow: 'hidden',
-                        marginRight: '20px'
+                        marginRight: '20px',
+                        border: `3px solid ${isDarkTheme ? '#ff6b6b' : '#ff6b6b'}`
                       }}>
                         <img 
                           src={student.image} 
@@ -352,9 +405,9 @@ const Students = () => {
                         />
                       </div>
                       <div className="profile-info">
-                        <h3 className="h4 mb-2 fw-bold" style={{ color: '#000000' }}>{student.name}</h3>
-                        <p className="text-danger mb-3 fw-medium" style={{ color: '#000000' }}>{student.role}</p>
-                        <p className="mb-0" style={{ fontSize: '0.9rem', color: '#000000' }}>{student.description}</p>
+                        <h3 className="h4 mb-2 fw-bold" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>{student.name}</h3>
+                        <p className="text-danger mb-3 fw-medium" style={{ color: isDarkTheme ? '#ff6b6b' : '#dc3545' }}>{student.role}</p>
+                        <p className="mb-0" style={{ fontSize: '0.9rem', color: isDarkTheme ? '#b3b3b3' : '#6c757d' }}>{student.description}</p>
                       </div>
                     </div>
                   </div>

@@ -12,6 +12,7 @@ import Students from './pages/Students';
 import StudentProfile from './pages/StudentProfile';
 import Mentors from './pages/Mentors';
 import TeamProfile from './pages/TeamProfile';
+import More from './pages/More';
 import LoadingAnimation from './components/LoadingAnimation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
@@ -52,6 +53,9 @@ const TitleUpdater = () => {
         break;
       case '/mentors':
         title = 'Mentors | Squad 79 Portfolio';
+        break;
+      case '/more':
+        title = 'More | Squad 79 Portfolio';
         break;
       default:
         // Check if it's a team member profile page
@@ -101,6 +105,7 @@ function App() {
                 <Route path="/students/:id" element={<StudentProfile />} />
                 <Route path="/mentors" element={<Mentors />} />
                 <Route path="/team" element={<TeamProfile />} />
+                <Route path="/more" element={<More />} />
               </Routes>
               <Footer />
             </div>

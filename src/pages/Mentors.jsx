@@ -66,8 +66,9 @@ const Mentors = () => {
       <section className={`py-20 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'} `} style={{ backgroundColor: '#ff6b6b' }}>
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#ffffff' }}>Our Mentors</h1>
-            <p className="text-xl mb-10 max-w-2xl mx-auto" style={{ color: '#ffffff' }}>
+            <h1 className="display-4 fw-bold mb-4" 
+                style={{ color: '#ffffff' }}>Our Mentors</h1>
+            <p className="lead" style={{ color: '#ffffff' }}>
               Meet the industry experts who guide and support Squad <span style={{verticalAlign: 'baseline', display: 'inline-block', lineHeight: 'normal', color: '#ffffff'}}>79</span> in our journey to excellence.
             </p>
           </div>

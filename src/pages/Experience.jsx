@@ -118,10 +118,35 @@ const Experience = () => {
                   borderRadius: '0.5rem',
                   fontSize: '0.9rem',
                   fontWeight: '500',
-                  transition: 'all 0.3s ease',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   boxShadow: isDarkTheme ? 
                     '0 2px 8px rgba(0, 0, 0, 0.2)' : 
-                    '0 2px 8px rgba(0, 0, 0, 0.1)'
+                    '0 2px 8px rgba(0, 0, 0, 0.1)',
+                  transform: 'translateY(0) scale(1)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeFilter !== category) {
+                    e.currentTarget.style.transform = 'translateY(-5px) scale(1.05)';
+                    e.currentTarget.style.boxShadow = isDarkTheme ? 
+                      '0 8px 20px rgba(255, 107, 107, 0.4)' : 
+                      '0 8px 20px rgba(255, 107, 107, 0.3)';
+                    e.currentTarget.style.backgroundColor = isDarkTheme ? 
+                      'rgba(255, 107, 107, 0.15)' : 
+                      'rgba(255, 107, 107, 0.1)';
+                    e.currentTarget.style.border = `1px solid ${isDarkTheme ? 'rgba(255, 107, 107, 0.3)' : 'rgba(255, 107, 107, 0.2)'}`;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeFilter !== category) {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = isDarkTheme ? 
+                      '0 2px 8px rgba(0, 0, 0, 0.2)' : 
+                      '0 2px 8px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.backgroundColor = 'var(--card-bg)';
+                    e.currentTarget.style.border = 'none';
+                  }
                 }}
               >
                 {category}

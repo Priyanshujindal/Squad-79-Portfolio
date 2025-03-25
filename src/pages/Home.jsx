@@ -531,243 +531,103 @@ const Home = () => {
             left: 0;
             width: 100%;
             height: 100%;
+            background-color:rgba(61, 52, 49, 0.81);
           }
           .star {
             position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            opacity: 0.8;
+            box-shadow: 0 0 2px #ffffff;
+            animation: float 4s infinite ease-in-out;
+          }
+          .star:nth-child(even) {
+            width: 1px;
+            height: 1px;
+            animation: twinkle 2s infinite ease-in-out;
+          }
+          .star:nth-child(3n) {
             width: 3px;
             height: 3px;
-            background-color: #fff;
-            border-radius: 50%;
-            animation: move 20s linear infinite;
+            box-shadow: 0 0 4px #b2560d;
+            animation: pulse 2.5s infinite ease-in-out;
           }
-          .star:nth-child(1) {
-            top: 10%;
-            left: 20%;
-            animation-name: star1;
-            animation-duration: 15s;
-            animation-delay: 0s;
+          .star:nth-child(5n) {
+            animation: twinkle 1.5s infinite ease-in-out;
           }
-          .star:nth-child(2) {
-            top: 30%;
-            left: 40%;
-            animation-name: star2;
-            animation-duration: 20s;
-            animation-delay: 1s;
+          .star:nth-child(7n) {
+            animation: shooting 4s infinite linear;
           }
-          .star:nth-child(3) {
-            top: 50%;
-            left: 60%;
-            animation-name: star3;
-            animation-duration: 25s;
-            animation-delay: 2s;
+          .star:nth-child(11n) {
+            animation: float 6s infinite ease-in-out;
           }
-          .star:nth-child(4) {
-            top: 70%;
-            left: 80%;
-            animation-name: star4;
-            animation-duration: 30s;
-            animation-delay: 3s;
+          .star:nth-child(13n) {
+            animation: pulse 2s infinite ease-in-out;
           }
-          .star:nth-child(5) {
-            top: 90%;
-            left: 100%;
-            animation-name: star5;
-            animation-duration: 35s;
-            animation-delay: 4s;
+
+          @keyframes twinkle {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(0.8); }
           }
-          .star:nth-child(6) {
-            top: 20%;
-            left: 30%;
-            animation-name: star6;
-            animation-duration: 18s;
-            animation-delay: 0.5s;
+
+          @keyframes shooting {
+            0% { transform: translate(-100%, -100%); opacity: 1; }
+            50% { opacity: 1; }
+            100% { transform: translate(200%, 200%); opacity: 0; }
           }
-          .star:nth-child(7) {
-            top: 40%;
-            left: 50%;
-            animation-name: star7;
-            animation-duration: 22s;
-            animation-delay: 1.5s;
-          }
-          .star:nth-child(8) {
-            top: 60%;
-            left: 70%;
-            animation-name: star8;
-            animation-duration: 27s;
-            animation-delay: 2.5s;
-          }
-          .star:nth-child(9) {
-            top: 80%;
-            left: 90%;
-            animation-name: star9;
-            animation-duration: 32s;
-            animation-delay: 3.5s;
-          }
-          .star:nth-child(10) {
-            top: 10%;
-            left: 70%;
-            animation-name: star10;
-            animation-duration: 37s;
-            animation-delay: 4.5s;
-          }
-          .star:nth-child(11) {
-            top: 15%;
-            left: 45%;
-            animation-name: star11;
-            animation-duration: 28s;
-            animation-delay: 0.7s;
-          }
-          .star:nth-child(12) {
-            top: 35%;
-            left: 55%;
-            animation-name: star12;
-            animation-duration: 23s;
-            animation-delay: 1.7s;
-          }
-          .star:nth-child(13) {
-            top: 55%;
-            left: 75%;
-            animation-name: star13;
-            animation-duration: 29s;
-            animation-delay: 2.7s;
-          }
-          .star:nth-child(14) {
-            top: 75%;
-            left: 95%;
-            animation-name: star14;
-            animation-duration: 34s;
-            animation-delay: 3.7s;
-          }
-          .star:nth-child(15) {
-            top: 25%;
-            left: 65%;
-            animation-name: star15;
-            animation-duration: 39s;
-            animation-delay: 4.7s;
-          }
-          @keyframes star1 {
+
+          @keyframes float {
             0% { transform: translate(0, 0); }
-            25% { transform: translate(50px, -30px); }
-            50% { transform: translate(-30px, -50px); }
-            75% { transform: translate(30px, 40px); }
+            25% { transform: translate(20px, -20px); }
+            50% { transform: translate(-15px, 25px); }
+            75% { transform: translate(-25px, -15px); }
             100% { transform: translate(0, 0); }
           }
-          @keyframes star2 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-40px, 20px); }
-            50% { transform: translate(30px, 30px); }
-            75% { transform: translate(-20px, -40px); }
-            100% { transform: translate(0, 0); }
+
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.4); opacity: 0.4; }
           }
-          @keyframes star3 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(30px, 30px); }
-            50% { transform: translate(-40px, -20px); }
-            75% { transform: translate(20px, 40px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star4 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-30px, -30px); }
-            50% { transform: translate(40px, 20px); }
-            75% { transform: translate(-20px, -40px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star5 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(40px, 20px); }
-            50% { transform: translate(-30px, -30px); }
-            75% { transform: translate(30px, 40px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star6 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(30px, -40px); }
-            50% { transform: translate(-20px, -30px); }
-            75% { transform: translate(40px, 20px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star7 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-30px, 30px); }
-            50% { transform: translate(20px, 40px); }
-            75% { transform: translate(-40px, -20px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star8 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(40px, -20px); }
-            50% { transform: translate(-30px, -30px); }
-            75% { transform: translate(20px, 40px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star9 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-20px, 40px); }
-            50% { transform: translate(30px, -30px); }
-            75% { transform: translate(-40px, -20px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star10 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(20px, -40px); }
-            50% { transform: translate(-30px, 30px); }
-            75% { transform: translate(40px, -20px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star11 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(35px, -35px); }
-            50% { transform: translate(-25px, -45px); }
-            75% { transform: translate(25px, 35px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star12 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-35px, 25px); }
-            50% { transform: translate(25px, 35px); }
-            75% { transform: translate(-35px, -25px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star13 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(25px, 25px); }
-            50% { transform: translate(-35px, -25px); }
-            75% { transform: translate(35px, 35px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star14 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-25px, -25px); }
-            50% { transform: translate(35px, 25px); }
-            75% { transform: translate(-35px, -35px); }
-            100% { transform: translate(0, 0); }
-          }
-          @keyframes star15 {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(35px, 25px); }
-            50% { transform: translate(-25px, -35px); }
-            75% { transform: translate(25px, 35px); }
-            100% { transform: translate(0, 0); }
-          }
+
+          /* Star Positions with Movement */
+          .star:nth-child(1) { top: 15%; left: 10%; animation: float 5s infinite ease-in-out; }
+          .star:nth-child(2) { top: 25%; left: 20%; animation: twinkle 2s infinite ease-in-out; }
+          .star:nth-child(3) { top: 35%; left: 30%; animation: pulse 2.5s infinite ease-in-out; }
+          .star:nth-child(4) { top: 45%; left: 40%; animation: float 6s infinite ease-in-out; }
+          .star:nth-child(5) { top: 55%; left: 50%; animation: twinkle 1.5s infinite ease-in-out; }
+          .star:nth-child(6) { top: 65%; left: 60%; animation: pulse 2s infinite ease-in-out; }
+          .star:nth-child(7) { top: 75%; left: 70%; animation: shooting 4s infinite linear; }
+          .star:nth-child(8) { top: 85%; left: 80%; animation: float 5.5s infinite ease-in-out; }
+          .star:nth-child(9) { top: 95%; left: 90%; animation: twinkle 1.8s infinite ease-in-out; }
+          .star:nth-child(10) { top: 10%; left: 95%; animation: pulse 2.2s infinite ease-in-out; }
+          .star:nth-child(11) { top: 20%; left: 85%; animation: float 6.5s infinite ease-in-out; }
+          .star:nth-child(12) { top: 30%; left: 75%; animation: twinkle 1.6s infinite ease-in-out; }
+          .star:nth-child(13) { top: 40%; left: 65%; animation: shooting 4.5s infinite linear; }
+          .star:nth-child(14) { top: 50%; left: 55%; animation: pulse 2.3s infinite ease-in-out; }
+          .star:nth-child(15) { top: 60%; left: 45%; animation: float 5.8s infinite ease-in-out; }
+          .star:nth-child(16) { top: 70%; left: 35%; animation: twinkle 2.1s infinite ease-in-out; }
+          .star:nth-child(17) { top: 80%; left: 25%; animation: pulse 2.4s infinite ease-in-out; }
+          .star:nth-child(18) { top: 90%; left: 15%; animation: shooting 5s infinite linear; }
+          .star:nth-child(19) { top: 5%; left: 5%; animation: float 6.2s infinite ease-in-out; }
+          .star:nth-child(20) { top: 15%; left: 15%; animation: twinkle 1.9s infinite ease-in-out; }
+          .star:nth-child(21) { top: 25%; left: 25%; animation: pulse 2.6s infinite ease-in-out; }
+          .star:nth-child(22) { top: 35%; left: 35%; animation: float 6.8s infinite ease-in-out; }
+          .star:nth-child(23) { top: 45%; left: 45%; animation: shooting 4.8s infinite linear; }
+          .star:nth-child(24) { top: 55%; left: 55%; animation: twinkle 1.7s infinite ease-in-out; }
+          .star:nth-child(25) { top: 65%; left: 65%; animation: pulse 2.1s infinite ease-in-out; }
+          .star:nth-child(26) { top: 75%; left: 75%; animation: float 6.3s infinite ease-in-out; }
+          .star:nth-child(27) { top: 85%; left: 85%; animation: shooting 5.2s infinite linear; }
+          .star:nth-child(28) { top: 95%; left: 95%; animation: twinkle 2.2s infinite ease-in-out; }
+          .star:nth-child(29) { top: 5%; left: 85%; animation: pulse 2.5s infinite ease-in-out; }
+          .star:nth-child(30) { top: 15%; left: 75%; animation: float 6.5s infinite ease-in-out; }
         `}
       </style>
       <div className="stars">
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
-        <div className="star"></div>
+        {[...Array(30)].map((_, i) => (
+          <div key={i} className="star"></div>
+        ))}
       </div>
     </div>
   );

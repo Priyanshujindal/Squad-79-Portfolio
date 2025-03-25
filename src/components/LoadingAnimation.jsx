@@ -80,11 +80,11 @@ const LoadingAnimation = () => {
               animation: 'logoFadeInOut 5s ease-in-out forwards'
             }}>
               <img 
-                src="/kalvium-logo-1.png" 
+                src="/kalvium2.jpg" 
                 alt="Kalvium Logo"
                 style={{
-                  width: '60px',
-                  height: '60px',
+                  width: '80px',
+                  height: '80px',
                   objectFit: 'contain',
                   filter: 'drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3))'
                 }}
@@ -102,7 +102,7 @@ const LoadingAnimation = () => {
               animation: 'logoFadeInOutReverse 5s ease-in-out forwards'
             }}>
               <img 
-                src="/kalvium-logo-2.png" 
+                src="/chitkara2.jpg" 
                 alt="Kalvium Logo 2"
                 style={{
                   width: '60px',

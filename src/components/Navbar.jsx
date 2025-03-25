@@ -183,6 +183,16 @@ const Navbar = () => {
                 Students
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink 
+                className={({isActive}) => 
+                  isActive ? "nav-link active" : "nav-link"
+                } 
+                to="/more"
+              >
+                More
+              </NavLink>
+            </li>
             <li className="nav-item d-flex align-items-center ms-2">
               <ThemeToggle />
             </li>
