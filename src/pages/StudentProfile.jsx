@@ -374,7 +374,10 @@ const students = [
       <div className={`container py-5 ${isDarkTheme ? 'text-white' : ''}`}>
         <div className="text-center">
           <h2>Student Not Found</h2>
-          <Link to="/students" className="btn btn-danger mt-3" onClick={scrollToTop}>Back to Students</Link>
+          <Link to={window.location.pathname.includes('/more') ? '/more' : '/students'} className="btn btn-danger mt-3" onClick={scrollToTop}>
+            <i className="bi bi-arrow-left me-2"></i>
+            {window.location.pathname.includes('/more') ? 'Back to More' : 'Back to Students'}
+          </Link>
         </div>
       </div>
     );
@@ -407,8 +410,12 @@ const students = [
               <p className="lead text-white mb-4">{student.role}</p>
               <p className="mb-4">{student.bio}</p>
               <div className="d-flex gap-3">
-                <Link to="/students" className="btn btn-outline-light" onClick={scrollToTop}>
-                  <i className="bi bi-arrow-left me-2"></i>Back to Students
+                <Link 
+                  to={window.location.pathname.includes('/more') ? '/more' : '/students'} 
+                  className="btn btn-outline-light"
+                >
+                  <i className="bi bi-arrow-left me-2"></i>
+                  {window.location.pathname.includes('/more') ? 'Back to More' : 'Back to Students'}
                 </Link>
                   <a 
                     href={student.linkedin}

@@ -118,8 +118,8 @@ const TeamProfile = () => {
               <h1 className="display-4 fw-bold mb-3">{person.name}</h1>
               <p className="lead text-white mb-4">{person.role}</p>
               <p className="mb-4">{person.bio}</p>
-              <Link to="/teams" className="btn btn-outline-light">
-                <i className="bi bi-arrow-left me-2"></i>Back to Team
+              <Link to="/more" className="btn btn-outline-light">
+                <i className="bi bi-arrow-left me-2"></i>Back to More
               </Link>
             </div>
           </div>

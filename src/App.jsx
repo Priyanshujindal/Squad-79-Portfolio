@@ -61,6 +61,8 @@ const TitleUpdater = () => {
         // Check if it's a team member profile page
         if (pathname.match(/^\/teams\/\d+$/)) {
           title = 'Team Member | Squad 79 Portfolio';
+        } else if (pathname.match(/^\/more\/\d+$/)) {
+          title = 'Student Profile | Squad 79 Portfolio';
         } else {
           title = 'Squad 79 Portfolio';
         }
@@ -106,6 +108,7 @@ function App() {
                 <Route path="/mentors" element={<Mentors />} />
                 <Route path="/team" element={<TeamProfile />} />
                 <Route path="/more" element={<More />} />
+                <Route path="/more/:id" element={<StudentProfile />} />
               </Routes>
               <Footer />
             </div>
