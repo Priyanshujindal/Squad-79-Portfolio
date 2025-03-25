@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #111;
+            color: white;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #f40612;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+        .error {
+            background-color: rgba(255, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Sound Test Page</h1>
+    <p>This page tests if the Netflix sound works in your browser</p>
+    
+    <!-- Audio elements -->
+    <audio id="netflix-sound" src="/sounds/netflix-intro.mp3" preload="auto"></audio>
+    <audio id="tada-sound" src="/sounds/ta-da.mp3" preload="auto"></audio>
+    
+    <div>
+        <button onclick="playSound('netflix-sound')">Play Netflix Sound</button>
+        <button onclick="playSound('tada-sound')">Play Ta-da Sound</button>
+    </div>
+    
+    <div id="result" class="result"></div>
+    
+    <script>
+        function playSound(id) {
+            const audio = document.getElementById(id);
+            const result = document.getElementById('result');
+            
+            // Reset
+            result.className = 'result';
+            result.textContent = '';
+            
+            // Play sound
+            try {
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Sound playing successfully!');
+                        result.textContent = 'Sound is playing! If you don\'t hear anything, check your volume.';
+                        result.className = 'result success';
+                    }).catch(error => {
+                        console.error('Error playing sound:', error);
+                        result.textContent = 'Error playing sound: ' + error.message;
+                        result.className = 'result error';
+                    });
+                }
+            } catch (error) {
+                console.error('Exception trying to play sound:', error);
+                result.textContent = 'Exception trying to play sound: ' + error.message;
+                result.className = 'result error';
+            }
+        }
+    </script>
+</body>
+</html>
