@@ -43,7 +43,7 @@ const InitialLoader = () => {
         
         <p className="mt-4 text-white">
           {progress < 20 ? (
-            <span>Loading Squad <span style={{verticalAlign: 'baseline', display: 'inline-block', lineHeight: 'normal'}}>79</span> Portfolio Website...</span>
+            <span>Loading Squad <span style={{verticalAlign: 'baseline', display: 'inline-block', lineHeight: 'normal'}}>79</span>...</span>
           ) : progress < 40 ? (
             'Initializing components...'
           ) : progress < 60 ? (
@@ -56,7 +56,7 @@ const InitialLoader = () => {
         </p>
         
         <div className="mt-8 text-gray-400 text-sm">
-          © Squad <span style={{verticalAlign: 'baseline', display: 'inline-block', lineHeight: 'normal'}}>79</span> Portfolio Website {new Date().getFullYear()}
+          &copy; Squad <span style={{verticalAlign: 'baseline', display: 'inline-block', lineHeight: 'normal'}}>79</span> {new Date().getFullYear()}
         </div>
       </div>
     </div>

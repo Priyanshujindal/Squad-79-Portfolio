@@ -153,7 +153,7 @@ const LoadingAnimation = () => {
               WebkitTextFillColor: 'transparent',
               animation: 'gradientMove 5s ease infinite',
             }}>
-              Portfolio
+            
             </span>
           </div>
         </div>
