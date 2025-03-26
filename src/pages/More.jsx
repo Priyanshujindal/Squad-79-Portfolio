@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
 
 const More = () => {
   const { isDarkTheme } = useContext(ThemeContext);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const memories = [
     {
@@ -128,77 +129,101 @@ const More = () => {
                     backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
                     transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     transformOrigin: 'center',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)',
-                    border: '1px solid transparent',
+                    boxShadow: hoveredCard === person.id ? 
+                      `0 25px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 107, 107, 0.25)` : 
+                      '0 4px 8px rgba(0, 0, 0, 0.08)',
+                    border: hoveredCard === person.id ? 'none' : '1px solid transparent',
+                    background: hoveredCard === person.id ? 
+                      (isDarkTheme ? 
+                        'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box' : 
+                        'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box') :
+                      (isDarkTheme ? '#2d2d2d' : '#ffffff'),
+                    transform: hoveredCard === person.id ? 
+                      'translateY(-20px) scale(1.005) perspective(1000px) rotateX(2deg)' : 
+                      'translateY(0) scale(1) perspective(1000px) rotateX(0)',
                     zIndex: 1
                   }}
-                  onMouseEnter={(e) => {
-                    // Dramatic 3D transform effect
-                    e.currentTarget.style.transform = 'translateY(-20px) scale(1.005) perspective(1000px) rotateX(2deg)';
-                    // Enhanced shadow glow effect with brand color
-                    e.currentTarget.style.boxShadow = `0 25px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 107, 107, 0.25)`;
-                    // Gradient border highlight
-                    e.currentTarget.style.border = 'none';
-                    e.currentTarget.style.background = isDarkTheme 
-                      ? 'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box'
-                      : 'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box';
-                    
-                    // Create particles effect
-                    const container = e.currentTarget;
-                    const existing = container.querySelectorAll('.particle');
-                    if (existing.length === 0) {
-                      for (let i = 0; i < 7; i++) {
-                        createParticle(container);
-                      }
-                    } else {
-                      existing.forEach(p => {
-                        p.style.opacity = '1';
-                        p.style.animation = `particleFade 2s infinite ${Math.random()}s`;
-                      });
-                    }
-                    
-                    // Image effect
-                    const image = e.currentTarget.querySelector('.card-img-top');
-                    if (image) {
-                      image.style.transform = 'scale(1.08)';
-                      image.style.filter = 'brightness(1.1) contrast(1.05)';
-                    }
-                    
-                    // Highlight role text
-                    const roleText = e.currentTarget.querySelector('.text-danger');
-                    if (roleText) {
-                      roleText.style.textShadow = '0 0 8px rgba(255, 107, 107, 0.5)';
-                      roleText.style.letterSpacing = '0.3px';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    // Return to original state
-                    e.currentTarget.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.08)';
-                    e.currentTarget.style.border = '1px solid transparent';
-                    e.currentTarget.style.background = isDarkTheme ? '#2d2d2d' : '#ffffff';
-                    
-                    // Hide particles
-                    const particles = e.currentTarget.querySelectorAll('.particle');
-                    particles.forEach(p => {
-                      p.style.opacity = '0';
-                    });
-                    
-                    // Reset image 
-                    const image = e.currentTarget.querySelector('.card-img-top');
-                    if (image) {
-                      image.style.transform = 'scale(1)';
-                      image.style.filter = 'brightness(1) contrast(1)';
-                    }
-                    
-                    // Reset role text
-                    const roleText = e.currentTarget.querySelector('.text-danger');
-                    if (roleText) {
-                      roleText.style.textShadow = 'none';
-                      roleText.style.letterSpacing = 'normal';
-                    }
-                  }}
+                  onMouseEnter={() => setHoveredCard(person.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
                 >
+                  {hoveredCard === person.id && (
+                    <>
+                      <span className="particle-1" style={{
+                        position: 'absolute',
+                        width: '8px',
+                        height: '8px',
+                        background: 'rgba(255, 107, 107, 0.7)',
+                        borderRadius: '50%',
+                        top: '20%',
+                        left: '10%',
+                        pointerEvents: 'none',
+                        zIndex: -1,
+                        boxShadow: '0 0 16px rgba(255, 107, 107, 0.7)',
+                        animation: 'particleFadeCustom 2s infinite 0.2s'
+                      }}></span>
+                      <span className="particle-2" style={{
+                        position: 'absolute',
+                        width: '6px',
+                        height: '6px',
+                        background: 'rgba(255, 107, 107, 0.6)',
+                        borderRadius: '50%',
+                        top: '40%',
+                        left: '80%',
+                        pointerEvents: 'none',
+                        zIndex: -1,
+                        boxShadow: '0 0 12px rgba(255, 107, 107, 0.6)',
+                        animation: 'particleFadeCustom 1.8s infinite 0.5s'
+                      }}></span>
+                      <span className="particle-3" style={{
+                        position: 'absolute',
+                        width: '10px',
+                        height: '10px',
+                        background: 'rgba(255, 107, 107, 0.5)',
+                        borderRadius: '50%',
+                        top: '70%',
+                        left: '30%',
+                        pointerEvents: 'none',
+                        zIndex: -1,
+                        boxShadow: '0 0 20px rgba(255, 107, 107, 0.5)',
+                        animation: 'particleFadeCustom 2.2s infinite 0.1s'
+                      }}></span>
+                      <span className="particle-4" style={{
+                        position: 'absolute',
+                        width: '5px',
+                        height: '5px',
+                        background: 'rgba(255, 107, 107, 0.8)',
+                        borderRadius: '50%',
+                        top: '50%',
+                        left: '50%',
+                        pointerEvents: 'none',
+                        zIndex: -1,
+                        boxShadow: '0 0 10px rgba(255, 107, 107, 0.8)',
+                        animation: 'particleFadeCustom 1.5s infinite 0.8s'
+                      }}></span>
+                      <span className="particle-5" style={{
+                        position: 'absolute',
+                        width: '7px',
+                        height: '7px',
+                        background: 'rgba(255, 107, 107, 0.7)',
+                        borderRadius: '50%',
+                        top: '10%',
+                        left: '60%',
+                        pointerEvents: 'none',
+                        zIndex: -1,
+                        boxShadow: '0 0 14px rgba(255, 107, 107, 0.7)',
+                        animation: 'particleFadeCustom 2.4s infinite 0.3s'
+                      }}></span>
+                      <style>
+                        {`
+                          @keyframes particleFadeCustom {
+                            0% { transform: translateY(0) scale(1); opacity: 0; }
+                            20% { opacity: 1; }
+                            100% { transform: translateY(-${Math.random() * 50 + 50}px) scale(0); opacity: 0; }
+                          }
+                        `}
+                      </style>
+                    </>
+                  )}
                   <div className="img-container" style={{ overflow: 'hidden', borderRadius: '1rem 1rem 0 0' }}>
                     <img 
                       src={person.image} 
@@ -210,7 +235,9 @@ const More = () => {
                         objectFit: "cover",
                         width: "100%",
                         height: "300px",
-                        transition: "all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                        transition: "all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                        transform: hoveredCard === person.id ? 'scale(1.08)' : 'scale(1)',
+                        filter: hoveredCard === person.id ? 'brightness(1.1) contrast(1.05)' : 'brightness(1) contrast(1)'
                       }}
                     />
                   </div>
@@ -219,7 +246,12 @@ const More = () => {
                       fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
                       color: isDarkTheme ? '#ffffff' : '#333333'
                     }}>{person.name}</h3>
-                    <p className="text-danger mb-3" style={{ fontSize: 'clamp(0.9rem, 3vw, 1rem)' }}>{person.role}</p>
+                    <p className="text-danger mb-3" style={{ 
+                      fontSize: 'clamp(0.9rem, 3vw, 1rem)',
+                      textShadow: hoveredCard === person.id ? '0 0 8px rgba(255, 107, 107, 0.5)' : 'none',
+                      letterSpacing: hoveredCard === person.id ? '0.3px' : 'normal',
+                      transition: 'all 0.3s ease'
+                    }}>{person.role}</p>
                     <p className="mb-4" style={{ 
                       fontSize: 'clamp(0.85rem, 3vw, 1rem)',
                       color: isDarkTheme ? '#b3b3b3' : '#6c757d'
@@ -329,88 +361,87 @@ const More = () => {
         <div className="container">
           <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>Memories</h2>
           <div className="row g-4">
-            {memories.map((memory, index) => (
-              <div key={index} className="col-md-4">
-                <div 
-                  className="card h-100 border-0 shadow-lg position-relative" 
-                  style={{ 
-                    borderRadius: '15px',
-                    overflow: 'visible',
-                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
-                    color: isDarkTheme ? '#ffffff' : '#000000',
-                    zIndex: 1
-                  }}
-                  onMouseEnter={(e) => {
-                    // 3D transform effect with reduced scale
-                    e.currentTarget.style.transform = 'translateY(-15px) scale(1.01) perspective(1000px) rotateX(2deg)';
-                    // Shadow glow
-                    e.currentTarget.style.boxShadow = `0 20px 25px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 107, 107, 0.2)`;
-                    // Gradient border highlight
-                    e.currentTarget.style.background = isDarkTheme 
-                      ? 'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box'
-                      : 'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box';
-                    
-                    // Create particles
-                    const container = e.currentTarget;
-                    const existing = container.querySelectorAll('.particle');
-                    if (existing.length === 0) {
-                      for (let i = 0; i < 5; i++) {
-                        createParticle(container);
-                      }
-                    } else {
-                      existing.forEach(p => {
-                        p.style.opacity = '1';
-                        p.style.animation = `particleFade 2s infinite ${Math.random()}s`;
-                      });
-                    }
-                    
-                    // Image effect
-                    const image = e.currentTarget.querySelector('img');
-                    if (image) {
-                      image.style.transform = 'scale(1.05)';
-                      image.style.filter = 'brightness(1.05)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0)';
-                    e.currentTarget.style.boxShadow = '0 0.5rem 1rem rgba(0, 0, 0, 0.15)';
-                    e.currentTarget.style.background = isDarkTheme ? '#2d2d2d' : '#ffffff';
-                    
-                    // Hide particles
-                    const particles = e.currentTarget.querySelectorAll('.particle');
-                    particles.forEach(p => {
-                      p.style.opacity = '0';
-                    });
-                    
-                    // Reset image
-                    const image = e.currentTarget.querySelector('img');
-                    if (image) {
-                      image.style.transform = 'scale(1)';
-                      image.style.filter = 'brightness(1)';
-                    }
-                  }}
-                >
-                  <img 
-                    src={memory.image} 
-                    alt={memory.title}
-                    className="card-img-top"
+            {memories.map((memory, index) => {
+              const memoryId = `memory-${index}`;
+              return (
+                <div key={memoryId} className="col-md-4">
+                  <div 
+                    className="card h-100 border-0 shadow-lg position-relative" 
                     style={{ 
-                      borderRadius: '15px 15px 0 0',
-                      height: '200px',
-                      objectFit: 'cover',
-                      width: '100%',
-                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                      borderRadius: '15px',
+                      overflow: 'visible',
+                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                      color: isDarkTheme ? '#ffffff' : '#000000',
+                      zIndex: 1,
+                      boxShadow: hoveredCard === memoryId ? 
+                        `0 20px 25px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 107, 107, 0.2)` : 
+                        '0 0.5rem 1rem rgba(0, 0, 0, 0.15)',
+                      background: hoveredCard === memoryId ? 
+                        (isDarkTheme ? 
+                          'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box' : 
+                          'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box') :
+                        (isDarkTheme ? '#2d2d2d' : '#ffffff'),
+                      transform: hoveredCard === memoryId ? 
+                        'translateY(-15px) scale(1.01) perspective(1000px) rotateX(2deg)' : 
+                        'translateY(0) scale(1) perspective(1000px) rotateX(0)'
                     }}
-                  />
-                  <div className="card-body p-4">
-                    <h5 className="mb-3" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>{memory.title}</h5>
-                    <p style={{ color: isDarkTheme ? '#b3b3b3' : '#6c757d' }}>{memory.description}</p>
-                    <small style={{ color: isDarkTheme ? '#808080' : '#999999' }}>Date: {memory.date}</small>
+                    onMouseEnter={() => setHoveredCard(memoryId)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    {hoveredCard === memoryId && (
+                      <>
+                        <span className="particle-1" style={{
+                          position: 'absolute',
+                          width: '8px',
+                          height: '8px',
+                          background: 'rgba(255, 107, 107, 0.7)',
+                          borderRadius: '50%',
+                          top: '20%',
+                          left: '10%',
+                          pointerEvents: 'none',
+                          zIndex: -1,
+                          boxShadow: '0 0 16px rgba(255, 107, 107, 0.7)',
+                          animation: 'particleFadeCustom 2s infinite 0.2s'
+                        }}></span>
+                        <span className="particle-2" style={{
+                          position: 'absolute',
+                          width: '6px',
+                          height: '6px',
+                          background: 'rgba(255, 107, 107, 0.6)',
+                          borderRadius: '50%',
+                          top: '40%',
+                          left: '80%',
+                          pointerEvents: 'none',
+                          zIndex: -1,
+                          boxShadow: '0 0 12px rgba(255, 107, 107, 0.6)',
+                          animation: 'particleFadeCustom 1.8s infinite 0.5s'
+                        }}></span>
+                      </>
+                    )}
+                    <img 
+                      src={memory.image} 
+                      alt={memory.title}
+                      className="card-img-top"
+                      style={{ 
+                        borderRadius: '15px 15px 0 0',
+                        height: '200px',
+                        objectFit: 'cover',
+                        width: '100%',
+                        transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        transform: hoveredCard === memoryId ? 'scale(1.05)' : 'scale(1)',
+                        filter: hoveredCard === memoryId ? 'brightness(1.05)' : 'brightness(1)'
+                      }}
+                    />
+                    <div className="card-body p-4">
+                      <h5 className="mb-3" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>{memory.title}</h5>
+                      <p style={{ color: isDarkTheme ? '#b3b3b3' : '#6c757d' }}>{memory.description}</p>
+                      <small style={{ color: isDarkTheme ? '#808080' : '#999999' }}>Date: {memory.date}</small>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -420,137 +451,92 @@ const More = () => {
         <div className="container">
           <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>Contributions</h2>
           <div className="row g-4">
-            {contributions.map((contribution, index) => (
-              <div key={index} className="col-md-4">
-                <div 
-                  className="card h-100 border-0 shadow-lg position-relative" 
-                  style={{ 
-                    borderRadius: '15px',
-                    overflow: 'visible',
-                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
-                    color: isDarkTheme ? '#ffffff' : '#000000',
-                    zIndex: 1
-                  }}
-                  onMouseEnter={(e) => {
-                    // 3D transform effect with reduced scale
-                    e.currentTarget.style.transform = 'translateY(-15px) scale(1.01) perspective(1000px) rotateX(2deg)';
-                    // Shadow glow
-                    e.currentTarget.style.boxShadow = `0 20px 25px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 107, 107, 0.2)`;
-                    // Gradient border highlight
-                    e.currentTarget.style.background = isDarkTheme 
-                      ? 'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box'
-                      : 'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box';
-                    
-                    // Create particles
-                    const container = e.currentTarget;
-                    const existing = container.querySelectorAll('.particle');
-                    if (existing.length === 0) {
-                      for (let i = 0; i < 5; i++) {
-                        createParticle(container);
-                      }
-                    } else {
-                      existing.forEach(p => {
-                        p.style.opacity = '1';
-                        p.style.animation = `particleFade 2s infinite ${Math.random()}s`;
-                      });
-                    }
-                    
-                    // Image effect
-                    const image = e.currentTarget.querySelector('img');
-                    if (image) {
-                      image.style.transform = 'scale(1.05)';
-                      image.style.filter = 'brightness(1.05)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0)';
-                    e.currentTarget.style.boxShadow = '0 0.5rem 1rem rgba(0, 0, 0, 0.15)';
-                    e.currentTarget.style.background = isDarkTheme ? '#2d2d2d' : '#ffffff';
-                    
-                    // Hide particles
-                    const particles = e.currentTarget.querySelectorAll('.particle');
-                    particles.forEach(p => {
-                      p.style.opacity = '0';
-                    });
-                    
-                    // Reset image
-                    const image = e.currentTarget.querySelector('img');
-                    if (image) {
-                      image.style.transform = 'scale(1)';
-                      image.style.filter = 'brightness(1)';
-                    }
-                  }}
-                >
-                  <img 
-                    src={contribution.image} 
-                    alt={contribution.title}
-                    className="card-img-top"
+            {contributions.map((contribution, index) => {
+              const contributionId = `contribution-${index}`;
+              return (
+                <div key={contributionId} className="col-md-4">
+                  <div 
+                    className="card h-100 border-0 shadow-lg position-relative" 
                     style={{ 
-                      borderRadius: '15px 15px 0 0',
-                      height: '200px',
-                      objectFit: 'cover',
-                      width: '100%',
-                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                      borderRadius: '15px',
+                      overflow: 'visible',
+                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                      color: isDarkTheme ? '#ffffff' : '#000000',
+                      zIndex: 1,
+                      boxShadow: hoveredCard === contributionId ? 
+                        `0 20px 25px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 107, 107, 0.2)` : 
+                        '0 0.5rem 1rem rgba(0, 0, 0, 0.15)',
+                      background: hoveredCard === contributionId ? 
+                        (isDarkTheme ? 
+                          'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box' : 
+                          'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box') :
+                        (isDarkTheme ? '#2d2d2d' : '#ffffff'),
+                      transform: hoveredCard === contributionId ? 
+                        'translateY(-15px) scale(1.01) perspective(1000px) rotateX(2deg)' : 
+                        'translateY(0) scale(1) perspective(1000px) rotateX(0)'
                     }}
-                  />
-                  <div className="card-body p-4">
-                    <h5 className="mb-3" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>{contribution.title}</h5>
-                    <p style={{ color: isDarkTheme ? '#b3b3b3' : '#6c757d' }}>{contribution.description}</p>
-                    <small style={{ color: isDarkTheme ? '#808080' : '#999999' }}>Date: {contribution.date}</small>
+                    onMouseEnter={() => setHoveredCard(contributionId)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    {hoveredCard === contributionId && (
+                      <>
+                        <span className="particle-1" style={{
+                          position: 'absolute',
+                          width: '8px',
+                          height: '8px',
+                          background: 'rgba(255, 107, 107, 0.7)',
+                          borderRadius: '50%',
+                          top: '20%',
+                          left: '10%',
+                          pointerEvents: 'none',
+                          zIndex: -1,
+                          boxShadow: '0 0 16px rgba(255, 107, 107, 0.7)',
+                          animation: 'particleFadeCustom 2s infinite 0.2s'
+                        }}></span>
+                        <span className="particle-2" style={{
+                          position: 'absolute',
+                          width: '6px',
+                          height: '6px',
+                          background: 'rgba(255, 107, 107, 0.6)',
+                          borderRadius: '50%',
+                          top: '40%',
+                          left: '80%',
+                          pointerEvents: 'none',
+                          zIndex: -1,
+                          boxShadow: '0 0 12px rgba(255, 107, 107, 0.6)',
+                          animation: 'particleFadeCustom 1.8s infinite 0.5s'
+                        }}></span>
+                      </>
+                    )}
+                    <img 
+                      src={contribution.image} 
+                      alt={contribution.title}
+                      className="card-img-top"
+                      style={{ 
+                        borderRadius: '15px 15px 0 0',
+                        height: '200px',
+                        objectFit: 'cover',
+                        width: '100%',
+                        transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        transform: hoveredCard === contributionId ? 'scale(1.05)' : 'scale(1)',
+                        filter: hoveredCard === contributionId ? 'brightness(1.05)' : 'brightness(1)'
+                      }}
+                    />
+                    <div className="card-body p-4">
+                      <h5 className="mb-3" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>{contribution.title}</h5>
+                      <p style={{ color: isDarkTheme ? '#b3b3b3' : '#6c757d' }}>{contribution.description}</p>
+                      <small style={{ color: isDarkTheme ? '#808080' : '#999999' }}>Date: {contribution.date}</small>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
     </div>
   );
-};
-
-// Function to create floating particles for hover effect
-const createParticle = (container) => {
-  const particle = document.createElement('span');
-  particle.className = 'particle';
-  const size = Math.floor(Math.random() * 8) + 4;
-  const posX = Math.random() * 100;
-  const posY = Math.random() * 100;
-  const delay = Math.random() * 2;
-  const duration = Math.random() * 2 + 2;
-  
-  particle.style.cssText = `
-    position: absolute;
-    width: ${size}px;
-    height: ${size}px;
-    background: rgba(255, 107, 107, ${Math.random() * 0.5 + 0.3});
-    border-radius: 50%;
-    top: ${posY}%;
-    left: ${posX}%;
-    pointer-events: none;
-    opacity: 0;
-    z-index: -1;
-    box-shadow: 0 0 ${size * 2}px rgba(255, 107, 107, 0.7);
-    animation: particleFade ${duration}s infinite ${delay}s;
-    transition: opacity 0.3s ease;
-  `;
-  
-  // Add keyframe animation to document if not already present
-  if (!document.querySelector('#particle-animation')) {
-    const style = document.createElement('style');
-    style.id = 'particle-animation';
-    style.textContent = `
-      @keyframes particleFade {
-        0% { transform: translateY(0) scale(1); opacity: 0; }
-        20% { opacity: 1; }
-        100% { transform: translateY(-${Math.random() * 50 + 50}px) scale(0); opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-  
-  container.appendChild(particle);
-  return particle;
 };
 
 export default More;
