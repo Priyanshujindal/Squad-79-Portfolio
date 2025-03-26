@@ -1,78 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-
-// Import projects data from Experience
-const projectsData = [
-  {
-    id: 1,
-    title: "Spotify Clone",
-    description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
-    image: "./images/soptify.png",
-    category: "Web Development",
-    tags: ["HTML", "CSS", "JavaScript"],
-    team: ["Priyanshu", "Pranav"],
-    demoLink: "https://spotifyfree.netlify.app/"
-  },
-  {
-    id: 2,
-    title: "2 days workshop",
-    description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
-    image: "./images/workshop.JPG",
-    category: "Workshops",
-    tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
-    team: ["Raksham", "Priyanshu", "Rehat", "Rajat"],
-  },
-  {
-    id: 3,
-    title: "Tic Tac Toe Game",
-    description: "A classic two-player game built with modern web technologies. Features include responsive design, player turn indicators, and win detection logic.",
-    image: "./images/TickTacToe.png",
-    category: "Web Development",
-    tags: ["HTML", "CSS", "JavaScript"],
-    team: ["Priyanshu"],
-    demoLink: "https://relastic-tac-toe.netlify.app/"
-  },
-  {
-    id: 4,
-    title: "Leetcode Event by Kalvium",
-    description: "A coding event on real life coding questions to improve coding skills.",
-    image: "./images/leetcode.jpg",
-    category: "Events",
-    tags: ["Python"],
-    team: ["Raksham", "Rehat", "Rajat"],
-  },
-  {
-    id: 5,
-    title: "Money Tracking Website",
-    description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization.",
-    image: "./images/MoneyTracker.png",
-    category: "Web Development",
-    tags: ["HTML", "CSS", "JavaScript", "React"],
-    team: ["Priyanshu"],
-    demoLink: "https://moneytrackking.netlify.app/"
-  },
-  {
-    id: 6,
-    title: "Classic Dino Game",
-    description: "A fun and engaging endless runner game inspired by the classic Chrome Dino game. Features include smooth animations, score tracking, and obstacle avoidance mechanics.",
-    image: "./images/DinoGame.png",
-    category: "Web Development",
-    tags: ["HTML", "CSS", "JavaScript"],
-    team: ["Priyanshu"],
-    demoLink: "https://dinooo-game.netlify.app/"
-  },
-  {
-    id: 7,
-    title: "Netflix Clone",
-    description: "A modern streaming platform login page UI clone",
-    image: "./images/netflix-clone.png",
-    category: "Web Development",
-    tags: ["HTML", "CSS"],
-    team: ["Priyanshu"],
-    demoLink: "https://netflix-clone-raksham.netlify.app/"
-  }
-];
+import { projectsData, getMemberId } from '../data/projects';
 
 const StudentProfile = () => {
   const { id } = useParams();
@@ -97,7 +26,6 @@ const StudentProfile = () => {
 
   // Find student and their projects
   useEffect(() => {
-    // Find the student based on id
     // Check which route we're using (students or more)
     const isMoreRoute = location.pathname.includes('/more/');
     
@@ -180,32 +108,51 @@ const StudentProfile = () => {
       }
     ];
     
-    // Find the student based on ID - matching the correct data source based on route
-    const foundStudent = isMoreRoute 
+    // Try to find the student in both arrays, regardless of route
+    // This ensures students can be found when coming from either route
+    let foundStudent = isMoreRoute 
       ? moreTeamMembers.find(s => s.id === parseInt(id))
       : students.find(s => s.id === parseInt(id));
+    
+    // If not found in the preferred array, check the other array as fallback
+    if (!foundStudent) {
+      foundStudent = isMoreRoute
+        ? students.find(s => s.id === parseInt(id))
+        : moreTeamMembers.find(s => s.id === parseInt(id));
+    }
       
     setStudent(foundStudent);
 
     if (foundStudent) {
       // Filter projects where this student is in the team
-      const filteredProjects = projectsData.filter(project => 
-        project.team.some(member => {
-          // More robust matching logic:
-          // 1. Check if student name contains team member name
-          // 2. Check if team member name contains student name
-          // 3. Check if first name matches (for partial matches)
-          const studentName = foundStudent.name.toLowerCase();
-          const memberName = member.toLowerCase();
-          const studentFirstName = studentName.split(' ')[0].toLowerCase();
-          const memberFirstName = memberName.split(' ')[0].toLowerCase();
+      // Use a more robust matching approach that accounts for variations in name format
+      const filteredProjects = projectsData.filter(project => {
+        if (!project.team || project.team.length === 0) {
+          return false;
+        }
+        
+        // Check if any team member name matches the student name (case insensitive)
+        return project.team.some(member => {
+          const studentNameLower = foundStudent.name.toLowerCase();
+          const memberNameLower = member.toLowerCase();
           
-          return studentName.includes(memberName) || 
-                 memberName.includes(studentName) || 
-                 studentName.includes(memberFirstName) || 
-                 memberName.includes(studentFirstName);
-        })
-      );
+          // Check various matching conditions
+          return (
+            // Direct match
+            memberNameLower === studentNameLower ||
+            
+            // First name only
+            memberNameLower === studentNameLower.split(' ')[0].toLowerCase() ||
+            
+            // Last name only
+            memberNameLower === studentNameLower.split(' ').slice(-1)[0].toLowerCase() ||
+            
+            // Substring match
+            studentNameLower.includes(memberNameLower) ||
+            memberNameLower.includes(studentNameLower)
+          );
+        });
+      });
       
       setStudentProjects(filteredProjects);
     }
@@ -218,19 +165,25 @@ const StudentProfile = () => {
     return projectsData.filter(project => 
       project.category === "Events" && 
       project.team.some(member => {
-        // More robust matching logic:
-        // 1. Check if student name contains team member name
-        // 2. Check if team member name contains student name
-        // 3. Check if first name matches (for partial matches)
-        const studentName = student.name.toLowerCase();
-        const memberName = member.toLowerCase();
-        const studentFirstName = studentName.split(' ')[0].toLowerCase();
-        const memberFirstName = memberName.split(' ')[0].toLowerCase();
+        // Use the same robust matching function
+        const studentNameLower = student.name.toLowerCase();
+        const memberNameLower = member.toLowerCase();
         
-        return studentName.includes(memberName) || 
-               memberName.includes(studentName) || 
-               studentName.includes(memberFirstName) || 
-               memberName.includes(memberFirstName);
+        // Check various matching conditions
+        return (
+          // Direct match
+          memberNameLower === studentNameLower ||
+          
+          // First name only
+          memberNameLower === studentNameLower.split(' ')[0].toLowerCase() ||
+          
+          // Last name only
+          memberNameLower === studentNameLower.split(' ').slice(-1)[0].toLowerCase() ||
+          
+          // Substring match
+          studentNameLower.includes(memberNameLower) ||
+          memberNameLower.includes(studentNameLower)
+        );
       })
     );
   };
@@ -251,19 +204,25 @@ const StudentProfile = () => {
     return projectsData.filter(project => 
       project.category === "Workshops" && 
       project.team.some(member => {
-        // More robust matching logic:
-        // 1. Check if student name contains team member name
-        // 2. Check if team member name contains student name
-        // 3. Check if first name matches (for partial matches)
-        const studentName = student.name.toLowerCase();
-        const memberName = member.toLowerCase();
-        const studentFirstName = studentName.split(' ')[0].toLowerCase();
-        const memberFirstName = memberName.split(' ')[0].toLowerCase();
+        // Use the same robust matching function
+        const studentNameLower = student.name.toLowerCase();
+        const memberNameLower = member.toLowerCase();
         
-        return studentName.includes(memberName) || 
-               memberName.includes(studentName) || 
-               studentName.includes(memberFirstName) || 
-               memberName.includes(memberFirstName);
+        // Check various matching conditions
+        return (
+          // Direct match
+          memberNameLower === studentNameLower ||
+          
+          // First name only
+          memberNameLower === studentNameLower.split(' ')[0].toLowerCase() ||
+          
+          // Last name only
+          memberNameLower === studentNameLower.split(' ').slice(-1)[0].toLowerCase() ||
+          
+          // Substring match
+          studentNameLower.includes(memberNameLower) ||
+          memberNameLower.includes(studentNameLower)
+        );
       })
     );
   };

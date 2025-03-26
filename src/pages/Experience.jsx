@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
+import { projectsData } from '../data/projects';
 
 const Experience = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -8,78 +9,7 @@ const Experience = () => {
 
   const categories = ['All', 'Web Development', 'Workshops', 'Events'];
 
-  const projects = [
-    {
-      id: 1,
-      title: "Spotify Clone",
-      description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
-      image: "./images/soptify.png",
-      category: "Web Development",
-      tags: ["HTML", "CSS", "JavaScript"],
-      team: ["Priyanshu", "Pranav"],
-      demoLink: "https://spotifyfree.netlify.app/"
-    },
-    {
-      id: 2,
-      title: "2 days workshop",
-      description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
-      image: "./images/workshop.JPG",
-      category: "Workshops",
-      tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
-      team: ["Raksham", "Priyanshu" , 'Rehat' , "Rajat"],
-    },
-    {
-      id: 3,
-      title: "Tic Tac Toe Game",
-      description: "A classic two-player game built with modern web technologies. Features include responsive design, player turn indicators, and win detection logic.",
-      image: "./images/TickTacToe.png",
-      category: "Web Development",
-      tags: ["HTML", "CSS", "JavaScript"],
-      team: ["Priyanshu"],
-      demoLink: "https://relastic-tac-toe.netlify.app/"
-    },
-    {
-      id: 4,
-      title: "Leetcode Event by Kalvium",
-      description: "A coding event on real life coding questions to improve coding skills.",
-      image: "./images/leetcode.jpg",
-      category: "Events",
-      tags: ["Python"],
-      team: ["Raksham", 'Rehat' , "Rajat"],
-    },
-    {
-      id: 5,
-      title: "Money Tracking Website",
-      description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization.",
-      image: "./images/MoneyTracker.png",
-      category: "Web Development",
-      tags: ["HTML", "CSS", "JavaScript","React"],
-      team: ["Priyanshu"],
-      demoLink: "https://moneytrackering.netlify.app/",
-    },
-    {
-      id: 6,
-      title: "Classic Dino Game",
-      description: "A fun and engaging endless runner game inspired by the classic Chrome Dino game. Features include smooth animations, score tracking, and obstacle avoidance mechanics.",
-      image: "./images/DinoGame.png",
-      category: "Web Development",
-      tags: ["HTML", "CSS", "JavaScript"],
-      team: [ "Priyanshu"],
-      demoLink: "https://classic-dinogame.netlify.app/"
-    },
-    {
-      id: 7,
-      title: "Netflix Clone",
-      description: "A modern streaming platform login page UI clone",
-      image: "./images/netflix-clone.png",
-      category: "Web Development",
-      tags: ["HTML", "CSS"],
-      team: ["Priyanshu"],
-      demoLink: "https://netlify-79.netlify.app/"
-    }
-  ];
-
-  const filteredProjects = projects.filter(project => 
+  const filteredProjects = projectsData.filter(project => 
     activeFilter === 'All' ? true : project.category === activeFilter
   );
 

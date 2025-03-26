@@ -4,7 +4,7 @@
   overflow: visible !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   border: none !important;
 }
 
@@ -37,76 +37,77 @@
 /* Fire Animation */
 .team-card:hover .fire-animation {
   opacity: 1;
-  bottom: -15px;
+  bottom: -35px;
 }
 
 .fire-animation {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -30px;
-  height: 60px;
+  bottom: -40px;
+  height: 90px;
   opacity: 0;
-  transition: opacity 0.3s ease, bottom 0.3s ease;
+  transition: opacity 0.4s ease, bottom 0.4s ease;
   z-index: -1;
   display: flex;
   justify-content: center;
   filter: blur(1px);
+  transform: scale(1.2);
 }
 
 .flame {
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  filter: blur(3px);
-  margin: 0 -5px;
+  filter: blur(4px);
+  margin: 0 -8px;
   opacity: 0.9;
-  box-shadow: 0 0 10px rgba(255, 107, 107, 0.8), 0 0 20px rgba(255, 71, 87, 0.4);
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.8), 0 0 30px rgba(255, 71, 87, 0.4);
 }
 
 .flame-1 {
-  width: 25px;
-  height: 35px;
+  width: 40px;
+  height: 55px;
   background-color: #ff4757;
   animation: flameAnimation1 1.5s infinite alternate;
 }
 
 .flame-2 {
-  width: 22px;
-  height: 33px;
+  width: 35px;
+  height: 52px;
   background-color: #ff6b6b;
   animation: flameAnimation2 1.2s infinite alternate;
 }
 
 .flame-3 {
-  width: 30px;
-  height: 40px;
+  width: 45px;
+  height: 60px;
   background-color: #ff4757;
   animation: flameAnimation3 1.7s infinite alternate;
 }
 
 .flame-4 {
-  width: 28px;
-  height: 38px;
+  width: 42px;
+  height: 58px;
   background-color: #ff6b6b;
   animation: flameAnimation4 1.3s infinite alternate;
 }
 
 .flame-5 {
-  width: 23px;
-  height: 34px;
+  width: 38px;
+  height: 54px;
   background-color: #ff4757;
   animation: flameAnimation5 1.6s infinite alternate;
 }
 
 .flame-6 {
-  width: 26px;
-  height: 37px;
+  width: 40px;
+  height: 57px;
   background-color: #ff6b6b;
   animation: flameAnimation6 1.4s infinite alternate;
 }
 
 .flame-7 {
-  width: 24px;
-  height: 36px;
+  width: 39px;
+  height: 56px;
   background-color: #ff4757;
   animation: flameAnimation7 1.8s infinite alternate;
 }
@@ -181,36 +182,36 @@
 
 /* Animation keyframes */
 @keyframes flameAnimation1 {
-  0% { height: 30px; opacity: 0.7; }
-  100% { height: 45px; opacity: 0.9; }
+  0% { height: 50px; opacity: 0.7; }
+  100% { height: 70px; opacity: 0.9; }
 }
 
 @keyframes flameAnimation2 {
-  0% { height: 28px; opacity: 0.75; }
-  100% { height: 42px; opacity: 0.95; }
+  0% { height: 48px; opacity: 0.75; }
+  100% { height: 68px; opacity: 0.95; }
 }
 
 @keyframes flameAnimation3 {
-  0% { height: 35px; opacity: 0.8; }
-  100% { height: 50px; opacity: 0.9; }
+  0% { height: 55px; opacity: 0.8; }
+  100% { height: 75px; opacity: 0.9; }
 }
 
 @keyframes flameAnimation4 {
-  0% { height: 32px; opacity: 0.7; }
-  100% { height: 48px; opacity: 0.85; }
+  0% { height: 52px; opacity: 0.7; }
+  100% { height: 72px; opacity: 0.85; }
 }
 
 @keyframes flameAnimation5 {
-  0% { height: 29px; opacity: 0.75; }
-  100% { height: 43px; opacity: 0.9; }
+  0% { height: 49px; opacity: 0.75; }
+  100% { height: 69px; opacity: 0.9; }
 }
 
 @keyframes flameAnimation6 {
-  0% { height: 31px; opacity: 0.8; }
-  100% { height: 46px; opacity: 0.95; }
+  0% { height: 51px; opacity: 0.8; }
+  100% { height: 71px; opacity: 0.95; }
 }
 
 @keyframes flameAnimation7 {
-  0% { height: 33px; opacity: 0.75; }
-  100% { height: 47px; opacity: 0.9; }
+  0% { height: 53px; opacity: 0.75; }
+  100% { height: 73px; opacity: 0.9; }
 }
