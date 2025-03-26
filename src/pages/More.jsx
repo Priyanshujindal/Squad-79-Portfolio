@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
-import '../styles/fire-animation.css';
 
 const More = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -121,33 +120,60 @@ const More = () => {
               }
             ].map(person => (
               <div key={person.id} className="col-sm-12 col-md-6 col-lg-4">
-                <div className={`card h-100 shadow-sm team-card ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
-                  {/* Fire animation element */}
-                  <div className="fire-animation">
-                    <div className="flame flame-1"></div>
-                    <div className="flame flame-2"></div>
-                    <div className="flame flame-3"></div>
-                    <div className="flame flame-4"></div>
-                    <div className="flame flame-5"></div>
-                    <div className="flame flame-6"></div>
-                    <div className="flame flame-7"></div>
-                  </div>
-
-                  <div className="img-container">
+                <div 
+                  className="card h-100 border-0 shadow-sm" 
+                  style={{ 
+                    borderRadius: '1rem', 
+                    overflow: 'hidden', 
+                    backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                    transition: 'all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                    transformOrigin: 'center',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)',
+                    border: '1px solid transparent'
+                  }}
+                  onMouseEnter={(e) => {
+                    // Lift and scale effect
+                    e.currentTarget.style.transform = 'translateY(-15px) scale(1.02)';
+                    // Enhanced shadow glow effect with brand color
+                    e.currentTarget.style.boxShadow = `0 20px 25px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 107, 107, 0.2)`;
+                    // Subtle border highlight
+                    e.currentTarget.style.border = '1px solid rgba(255, 107, 107, 0.3)';
+                    // Slightly brighten the image on hover
+                    const image = e.currentTarget.querySelector('.card-img-top');
+                    if (image) {
+                      image.style.transform = 'scale(1.05)';
+                      image.style.filter = 'brightness(1.05)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    // Return to original state
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.08)';
+                    e.currentTarget.style.border = '1px solid transparent';
+                    // Reset image 
+                    const image = e.currentTarget.querySelector('.card-img-top');
+                    if (image) {
+                      image.style.transform = 'scale(1)';
+                      image.style.filter = 'brightness(1)';
+                    }
+                  }}
+                >
+                  <div className="img-container" style={{ overflow: 'hidden' }}>
                     <img 
                       src={person.image} 
-                      className="card-img-top card-img-zoom" 
+                      className="card-img-top" 
                       alt={person.name}
                       width="300"
                       height="300"
                       style={{
                         objectFit: "cover",
                         width: "100%",
-                        height: "300px"
+                        height: "300px",
+                        transition: "all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)"
                       }}
                     />
                   </div>
-                  <div className="card-body">
+                  <div className="card-body" style={{ backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff' }}>
                     <h3 className="h4 mb-2" style={{ 
                       fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
                       color: isDarkTheme ? '#ffffff' : '#333333'
@@ -166,7 +192,29 @@ const More = () => {
                       {person.skills.map((skill, index) => (
                         <span 
                           key={index} 
-                          className="skill-tag"
+                          style={{ 
+                            backgroundColor: '#ff6b6b',
+                            color: 'white',
+                            padding: '0.4rem 0.8rem',
+                            borderRadius: '20px',
+                            fontSize: 'clamp(0.7rem, 2.5vw, 0.8rem)',
+                            fontWeight: '500',
+                            letterSpacing: '0.3px',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.06)',
+                            transition: 'all 0.2s ease',
+                            margin: '0.2rem',
+                            display: 'inline-block'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#ff5252';
+                            e.currentTarget.style.transform = 'translateY(-1px)';
+                            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = '#ff6b6b';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.06)';
+                          }}
                         >
                           {skill}
                         </span>
@@ -176,7 +224,7 @@ const More = () => {
                     <div className="d-flex justify-content-between align-items-center mb-4">
                       <Link 
                         to={`/more/${person.id}`} 
-                        className="btn profile-btn"
+                        className="btn"
                         style={{
                           flex: "1",
                           marginRight: "1rem",
@@ -187,6 +235,14 @@ const More = () => {
                           transition: 'all 0.3s ease',
                           backgroundColor: 'transparent'
                         }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                        }}
                       >
                         View Profile
                       </Link>
@@ -194,7 +250,7 @@ const More = () => {
                         href={person.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn linkedin-btn"
+                        className="btn"
                         style={{
                           backgroundColor: "#ff6b6b",
                           color: "#ffffff",
@@ -206,6 +262,14 @@ const More = () => {
                           justifyContent: "center",
                           transition: "all 0.3s ease",
                           flexShrink: 0
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#ff5252";
+                          e.currentTarget.style.transform = "translateY(-2px)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#ff6b6b";
+                          e.currentTarget.style.transform = "translateY(0)";
                         }}
                       >
                         <i className="bi bi-linkedin fs-5"></i>
@@ -226,7 +290,15 @@ const More = () => {
           <div className="row g-4">
             {memories.map((memory, index) => (
               <div key={index} className="col-md-4">
-                <div className={`card h-100 border-0 shadow-lg memory-card ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+                <div className="card h-100 border-0 shadow-lg" style={{ 
+                  borderRadius: '15px',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                  color: isDarkTheme ? '#ffffff' : '#000000'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
                   <img 
                     src={memory.image} 
                     alt={memory.title}
@@ -252,7 +324,15 @@ const More = () => {
           <div className="row g-4">
             {contributions.map((contribution, index) => (
               <div key={index} className="col-md-4">
-                <div className={`card h-100 border-0 shadow-lg contribution-card ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+                <div className="card h-100 border-0 shadow-lg" style={{ 
+                  borderRadius: '15px',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                  color: isDarkTheme ? '#ffffff' : '#000000'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
                   <img 
                     src={contribution.image} 
                     alt={contribution.title}
