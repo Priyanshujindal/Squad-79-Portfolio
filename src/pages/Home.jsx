@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import classImage from '../assets/img/class.jpg';
@@ -7,6 +7,7 @@ import spotifyImage from '../assets/img/soptify.png';
 
 const Home = () => {
   const { isDarkTheme } = useTheme();
+  const [isZoomed, setIsZoomed] = useState(false);
 
   // Remove the duplicate featuredProjects array since we already have projects array
   const projects = [
@@ -159,14 +160,13 @@ const Home = () => {
                     height: '100%',
                     objectFit: 'cover',
                     objectPosition: 'center',
-                    transform: 'scale(1.01)', // Slightly scale up to prevent white edges
                     transition: 'transform 0.3s ease'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.1)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.01)';
+                    e.currentTarget.style.transform = 'scale(1)';
                   }}
                 />
               </div>
@@ -280,11 +280,9 @@ const Home = () => {
                         }}>{tag}</span>
                       ))}
                     </div>
-                    {project.demoLink && (
-                      <a 
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <div>
+                      <Link 
+                        to={`/project/${project.id}`}
                         className="btn btn-outline-danger"
                         style={{
                           marginTop: '1rem',
@@ -303,9 +301,9 @@ const Home = () => {
                           e.currentTarget.style.boxShadow = 'none';
                         }}
                       >
-                        View App
-                      </a>
-                    )}
+                        View Detail
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -344,17 +342,19 @@ const Home = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
-              <div style={{ 
+              <div className="image-container" style={{ 
                 position: 'relative', 
                 width: '100%',
                 paddingTop: '66.67%', // 3:2 aspect ratio
                 overflow: 'hidden',
                 borderRadius: '1rem',
-                background: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5'
+                background: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5',
+                cursor: 'pointer'
               }}>
                 <img
-                  src="./images/class2.jpg"
+                  src={classImage}
                   alt="About Image"
+                  className={isZoomed ? "zoom-image zoomed" : "zoom-image"}
                   style={{ 
                     position: 'absolute',
                     top: 0,
@@ -363,15 +363,11 @@ const Home = () => {
                     height: '100%',
                     objectFit: 'cover',
                     objectPosition: 'center',
-                    transform: 'scale(1.01)', // Slightly scale up to prevent white edges
-                    transition: 'transform 0.3s ease'
+                    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                    willChange: 'transform'
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.01)';
-                  }}
+                  onMouseEnter={() => setIsZoomed(true)}
+                  onMouseLeave={() => setIsZoomed(false)}
                 />
               </div>
             </div>
@@ -590,6 +586,7 @@ const Home = () => {
             0%, 100% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.4); opacity: 0.4; }
           }
+<<<<<<< Updated upstream
 
           /* Star Positions with Movement */
           .star:nth-child(1) { top: 15%; left: 10%; animation: float 5s infinite ease-in-out; }
@@ -622,6 +619,15 @@ const Home = () => {
           .star:nth-child(28) { top: 95%; left: 95%; animation: twinkle 2.2s infinite ease-in-out; }
           .star:nth-child(29) { top: 5%; left: 85%; animation: pulse 2.5s infinite ease-in-out; }
           .star:nth-child(30) { top: 15%; left: 75%; animation: float 6.5s infinite ease-in-out; }
+=======
+          .zoom-image {
+            transform: scale(1);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .zoom-image.zoomed {
+            transform: scale(1.1);
+          }
+>>>>>>> Stashed changes
         `}
       </style>
       <div className="stars">
