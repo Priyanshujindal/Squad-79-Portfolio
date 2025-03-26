@@ -310,7 +310,7 @@ const Students = () => {
                   <div className="card-body p-4 text-center">
                     <h3 className="h4 mb-2 fw-bold" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>{student.name}</h3>
                     <p className="text-danger mb-2 fw-medium" style={{ color: isDarkTheme ? '#ff6b6b' : '#dc3545' }}>{student.role}</p>
-                    <p className="text-muted mb-4" style={{ fontSize: '0.9rem', color: isDarkTheme ? '#b3b3b3' : '#6c757d' }}>{student.description}</p>
+                    <p className="text-muted mb-4" style={{ fontSize: '0.9rem', color: isDarkTheme ? '#ffffff' : '#000000' }}>{student.description}</p>
                     <div className="d-flex justify-content-between align-items-center">
                       <Link 
                         to={`/students/${student.id}`} 

@@ -71,7 +71,7 @@ const More = () => {
       {/* Team Section */}
       <section className="py-5">
         <div className="container">
-          <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>Our Team</h2>
+          <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#333333' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '3rem'}}>Our Team</h2>
           <div className="row g-4">
             {[
               {
@@ -359,7 +359,7 @@ const More = () => {
       {/* Memories Section */}
       <section className="py-5" style={{ backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa' }}>
         <div className="container">
-          <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>Memories</h2>
+          <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#333333' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '3rem'}}>Memories</h2>
           <div className="row g-4">
             {memories.map((memory, index) => {
               const memoryId = `memory-${index}`;
@@ -449,7 +449,7 @@ const More = () => {
       {/* Contributions Section */}
       <section className="py-5">
         <div className="container">
-          <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>Contributions</h2>
+          <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#333333' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '3rem'}}>Contributions</h2>
           <div className="row g-4">
             {contributions.map((contribution, index) => {
               const contributionId = `contribution-${index}`;

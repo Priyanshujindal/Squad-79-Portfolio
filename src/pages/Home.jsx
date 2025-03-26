@@ -93,8 +93,21 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="hero" style={{ position: "relative" }}>
-        <div className="stars"></div>
+      <div className="hero" style={{ 
+        position: "relative",
+        paddingTop: '4rem'
+      }}>
+        <div style={{ 
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: isDarkTheme ? 
+            'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)' : 
+            'linear-gradient(135deg,rgb(48, 46, 46) 0%,#8a817f 100%)',
+          zIndex: 1
+        }}></div>
         <div className="twinkling"></div>
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div className="row align-items-center">
@@ -146,8 +159,7 @@ const Home = () => {
                 width: '100%',
                 paddingTop: '66.67%', // 3:2 aspect ratio
                 overflow: 'hidden',
-                borderRadius: '1rem',
-                background: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5'
+                borderRadius: '1rem'
               }}>
                 <img
                   src={classImage}
@@ -338,7 +350,7 @@ const Home = () => {
       </section>
 
       {/* About Section */}
-      <section className="about-section py-5">
+      <section className="about-section py-5" style={{ backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#ffffff' }}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -377,7 +389,7 @@ const Home = () => {
                 paddingBottom: "8px",
                 display: "inline-block",
                 marginBottom: "20px",
-                color: isDarkTheme ? 'var(--text-primary)' : '#000000'
+                color: isDarkTheme ? '#ffffff' : '#000000'
               }}>About Our <span style={{
                 background: "linear-gradient(to right, #ff7e5f, #feb47b)",
                 WebkitBackgroundClip: "text",
@@ -385,8 +397,8 @@ const Home = () => {
                 WebkitTextFillColor: "transparent",
                 display: "inline"
               }}>Portfolio</span></h2>
-              <p className="lead mb-4" style={{ color: isDarkTheme ? 'var(--text-primary)' : '#000000' }}>We showcase innovative projects created by talented students, demonstrating real-world applications of cutting-edge technologies and creative solutions.</p>
-              <p className="text-body mb-4" style={{ color: isDarkTheme ? 'var(--text-primary)' : '#000000' }}>Our unique approach combines industry-standard curriculum with hands-on projects, ensuring students are well-prepared for the tech industry.</p>
+              <p className="lead mb-4" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>We showcase innovative projects created by talented students, demonstrating real-world applications of cutting-edge technologies and creative solutions.</p>
+              <p className="text mb-4" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>Our unique approach combines industry-standard curriculum with hands-on projects, ensuring students are well-prepared for the tech industry.</p>
               <Link to="/about" className="btn btn-primary btn-lg" style={{ 
                 color: "#ffffff", 
                 backgroundColor: "rgba(255, 126, 95, 0.9)",
@@ -511,15 +523,13 @@ const Home = () => {
       <style>
         {`
           .hero {
-            background-image: linear-gradient(to bottom, #0a0a0a, #141414);
-            background-size: 100% 300px;
-            background-position: 0% 100%;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             position: relative;
+            padding-top: 4rem;
           }
           .stars {
             position: absolute;
@@ -527,7 +537,17 @@ const Home = () => {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color:rgba(61, 52, 49, 0.81);
+            background-color: transparent;
+            z-index: 1;
+          }
+          .twinkling {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: 1;
           }
           .star {
             position: absolute;
@@ -586,7 +606,6 @@ const Home = () => {
             0%, 100% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.4); opacity: 0.4; }
           }
-<<<<<<< Updated upstream
 
           /* Star Positions with Movement */
           .star:nth-child(1) { top: 15%; left: 10%; animation: float 5s infinite ease-in-out; }
@@ -619,7 +638,7 @@ const Home = () => {
           .star:nth-child(28) { top: 95%; left: 95%; animation: twinkle 2.2s infinite ease-in-out; }
           .star:nth-child(29) { top: 5%; left: 85%; animation: pulse 2.5s infinite ease-in-out; }
           .star:nth-child(30) { top: 15%; left: 75%; animation: float 6.5s infinite ease-in-out; }
-=======
+
           .zoom-image {
             transform: scale(1);
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -627,17 +646,6 @@ const Home = () => {
           .zoom-image.zoomed {
             transform: scale(1.1);
           }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
-          .zoom-image {
-            transform: scale(1);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-          .zoom-image.zoomed {
-            transform: scale(1.1);
-          }
->>>>>>> Stashed changes
         `}
       </style>
       <div className="stars">

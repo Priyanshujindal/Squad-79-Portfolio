@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }) => {
     if (isDarkTheme) {
       root.style.setProperty('--bg-primary', '#121212');
       root.style.setProperty('--bg-secondary', '#1e1e1e');
-      root.style.setProperty('--text-primary', '#f0f0f0');
+      root.style.setProperty('--text-primary', '#ffffff');
       root.style.setProperty('--text-secondary', '#cccccc');
       root.style.setProperty('--card-bg', '#242424');
       root.style.setProperty('--navbar-bg', '#0a0a0a');

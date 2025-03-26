@@ -7,7 +7,13 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="hero">
+      <div className="hero" style={{ 
+        position: "relative",
+        background: isDarkTheme ? 
+          'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)' : 
+          'linear-gradient(135deg,rgb(48, 46, 46) 0%,#8a817f 100%)',
+        paddingTop: '7.5rem'
+      }}>
         <div className="stars">
           <div className="star"></div>
           <div className="star"></div>
@@ -27,15 +33,18 @@ const About = () => {
         </div>
         <div className="twinkling"></div>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6 img-container" style={{ position: 'relative' }}>
+          <div className="row align-items-center" style={{ display: 'flex', flexWrap: 'nowrap' }}>
+            <div className="col-lg-5 img-container" style={{ position: 'relative', marginRight: '1rem' }}>
               <div style={{ 
                 position: 'relative', 
                 width: '100%',
-                paddingTop: '66.67%', // 3:2 aspect ratio
+                paddingTop: '75%',
                 overflow: 'hidden',
                 borderRadius: '1rem',
-                background: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5'
+                background: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
               }}>
                 <img
                   src="/images/class3.jpg"
@@ -48,24 +57,30 @@ const About = () => {
                     height: '100%',
                     objectFit: 'cover',
                     objectPosition: 'center',
-                    transform: 'scale(1.01)',
-                    transition: 'transform 0.3s ease',
-                    transformOrigin: 'top left'
+                    transform: 'scale(1)',
+                    transition: 'all 0.3s ease',
+                    filter: 'brightness(0.9)'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.1)';
+                    e.currentTarget.style.filter = 'brightness(1)';
+                    e.currentTarget.parentElement.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.01)';
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.filter = 'brightness(0.9)';
+                    e.currentTarget.parentElement.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
                   }}
                 />
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-7">
               <h1 className="display-4 fw-bold mb-4" style={{ 
                 color: "#ffffff",
                 padding: "0.5rem 0",
-                letterSpacing: "0.5px"
+                letterSpacing: "0.5px",
+                whiteSpace: "nowrap",
+                fontSize: "3.5rem"
               }}>About <span style={{
                 background: "linear-gradient(to right, #ff7e5f, #feb47b)",
                 WebkitBackgroundClip: "text",
@@ -76,13 +91,20 @@ const About = () => {
               <p className="lead mb-4" style={{ 
                 color: "#ffffff",
                 fontWeight: "600",
-                fontSize: "1.25rem",
-                letterSpacing: "0.3px"
-              }}>My class has been a collaborative environment where we worked together on various projects.</p>
+                fontSize: "1.5rem",
+                letterSpacing: "0.3px",
+                maxWidth: "100%",
+                wordWrap: "break-word",
+                lineHeight: "1.6"
+              }}>Our class has been a collaborative environment where we worked together on various projects.</p>
               <p className="mb-4" style={{ 
                 color: "#ffffff",
                 fontWeight: "600",
-                letterSpacing: "0.3px"
+                fontSize: "1.5rem",
+                letterSpacing: "0.3px",
+                maxWidth: "100%",
+                wordWrap: "break-word",
+                lineHeight: "1.6"
               }}>We have been working on various projects like Spotify Clone, Portfolio Website, etc.</p>
             </div>
           </div>
@@ -94,7 +116,7 @@ const About = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
-              <h2 className="mb-4" style={{ color: isDarkTheme ? '#ffffff' : '#121212' }}>Our Mission</h2>
+              <h2 style={{ color: isDarkTheme ? '#ffffff' : '#121212' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '1.5rem'}}>Our Mission</h2>
               <p className="lead" style={{ 
                 color: isDarkTheme ? '#ffffff' : '#333333',
                 fontWeight: '500',
@@ -118,7 +140,7 @@ const About = () => {
       {/* Values Section */}
       <section className="py-5" style={{ backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5' }}>
         <div className="container">
-          <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>Our Values</h2>
+          <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#000000' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '3rem'}}>Our Values</h2>
           <div className="row g-4">
             <div className="col-md-4">
               <div className="card h-100 border-0 shadow-sm" style={{ 
@@ -270,7 +292,7 @@ const About = () => {
         </div>
         <div className="twinkling"></div>
         <div className="container">
-          <h2 className="text-center mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>Our Team</h2>
+          <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#000000' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '3rem'}}>Our Team</h2>
           <div className="row g-4">
             <div className="col-md-4">
               <div className="card border-0 shadow-sm" style={{ 
@@ -434,15 +456,13 @@ const About = () => {
       <style>
         {`
           .hero {
-            background-image: linear-gradient(to bottom, #0a0a0a, #141414);
-            background-size: 100% 300px;
-            background-position: 0% 100%;
             height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             overflow: hidden;
             position: relative;
+            padding-top: 7.5rem;
           }
           .stars {
             position: absolute;
