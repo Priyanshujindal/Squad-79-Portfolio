@@ -9,12 +9,12 @@ const NotFound = () => {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [gameSpeed, setGameSpeed] = useState(100); // Lower is faster
+  const [gameSpeed, setGameSpeed] = useState(150); // Lower is faster, increased from 100 to 150 (slower)
   
   // Game settings
-  const canvasWidth = 320;
-  const canvasHeight = 320;
-  const gridSize = 16;
+  const canvasWidth = 480;  // Increased from 320 to 480
+  const canvasHeight = 480; // Increased from 320 to 480
+  const gridSize = 20;      // Increased from 16 to 20
   
   // Game state tracking refs (to use in animation frame callback)
   const snakeRef = useRef([{ x: 8, y: 8 }]); // Initial snake position
@@ -114,16 +114,17 @@ const NotFound = () => {
       const snake = snakeRef.current;
       const head = { x: snake[0].x + directionRef.current.x, y: snake[0].y + directionRef.current.y };
       
-      // Check collision with walls
-      if (
-        head.x < 0 || 
-        head.x >= canvasWidth / gridSize || 
-        head.y < 0 || 
-        head.y >= canvasHeight / gridSize
-      ) {
-        gameOverRef.current = true;
-        setGameOver(true);
-        return;
+      // Implement wrap-around instead of collision with walls
+      if (head.x < 0) {
+        head.x = Math.floor(canvasWidth / gridSize) - 1;
+      } else if (head.x >= canvasWidth / gridSize) {
+        head.x = 0;
+      }
+      
+      if (head.y < 0) {
+        head.y = Math.floor(canvasHeight / gridSize) - 1;
+      } else if (head.y >= canvasHeight / gridSize) {
+        head.y = 0;
       }
       
       // Check collision with self
@@ -151,9 +152,9 @@ const NotFound = () => {
           setHighScore(scoreRef.current);
         }
         
-        // Increase speed
-        if (scoreRef.current % 5 === 0 && gameSpeed > 50) {
-          setGameSpeed(prev => Math.max(prev - 10, 50));
+        // More gradual speed increase: only increase every 3 points and by a smaller amount
+        if (scoreRef.current % 3 === 0 && gameSpeed > 80) {
+          setGameSpeed(prev => Math.max(prev - 5, 80));
         }
       } else {
         // Remove tail if not eating
@@ -177,7 +178,7 @@ const NotFound = () => {
           context.fillStyle = 'white';
           
           // Determine eye position based on direction
-          const eyeSize = gridSize / 4;
+          const eyeSize = gridSize / 5;
           if (directionRef.current.x === 1) {
             context.fillRect((segment.x * gridSize) + (gridSize * 0.7), (segment.y * gridSize) + (gridSize * 0.25), eyeSize, eyeSize);
             context.fillRect((segment.x * gridSize) + (gridSize * 0.7), (segment.y * gridSize) + (gridSize * 0.65), eyeSize, eyeSize);
@@ -200,7 +201,7 @@ const NotFound = () => {
       context.arc(
         (food.x * gridSize) + (gridSize / 2),
         (food.y * gridSize) + (gridSize / 2),
-        gridSize / 2,
+        gridSize / 2 * 0.8,
         0,
         Math.PI * 2
       );
@@ -229,7 +230,7 @@ const NotFound = () => {
     lastRenderTimeRef.current = 0;
     
     setScore(0);
-    setGameSpeed(100);
+    setGameSpeed(150); // Reset to slower initial speed
     setGameOver(false);
     setGameStarted(true);
   };
@@ -301,7 +302,7 @@ const NotFound = () => {
         padding: '30px',
         borderRadius: '16px',
         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
-        maxWidth: '400px',
+        maxWidth: '540px',  // Increased to accommodate larger game area
         width: '100%'
       }}>
         <h3 className="text-center mb-4" style={{ color: '#ff6b6b' }}>Snake Game</h3>
@@ -324,8 +325,8 @@ const NotFound = () => {
         </div>
         
         <div className="canvas-wrapper mb-4" style={{ 
-          width: '320px', 
-          height: '320px',
+          width: '480px', // Increased from 320px
+          height: '480px', // Increased from 320px
           margin: '0 auto',
           border: isDarkTheme ? '2px solid #444' : '2px solid #ddd',
           borderRadius: '8px',
@@ -407,6 +408,7 @@ const NotFound = () => {
         
         <div className="text-center" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
           <p>Controls: Use Arrow Keys (⬆️ ⬇️ ⬅️ ➡️) or tap screen</p>
+          <p>Pro tip: The snake can pass through walls and come out the other side!</p>
         </div>
       </div>
     </div>
