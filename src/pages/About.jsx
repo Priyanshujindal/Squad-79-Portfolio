@@ -57,9 +57,8 @@ const About = () => {
                     height: '100%',
                     objectFit: 'cover',
                     objectPosition: 'center',
-                    transform: 'scale(1)',
-                    transition: 'all 0.3s ease',
-                    filter: 'brightness(0.9)'
+                    transform: 'scale(1.01)',
+                    transition: 'transform 0.3s ease'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.1)';
