@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
+import '../styles/fire-animation.css';
 
 const More = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -120,11 +121,18 @@ const More = () => {
               }
             ].map(person => (
               <div key={person.id} className="col-sm-12 col-md-6 col-lg-4">
-                <div className="card h-100 border-0 shadow-sm" style={{ 
-                  borderRadius: '1rem', 
-                  overflow: 'hidden', 
-                  backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff'
-                }}>
+                <div className={`card h-100 shadow-sm team-card ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+                  {/* Fire animation element */}
+                  <div className="fire-animation">
+                    <div className="flame flame-1"></div>
+                    <div className="flame flame-2"></div>
+                    <div className="flame flame-3"></div>
+                    <div className="flame flame-4"></div>
+                    <div className="flame flame-5"></div>
+                    <div className="flame flame-6"></div>
+                    <div className="flame flame-7"></div>
+                  </div>
+
                   <div className="img-container">
                     <img 
                       src={person.image} 
@@ -139,7 +147,7 @@ const More = () => {
                       }}
                     />
                   </div>
-                  <div className="card-body" style={{ backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff' }}>
+                  <div className="card-body">
                     <h3 className="h4 mb-2" style={{ 
                       fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
                       color: isDarkTheme ? '#ffffff' : '#333333'
@@ -158,29 +166,7 @@ const More = () => {
                       {person.skills.map((skill, index) => (
                         <span 
                           key={index} 
-                          style={{ 
-                            backgroundColor: '#ff6b6b',
-                            color: 'white',
-                            padding: '0.4rem 0.8rem',
-                            borderRadius: '20px',
-                            fontSize: 'clamp(0.7rem, 2.5vw, 0.8rem)',
-                            fontWeight: '500',
-                            letterSpacing: '0.3px',
-                            boxShadow: '0 2px 4px rgba(0,0,0,0.06)',
-                            transition: 'all 0.2s ease',
-                            margin: '0.2rem',
-                            display: 'inline-block'
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = '#ff5252';
-                            e.currentTarget.style.transform = 'translateY(-1px)';
-                            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = '#ff6b6b';
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.06)';
-                          }}
+                          className="skill-tag"
                         >
                           {skill}
                         </span>
@@ -190,7 +176,7 @@ const More = () => {
                     <div className="d-flex justify-content-between align-items-center mb-4">
                       <Link 
                         to={`/more/${person.id}`} 
-                        className="btn"
+                        className="btn profile-btn"
                         style={{
                           flex: "1",
                           marginRight: "1rem",
@@ -201,14 +187,6 @@ const More = () => {
                           transition: 'all 0.3s ease',
                           backgroundColor: 'transparent'
                         }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
-                        }}
                       >
                         View Profile
                       </Link>
@@ -216,7 +194,7 @@ const More = () => {
                         href={person.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn"
+                        className="btn linkedin-btn"
                         style={{
                           backgroundColor: "#ff6b6b",
                           color: "#ffffff",
@@ -228,14 +206,6 @@ const More = () => {
                           justifyContent: "center",
                           transition: "all 0.3s ease",
                           flexShrink: 0
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = "#ff5252";
-                          e.currentTarget.style.transform = "translateY(-2px)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = "#ff6b6b";
-                          e.currentTarget.style.transform = "translateY(0)";
                         }}
                       >
                         <i className="bi bi-linkedin fs-5"></i>
@@ -256,15 +226,7 @@ const More = () => {
           <div className="row g-4">
             {memories.map((memory, index) => (
               <div key={index} className="col-md-4">
-                <div className="card h-100 border-0 shadow-lg" style={{ 
-                  borderRadius: '15px',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                  backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
-                  color: isDarkTheme ? '#ffffff' : '#000000'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                <div className={`card h-100 border-0 shadow-lg memory-card ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
                   <img 
                     src={memory.image} 
                     alt={memory.title}
@@ -290,15 +252,7 @@ const More = () => {
           <div className="row g-4">
             {contributions.map((contribution, index) => (
               <div key={index} className="col-md-4">
-                <div className="card h-100 border-0 shadow-lg" style={{ 
-                  borderRadius: '15px',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                  color: isDarkTheme ? '#ffffff' : '#000000'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                <div className={`card h-100 border-0 shadow-lg contribution-card ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
                   <img 
                     src={contribution.image} 
                     alt={contribution.title}
@@ -320,4 +274,4 @@ const More = () => {
   );
 };
 
-export default More; 
+export default More;

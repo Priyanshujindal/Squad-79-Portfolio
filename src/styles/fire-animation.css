@@ -1,0 +1,216 @@
+/* Fire Animation & Team Cards Styling */
+.team-card {
+  border-radius: 1rem !important;
+  overflow: visible !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  margin-bottom: 1.5rem;
+  border: none !important;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.team-card .card-body {
+  border-radius: 0 0 1rem 1rem;
+}
+
+.dark-theme .team-card {
+  background-color: #2d2d2d !important;
+}
+
+.light-theme .team-card {
+  background-color: #ffffff !important;  
+}
+
+.dark-theme .team-card .card-body {
+  background-color: #2d2d2d !important;
+}
+
+.light-theme .team-card .card-body {
+  background-color: #ffffff !important;
+}
+
+/* Fire Animation */
+.team-card:hover .fire-animation {
+  opacity: 1;
+  bottom: -15px;
+}
+
+.fire-animation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  height: 60px;
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  filter: blur(1px);
+}
+
+.flame {
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  filter: blur(3px);
+  margin: 0 -5px;
+  opacity: 0.9;
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.8), 0 0 20px rgba(255, 71, 87, 0.4);
+}
+
+.flame-1 {
+  width: 25px;
+  height: 35px;
+  background-color: #ff4757;
+  animation: flameAnimation1 1.5s infinite alternate;
+}
+
+.flame-2 {
+  width: 22px;
+  height: 33px;
+  background-color: #ff6b6b;
+  animation: flameAnimation2 1.2s infinite alternate;
+}
+
+.flame-3 {
+  width: 30px;
+  height: 40px;
+  background-color: #ff4757;
+  animation: flameAnimation3 1.7s infinite alternate;
+}
+
+.flame-4 {
+  width: 28px;
+  height: 38px;
+  background-color: #ff6b6b;
+  animation: flameAnimation4 1.3s infinite alternate;
+}
+
+.flame-5 {
+  width: 23px;
+  height: 34px;
+  background-color: #ff4757;
+  animation: flameAnimation5 1.6s infinite alternate;
+}
+
+.flame-6 {
+  width: 26px;
+  height: 37px;
+  background-color: #ff6b6b;
+  animation: flameAnimation6 1.4s infinite alternate;
+}
+
+.flame-7 {
+  width: 24px;
+  height: 36px;
+  background-color: #ff4757;
+  animation: flameAnimation7 1.8s infinite alternate;
+}
+
+/* Skill tags styling */
+.skill-tag {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+  margin: 0.2rem;
+  display: inline-block;
+}
+
+.skill-tag:hover {
+  background-color: #ff5252;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* View Profile button */
+.profile-btn {
+  flex: 1;
+  margin-right: 1rem;
+  font-size: clamp(0.8rem, 3vw, 0.9rem);
+  white-space: nowrap;
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.profile-btn:hover {
+  background-color: #ff6b6b !important;
+  color: white !important;
+}
+
+/* LinkedIn button */
+.linkedin-btn {
+  background-color: #ff6b6b;
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.linkedin-btn:hover {
+  background-color: #ff5252;
+  transform: translateY(-2px);
+}
+
+/* Memory and Contribution Cards */
+.memory-card, .contribution-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.memory-card:hover, .contribution-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Animation keyframes */
+@keyframes flameAnimation1 {
+  0% { height: 30px; opacity: 0.7; }
+  100% { height: 45px; opacity: 0.9; }
+}
+
+@keyframes flameAnimation2 {
+  0% { height: 28px; opacity: 0.75; }
+  100% { height: 42px; opacity: 0.95; }
+}
+
+@keyframes flameAnimation3 {
+  0% { height: 35px; opacity: 0.8; }
+  100% { height: 50px; opacity: 0.9; }
+}
+
+@keyframes flameAnimation4 {
+  0% { height: 32px; opacity: 0.7; }
+  100% { height: 48px; opacity: 0.85; }
+}
+
+@keyframes flameAnimation5 {
+  0% { height: 29px; opacity: 0.75; }
+  100% { height: 43px; opacity: 0.9; }
+}
+
+@keyframes flameAnimation6 {
+  0% { height: 31px; opacity: 0.8; }
+  100% { height: 46px; opacity: 0.95; }
+}
+
+@keyframes flameAnimation7 {
+  0% { height: 33px; opacity: 0.75; }
+  100% { height: 47px; opacity: 0.9; }
+}
