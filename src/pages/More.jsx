@@ -121,44 +121,85 @@ const More = () => {
             ].map(person => (
               <div key={person.id} className="col-sm-12 col-md-6 col-lg-4">
                 <div 
-                  className="card h-100 border-0 shadow-sm" 
+                  className="card h-100 border-0 shadow-sm position-relative" 
                   style={{ 
                     borderRadius: '1rem', 
-                    overflow: 'hidden', 
+                    overflow: 'visible', 
                     backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
-                    transition: 'all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
                     transformOrigin: 'center',
                     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)',
-                    border: '1px solid transparent'
+                    border: '1px solid transparent',
+                    zIndex: 1
                   }}
                   onMouseEnter={(e) => {
-                    // Lift and scale effect
-                    e.currentTarget.style.transform = 'translateY(-15px) scale(1.02)';
+                    // Dramatic 3D transform effect
+                    e.currentTarget.style.transform = 'translateY(-20px) scale(1.03) perspective(1000px) rotateX(2deg)';
                     // Enhanced shadow glow effect with brand color
-                    e.currentTarget.style.boxShadow = `0 20px 25px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 107, 107, 0.2)`;
-                    // Subtle border highlight
-                    e.currentTarget.style.border = '1px solid rgba(255, 107, 107, 0.3)';
-                    // Slightly brighten the image on hover
+                    e.currentTarget.style.boxShadow = `0 25px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 107, 107, 0.25)`;
+                    // Gradient border highlight
+                    e.currentTarget.style.border = 'none';
+                    e.currentTarget.style.background = isDarkTheme 
+                      ? 'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box'
+                      : 'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box';
+                    
+                    // Create particles effect
+                    const container = e.currentTarget;
+                    const existing = container.querySelectorAll('.particle');
+                    if (existing.length === 0) {
+                      for (let i = 0; i < 7; i++) {
+                        createParticle(container);
+                      }
+                    } else {
+                      existing.forEach(p => {
+                        p.style.opacity = '1';
+                        p.style.animation = `particleFade 2s infinite ${Math.random()}s`;
+                      });
+                    }
+                    
+                    // Image effect
                     const image = e.currentTarget.querySelector('.card-img-top');
                     if (image) {
-                      image.style.transform = 'scale(1.05)';
-                      image.style.filter = 'brightness(1.05)';
+                      image.style.transform = 'scale(1.08)';
+                      image.style.filter = 'brightness(1.1) contrast(1.05)';
+                    }
+                    
+                    // Highlight role text
+                    const roleText = e.currentTarget.querySelector('.text-danger');
+                    if (roleText) {
+                      roleText.style.textShadow = '0 0 8px rgba(255, 107, 107, 0.5)';
+                      roleText.style.letterSpacing = '0.3px';
                     }
                   }}
                   onMouseLeave={(e) => {
                     // Return to original state
-                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0)';
                     e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.08)';
                     e.currentTarget.style.border = '1px solid transparent';
+                    e.currentTarget.style.background = isDarkTheme ? '#2d2d2d' : '#ffffff';
+                    
+                    // Hide particles
+                    const particles = e.currentTarget.querySelectorAll('.particle');
+                    particles.forEach(p => {
+                      p.style.opacity = '0';
+                    });
+                    
                     // Reset image 
                     const image = e.currentTarget.querySelector('.card-img-top');
                     if (image) {
                       image.style.transform = 'scale(1)';
-                      image.style.filter = 'brightness(1)';
+                      image.style.filter = 'brightness(1) contrast(1)';
+                    }
+                    
+                    // Reset role text
+                    const roleText = e.currentTarget.querySelector('.text-danger');
+                    if (roleText) {
+                      roleText.style.textShadow = 'none';
+                      roleText.style.letterSpacing = 'normal';
                     }
                   }}
                 >
-                  <div className="img-container" style={{ overflow: 'hidden' }}>
+                  <div className="img-container" style={{ overflow: 'hidden', borderRadius: '1rem 1rem 0 0' }}>
                     <img 
                       src={person.image} 
                       className="card-img-top" 
@@ -169,7 +210,7 @@ const More = () => {
                         objectFit: "cover",
                         width: "100%",
                         height: "300px",
-                        transition: "all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)"
+                        transition: "all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)"
                       }}
                     />
                   </div>
@@ -352,6 +393,50 @@ const More = () => {
       </section>
     </div>
   );
+};
+
+// Function to create floating particles for hover effect
+const createParticle = (container) => {
+  const particle = document.createElement('span');
+  particle.className = 'particle';
+  const size = Math.floor(Math.random() * 8) + 4;
+  const posX = Math.random() * 100;
+  const posY = Math.random() * 100;
+  const delay = Math.random() * 2;
+  const duration = Math.random() * 2 + 2;
+  
+  particle.style.cssText = `
+    position: absolute;
+    width: ${size}px;
+    height: ${size}px;
+    background: rgba(255, 107, 107, ${Math.random() * 0.5 + 0.3});
+    border-radius: 50%;
+    top: ${posY}%;
+    left: ${posX}%;
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+    box-shadow: 0 0 ${size * 2}px rgba(255, 107, 107, 0.7);
+    animation: particleFade ${duration}s infinite ${delay}s;
+    transition: opacity 0.3s ease;
+  `;
+  
+  // Add keyframe animation to document if not already present
+  if (!document.querySelector('#particle-animation')) {
+    const style = document.createElement('style');
+    style.id = 'particle-animation';
+    style.textContent = `
+      @keyframes particleFade {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        20% { opacity: 1; }
+        100% { transform: translateY(-${Math.random() * 50 + 50}px) scale(0); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  container.appendChild(particle);
+  return particle;
 };
 
 export default More;
