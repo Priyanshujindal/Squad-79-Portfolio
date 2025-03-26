@@ -16,6 +16,7 @@ import More from './pages/More';
 import ProjectDetails from './pages/ProjectDetails';
 import NotFound from './pages/NotFound';
 import LoadingAnimation from './components/LoadingAnimation';
+import Chatbot from './components/Chatbot';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
 
@@ -115,6 +116,7 @@ function App() {
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
+              <Chatbot />
             </div>
           </>
         )}
