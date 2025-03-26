@@ -134,7 +134,7 @@ const More = () => {
                   }}
                   onMouseEnter={(e) => {
                     // Dramatic 3D transform effect
-                    e.currentTarget.style.transform = 'translateY(-20px) scale(1.03) perspective(1000px) rotateX(2deg)';
+                    e.currentTarget.style.transform = 'translateY(-20px) scale(1.005) perspective(1000px) rotateX(2deg)';
                     // Enhanced shadow glow effect with brand color
                     e.currentTarget.style.boxShadow = `0 25px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 107, 107, 0.25)`;
                     // Gradient border highlight
@@ -331,20 +331,77 @@ const More = () => {
           <div className="row g-4">
             {memories.map((memory, index) => (
               <div key={index} className="col-md-4">
-                <div className="card h-100 border-0 shadow-lg" style={{ 
-                  borderRadius: '15px',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                  backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
-                  color: isDarkTheme ? '#ffffff' : '#000000'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                <div 
+                  className="card h-100 border-0 shadow-lg position-relative" 
+                  style={{ 
+                    borderRadius: '15px',
+                    overflow: 'visible',
+                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                    color: isDarkTheme ? '#ffffff' : '#000000',
+                    zIndex: 1
+                  }}
+                  onMouseEnter={(e) => {
+                    // 3D transform effect with reduced scale
+                    e.currentTarget.style.transform = 'translateY(-15px) scale(1.01) perspective(1000px) rotateX(2deg)';
+                    // Shadow glow
+                    e.currentTarget.style.boxShadow = `0 20px 25px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 107, 107, 0.2)`;
+                    // Gradient border highlight
+                    e.currentTarget.style.background = isDarkTheme 
+                      ? 'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box'
+                      : 'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box';
+                    
+                    // Create particles
+                    const container = e.currentTarget;
+                    const existing = container.querySelectorAll('.particle');
+                    if (existing.length === 0) {
+                      for (let i = 0; i < 5; i++) {
+                        createParticle(container);
+                      }
+                    } else {
+                      existing.forEach(p => {
+                        p.style.opacity = '1';
+                        p.style.animation = `particleFade 2s infinite ${Math.random()}s`;
+                      });
+                    }
+                    
+                    // Image effect
+                    const image = e.currentTarget.querySelector('img');
+                    if (image) {
+                      image.style.transform = 'scale(1.05)';
+                      image.style.filter = 'brightness(1.05)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0)';
+                    e.currentTarget.style.boxShadow = '0 0.5rem 1rem rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.background = isDarkTheme ? '#2d2d2d' : '#ffffff';
+                    
+                    // Hide particles
+                    const particles = e.currentTarget.querySelectorAll('.particle');
+                    particles.forEach(p => {
+                      p.style.opacity = '0';
+                    });
+                    
+                    // Reset image
+                    const image = e.currentTarget.querySelector('img');
+                    if (image) {
+                      image.style.transform = 'scale(1)';
+                      image.style.filter = 'brightness(1)';
+                    }
+                  }}
+                >
                   <img 
                     src={memory.image} 
                     alt={memory.title}
                     className="card-img-top"
-                    style={{ height: '200px', objectFit: 'cover' }}
+                    style={{ 
+                      borderRadius: '15px 15px 0 0',
+                      height: '200px',
+                      objectFit: 'cover',
+                      width: '100%',
+                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                    }}
                   />
                   <div className="card-body p-4">
                     <h5 className="mb-3" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>{memory.title}</h5>
@@ -365,20 +422,77 @@ const More = () => {
           <div className="row g-4">
             {contributions.map((contribution, index) => (
               <div key={index} className="col-md-4">
-                <div className="card h-100 border-0 shadow-lg" style={{ 
-                  borderRadius: '15px',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                  backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
-                  color: isDarkTheme ? '#ffffff' : '#000000'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+                <div 
+                  className="card h-100 border-0 shadow-lg position-relative" 
+                  style={{ 
+                    borderRadius: '15px',
+                    overflow: 'visible',
+                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
+                    color: isDarkTheme ? '#ffffff' : '#000000',
+                    zIndex: 1
+                  }}
+                  onMouseEnter={(e) => {
+                    // 3D transform effect with reduced scale
+                    e.currentTarget.style.transform = 'translateY(-15px) scale(1.01) perspective(1000px) rotateX(2deg)';
+                    // Shadow glow
+                    e.currentTarget.style.boxShadow = `0 20px 25px rgba(0, 0, 0, 0.12), 0 0 20px rgba(255, 107, 107, 0.2)`;
+                    // Gradient border highlight
+                    e.currentTarget.style.background = isDarkTheme 
+                      ? 'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box'
+                      : 'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box';
+                    
+                    // Create particles
+                    const container = e.currentTarget;
+                    const existing = container.querySelectorAll('.particle');
+                    if (existing.length === 0) {
+                      for (let i = 0; i < 5; i++) {
+                        createParticle(container);
+                      }
+                    } else {
+                      existing.forEach(p => {
+                        p.style.opacity = '1';
+                        p.style.animation = `particleFade 2s infinite ${Math.random()}s`;
+                      });
+                    }
+                    
+                    // Image effect
+                    const image = e.currentTarget.querySelector('img');
+                    if (image) {
+                      image.style.transform = 'scale(1.05)';
+                      image.style.filter = 'brightness(1.05)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1) perspective(1000px) rotateX(0)';
+                    e.currentTarget.style.boxShadow = '0 0.5rem 1rem rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.background = isDarkTheme ? '#2d2d2d' : '#ffffff';
+                    
+                    // Hide particles
+                    const particles = e.currentTarget.querySelectorAll('.particle');
+                    particles.forEach(p => {
+                      p.style.opacity = '0';
+                    });
+                    
+                    // Reset image
+                    const image = e.currentTarget.querySelector('img');
+                    if (image) {
+                      image.style.transform = 'scale(1)';
+                      image.style.filter = 'brightness(1)';
+                    }
+                  }}
+                >
                   <img 
                     src={contribution.image} 
                     alt={contribution.title}
                     className="card-img-top"
-                    style={{ height: '200px', objectFit: 'cover' }}
+                    style={{ 
+                      borderRadius: '15px 15px 0 0',
+                      height: '200px',
+                      objectFit: 'cover',
+                      width: '100%',
+                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                    }}
                   />
                   <div className="card-body p-4">
                     <h5 className="mb-3" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>{contribution.title}</h5>
