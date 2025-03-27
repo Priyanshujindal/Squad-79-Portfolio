@@ -571,8 +571,40 @@ const students = [
         "Collaborated on team projects"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
+    },
+    {
+      id: 22,
+      name: "Pukhraj Soni",
+      role: "C++ Developer",
+      image: "/pukhraj.jpg",
+      description: "Student of 1st Year at Chitkara",
+      linkedin: 'https://www.linkedin.com/in/radhil-narula-6b1947331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', 
+      skills: ["C++", "Data Structures", "Algorithms", "Object-Oriented Programming"],    
+      bio: "C++ developer with a passion for building efficient and scalable applications",
+      experience: [
+        "Developed C++ applications",
+        "Implemented data structures",
+        "Optimized code performance"
+      ],    
+      education: "B.Tech in Computer Science, Chitkara University"
+    },
+    {
+      id: 23,
+      name: "Riya Yadav", 
+      role: "C++ Developer",
+      image: "/riya2.jpg",
+      description: "Student of 1st Year at Chitkara",
+      linkedin: 'https://www.linkedin.com/in/riya-y-166103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ium=android_app',
+      skills: ['Python loops not included'  ],    
+      bio: "C++ developer with a passion for building efficient and scalable applications",
+      experience: [
+        "Developed C++ applications",
+        "Implemented data structures",
+        "Optimized code performance"
+      ],    
+      education: "B.Tech in Computer Science, Chitkara University"
     }
-  ];
+  ];  
 
   if (!student) {
     return (

@@ -6,10 +6,10 @@ const projectsData = [
     id: 1,
     title: "Spotify Clone",
     description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
-    image: "./images/soptify.png",
+    image: "public/spotify.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript"],
-    team: ["Priyanshu"],
+    team: ["Priyanshu" , "Raksham" ],
     demoLink: "https://spotifyfree.netlify.app/",
     features: [
       "Music player interface",
@@ -23,12 +23,12 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "2 days workshop",
+    title: "Gen AI Workshop",
     description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
     image: "./images/workshop.JPG",
     category: "Workshops",
     tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
-    team: ["Raksham", "Priyanshu", "Rehat", "Rajat"],
+    team: ["Raksham", "Priyanshu", "Rehat", "Rajat" , 'Pranav' , 'Priyansh' , 'Pranay'],
     features: [
       "Hands-on coding sessions",
       "Data visualization techniques",
@@ -43,10 +43,10 @@ const projectsData = [
     id: 3,
     title: "Tic Tac Toe Game",
     description: "A classic two-player game built with modern web technologies. Features include responsive design, player turn indicators, and win detection logic.",
-    image: "./images/TickTacToe.png",
+    image: "./tiktak2.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript"],
-    team: ["Priyanshu"],
+    team: ["Priyanshu" , 'Pranav'],
     demoLink: "https://relastic-tac-toe.netlify.app/",
     features: [
       "Two-player gameplay",
@@ -65,7 +65,7 @@ const projectsData = [
     image: "./images/leetcode.jpg",
     category: "Events",
     tags: ["Python"],
-    team: ["Raksham", "Rehat", "Rajat"],
+    team: ["Raksham", 'Priyansh' , 'Pavitar'],
     features: [
       "Competitive programming challenges",
       "Real-world algorithm problems",
@@ -80,7 +80,7 @@ const projectsData = [
     id: 5,
     title: "Money Tracking Website",
     description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization.",
-    image: "./images/MoneyTracker.png",
+    image: "./money.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript", "React"],
     team: ["Priyanshu"],
@@ -99,7 +99,7 @@ const projectsData = [
     id: 6,
     title: "Classic Dino Game",
     description: "A fun and engaging endless runner game inspired by the classic Chrome Dino game. Features include smooth animations, score tracking, and obstacle avoidance mechanics.",
-    image: "./images/DinoGame.png",
+    image: "./dino2.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript"],
     team: ["Priyanshu"],
@@ -118,10 +118,10 @@ const projectsData = [
     id: 7,
     title: "Netflix Clone",
     description: "A modern streaming platform login page UI clone",
-    image: "./images/netflix-clone.png",
+    image: "./net2.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS"],
-    team: ["Priyanshu"],
+    team: ["Priyanshu" , 'Raksham'],
     demoLink: "https://netlify-79.netlify.app/",
     features: [
       "Responsive UI design",
@@ -132,6 +132,133 @@ const projectsData = [
     ],
     technologies: ["HTML", "CSS"],
     description_long: "This Netflix login page clone recreates the sleek, modern user interface of the popular streaming platform's entry point. The project focuses on pixel-perfect UI implementation and responsive design principles.\n\nBuilt using only HTML and CSS, the clone demonstrates strong front-end development skills, particularly in creating visually appealing layouts and implementing modern design patterns without JavaScript dependencies.\n\nThe responsive design ensures the login page looks and functions properly across devices of all sizes, from mobile phones to large desktop displays. This project showcases attention to detail in replicating complex UI components and implementing them with clean, maintainable code."
+  },
+  {
+    id: 8,
+    title: "Simon Says Game",
+    description: "A Simon Says game UI clone",
+    image: "./simon2.jpg",
+    category: "Web Development",
+    tags: ["HTML", "CSS", "JavaScript"],
+    team: ['Raksham'],
+    demoLink: "https://simon-says-game-clone.netlify.app/",
+    features: [
+      "Simon Says game UI clone",
+      "Interactive form elements",
+      "CSS animations and transitions",
+      "Mobile-first approach",
+      "Cross-browser compatibility"
+    ],
+    technologies: ["HTML", "CSS", "JavaScript"],
+    description_long: "This Simon Says game clone recreates the classic Simon Says game interface, allowing players to follow the sequence of colors and sounds to advance through levels.\n\nThe game is built using HTML, CSS, and JavaScript, with smooth animations and responsive controls. The difficulty progressively increases as the player's score gets higher, providing a challenging experience for players of all skill levels.\n\nThe project demonstrates strong game development fundamentals, including collision detection, sprite animation, and game state management, all implemented using vanilla JavaScript without relying on external game engines or libraries."
+  },
+  {
+    id: 9,
+    title: "Web 3 workshop",
+    description: "A workshop on the basics of Web 3.0 and blockchain technology.",
+    image: "./web3.jpg",
+    category: "Workshops",
+    tags: ["Web 3.0", "Blockchain", "Solidity"],
+    team: ['Riya' , 'Prachi'],
+    demoLink: "https://simon-says-game-clone.netlify.app/",
+    features: [
+      "Hands-on coding sessions",
+      "Blockchain technology fundamentals",
+      "Smart contract development",
+      "Decentralized applications (DApps)",
+      "Interactive form elements",
+      "CSS animations and transitions",
+      "Mobile-first approach",
+      "Cross-browser compatibility"
+    ],
+    technologies: ["Web 3.0", "Blockchain", "Solidity"],
+    description_long: "This workshop focused on the fundamentals of Web 3.0 and blockchain technology, including smart contract development and decentralized applications (DApps). Participants gained hands-on experience with Solidity, the programming language for smart contracts on Ethereum.\n\nThe workshop was designed to help students understand the core concepts of blockchain technology and its applications in the decentralized web. Through interactive coding sessions and real-world examples, participants learned how to create and deploy their own smart contracts and build DApps using popular frameworks like Truffle and OpenZeppelin.\n\nBy the end of the workshop, students had created a basic DApp and gained a solid foundation in blockchain development."
+  },
+  {
+    id: 10,
+    title: "Hack with Her Hackathon",
+    description: "A hackathon on the theme of 'Women Empowerment'.",
+    image: "./hwh.jpg",
+    category: "Events",
+    tags: ['Coding' , 'Ideas' , 'Women Empowerment'],
+    team: ['Riddhi Garg' , 'Piyanshi' , 'Sanchita' ],
+    demoLink: "https://simon-says-game-clone.netlify.app/",
+    features: [
+      "Hands-on coding sessions",
+      "Ideas",
+      "Women Empowerment",
+      "Interactive form elements",
+      "CSS animations and transitions",
+      "Mobile-first approach",
+      "Cross-browser compatibility"
+    ],
+    technologies: ["Coding" , "Ideas" , "Women Empowerment"],
+    description_long: "Hack With Her is a transformative hackathon designed to inspire and empower women in technology, innovation, and entrepreneurship. This event brings together women from diverse backgrounds, skill sets, and experiences to create impactful, tech-driven solutions that address real-world challenges. Aimed at fostering an inclusive environment, Hack With Her encourages collaboration, creativity, and leadership among women in the tech industry."
+
+  },
+  {
+    id: 11,
+    title: "Joget Hackathon",
+    description: "A hackathon that needs no code'.",
+    image: "./joget.jpg",
+    category: "Events",
+    tags: ['Codeless' , 'Ideas' , 'Hackathon'],
+    team: ['Rajat' , 'Rishab' , 'Riya Garg' , 'Piyanshi'  ],
+    demoLink: "https://simon-says-game-clone.netlify.app/",
+    features: [
+      "Codeless",
+      "Ideas",  
+    ],
+    technologies: ["Codeless" , "Ideas" , "Hackathon"],
+    description_long: "This hackathon focused on the theme of 'Women Empowerment'. Participants gained hands-on experience with coding and ideas. The workshop was designed to help students understand the core concepts of blockchain technology and its applications in the decentralized web. Through interactive coding sessions and real-world examples, participants learned how to create and deploy their own smart contracts and build DApps using popular frameworks like Truffle and OpenZeppelin.\n\nBy the end of the workshop, students had created a basic DApp and gained a solid foundation in blockchain development."
+  },
+  {
+    id: 12,
+    title: "Azure Certification",
+    description: "A certification on the basics of Azure.",
+    image: "./azure.jpg",
+    category: "Events",
+    tags: ['Azure' , 'Certification'],
+    team: ['Rajat' , 'Rishab' , 'Riya Garg' , 'Piyanshi' ,'Raksham' , 'Priyanshu' , 'Pranav' , 'Prachi' , 'Pavitar' , 'Radhil' , 'Riddhi'  , 'Sanchita' , 'Pranay' , 'Sarthak' , 'Ramanpreet' , 'Raman' , 'Raghav' , 'Rishab' , 'Riya' , 'Piyanshi' , 'Sanchita' , 'Pranay' , 'Prachi' , 'Pavitar' , 'Radhil' , 'Riddhi' ],
+    demoLink: "https://simon-says-game-clone.netlify.app/",
+    features: [
+      "Azure",
+      "Certification",  
+    ],
+    technologies: ["Azure" , "Certification"],
+    description_long: "This certification focused on the basics of Azure. Participants gained hands-on experience with Azure and its applications. The workshop was designed to help students understand the core concepts of Azure and its applications in the decentralized web. Through interactive coding sessions and real-world examples, participants learned how to create and deploy their own smart contracts and build DApps using popular frameworks like Truffle and OpenZeppelin.\n\nBy the end of the workshop, students had created a basic DApp and gained a solid foundation in blockchain development."
+  },
+  {
+    id: 13,
+    title: "Python Bootcamp Infosys",
+    description: "A bootcamp on the basics of Python.",
+    image: "./bootcamp.jpg", 
+    category: "Events",
+    tags: ['Python' , 'Bootcamp'],
+    team: ['Rajat'  , 'Riya Garg' , 'Piyanshi' ,'Raksham' , 'Priyanshu' , 'Pranav' , 'Prachi' , 'Pavitar' , 'Radhil' , 'Riddhi', 'Rehat' , 'Rajatvir' , 'Ramanpreet' , 'Raman' , 'Raghav' , 'Rishab' , 'Riya' , 'Piyanshi' , 'Sanchita' , 'Pranay' , 'Prachi' , 'Pavitar' , 'Radhil' , 'Riddhi' , 'Sarthak' ],
+    demoLink: "https://simon-says-game-clone.netlify.app/",
+    features: [
+      "Python",
+      "Bootcamp",  
+    ],
+    technologies: ["Python" , "Bootcamp"],
+    description_long: "This certification focused on the basics of Azure. Participants gained hands-on experience with Azure and its applications. The workshop was designed to help students understand the core concepts of Azure and its applications in the decentralized web. Through interactive coding sessions and real-world examples, participants learned how to create and deploy their own smart contracts and build DApps using popular frameworks like Truffle and OpenZeppelin.\n\nBy the end of the workshop, students had created a basic DApp and gained a solid foundation in blockchain development."
+  },
+  {
+    id: 14,
+    title: "Technova",
+    description: "A hackathon on the theme of 'Women Empowerment'.",
+    image: "./Technova.JPG", 
+    category: "Events",
+    tags: ['Technova' , 'Hackathon'],
+    team: ['Sarthak' ],
+    demoLink: "https://simon-says-game-clone.netlify.app/",
+    features: [
+      "Technova",
+      "Hackathon",  
+    ],
+    technologies: ["Technova" , "Hackathon"],
+    description_long: "This certification focused on the basics of Azure. Participants gained hands-on experience with Azure and its applications. The workshop was designed to help students understand the core concepts of Azure and its applications in the decentralized web. Through interactive coding sessions and real-world examples, participants learned how to create and deploy their own smart contracts and build DApps using popular frameworks like Truffle and OpenZeppelin.\n\nBy the end of the workshop, students had created a basic DApp and gained a solid foundation in blockchain development."
   }
 ];
 

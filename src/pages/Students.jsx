@@ -63,7 +63,7 @@ const students = [
     id: 8,
     name: "Rakshit",
     role: "UI/UX Designer",
-    image: "/images/rakshit.jpg",
+    image: "/rakshit2.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
   },
@@ -79,7 +79,7 @@ const students = [
     id: 10,
     name: "Riddhi Garg",
     role: "Figma",
-    image: "/images/riddhi.jpg",
+    image: "/riddhi2.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/riddhi-garg-4951b234b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -95,7 +95,7 @@ const students = [
     id: 12,
     name: "Priyansh Thakur",
     role: "Frontend Developer",
-    image: "/images/priyansh.jpg",
+    image: "/priyansh2.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/priyansh-thakur-504a38308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -103,7 +103,7 @@ const students = [
     id: 13,
     name: "Raghav Sharma",
     role: "React Developer",
-    image: "/images/raghav.jpg",
+    image: "/raghav2.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/raghav-sharma-9861a6347?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -127,7 +127,7 @@ const students = [
     id: 16,
     name: "Sarthak Khurana",
     role: "UI/UX Designer",
-    image: "/images/sarthak2.jpg",
+    image: "/sarthak3.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/sarthak-khurana-279399325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -143,7 +143,7 @@ const students = [
     id: 18,
     name: "Pranay Obero",
     role: "Designer",
-    image: "/images/pranay.jpg",
+    image: "/pranay2.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/pranay-oberoi-058747312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -159,7 +159,7 @@ const students = [
     id: 20,
     name: "Pavitar Kumar",
     role: "Java Developer",
-    image: "/images/team2.jpg",
+    image: "/pavitr.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/pavitar-kumar-915b79325?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
   },
@@ -170,6 +170,22 @@ const students = [
     image: "/images/radil.jpg",
     description: "Student of 1st Year at Chitkara",
     linkedin: 'https://www.linkedin.com/in/radhil-narula-6b1947331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+  },
+  {
+    id: 22,
+    name: "Pukhraj Soni",
+    role: "C++ Developer",
+    image: "/pukhraj.jpg",
+    description: "Student of 1st Year at Chitkara",
+    linkedin: 'https://www.linkedin.com/in/radhil-narula-6b1947331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+  },
+  {
+    id: 23,
+    name: "Riya Yadav",
+    role: "C++ Developer",
+    image: "/riya2.jpg",
+    description: "Student of 1st Year at Chitkara",
+    linkedin: ' https://www.linkedin.com/in/riya-y-166103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app ium=android_app',
   }
 
 
@@ -224,17 +240,20 @@ const Students = () => {
       </section>
 
       {/* Search Section */}
-      <section className="py-4" style={{ backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa' }}>
+      <section className="py-4" style={{ backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa' , marginTop: '10px' , marginBottom: '10px' }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-6">
               <div className="input-group">
                 <span className="input-group-text" style={{ 
+                  
+                  borderRadius: '25px 0 0 25px',
+              
                   backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
                   borderColor: isDarkTheme ? '#404040' : '#dee2e6',
                   color: isDarkTheme ? '#ffffff' : '#000000'
                 }}>
-                  <i className="bi bi-search"></i>
+                  <i className="bi bi-search" style={{ color: isDarkTheme ? '#ffffff' : '#000000'  }}></i>
                 </span>
                 <input
                   type="text"
@@ -243,6 +262,7 @@ const Students = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
+                    borderRadius: '0 25px 25px 0',
                     backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
                     borderColor: isDarkTheme ? '#404040' : '#dee2e6',
                     color: isDarkTheme ? '#ffffff' : '#000000',
