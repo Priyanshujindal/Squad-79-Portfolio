@@ -242,63 +242,34 @@ const Chatbot = () => {
           return array;
         };
         
-        let matchingMembers;
-        
-        matchingMembers = shuffleArray(teamMemberSkills.filter(member => 
-          member.skills.includes(selectedSkill) && 
-          member.experience === selectedExperience &&
-          member.workMode.includes(selectedWorkMode)
-        )).slice(0, parseInt(option));
+        // Ensure unbiased selection from all students
+        let matchingMembers = shuffleArray(teamMemberSkills).slice(0, parseInt(option));
         
         // First show results
         setTimeout(() => {
           if (matchingMembers.length > 0) {
-            addBotMessage({ 
-              sender: 'bot', 
+            addBotMessage({
+              sender: 'bot',
               text: `Here are the team members that match your criteria:`,
               members: matchingMembers
             });
+            
           } else {
-            // Try a less strict filter if no exact matches
-            let partialMatches;
-            
-            // First try with most important criteria
-            partialMatches = teamMemberSkills.filter(member => 
-              member.skills.includes(selectedSkill) && 
-              member.experience === selectedExperience
-            );
-            
-            // If still no matches, try with just the skill
-            if (partialMatches.length === 0) {
-              partialMatches = teamMemberSkills.filter(member => 
-                member.skills.includes(selectedSkill)
-              );
-            }
-            
-            if (partialMatches.length > 0) {
-              addBotMessage({ 
-                sender: 'bot', 
-                text: `I couldn't find an exact match for all your criteria, but here are team members who match your core requirements:`,
-                members: partialMatches
-              });
-            } else {
-              addBotMessage({ 
-                sender: 'bot', 
-                text: `I couldn't find team members matching your criteria. Would you like to try a different skill?`,
-                skills: availableSkills
-              });
-              // Reset selections to start over
-              setSelectedSkill('');
-              setSelectedExperience('');
-              setSelectedWorkMode('');
-              setSelectedNumber('');
-            }
+            addBotMessage({
+              sender: 'bot',
+              text: `I couldn't find team members matching your criteria. Would you like to try a different skill?`,
+              skills: availableSkills
+            });
+            // Reset selections to start over
+            setSelectedSkill('');
+            setSelectedExperience('');
+            setSelectedWorkMode('');
+            setSelectedNumber('');
           }
-          
           // Add a "filter again" option with longer delay
           setTimeout(() => {
-            addBotMessage({ 
-              sender: 'bot', 
+            addBotMessage({
+              sender: 'bot',
               text: "Would you like to search with different criteria?",
               options: ['Search again', 'Get help']
             });
