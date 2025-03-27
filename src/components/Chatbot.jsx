@@ -11,7 +11,6 @@ const Chatbot = () => {
   const [chatMode, setChatMode] = useState('initial'); // 'initial', 'hire', 'help'
   const [selectedSkill, setSelectedSkill] = useState('');
   const [selectedExperience, setSelectedExperience] = useState('');
-  const [selectedProject, setSelectedProject] = useState('');
   const [selectedWorkMode, setSelectedWorkMode] = useState('');
   const [selectedAvailability, setSelectedAvailability] = useState('');
   const [selectedCommunication, setSelectedCommunication] = useState('');
@@ -96,9 +95,6 @@ const Chatbot = () => {
   // Available experience levels for filtering
   const experienceLevels = ["Beginner", "Intermediate", "Advanced"];
 
-  // Available project types for filtering
-  const projectTypes = ["Spotify Clone", "Tic Tac Toe", "Money Tracking Website", "Dino Game", "Netflix Clone", "Python Workshop", "Other"];
-
   // Available work modes for filtering
   const workModes = ["Remote", "In-office", "Hybrid"];
 
@@ -182,7 +178,6 @@ const Chatbot = () => {
         setChatMode('hire');
         setSelectedSkill('');
         setSelectedExperience('');
-        setSelectedProject('');
         setSelectedWorkMode('');
         setSelectedAvailability('');
         setSelectedCommunication('');
@@ -226,25 +221,12 @@ const Chatbot = () => {
         setTimeout(() => {
           addBotMessage({ 
             sender: 'bot', 
-            text: `Excellent! And what type of project are they going to work on?`,
-            projectTypes: projectTypes
-          });
-        }, 1000);
-      }
-      // Third level: If skill and experience are selected, this is project type selection
-      else if (!selectedProject) {
-        setSelectedProject(option);
-        
-        // If "Other" is selected, skip to work mode selection
-        setTimeout(() => {
-          addBotMessage({ 
-            sender: 'bot', 
             text: `Perfect! Now, what work mode are you looking for?`,
             workModes: workModes
           });
         }, 1000);
       }
-      // Fourth level: If skill, experience, and project are selected, this is work mode selection
+      // Third level: If skill and experience are selected, this is work mode selection
       else if (!selectedWorkMode) {
         setSelectedWorkMode(option);
         
@@ -256,7 +238,7 @@ const Chatbot = () => {
           });
         }, 1000);
       }
-      // Fifth level: If skill, experience, project, and work mode are selected, this is availability selection
+      // Fourth level: If skill, experience, and work mode are selected, this is availability selection
       else if (!selectedAvailability) {
         setSelectedAvailability(option);
         
@@ -268,33 +250,20 @@ const Chatbot = () => {
           });
         }, 1000);
       }
-      // Sixth level: If skill, experience, project, work mode, and availability are selected, this is communication style selection
+      // Fifth level: If skill, experience, work mode, and availability are selected, this is communication style selection
       else if (!selectedCommunication) {
         setSelectedCommunication(option);
         
         // Filter team members based on all selected criteria
         let matchingMembers;
         
-        if (selectedProject === "Other") {
-          // If "Other" was selected for project, don't filter by project
-          matchingMembers = teamMemberSkills.filter(member => 
-            member.skills.includes(selectedSkill) && 
-            member.experience === selectedExperience &&
-            member.workMode.includes(selectedWorkMode) &&
-            member.availability === selectedAvailability &&
-            member.communicationStyle.includes(option)
-          );
-        } else {
-          // Filter with all criteria
-          matchingMembers = teamMemberSkills.filter(member => 
-            member.skills.includes(selectedSkill) && 
-            member.experience === selectedExperience &&
-            member.projects.includes(selectedProject) &&
-            member.workMode.includes(selectedWorkMode) &&
-            member.availability === selectedAvailability &&
-            member.communicationStyle.includes(option)
-          );
-        }
+        matchingMembers = teamMemberSkills.filter(member => 
+          member.skills.includes(selectedSkill) && 
+          member.experience === selectedExperience &&
+          member.workMode.includes(selectedWorkMode) &&
+          member.availability === selectedAvailability &&
+          member.communicationStyle.includes(option)
+        );
         
         // First show results
         setTimeout(() => {
@@ -336,7 +305,6 @@ const Chatbot = () => {
               // Reset selections to start over
               setSelectedSkill('');
               setSelectedExperience('');
-              setSelectedProject('');
               setSelectedWorkMode('');
               setSelectedAvailability('');
               setSelectedCommunication('');
@@ -357,7 +325,6 @@ const Chatbot = () => {
       else if (option === "Search again") {
         setSelectedSkill('');
         setSelectedExperience('');
-        setSelectedProject('');
         setSelectedWorkMode('');
         setSelectedAvailability('');
         setSelectedCommunication('');
@@ -516,19 +483,6 @@ const Chatbot = () => {
                         {message.experienceLevels.map((level, levelIndex) => (
                           <button key={levelIndex} onClick={() => handleOptionClick(level)}>
                             {level}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Render project types */}
-                  {message.projectTypes && (
-                    <div className="message-options">
-                      <div className="project-buttons">
-                        {message.projectTypes.map((project, projectIndex) => (
-                          <button key={projectIndex} onClick={() => handleOptionClick(project)}>
-                            {project}
                           </button>
                         ))}
                       </div>

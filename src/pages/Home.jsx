@@ -653,6 +653,13 @@ const Home = () => {
           .zoom-image.zoomed {
             transform: scale(1.1);
           }
+          .zoom-image {
+            transform: scale(1);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .zoom-image.zoomed {
+            transform: scale(1.1);
+          }
         `}
       </style>
       <div className="stars">
