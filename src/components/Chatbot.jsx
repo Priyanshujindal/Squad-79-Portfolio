@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import '../styles/Chatbot.css';
 import { FaRobot, FaUser, FaTimes, FaTrash, FaMoon, FaSun } from 'react-icons/fa';
 import { useTheme } from '../context/ThemeContext';
+import studentData from '../data/students';
 
 const Chatbot = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
@@ -12,8 +13,7 @@ const Chatbot = () => {
   const [selectedSkill, setSelectedSkill] = useState('');
   const [selectedExperience, setSelectedExperience] = useState('');
   const [selectedWorkMode, setSelectedWorkMode] = useState('');
-  const [selectedAvailability, setSelectedAvailability] = useState('');
-  const [selectedCommunication, setSelectedCommunication] = useState('');
+  const [selectedNumber, setSelectedNumber] = useState('');
   const messageContainerRef = useRef(null);
 
   // All possible predefined questions
@@ -74,19 +74,17 @@ const Chatbot = () => {
     "What is the Netflix Clone project?": "The Netflix Clone project recreates the login page UI of the popular streaming platform. It features a responsive design, form validation, and visual elements matching the Netflix brand. It demonstrates attention to detail in frontend development and UI/UX design principles."
   };
   
-  // Skills for each team member (for hire filtering)
-  const teamMemberSkills = [
-    { id: 1, name: "Priyanshu Jindal", skills: ["HTML", "CSS", "JavaScript", "React", "UI/UX", "Game Development"], experience: "Advanced", projects: ["Spotify Clone", "Dino Game"], workMode: ["Remote", "Hybrid"], availability: "Immediate", communicationStyle: ["Direct", "Collaborative"] },
-    { id: 2, name: "Raksham Sharma", skills: ["HTML", "CSS", "JavaScript", "Python", "Data Analysis", "Education"], experience: "Intermediate", projects: ["Money Tracking Website", "Python Workshop"], workMode: ["In-office"], availability: "Within 1 month", communicationStyle: ["Collaborative"] },
-    { id: 3, name: "Rajatvir Pandhi", skills: ["HTML", "CSS", "JavaScript", "Python", "Data Visualization", "Education"], experience: "Intermediate", projects: ["Tic Tac Toe", "Python Workshop"], workMode: ["Remote", "Hybrid"], availability: "Within 2 weeks", communicationStyle: ["Independent", "Direct"] },
-    { id: 4, name: "Riya Garg", skills: ["HTML", "CSS", "JavaScript", "Design", "Content Creation"], experience: "Beginner", projects: ["Netflix Clone"], workMode: ["In-office", "Hybrid"], availability: "Within 1 month", communicationStyle: ["Collaborative"] },
-    { id: 5, name: "Rehat Singh", skills: ["HTML", "CSS", "JavaScript", "Python", "Event Organization"], experience: "Intermediate", projects: ["Money Tracking Website", "Python Workshop"], workMode: ["In-office"], availability: "Immediate", communicationStyle: ["Direct"] },
-    { id: 6, name: "Parth Dommera", skills: ["HTML", "CSS", "JavaScript", "UI Development"], experience: "Beginner", projects: ["Netflix Clone"], workMode: ["Remote"], availability: "Within 3 months", communicationStyle: ["Independent"] },
-    { id: 7, name: "Ramanpreet Singh", skills: ["HTML", "CSS", "JavaScript", "Responsive Design"], experience: "Beginner", projects: ["Tic Tac Toe"], workMode: ["In-office", "Hybrid"], availability: "Within 2 weeks", communicationStyle: ["Collaborative"] },
-    { id: 8, name: "Rakshit", skills: ["HTML", "CSS", "JavaScript", "Frontend Development"], experience: "Beginner", projects: ["Netflix Clone"], workMode: ["Remote"], availability: "Within 1 month", communicationStyle: ["Independent"] },
-    { id: 9, name: "Shivani Jindal", skills: ["HTML", "CSS", "JavaScript", "Web Design"], experience: "Intermediate", projects: ["Money Tracking Website"], workMode: ["Hybrid"], availability: "Immediate", communicationStyle: ["Direct", "Collaborative"] },
-    { id: 10, name: "Riddhi Garg", skills: ["HTML", "CSS", "JavaScript", "UX Research"], experience: "Beginner", projects: ["Netflix Clone"], workMode: ["In-office"], availability: "Within 3 months", communicationStyle: ["Collaborative"] }
-  ];
+  // Transform student data for filtering
+  const teamMemberSkills = studentData.map(student => ({
+    id: student.id,
+    name: student.name,
+    skills: student.skills,
+    experience: student.experienceLevel,
+    projects: student.projects.map(p => p.title),
+    workMode: student.workPreferences,
+    availability: 'Immediate', // Default value
+    communicationStyle: ['Collaborative'] // Default value
+  }));
 
   // Available skills for filtering (for hire path)
   const availableSkills = ["HTML", "CSS", "JavaScript", "React", "Python", "UI/UX", "Game Development", 
@@ -97,12 +95,6 @@ const Chatbot = () => {
 
   // Available work modes for filtering
   const workModes = ["Remote", "In-office", "Hybrid"];
-
-  // Available availability options for filtering
-  const availabilityOptions = ["Immediate", "Within 2 weeks", "Within 1 month", "Within 3 months"];
-
-  // Available communication styles for filtering
-  const communicationStyles = ["Direct", "Collaborative", "Independent"];
 
   // Initialize available questions
   useEffect(() => {
@@ -179,8 +171,7 @@ const Chatbot = () => {
         setSelectedSkill('');
         setSelectedExperience('');
         setSelectedWorkMode('');
-        setSelectedAvailability('');
-        setSelectedCommunication('');
+        setSelectedNumber('');
         
         setTimeout(() => {
           addBotMessage({ 
@@ -233,44 +224,38 @@ const Chatbot = () => {
         setTimeout(() => {
           addBotMessage({ 
             sender: 'bot', 
-            text: `Great! When do you need this team member to start?`,
-            availabilityOptions: availabilityOptions
+            text: `How many team members do you need?`,
+            numberOptions: [1, 2, 3, 4, 5]
           });
         }, 1000);
       }
-      // Fourth level: If skill, experience, and work mode are selected, this is availability selection
-      else if (!selectedAvailability) {
-        setSelectedAvailability(option);
+      // Fourth level: If skill, experience, and work mode are selected, this is number of persons selection
+      else if (!selectedNumber) {
+        setSelectedNumber(parseInt(option));
         
-        setTimeout(() => {
-          addBotMessage({ 
-            sender: 'bot', 
-            text: `Finally, what communication style do you prefer in your team?`,
-            communicationStyles: communicationStyles
-          });
-        }, 1000);
-      }
-      // Fifth level: If skill, experience, work mode, and availability are selected, this is communication style selection
-      else if (!selectedCommunication) {
-        setSelectedCommunication(option);
+        // Shuffle array for fair selection
+        const shuffleArray = (array) => {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        };
         
-        // Filter team members based on all selected criteria
         let matchingMembers;
         
-        matchingMembers = teamMemberSkills.filter(member => 
+        matchingMembers = shuffleArray(teamMemberSkills.filter(member => 
           member.skills.includes(selectedSkill) && 
           member.experience === selectedExperience &&
-          member.workMode.includes(selectedWorkMode) &&
-          member.availability === selectedAvailability &&
-          member.communicationStyle.includes(option)
-        );
+          member.workMode.includes(selectedWorkMode)
+        )).slice(0, parseInt(option));
         
         // First show results
         setTimeout(() => {
           if (matchingMembers.length > 0) {
             addBotMessage({ 
               sender: 'bot', 
-              text: `Perfect! Here are team members who match all your criteria:`,
+              text: `Here are the team members that match your criteria:`,
               members: matchingMembers
             });
           } else {
@@ -306,8 +291,7 @@ const Chatbot = () => {
               setSelectedSkill('');
               setSelectedExperience('');
               setSelectedWorkMode('');
-              setSelectedAvailability('');
-              setSelectedCommunication('');
+              setSelectedNumber('');
             }
           }
           
@@ -326,8 +310,7 @@ const Chatbot = () => {
         setSelectedSkill('');
         setSelectedExperience('');
         setSelectedWorkMode('');
-        setSelectedAvailability('');
-        setSelectedCommunication('');
+        setSelectedNumber('');
         
         setTimeout(() => {
           addBotMessage({ 
@@ -502,26 +485,13 @@ const Chatbot = () => {
                     </div>
                   )}
                   
-                  {/* Render availability options */}
-                  {message.availabilityOptions && (
+                  {/* Render number of persons */}
+                  {message.numberOptions && (
                     <div className="message-options">
-                      <div className="availability-buttons">
-                        {message.availabilityOptions.map((availability, availIndex) => (
-                          <button key={availIndex} onClick={() => handleOptionClick(availability)}>
-                            {availability}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Render communication styles */}
-                  {message.communicationStyles && (
-                    <div className="message-options">
-                      <div className="communication-buttons">
-                        {message.communicationStyles.map((style, styleIndex) => (
-                          <button key={styleIndex} onClick={() => handleOptionClick(style)}>
-                            {style}
+                      <div className="number-buttons">
+                        {message.numberOptions.map((number, numberIndex) => (
+                          <button key={numberIndex} onClick={() => handleOptionClick(number)}>
+                            {number}
                           </button>
                         ))}
                       </div>
@@ -556,8 +526,6 @@ const Chatbot = () => {
                             <span className="experience-level">Experience: {member.experience}</span>
                             <span className="project-type">Projects: {member.projects.join(', ')}</span>
                             <span className="work-mode">Work Mode: {member.workMode.join(', ')}</span>
-                            <span className="availability">Availability: {member.availability}</span>
-                            <span className="communication-style">Communication: {member.communicationStyle.join(', ')}</span>
                           </div>
                           <a href={`/more/${member.id}`} className="view-profile">View Profile</a>
                         </div>
