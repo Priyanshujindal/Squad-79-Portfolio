@@ -28,20 +28,20 @@ const Mentors = () => {
     },
     {
       id: 2,
-      name: 'Manav Verma',
-      role: 'Tech Mentor',
-      image: './images/manav.jpeg',
-      bio: 'Full Stack Web Developer  | Skilled in HTML, CSS, JavaScript, Python, React.js, Node.js, Mongo DB.',
-      specialties: ['React', 'Python', 'Performance Optimization'],
+      name: 'Khyati Sadana',
+      role: 'Program Manager',
+      image: './images/khyati.jpg',
+      bio: 'Driving Learning & Delivering Excellence | Program Manager at Kalvium.',
+      specialties: ['Patience','Confidence','Communication'],
       company: 'Kalvium',
-      linkedin: 'https://www.linkedin.com/in/manav-verma-414927188/'
+      linkedin: 'https://www.linkedin.com/in/khyati-kumari-b70000325/'
     },
     {
       id: 3,
       name: 'Aparna Tiwari',
-      role: 'BOCS Mentor',
+      role: 'Mentor',
       image: './images/aparna2.jpg',
-      bio: 'Dynamic Full Stack Developer (MERN) | Proficient in JavaScript, React.js, Node.js , MongoDB , HTML , CSS |.',
+      bio: 'Dynamic Full Stack Developer (MERN) | Proficient in JavaScript | React.js | Node.js | MongoDB | HTML | CSS |.',
       specialties: ['MERN', 'HTML', 'Node.js'],
       company: 'Kalvium',
       linkedin: 'https://www.linkedin.com/in/aparna-tiwari-642038274/'
@@ -49,7 +49,7 @@ const Mentors = () => {
     {
       id: 4,
       name: 'Junaid Khan',
-      role: 'DBMS Mentor',
+      role: 'Mentor',
       image: './images/junaid.jpg',
       bio: 'Full Stack Web Developer(MERN) | JavaScript | Typescript | React JS | Redux | Node JS | Express JS | MongoDB | MySQL | Java',
       specialties: ['MERN', 'JavaScript', 'Typescript'],
@@ -59,12 +59,22 @@ const Mentors = () => {
     {
       id: 5,
       name: 'Rohit Gupta',
-      role: 'Full Stack Developer',
+      role: 'Mentor',
       image: './images/rohit.jpg',
-      bio: 'Full Stack Developer | Skilled in HTML, CSS, JavaScript, Python, React.js, Node.js, Mongo DB.',
+      bio: 'Full Stack Developer | Skilled in HTML | CSS | JavaScript | Python | React.js | Node.js | Mongo DB.',
       specialties: ['React', 'Python', 'Performance Optimization'],
       company: 'Kalvium',
       linkedin: 'https://www.linkedin.com/in/rohit-gupta-b70000325/'
+    },
+    {
+      id: 6,
+      name: 'Manav Verma',
+      role: 'Mentor',
+      image: './images/manav.jpeg',
+      bio: 'Full Stack Web Developer  | Skilled in HTML | CSS | JavaScript | Python | React.js | Node.js | Mongo DB',
+      specialties: ['React', 'Python', 'Performance Optimization'],
+      company: 'Kalvium',
+      linkedin: 'https://www.linkedin.com/in/manav-verma-414927188/'
     }
   ];
 
@@ -129,7 +139,7 @@ const Mentors = () => {
       <section className={`py-16 fade-in fade-in-delay-1 ${isLoaded ? 'loaded' : ''} ${isDarkTheme ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`text-3xl font-bold mb-8 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Benefits of Our Mentorship</h2>
+            <h2 className={` font-bold mb-5 ${isDarkTheme ? 'text-white' : 'text-black'}` } style={{ fontSize : '2.5rem' , marginBottom : '2.5rem' , fontWeight : 'bold'  , marginTop : '1rem' }}>Benefits of Our Mentorship</h2>
             <div className="row g-4">
               {[0, 1, 2].map((index) => (
                 <div key={index} className={`col-md-4 fade-in fade-in-delay-${index + 1} ${isLoaded ? 'loaded' : ''}`}>
@@ -138,7 +148,7 @@ const Mentors = () => {
                     backgroundColor: '#ffffff',
                     color: '#333333'
                   }}>
-                    <div className="card-body text-center">
+                    <div className="card-body text-center" >
                       <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
@@ -156,9 +166,9 @@ const Mentors = () => {
       </section>
 
       {/* Mentors Profiles */}
-      <section className={`py-20 fade-in fade-in-delay-2 ${isLoaded ? 'loaded' : ''} ${isDarkTheme ? 'bg-gray-900' : 'bg-white'}`}>
+      <section className={`py-20 fade-in fade-in-delay-2 ${isLoaded ? 'loaded' : ''} ${isDarkTheme ? 'bg-gray-900' : 'bg-white'}` } style={{marginTop : '-3rem'}}>
         <div className="container mx-auto px-4">
-          <h2 className={`text-3xl font-bold mb-16 text-center ${isDarkTheme ? 'text-white' : 'text-black'}`} style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>Meet Our Mentors</h2>
+          <h2 className={`text-3xl font-bold mb-16 text-center ${isDarkTheme ? 'text-white' : 'text-black'}`} style={{ fontWeight: 'bold' , fontSize : '2.5rem' , marginBottom : '4rem' }}>Meet Our Mentors</h2>
 
           <div className="row g-5">
             {mentors.map((mentor, index) => (

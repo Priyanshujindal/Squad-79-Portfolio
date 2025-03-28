@@ -98,8 +98,8 @@ const Footer = () => {
               <div className="col-6">
                 <ul className="list-unstyled">
                   <li className="mb-2">
-                    <Link to="/teams" className="text-white text-decoration-none">
-                      <i className="bi bi-people me-2"></i>Teams
+                    <Link to="/more" className="text-white text-decoration-none">
+                      <i className="bi bi-people me-2"></i>More
                     </Link>
                   </li>
                   <li className="mb-2">
@@ -135,7 +135,7 @@ const Footer = () => {
                 textShadow: "0 0 10px rgba(255, 0, 0, 0.7)",
                 transform: "scale(1.5)",
                 color: "#dc143c"
-              }}>X</span>  Kalvium {new Date().getFullYear()}
+              }}>X</span> Kalvium {new Date().getFullYear()}
             </p>
           </div>
           
