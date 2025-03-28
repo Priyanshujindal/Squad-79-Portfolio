@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import { projectsData } from '../data/projects';
@@ -6,6 +6,14 @@ import { projectsData } from '../data/projects';
 const Experience = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const { isDarkTheme } = useContext(ThemeContext);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const categories = ['All', 'Web Development', 'Workshops', 'Events'];
 
@@ -15,8 +23,49 @@ const Experience = () => {
 
   const content = (
     <div>
+      <style>
+        {`
+          .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: opacity, transform;
+          }
+          .fade-in.loaded {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          .fade-in-delay-1 {
+            transition-delay: 0.3s;
+          }
+          .fade-in-delay-2 {
+            transition-delay: 0.5s;
+          }
+          .fade-in-delay-3 {
+            transition-delay: 0.7s;
+          }
+          .card {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .card:hover {
+            transform: translateY(-8px);
+          }
+          .card img {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .card:hover img {
+            transform: scale(1.08);
+          }
+          .btn {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .btn:hover {
+            transform: translateY(-3px);
+          }
+        `}
+      </style>
       {/* Hero Section */}
-      <section className={`text-white py-5 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'}`} style={{ backgroundColor: '#ff6b6b' }}>
+      <section className={`text-white py-5 fade-in ${isLoaded ? 'loaded' : ''} ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'}`} style={{ backgroundColor: '#ff6b6b' }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
@@ -28,7 +77,7 @@ const Experience = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="py-5">
+      <section className={`py-5 fade-in fade-in-delay-1 ${isLoaded ? 'loaded' : ''}`}>
         <div className="container">
           {/* Filter Buttons */}
           <div className="d-flex flex-wrap justify-content-center gap-3 mb-5">
@@ -87,7 +136,7 @@ const Experience = () => {
           {/* Projects Grid */}
           <div className="row g-4">
             {filteredProjects.map((project, index) => (
-              <div key={index} className="col-md-6 col-lg-4">
+              <div key={index} className={`col-md-6 col-lg-4 fade-in fade-in-delay-${(index % 3) + 1} ${isLoaded ? 'loaded' : ''}`}>
                 <div className="card h-100" style={{ 
                   backgroundColor: 'var(--card-bg)',
                   border: 'none',
@@ -225,9 +274,7 @@ const Experience = () => {
     </div>
   );
 
-  return (
-    content
-  );
+  return content;
 };
 
 export default Experience; 

@@ -74,24 +74,8 @@ const Chatbot = () => {
     "What is the Netflix Clone project?": "The Netflix Clone project recreates the login page UI of the popular streaming platform. It features a responsive design, form validation, and visual elements matching the Netflix brand. It demonstrates attention to detail in frontend development and UI/UX design principles."
   };
   
-  // Transform student data for filtering
-  const teamMemberSkills = studentData.map(student => ({
-    id: student.id,
-    name: student.name,
-    skills: student.skills,
-    experience: student.experienceLevel,
-    projects: student.projects.map(p => p.title),
-    workMode: student.workPreferences,
-    availability: 'Immediate', // Default value
-    communicationStyle: ['Collaborative'] // Default value
-  }));
-
-  // Available skills for filtering (for hire path)
-  const availableSkills = ["HTML", "CSS", "JavaScript", "React", "Python", "UI/UX", "Game Development", 
-    "Data Analysis", "Education", "Design", "Content Creation", "Event Organization", "Responsive Design"];
-
   // Available experience levels for filtering
-  const experienceLevels = ["Beginner", "Intermediate", "Advanced"];
+  const experienceLevels = ["Fresher", "Experienced"];
 
   // Available work modes for filtering
   const workModes = ["Remote", "In-office", "Hybrid"];
@@ -193,33 +177,31 @@ const Chatbot = () => {
         }, 800);
       }
     } else if (chatMode === 'hire') {
-      // First level: If no skill is selected yet, this is skill selection
-      if (!selectedSkill) {
+      if (option === "Search again") {
+        setSelectedSkill('');
+        setSelectedExperience('');
+        setSelectedWorkMode('');
+        setSelectedNumber('');
+        
+        setTimeout(() => {
+          addBotMessage({ 
+            sender: 'bot', 
+            text: "Let's try again. What skills are you looking for?",
+            skills: availableSkills
+          });
+        }, 1000);
+      } else if (!selectedSkill) {
         setSelectedSkill(option);
         
         setTimeout(() => {
           addBotMessage({ 
             sender: 'bot', 
-            text: `Great choice! What experience level are you looking for in ${option}?`,
+            text: `What experience level are you looking for?`,
             experienceLevels: experienceLevels
           });
         }, 1000);
-      } 
-      // Second level: If skill is selected but no experience level, this is experience selection
-      else if (!selectedExperience) {
+      } else if (!selectedExperience) {
         setSelectedExperience(option);
-        
-        setTimeout(() => {
-          addBotMessage({ 
-            sender: 'bot', 
-            text: `Perfect! Now, what work mode are you looking for?`,
-            workModes: workModes
-          });
-        }, 1000);
-      }
-      // Third level: If skill and experience are selected, this is work mode selection
-      else if (!selectedWorkMode) {
-        setSelectedWorkMode(option);
         
         setTimeout(() => {
           addBotMessage({ 
@@ -228,9 +210,7 @@ const Chatbot = () => {
             numberOptions: [1, 2, 3, 4, 5]
           });
         }, 1000);
-      }
-      // Fourth level: If skill, experience, and work mode are selected, this is number of persons selection
-      else if (!selectedNumber) {
+      } else if (!selectedNumber) {
         setSelectedNumber(parseInt(option));
         
         // Shuffle array for fair selection
@@ -244,81 +224,119 @@ const Chatbot = () => {
         
         let matchingMembers;
         
+        // First try exact matches
         matchingMembers = shuffleArray(teamMemberSkills.filter(member => 
           member.skills.includes(selectedSkill) && 
-          member.experience === selectedExperience &&
-          member.workMode.includes(selectedWorkMode)
+          member.experience === selectedExperience
         )).slice(0, parseInt(option));
         
-        // First show results
-        setTimeout(() => {
-          if (matchingMembers.length > 0) {
+        // If no exact matches or not enough matches, find closest matches
+        if (matchingMembers.length < parseInt(option)) {
+          // Calculate match score for each member
+          const scoredMembers = teamMemberSkills.map(member => {
+            let score = 0;
+            
+            // Skill match (highest weight)
+            if (member.skills.includes(selectedSkill)) score += 3;
+            
+            // Experience match (medium weight)
+            if (member.experience === selectedExperience) score += 2;
+            
+            // Priority for coding skills
+            const codingSkills = ["HTML", "CSS", "JavaScript", "React", "Python", "C++", "Data Structures", 
+              "Algorithms", "Object-Oriented Programming", "Node.js", "Database Design", "API Development", "Redux"];
+            
+            if (codingSkills.includes(selectedSkill)) {
+              // Give extra points to Raksham and Priyanshu for coding skills
+              if (member.name === "Raksham Sharma" || member.name === "Priyanshu Jindal") {
+                score += 2;
+              }
+            }
+
+            // Special priority for Raksham for C++ and Python
+            if ((selectedSkill === "C++" || selectedSkill === "Python") && member.name === "Raksham Sharma") {
+              score += 5; // Very high priority for Raksham in C++ and Python
+            }
+            
+            return { ...member, score };
+          });
+          
+          // Sort by score and get top matches
+          const closestMatches = scoredMembers
+            .sort((a, b) => b.score - a.score)
+            .slice(0, parseInt(option));
+
+          // Ensure Raksham is in the list for C++ or Python
+          if ((selectedSkill === "C++" || selectedSkill === "Python") && 
+              !closestMatches.some(member => member.name === "Raksham Sharma")) {
+            const raksham = teamMemberSkills.find(member => member.name === "Raksham Sharma");
+            if (raksham) {
+              closestMatches.pop(); // Remove the last match
+              closestMatches.unshift(raksham); // Add Raksham at the beginning
+            }
+          }
+          
+          // First show results
+          setTimeout(() => {
+            if (matchingMembers.length > 0) {
+              addBotMessage({ 
+                sender: 'bot', 
+                text: selectedExperience === "Experienced" 
+                  ? `Note: All our students are freshers, but they have strong skills and project experience. Here are the best matches for your criteria:`
+                  : `Here are the exact matches for your criteria:`,
+                members: matchingMembers
+              });
+              
+              // If we need more matches, show closest matches
+              if (closestMatches.length > matchingMembers.length) {
+                setTimeout(() => {
+                  addBotMessage({ 
+                    sender: 'bot', 
+                    text: selectedExperience === "Experienced"
+                      ? `Here are additional talented freshers who could be great for your role:`
+                      : `Here are additional closest matches to complete your request:`,
+                    members: closestMatches.slice(matchingMembers.length)
+                  });
+                }, 2000);
+              }
+            } else {
+              addBotMessage({ 
+                sender: 'bot', 
+                text: selectedExperience === "Experienced"
+                  ? `Note: All our students are freshers, but they have strong skills and project experience. Here are the best matches based on your criteria:`
+                  : `I couldn't find exact matches, but here are the closest matches based on your criteria:`,
+                members: closestMatches
+              });
+            }
+            
+            // Add a "filter again" option with longer delay
+            setTimeout(() => {
+              addBotMessage({ 
+                sender: 'bot', 
+                text: "Would you like to search with different criteria?",
+                options: ['Search again', 'Get help']
+              });
+            }, 3000);
+          }, 1000);
+        } else {
+          // Show exact matches
+          setTimeout(() => {
             addBotMessage({ 
               sender: 'bot', 
               text: `Here are the team members that match your criteria:`,
               members: matchingMembers
             });
-          } else {
-            // Try a less strict filter if no exact matches
-            let partialMatches;
             
-            // First try with most important criteria
-            partialMatches = teamMemberSkills.filter(member => 
-              member.skills.includes(selectedSkill) && 
-              member.experience === selectedExperience
-            );
-            
-            // If still no matches, try with just the skill
-            if (partialMatches.length === 0) {
-              partialMatches = teamMemberSkills.filter(member => 
-                member.skills.includes(selectedSkill)
-              );
-            }
-            
-            if (partialMatches.length > 0) {
+            // Add a "filter again" option with longer delay
+            setTimeout(() => {
               addBotMessage({ 
                 sender: 'bot', 
-                text: `I couldn't find an exact match for all your criteria, but here are team members who match your core requirements:`,
-                members: partialMatches
+                text: "Would you like to search with different criteria?",
+                options: ['Search again', 'Get help']
               });
-            } else {
-              addBotMessage({ 
-                sender: 'bot', 
-                text: `I couldn't find team members matching your criteria. Would you like to try a different skill?`,
-                skills: availableSkills
-              });
-              // Reset selections to start over
-              setSelectedSkill('');
-              setSelectedExperience('');
-              setSelectedWorkMode('');
-              setSelectedNumber('');
-            }
-          }
-          
-          // Add a "filter again" option with longer delay
-          setTimeout(() => {
-            addBotMessage({ 
-              sender: 'bot', 
-              text: "Would you like to search with different criteria?",
-              options: ['Search again', 'Get help']
-            });
-          }, 3000); // Longer delay to allow reading
-        }, 1000);
-      }
-      // Handle "Search again" option
-      else if (option === "Search again") {
-        setSelectedSkill('');
-        setSelectedExperience('');
-        setSelectedWorkMode('');
-        setSelectedNumber('');
-        
-        setTimeout(() => {
-          addBotMessage({ 
-            sender: 'bot', 
-            text: "Let's try again. What skills are you looking for?",
-            skills: availableSkills
-          });
-        }, 1000);
+            }, 3000);
+          }, 1000);
+        }
       }
     } else if (chatMode === 'help') {
       // Display answer to selected question
@@ -361,7 +379,7 @@ const Chatbot = () => {
               options: ['Hire talent', 'Start over']
             });
           }
-        }, 3000); // Longer delay to allow reading the answer
+        }, 3000);
       }, 1000);
     } else if (option === 'Start over') {
       // Reset chat
@@ -388,6 +406,208 @@ const Chatbot = () => {
     ]);
     setChatMode('initial');
   };
+
+  // Available skills for filtering (for hire path)
+  const availableSkills = [
+    // Frontend Development
+    "React", "JavaScript", "HTML", "CSS",
+    // Backend Development
+    "Python",  "API Development",
+    // Programming Languages
+    "C++", "Data Structures", "Algorithms", "Object-Oriented Programming",
+    // UI/UX Design
+    "UI/UX Design", "UI Design", "Visual Design", "Interaction Design",
+    // Other Skills
+    "Game Development", "Data Analysis", "Event Management", "Content Creation"
+  ];
+
+  // Transform student data for filtering
+  const teamMemberSkills = [
+    {
+      id: 1,
+      name: "Priyanshu Jindal",
+      skills: ["React", "JavaScript", "HTML", "CSS"],
+      experience: "Experienced",
+      projects: ["Spotify Clone", "Dino Game"],
+      workMode: ["Remote", "Hybrid"]
+    },
+    {
+      id: 2,
+      name: "Raksham Sharma",
+      skills: ["React", "JavaScript", "UI/UX", "CSS", "Python", "C++", "Data Structures", "Algorithms"],
+      experience: "Experienced",
+      projects: ["Money Tracking Website", "Python Workshop", "C++ Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 3,
+      name: "Rajatvir Pandhi",
+      skills: ["Python", "Node.js", "Database Design", "API Development"],
+      experience: "Experienced",
+      projects: ["Tic Tac Toe", "Python Workshop"],
+      workMode: ["Remote", "Hybrid"]
+    },
+    {
+      id: 4,
+      name: "Riya Garg",
+      skills: ["UI Design", "User Research", "Prototyping", "Figma"],
+      experience: "Fresher",
+      projects: ["Netflix Clone"],
+      workMode: ["In-office", "Hybrid"]
+    },
+    {
+      id: 5,
+      name: "Rehat Singh",
+      skills: ["UI/UX Design", "Wireframing", "User Testing", "Adobe XD"],
+      experience: "Fresher",
+      projects: ["UI/UX Projects"],
+      workMode: ["Remote", "Hybrid"]
+    },
+    {
+      id: 6,
+      name: "Parth Doomra",
+      skills: ["UI Design", "Visual Design", "Interaction Design", "Sketch"],
+      experience: "Fresher",
+      projects: ["UI/UX Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 7,
+      name: "Ramanpreet Singh",
+      skills: ["UI/UX Design", "Information Architecture", "User Research", "InVision"],
+      experience: "Fresher",
+      projects: ["UI/UX Projects"],
+      workMode: ["Remote"]
+    },
+    {
+      id: 8,
+      name: "Rakshit",
+      skills: ["UI Design", "Prototyping", "User Testing", "Adobe Creative Suite"],
+      experience: "Fresher",
+      projects: ["UI/UX Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 9,
+      name: "Shivani Jindal",
+      skills: ["UI Design", "Visual Design", "Prototyping", "Figma"],
+      experience: "Fresher",
+      projects: ["UI/UX Projects"],
+      workMode: ["Remote", "Hybrid"]
+    },
+    {
+      id: 10,
+      name: "Riddhi Garg",
+      skills: ["Figma", "UI Design", "Prototyping", "Visual Design"],
+      experience: "Fresher",
+      projects: ["UI/UX Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 11,
+      name: "Pranav Arora",
+      skills: ["Ethical Hacking", "Cybersecurity", "Network Security", "Penetration Testing"],
+      experience: "Experienced",
+      projects: ["Security Projects"],
+      workMode: ["Remote"]
+    },
+    {
+      id: 12,
+      name: "Priyansh Thakur",
+      skills: ["React", "JavaScript", "HTML", "CSS"],
+      experience: "Experienced",
+      projects: ["Web Development Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 13,
+      name: "Raghav Sharma",
+      skills: ["React", "Redux", "JavaScript", "Web Development"],
+      experience: "Experienced",
+      projects: ["Web Development Projects"],
+      workMode: ["Remote", "Hybrid"]
+    },
+    {
+      id: 14,
+      name: "Rishab Bansal",
+      skills: ["Choreography", "Performance", "Dance Instruction", "Event Management"],
+      experience: "Experienced",
+      projects: ["Dance Events"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 15,
+      name: "Piyanshi",
+      skills: ["React", "JavaScript", "HTML", "CSS"],
+      experience: "Fresher",
+      projects: ["Web Development Projects"],
+      workMode: ["Remote"]
+    },
+    {
+      id: 16,
+      name: "Sarthak Khurana",
+      skills: ["UI Design", "UX Research", "Prototyping", "Wireframing"],
+      experience: "Fresher",
+      projects: ["UI/UX Projects"],
+      workMode: ["In-office", "Hybrid"]
+    },
+    {
+      id: 17,
+      name: "Sanchita Bhandari",
+      skills: ["React", "JavaScript", "HTML", "CSS"],
+      experience: "Fresher",
+      projects: ["Web Development Projects"],
+      workMode: ["Remote"]
+    },
+    {
+      id: 18,
+      name: "Pranay Obero",
+      skills: ["Graphic Design", "UI Design", "Visual Design", "Adobe Creative Suite"],
+      experience: "Experienced",
+      projects: ["Design Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 19,
+      name: "Prachi Behal",
+      skills: ["React", "JavaScript", "HTML", "CSS"],
+      experience: "Fresher",
+      projects: ["Web Development Projects"],
+      workMode: ["Remote", "Hybrid"]
+    },
+    {
+      id: 20,
+      name: "Pavitar Kumar",
+      skills: ["React", "JavaScript", "HTML", "CSS"],
+      experience: "Fresher",
+      projects: ["Web Development Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 21,
+      name: "Radhil Narula",
+      skills: ["React", "JavaScript", "HTML", "CSS"],
+      experience: "Fresher",
+      projects: ["Web Development Projects"],
+      workMode: ["Remote"]
+    },
+    {
+      id: 22,
+      name: "Pukhraj Soni",
+      skills: ["C++", "Data Structures", "Algorithms", "Object-Oriented Programming"],
+      experience: "Experienced",
+      projects: ["C++ Projects"],
+      workMode: ["In-office"]
+    },
+    {
+      id: 23,
+      name: "Riya Yadav",
+      skills: ["C++", "Data Structures", "Algorithms", "Object-Oriented Programming"],
+      experience: "Experienced",
+      projects: ["C++ Projects"],
+      workMode: ["Remote", "Hybrid"]
+    }
+  ];
 
   return (
     <div className={`chatbot-container ${isDarkTheme ? 'dark-mode' : ''}`}>

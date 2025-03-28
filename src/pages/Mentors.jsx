@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ContactForm from '../components/ContactForm';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 
 const Mentors = () => {
   const { isDarkTheme } = useTheme();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Sample mentor data
   const mentors = [
@@ -62,8 +70,50 @@ const Mentors = () => {
 
   return (
     <div className={`min-h-screen ${isDarkTheme ? ' text-white' : ' text-dark'}`}>
+      <style>
+        {`
+          .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: opacity, transform;
+          }
+          .fade-in.loaded {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          .fade-in-delay-1 {
+            transition-delay: 0.3s;
+          }
+          .fade-in-delay-2 {
+            transition-delay: 0.5s;
+          }
+          .fade-in-delay-3 {
+            transition-delay: 0.7s;
+          }
+          .card {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .card:hover {
+            transform: translateY(-8px);
+          }
+          .card img {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .card:hover img {
+            transform: scale(1.08);
+          }
+          .btn {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .btn:hover {
+            transform: translateY(-3px);
+          }
+        `}
+      </style>
+
       {/* Header */}
-      <section className={`py-20 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'} `} style={{ backgroundColor: '#ff6b6b' }}>
+      <section className={`py-20 fade-in ${isLoaded ? 'loaded' : ''} ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'} `} style={{ backgroundColor: '#ff6b6b' }}>
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="display-4 fw-bold mb-4" 
@@ -76,77 +126,43 @@ const Mentors = () => {
       </section>
 
       {/* Mentorship Benefits */}
-      <section className={`py-16 ${isDarkTheme ? 'bg-gray-800' : 'bg-white'}`}>
+      <section className={`py-16 fade-in fade-in-delay-1 ${isLoaded ? 'loaded' : ''} ${isDarkTheme ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`text-3xl font-bold mb-8 ${isDarkTheme ? 'text-white' : 'text-black'}`}>Benefits of Our Mentorship</h2>
             <div className="row g-4">
-              <div className="col-md-4">
-                <div className="card border-0 shadow-sm h-100" style={{ 
-                  borderRadius: '1rem', 
-                  backgroundColor: '#ffffff',
-                  color: '#333333'
-                }}>
-                  <div className="card-body text-center">
-                    <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                      </svg>
+              {[0, 1, 2].map((index) => (
+                <div key={index} className={`col-md-4 fade-in fade-in-delay-${index + 1} ${isLoaded ? 'loaded' : ''}`}>
+                  <div className="card border-0 shadow-sm h-100" style={{ 
+                    borderRadius: '1rem', 
+                    backgroundColor: '#ffffff',
+                    color: '#333333'
+                  }}>
+                    <div className="card-body text-center">
+                      <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
+                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3" style={{ color: '#333333' }}>Expert Guidance</h3>
+                      <p style={{ color: '#666666' }}>Learn from industry professionals with years of practical experience in their respective fields.</p>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3" style={{ color: '#333333' }}>Expert Guidance</h3>
-                    <p style={{ color: '#666666' }}>Learn from industry professionals with years of practical experience in their respective fields.</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="card border-0 shadow-sm h-100" style={{ 
-                  borderRadius: '1rem', 
-                  backgroundColor: '#ffffff',
-                  color: '#333333'
-                }}>
-                  <div className="card-body text-center">
-                    <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3" style={{ color: '#333333' }}>Personalized Guidance</h3>
-                    <p style={{ color: '#666666' }}>Receive tailored advice and feedback specific to your projects and career growth.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-md-4">
-                <div className="card border-0 shadow-sm h-100" style={{ 
-                  borderRadius: '1rem', 
-                  backgroundColor: '#ffffff',
-                  color: '#333333'
-                }}>
-                  <div className="card-body text-center">
-                    <div className="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '64px', height: '64px' }}>
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 019-9"></path>
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3" style={{ color: '#333333' }}>Network Building</h3>
-                    <p style={{ color: '#666666' }}>Connect with professionals in the industry and build valuable relationships for your future career.</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Mentors Profiles */}
-      <section className={`py-20 ${isDarkTheme ? 'bg-gray-900' : 'bg-white'}`}>
+      <section className={`py-20 fade-in fade-in-delay-2 ${isLoaded ? 'loaded' : ''} ${isDarkTheme ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
           <h2 className={`text-3xl font-bold mb-16 text-center ${isDarkTheme ? 'text-white' : 'text-black'}`} style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>Meet Our Mentors</h2>
 
           <div className="row g-5">
-            {mentors.map(mentor => (
-              <div key={mentor.id} className="col-sm-12 col-md-6">
+            {mentors.map((mentor, index) => (
+              <div key={mentor.id} className={`col-sm-12 col-md-6 fade-in fade-in-delay-${(index % 2) + 1} ${isLoaded ? 'loaded' : ''}`}>
                 <div className="card border-0 shadow h-100" style={{ 
                   borderRadius: '1rem', 
                   overflow: 'hidden',

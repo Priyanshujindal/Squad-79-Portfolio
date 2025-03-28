@@ -939,3 +939,267 @@
 .chatbot-container.dark-mode .question-buttons button {
   box-shadow: none !important;
 }
+
+.number-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.number-buttons button {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 15px;
+  border: 2px solid #6e48aa;
+  border-radius: 20px;
+  background: white;
+  color: #6e48aa;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(110, 72, 170, 0.1);
+}
+
+.number-buttons button:hover {
+  background: #6e48aa;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(110, 72, 170, 0.2);
+}
+
+.number-buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(110, 72, 170, 0.1);
+}
+
+/* Dark mode styles */
+.dark-mode .number-buttons button {
+  background: #1a1a1a;
+  border-color: #9d50bb;
+  color: #9d50bb;
+  box-shadow: 0 2px 4px rgba(157, 80, 187, 0.1);
+}
+
+.dark-mode .number-buttons button:hover {
+  background: #9d50bb;
+  color: white;
+  box-shadow: 0 4px 8px rgba(157, 80, 187, 0.2);
+}
+
+.dark-mode .number-buttons button:active {
+  box-shadow: 0 2px 4px rgba(157, 80, 187, 0.1);
+}
+
+/* Memories Slideshow Styles */
+.memories-slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.memory-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.memory-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+}
+
+.memory-image:hover {
+  transform: scale(1.02);
+}
+
+.memory-details {
+  padding: 20px;
+  width: 100%;
+}
+
+.memory-details h5 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.memory-details p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.memory-details small {
+  color: #999;
+}
+
+.slideshow-controls {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+  z-index: 10;
+}
+
+.control-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.control-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.control-btn i {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.slide-indicators {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  padding: 0;
+  position: relative;
+}
+
+.indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 6px;
+  height: 6px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.indicator:hover {
+  border-color: #ff6b6b;
+  transform: scale(1.2);
+}
+
+.indicator.active {
+  border-color: #ff6b6b;
+  transform: scale(1.2);
+}
+
+.indicator.active::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Dark mode styles for indicators */
+.dark-mode .slide-indicators {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .indicator {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .indicator:hover,
+.dark-mode .indicator.active {
+  border-color: #ff6b6b;
+}
+
+/* Responsive styles for indicators */
+@media (max-width: 768px) {
+  .slide-indicators {
+    gap: 10px;
+    padding: 6px 12px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .indicator::after {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+@media (max-width: 576px) {
+  .slide-indicators {
+    gap: 8px;
+    padding: 4px 10px;
+  }
+
+  .indicator {
+    width: 6px;
+    height: 6px;
+  }
+
+  .indicator::after {
+    width: 3px;
+    height: 3px;
+  }
+}

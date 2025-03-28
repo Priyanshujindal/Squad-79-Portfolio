@@ -15,7 +15,7 @@ const Home = () => {
       id: 1,
       title: "Spotify Clone",
       description: "A clone of the popular music streaming platform, Spotify. This project allows users to search for songs, albums, and playlists, and play them in the browser.",
-      image: spotifyImage,
+      image: "./spotify.jpg",
       tags: ["HTML", "CSS", "JavaScript"],
       link: "/experience/1",
       demoLink: "https://spotifyfree.netlify.app/"
@@ -190,7 +190,7 @@ const Home = () => {
       {/* Projects Section */}
       <section className="projects-section py-5" style={{ backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5' }}>
         <div className="container">
-          <h2 className="text-headline mb-5" style={{ color: isDarkTheme ? '#ffffff' : '#000000' }}>Featured Experiences</h2>
+          <h2 className="text-headline mb-5 " style={{ color: isDarkTheme ? '#ffffff' : '#000000',fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3rem' }}>Featured Experiences</h2>
           <div className="row g-4">
             {projects.map((project, index) => (
               <div key={index} className="col-md-4">
