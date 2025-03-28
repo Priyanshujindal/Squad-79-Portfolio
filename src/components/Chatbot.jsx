@@ -224,119 +224,81 @@ const Chatbot = () => {
         
         let matchingMembers;
         
-        // First try exact matches
         matchingMembers = shuffleArray(teamMemberSkills.filter(member => 
           member.skills.includes(selectedSkill) && 
-          member.experience === selectedExperience
+          member.experience === selectedExperience &&
+          member.workMode.includes(selectedWorkMode)
         )).slice(0, parseInt(option));
         
-        // If no exact matches or not enough matches, find closest matches
-        if (matchingMembers.length < parseInt(option)) {
-          // Calculate match score for each member
-          const scoredMembers = teamMemberSkills.map(member => {
-            let score = 0;
-            
-            // Skill match (highest weight)
-            if (member.skills.includes(selectedSkill)) score += 3;
-            
-            // Experience match (medium weight)
-            if (member.experience === selectedExperience) score += 2;
-            
-            // Priority for coding skills
-            const codingSkills = ["HTML", "CSS", "JavaScript", "React", "Python", "C++", "Data Structures", 
-              "Algorithms", "Object-Oriented Programming", "Node.js", "Database Design", "API Development", "Redux"];
-            
-            if (codingSkills.includes(selectedSkill)) {
-              // Give extra points to Raksham and Priyanshu for coding skills
-              if (member.name === "Raksham Sharma" || member.name === "Priyanshu Jindal") {
-                score += 2;
-              }
-            }
-
-            // Special priority for Raksham for C++ and Python
-            if ((selectedSkill === "C++" || selectedSkill === "Python") && member.name === "Raksham Sharma") {
-              score += 5; // Very high priority for Raksham in C++ and Python
-            }
-            
-            return { ...member, score };
-          });
-          
-          // Sort by score and get top matches
-          const closestMatches = scoredMembers
-            .sort((a, b) => b.score - a.score)
-            .slice(0, parseInt(option));
-
-          // Ensure Raksham is in the list for C++ or Python
-          if ((selectedSkill === "C++" || selectedSkill === "Python") && 
-              !closestMatches.some(member => member.name === "Raksham Sharma")) {
-            const raksham = teamMemberSkills.find(member => member.name === "Raksham Sharma");
-            if (raksham) {
-              closestMatches.pop(); // Remove the last match
-              closestMatches.unshift(raksham); // Add Raksham at the beginning
-            }
-          }
-          
-          // First show results
-          setTimeout(() => {
-            if (matchingMembers.length > 0) {
-              addBotMessage({ 
-                sender: 'bot', 
-                text: selectedExperience === "Experienced" 
-                  ? `Note: All our students are freshers, but they have strong skills and project experience. Here are the best matches for your criteria:`
-                  : `Here are the exact matches for your criteria:`,
-                members: matchingMembers
-              });
-              
-              // If we need more matches, show closest matches
-              if (closestMatches.length > matchingMembers.length) {
-                setTimeout(() => {
-                  addBotMessage({ 
-                    sender: 'bot', 
-                    text: selectedExperience === "Experienced"
-                      ? `Here are additional talented freshers who could be great for your role:`
-                      : `Here are additional closest matches to complete your request:`,
-                    members: closestMatches.slice(matchingMembers.length)
-                  });
-                }, 2000);
-              }
-            } else {
-              addBotMessage({ 
-                sender: 'bot', 
-                text: selectedExperience === "Experienced"
-                  ? `Note: All our students are freshers, but they have strong skills and project experience. Here are the best matches based on your criteria:`
-                  : `I couldn't find exact matches, but here are the closest matches based on your criteria:`,
-                members: closestMatches
-              });
-            }
-            
-            // Add a "filter again" option with longer delay
-            setTimeout(() => {
-              addBotMessage({ 
-                sender: 'bot', 
-                text: "Would you like to search with different criteria?",
-                options: ['Search again', 'Get help']
-              });
-            }, 3000);
-          }, 1000);
-        } else {
-          // Show exact matches
-          setTimeout(() => {
+        // First show results
+        setTimeout(() => {
+          if (matchingMembers.length > 0) {
             addBotMessage({ 
               sender: 'bot', 
               text: `Here are the team members that match your criteria:`,
               members: matchingMembers
             });
+          } else {
+            // Try a less strict filter if no exact matches
+            let partialMatches;
             
-            // Add a "filter again" option with longer delay
-            setTimeout(() => {
+            // First try with most important criteria
+            partialMatches = teamMemberSkills.filter(member => 
+              member.skills.includes(selectedSkill) && 
+              member.experience === selectedExperience
+            );
+            
+            // If still no matches, try with just the skill
+            if (partialMatches.length === 0) {
+              partialMatches = teamMemberSkills.filter(member => 
+                member.skills.includes(selectedSkill)
+              );
+            }
+            
+            if (partialMatches.length > 0) {
               addBotMessage({ 
                 sender: 'bot', 
-                text: "Would you like to search with different criteria?",
-                options: ['Search again', 'Get help']
+                text: `I couldn't find an exact match for all your criteria, but here are team members who match your core requirements:`,
+                members: partialMatches
               });
-            }, 3000);
-          }, 1000);
-        }
+            } else {
+              addBotMessage({ 
+                sender: 'bot', 
+                text: `I couldn't find team members matching your criteria. Would you like to try a different skill?`,
+                skills: availableSkills
+              });
+              // Reset selections to start over
+              setSelectedSkill('');
+              setSelectedExperience('');
+              setSelectedWorkMode('');
+              setSelectedNumber('');
+            }
+          }
+          
+          // Add a "filter again" option with longer delay
+          setTimeout(() => {
+            addBotMessage({ 
+              sender: 'bot', 
+              text: "Would you like to search with different criteria?",
+              options: ['Search again', 'Get help']
+            });
+          }, 3000); // Longer delay to allow reading
+        }, 1000);
+      }
+      // Handle "Search again" option
+      else if (option === "Search again") {
+        setSelectedSkill('');
+        setSelectedExperience('');
+        setSelectedWorkMode('');
+        setSelectedNumber('');
+        
+        setTimeout(() => {
+          addBotMessage({ 
+            sender: 'bot', 
+            text: "Let's try again. What skills are you looking for?",
+            skills: availableSkills
+          });
+        }, 1000);
       }
     } else if (chatMode === 'help') {
       // Display answer to selected question
