@@ -9,18 +9,21 @@ const NotFound = () => {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [gameSpeed, setGameSpeed] = useState(150); // Lower is faster, increased from 100 to 150 (slower)
-  
+  const [gameSpeed, setGameSpeed] = useState(150); // Lower is faster
+  const [level, setLevel] = useState(1); // Add level state
+  const [lastFoodTime, setLastFoodTime] = useState(0); // Track time between food captures
+
   // Game settings
   const canvasWidth = 480;  // Increased from 320 to 480
   const canvasHeight = 480; // Increased from 320 to 480
   const gridSize = 20;      // Increased from 16 to 20
-  
+
   // Game state tracking refs (to use in animation frame callback)
   const snakeRef = useRef([{ x: 8, y: 8 }]); // Initial snake position
   const foodRef = useRef({ x: 3, y: 3 });
   const directionRef = useRef({ x: 1, y: 0 }); // Initial direction is right
   const scoreRef = useRef(0);
+  const lastFoodTimeRef = useRef(0);
   const gameOverRef = useRef(false);
   const gameLoopRef = useRef(null);
   const lastRenderTimeRef = useRef(0);
@@ -145,17 +148,35 @@ const NotFound = () => {
         // Generate new food
         foodRef.current = generateFood();
         
-        // Increase score
-        scoreRef.current += 1;
+        // Calculate time bonus (if food was eaten quickly)
+        const now = Date.now();
+        const timeSinceLastFood = now - lastFoodTimeRef.current;
+        const timeBonus = timeSinceLastFood < 1000 ? 5 : // 5 bonus points if eaten within 1 second
+                         timeSinceLastFood < 2000 ? 3 : // 3 bonus points if eaten within 2 seconds
+                         timeSinceLastFood < 3000 ? 1 : // 1 bonus point if eaten within 3 seconds
+                         0;
+        
+        // Calculate length bonus (longer snake = more points)
+        const lengthBonus = Math.floor(snake.length / 5); // Bonus point for every 5 segments
+        
+        // Update score with base points + bonuses
+        const pointsEarned = 1 + timeBonus + lengthBonus;
+        scoreRef.current += pointsEarned;
         setScore(scoreRef.current);
+        
         if (scoreRef.current > highScore) {
           setHighScore(scoreRef.current);
         }
         
-        // More gradual speed increase: only increase every 3 points and by a smaller amount
-        if (scoreRef.current % 3 === 0 && gameSpeed > 80) {
-          setGameSpeed(prev => Math.max(prev - 5, 80));
+        // Update level and speed every 10 points
+        const newLevel = Math.floor(scoreRef.current / 10) + 1;
+        if (newLevel !== level) {
+          setLevel(newLevel);
+          // Speed increases with each level, minimum 60ms
+          setGameSpeed(prev => Math.max(150 - (newLevel * 10), 60));
         }
+        
+        lastFoodTimeRef.current = now;
       } else {
         // Remove tail if not eating
         snake.pop();
@@ -218,7 +239,7 @@ const NotFound = () => {
         cancelAnimationFrame(gameLoopRef.current);
       }
     };
-  }, [gameStarted, gameOver, gameSpeed, isDarkTheme]);
+  }, [gameStarted, gameOver, gameSpeed, isDarkTheme, level]);
 
   const startGame = () => {
     // Reset game state
@@ -226,6 +247,7 @@ const NotFound = () => {
     foodRef.current = generateFood();
     directionRef.current = { x: 1, y: 0 };
     scoreRef.current = 0;
+    lastFoodTimeRef.current = 0;
     gameOverRef.current = false;
     lastRenderTimeRef.current = 0;
     
@@ -233,6 +255,7 @@ const NotFound = () => {
     setGameSpeed(150); // Reset to slower initial speed
     setGameOver(false);
     setGameStarted(true);
+    setLevel(1);
   };
 
   // Touch controls for mobile users
@@ -309,15 +332,22 @@ const NotFound = () => {
         
         <div className="score-container d-flex justify-content-between mb-3">
           <div className="score-card p-2 rounded text-center" style={{
-            backgroundColor: isDarkTheme ? 'rgba(60, 60, 60, 0.8)' : 'rgba(230, 230, 230, 0.8)',
-            width: '45%'
+            backgroundColor: isDarkTheme ? '#2c3e50' : '#ecf0f1',
+            color: isDarkTheme ? '#ecf0f1' : '#2c3e50'
           }}>
             <div className="score-title">Score</div>
             <div className="score-value" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{score}</div>
           </div>
           <div className="score-card p-2 rounded text-center" style={{
-            backgroundColor: isDarkTheme ? 'rgba(60, 60, 60, 0.8)' : 'rgba(230, 230, 230, 0.8)',
-            width: '45%'
+            backgroundColor: isDarkTheme ? '#2c3e50' : '#ecf0f1',
+            color: isDarkTheme ? '#ecf0f1' : '#2c3e50'
+          }}>
+            <div className="score-title">Level</div>
+            <div className="score-value" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{level}</div>
+          </div>
+          <div className="score-card p-2 rounded text-center" style={{
+            backgroundColor: isDarkTheme ? '#2c3e50' : '#ecf0f1',
+            color: isDarkTheme ? '#ecf0f1' : '#2c3e50'
           }}>
             <div className="score-title">High Score</div>
             <div className="score-value" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{highScore}</div>
@@ -378,6 +408,7 @@ const NotFound = () => {
             }}>
               <h4 style={{ color: '#ff6b6b', marginBottom: '1rem' }}>Game Over!</h4>
               <p>Your Score: <strong>{score}</strong></p>
+              <p>Level Reached: <strong>{level}</strong></p>
               <button 
                 onClick={startGame}
                 className="btn mt-3"
