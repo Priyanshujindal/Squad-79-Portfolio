@@ -15,6 +15,7 @@ const Chatbot = () => {
   const [selectedWorkMode, setSelectedWorkMode] = useState('');
   const [selectedNumber, setSelectedNumber] = useState('');
   const messageContainerRef = useRef(null);
+  const chatbotRef = useRef(null);
 
   // All possible predefined questions
   const allPredefinedQuestions = [
@@ -76,9 +77,6 @@ const Chatbot = () => {
   
   // Available experience levels for filtering
   const experienceLevels = ["Fresher", "Experienced"];
-
-  // Available work modes for filtering
-  const workModes = ["Remote", "In-office", "Hybrid"];
 
   // Initialize available questions
   useEffect(() => {
@@ -207,7 +205,7 @@ const Chatbot = () => {
           addBotMessage({ 
             sender: 'bot', 
             text: `How many team members do you need?`,
-            numberOptions: [1, 2, 3, 4, 5]
+            numberOptions: [1, 2, 3]
           });
         }, 1000);
       } else if (!selectedNumber) {
@@ -226,8 +224,7 @@ const Chatbot = () => {
         
         matchingMembers = shuffleArray(teamMemberSkills.filter(member => 
           member.skills.includes(selectedSkill) && 
-          member.experience === selectedExperience &&
-          member.workMode.includes(selectedWorkMode)
+          member.experience === selectedExperience
         )).slice(0, parseInt(option));
         
         // First show results
@@ -275,14 +272,14 @@ const Chatbot = () => {
             }
           }
           
-          // Add a "filter again" option with longer delay
+          // Always show the "filter again" option after results
           setTimeout(() => {
             addBotMessage({ 
               sender: 'bot', 
               text: "Would you like to search with different criteria?",
-              options: ['Search again', 'Get help']
+              options: ['Search again']
             });
-          }, 3000); // Longer delay to allow reading
+          }, 2000);
         }, 1000);
       }
       // Handle "Search again" option
@@ -350,7 +347,7 @@ const Chatbot = () => {
       setTimeout(() => {
         addBotMessage({
           sender: 'bot',
-          text: "Hi there! 👋 I'm the Squad 79 assistant. How can I assist you today?",
+          text: "Hi there! 👋 I'm the Squad 79 chatbot. How can I assist you today?",
           options: ['Hire talent', 'Get help']
         });
       }, 500);
@@ -374,13 +371,13 @@ const Chatbot = () => {
     // Frontend Development
     "React", "JavaScript", "HTML", "CSS",
     // Backend Development
-    "Python",  "API Development",
+    "Python",
     // Programming Languages
-    "C++", "Data Structures", "Algorithms", "Object-Oriented Programming",
+    "C++", "Object-Oriented Programming",
     // UI/UX Design
-    "UI/UX Design", "UI Design", "Visual Design", "Interaction Design",
+    "UI/UX Design", "UI Design" ,
     // Other Skills
-    "Game Development", "Data Analysis", "Event Management", "Content Creation"
+    "Event Management"
   ];
 
   // Transform student data for filtering
@@ -388,191 +385,184 @@ const Chatbot = () => {
     {
       id: 1,
       name: "Priyanshu Jindal",
-      skills: ["React", "JavaScript", "HTML", "CSS"],
+      skills: ["React", "JavaScript", "HTML", "CSS","Python","Object-Oriented Programming"],
       experience: "Experienced",
-      projects: ["Spotify Clone", "Dino Game"],
-      workMode: ["Remote", "Hybrid"]
+      projects: ["Spotify Clone", "Dino Game","Python Workshop","Netflix Clone","Tic Tac Toe"],
     },
     {
       id: 2,
       name: "Raksham Sharma",
-      skills: ["React", "JavaScript", "UI/UX", "CSS", "Python", "C++", "Data Structures", "Algorithms"],
+      skills: ["React", "JavaScript", "CSS", "Python", "C++","Event Management","Object-Oriented Programming"],
       experience: "Experienced",
-      projects: ["Money Tracking Website", "Python Workshop", "C++ Projects"],
-      workMode: ["In-office"]
+      projects: ["Python Workshop", "C++ Projects","Spotify Clone","Simon Says","Leetcode"],
     },
     {
       id: 3,
       name: "Rajatvir Pandhi",
-      skills: ["Python", "Node.js", "Database Design", "API Development"],
+      skills: ["Python","JavaScript","HTML","CSS","Object-Oriented Programming"],
       experience: "Experienced",
-      projects: ["Tic Tac Toe", "Python Workshop"],
-      workMode: ["Remote", "Hybrid"]
+      projects: ["Python Workshop"],
     },
     {
       id: 4,
       name: "Riya Garg",
       skills: ["UI Design", "User Research", "Prototyping", "Figma"],
       experience: "Fresher",
-      projects: ["Netflix Clone"],
-      workMode: ["In-office", "Hybrid"]
+      projects: ["Azure Project"],
     },
     {
       id: 5,
       name: "Rehat Singh",
-      skills: ["UI/UX Design", "Wireframing", "User Testing", "Adobe XD"],
-      experience: "Fresher",
+      skills: ["UI/UX Design","JavaScript","HTML","CSS","Python"],
+      experience: "Experienced",
       projects: ["UI/UX Projects"],
-      workMode: ["Remote", "Hybrid"]
     },
     {
       id: 6,
       name: "Parth Doomra",
-      skills: ["UI Design", "Visual Design", "Interaction Design", "Sketch"],
+      skills: ["UI Design", "Visual Design", "JavaScript","HTML","CSS","Python"],
       experience: "Fresher",
       projects: ["UI/UX Projects"],
-      workMode: ["In-office"]
     },
     {
       id: 7,
       name: "Ramanpreet Singh",
-      skills: ["UI/UX Design", "Information Architecture", "User Research", "InVision"],
-      experience: "Fresher",
+      skills: ["UI/UX Design","JavaScript","HTML","CSS","Python","Canvas","Object-Oriented Programming"],
+      experience: "Experienced",
       projects: ["UI/UX Projects"],
-      workMode: ["Remote"]
     },
     {
       id: 8,
       name: "Rakshit",
-      skills: ["UI Design", "Prototyping", "User Testing", "Adobe Creative Suite"],
+      skills: ["UI Design", "JavaScript","HTML","CSS","Python","DBMS"],
       experience: "Fresher",
       projects: ["UI/UX Projects"],
-      workMode: ["In-office"]
     },
     {
       id: 9,
       name: "Shivani Jindal",
-      skills: ["UI Design", "Visual Design", "Prototyping", "Figma"],
+      skills: ["UI Design", "Visual Design", "JavaScript","HTML","CSS","Python"],
       experience: "Fresher",
       projects: ["UI/UX Projects"],
-      workMode: ["Remote", "Hybrid"]
     },
     {
       id: 10,
       name: "Riddhi Garg",
-      skills: ["Figma", "UI Design", "Prototyping", "Visual Design"],
+      skills: ["Figma", "UI Design", "JavaScript","HTML","CSS","Python"],
       experience: "Fresher",
       projects: ["UI/UX Projects"],
-      workMode: ["In-office"]
     },
     {
       id: 11,
       name: "Pranav Arora",
-      skills: ["Ethical Hacking", "Cybersecurity", "Network Security", "Penetration Testing"],
+      skills: ["Ethical Hacking", "Cybersecurity", "Network Security", "Penetration Testing","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
       experience: "Experienced",
-      projects: ["Security Projects"],
-      workMode: ["Remote"]
+      projects: ["Security Projects"],  
     },
     {
       id: 12,
       name: "Priyansh Thakur",
-      skills: ["React", "JavaScript", "HTML", "CSS"],
+      skills: ["React", "JavaScript", "HTML", "CSS","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
       experience: "Experienced",
       projects: ["Web Development Projects"],
-      workMode: ["In-office"]
     },
     {
       id: 13,
       name: "Raghav Sharma",
-      skills: ["React", "Redux", "JavaScript", "Web Development"],
-      experience: "Experienced",
+      skills: ["React","Python","DBMS","JavaScript","HTML","CSS"],
+      experience: "Fresher",
       projects: ["Web Development Projects"],
-      workMode: ["Remote", "Hybrid"]
     },
     {
       id: 14,
       name: "Rishab Bansal",
-      skills: ["Choreography", "Performance", "Dance Instruction", "Event Management"],
+      skills: ["Java","JavaScript","HTML","CSS","Event Management"],
       experience: "Experienced",
       projects: ["Dance Events"],
-      workMode: ["In-office"]
     },
     {
       id: 15,
       name: "Piyanshi",
-      skills: ["React", "JavaScript", "HTML", "CSS"],
+      skills: ["React", "JavaScript", "HTML", "CSS","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
       experience: "Fresher",
       projects: ["Web Development Projects"],
-      workMode: ["Remote"]
     },
     {
       id: 16,
       name: "Sarthak Khurana",
-      skills: ["UI Design", "UX Research", "Prototyping", "Wireframing"],
-      experience: "Fresher",
+      skills: ["UI Design", "Visual Design", "JavaScript","HTML","CSS","Python","Canvas"],
+      experience: "Experienced",
       projects: ["UI/UX Projects"],
-      workMode: ["In-office", "Hybrid"]
     },
     {
       id: 17,
       name: "Sanchita Bhandari",
-      skills: ["React", "JavaScript", "HTML", "CSS"],
+      skills: ["React", "JavaScript", "HTML", "CSS","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
       experience: "Fresher",
       projects: ["Web Development Projects"],
-      workMode: ["Remote"]
     },
     {
       id: 18,
-      name: "Pranay Obero",
-      skills: ["Graphic Design", "UI Design", "Visual Design", "Adobe Creative Suite"],
-      experience: "Experienced",
+      name: "Pranay Oberoi",
+      skills: ["Graphic Design", "UI Design", "Visual Design", "Adobe Creative Suite","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
+      experience: "Fresher",
       projects: ["Design Projects"],
-      workMode: ["In-office"]
     },
     {
       id: 19,
       name: "Prachi Behal",
-      skills: ["React", "JavaScript", "HTML", "CSS"],
+      skills: ["React", "JavaScript", "HTML", "CSS","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
       experience: "Fresher",
       projects: ["Web Development Projects"],
-      workMode: ["Remote", "Hybrid"]
     },
     {
       id: 20,
       name: "Pavitar Kumar",
-      skills: ["React", "JavaScript", "HTML", "CSS"],
-      experience: "Fresher",
+      skills: ["React", "JavaScript", "HTML", "CSS","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
+      experience: "Experienced",
       projects: ["Web Development Projects"],
-      workMode: ["In-office"]
     },
     {
       id: 21,
       name: "Radhil Narula",
-      skills: ["React", "JavaScript", "HTML", "CSS"],
+      skills: ["React", "JavaScript", "HTML", "CSS","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
       experience: "Fresher",
       projects: ["Web Development Projects"],
-      workMode: ["Remote"]
     },
     {
       id: 22,
       name: "Pukhraj Soni",
-      skills: ["C++", "Data Structures", "Algorithms", "Object-Oriented Programming"],
-      experience: "Experienced",
+      skills: ["C++","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
+      experience: "Fresher",
       projects: ["C++ Projects"],
-      workMode: ["In-office"]
     },
     {
       id: 23,
       name: "Riya Yadav",
-      skills: ["C++", "Data Structures", "Algorithms", "Object-Oriented Programming"],
+      skills: ["C++","Python","DBMS","Canvas","JavaScript","HTML","CSS"],
       experience: "Experienced",
       projects: ["C++ Projects"],
-      workMode: ["Remote", "Hybrid"]
     }
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (chatbotRef.current && !chatbotRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
-    <div className={`chatbot-container ${isDarkTheme ? 'dark-mode' : ''}`}>
+    <div className={`chatbot-container ${isDarkTheme ? 'dark-mode' : ''}`} ref={chatbotRef}>
       {/* Chat toggle button - always visible now */}
       <div 
         className={`chatbot-icon ${isOpen ? 'icon-when-open' : ''}`} 
@@ -594,7 +584,7 @@ const Chatbot = () => {
               <div className="logo-container">
                 <FaRobot size={25} color="white" className="chatbot-header-icon" />
               </div>
-              <h3>Squad 79 Assistant</h3>
+              <h3>Squad 79 Chatbot</h3>
             </div>
             <div className="header-buttons">
               <button className="toggle-button" onClick={toggleTheme}>
@@ -654,18 +644,6 @@ const Chatbot = () => {
                     </div>
                   )}
                   
-                  {/* Render work modes */}
-                  {message.workModes && (
-                    <div className="message-options">
-                      <div className="workmode-buttons">
-                        {message.workModes.map((mode, modeIndex) => (
-                          <button key={modeIndex} onClick={() => handleOptionClick(mode)}>
-                            {mode}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                   
                   {/* Render number of persons */}
                   {message.numberOptions && (
@@ -707,7 +685,6 @@ const Chatbot = () => {
                           <div className="member-details">
                             <span className="experience-level">Experience: {member.experience}</span>
                             <span className="project-type">Projects: {member.projects.join(', ')}</span>
-                            <span className="work-mode">Work Mode: {member.workMode.join(', ')}</span>
                           </div>
                           <a href={`/more/${member.id}`} className="view-profile">View Profile</a>
                         </div>

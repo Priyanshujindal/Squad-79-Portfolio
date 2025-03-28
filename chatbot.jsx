@@ -8,6 +8,15 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [recommendationHistory, setRecommendationHistory] = useState({});
   const messagesEndRef = useRef(null);
+  const [chatMode, setChatMode] = useState('initial');
+  const [selectedSkill, setSelectedSkill] = useState('');
+  const [selectedExperience, setSelectedExperience] = useState('');
+  const [selectedWorkMode, setSelectedWorkMode] = useState('');
+  const [selectedNumber, setSelectedNumber] = useState('');
+  const [availableSkills, setAvailableSkills] = useState([]);
+  const [availableQuestions, setAvailableQuestions] = useState([]);
+  const [allPredefinedQuestions, setAllPredefinedQuestions] = useState([]);
+  const [predefinedAnswers, setPredefinedAnswers] = useState({});
 
   // Scroll to bottom when messages change
   useEffect(() => {
@@ -162,6 +171,94 @@ const Chatbot = () => {
       text: "Recommendation history has been reset. Future recommendations will start fresh.", 
       sender: 'bot' 
     }]);
+  };
+
+  const handleOptionClick = (option) => {
+    // Add user's selection to chat
+    setMessages(prev => [...prev, { sender: 'user', text: option }]);
+
+    // Handle based on current mode
+    if (chatMode === 'initial') {
+      if (option === 'Hire talent') {
+        // Switch to hire mode
+        setChatMode('hire');
+        setSelectedSkill('');
+        setSelectedExperience('');
+        setSelectedWorkMode('');
+        setSelectedNumber('');
+        
+        setTimeout(() => {
+          addBotMessage({ 
+            sender: 'bot', 
+            text: "Great! Let's find the right team member for you. First, what skills are you looking for?",
+            skills: availableSkills
+          });
+        }, 800);
+      } else if (option === 'Get help') {
+        // Switch to help mode
+        setChatMode('help');
+        
+        // Reset selections for help mode
+        setSelectedSkill('');
+        setSelectedExperience('');
+        setSelectedWorkMode('');
+        setSelectedNumber('');
+        
+        setTimeout(() => {
+          addBotMessage({ 
+            sender: 'bot', 
+            text: "I can answer some common questions about Squad 79. What would you like to know?",
+            questions: availableQuestions
+          });
+        }, 800);
+      }
+    } else if (chatMode === 'hire') {
+      // Handle hire mode logic...
+      // (existing code for handling hire mode)
+    } else if (chatMode === 'help') {
+      // Display answer to selected question
+      const answer = predefinedAnswers[option] || "I don't have information about that specific question.";
+      
+      // Remove selected question from available questions
+      const updatedQuestions = availableQuestions.filter(q => q !== option);
+      
+      // Add a new random question that's not already in the list
+      const remainingQuestions = allPredefinedQuestions.filter(
+        q => !updatedQuestions.includes(q) && q !== option
+      );
+      
+      let newAvailableQuestions = [...updatedQuestions];
+      
+      // If we have remaining questions and room for more
+      if (remainingQuestions.length > 0 && updatedQuestions.length < 5) {
+        const newQuestion = remainingQuestions[Math.floor(Math.random() * remainingQuestions.length)];
+        newAvailableQuestions = [...updatedQuestions, newQuestion];
+      }
+      
+      setAvailableQuestions(newAvailableQuestions);
+      
+      // Show answer first with a delay
+      setTimeout(() => {
+        addBotMessage({ sender: 'bot', text: answer });
+        
+        // Then show follow-up question after a longer delay to allow reading
+        setTimeout(() => {
+          if (newAvailableQuestions.length > 0) {
+            addBotMessage({ 
+              sender: 'bot', 
+              text: "Is there anything else you'd like to know?",
+              questions: newAvailableQuestions
+            });
+          } else {
+            addBotMessage({ 
+              sender: 'bot', 
+              text: "I've answered all common questions. Is there anything else I can help you with?",
+              options: ['Hire talent', 'Start over']
+            });
+          }
+        }, 3000);
+      }, 1000);
+    }
   };
 
   return (
