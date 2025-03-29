@@ -270,7 +270,9 @@ const Experience = () => {
                     '0 4px 20px rgba(0, 0, 0, 0.3)' : 
                     '0 4px 20px rgba(0, 0, 0, 0.1)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  minHeight: '400px'
+                  minHeight: '400px',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
@@ -336,57 +338,62 @@ const Experience = () => {
                   </div>
 
                   {/* Card body with description, and tags */}
-                  <div className="card-body" style={{
+                  <div className="card-body d-flex flex-column" style={{ 
                     padding: '1.5rem',
-                    backgroundColor: 'var(--card-bg)'
+                    backgroundColor: 'var(--card-bg)',
+                    flex: '1'
                   }}>
-                    <p className="card-text" style={{ 
-                      color: isDarkTheme ? '#ffffff' : '#333333',
-                      fontSize: "1rem",
-                      marginBottom: "1.5rem",
-                      lineHeight: "1.6"
-                    }}>{project.description}</p>
-                    <div className="d-flex flex-wrap gap-2 mb-3">
+                    <div className="flex-grow-1">
+                      <p className="card-text" style={{ 
+                        color: isDarkTheme ? '#ffffff' : '#333333',
+                        fontSize: "1rem",
+                        marginBottom: "0.5rem",
+                        lineHeight: "1.6"
+                      }}>{project.description}</p>
+                    </div>
+                    <div className="d-flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag, index) => (
-                        <span key={index} className="badge" style={{
+                        <span key={index} className="badge d-flex align-items-center" style={{
                           backgroundColor: isDarkTheme ? 'rgba(255, 126, 95, 0.2)' : 'rgba(255, 126, 95, 0.1)',
                           color: isDarkTheme ? '#ffffff' : '#333333',
                           padding: '0.35rem 0.75rem',
                           borderRadius: '0.5rem',
                           fontSize: '0.875rem',
-                          fontWeight: '500'
+                          fontWeight: '500',
+                          height: '28px'
                         }}>{tag}</span>
                       ))}
                     </div>
-                    <Link 
-                      to={`/project/${project.id}`}
-                      className="btn"
-                      style={{
-                        marginTop: '1rem',
-                        padding: '0.5rem 1.5rem',
-                        borderRadius: '0.5rem',
-                        fontSize: '0.9rem',
-                        fontWeight: '500',
-                        transition: 'all 0.3s ease',
-                        border: '1px solid #ff6b6b',
-                        color: '#ff6b6b',
-                        backgroundColor: 'transparent'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#ff6b6b';
-                        e.currentTarget.style.color = 'white';
-                        e.currentTarget.style.transform = 'translateY(-2px)';
-                        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'transparent';
-                        e.currentTarget.style.color = '#ff6b6b';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = 'none';
-                      }}
-                    >
-                      View Detail
-                    </Link>
+                    <div className="mt-auto text-center">
+                      <Link 
+                        to={`/project/${project.id}`}
+                        className="btn"
+                        style={{
+                          padding: '0.5rem 1.5rem',
+                          fontSize: '0.9rem',
+                          borderRadius: '0.5rem',
+                          fontWeight: '500',
+                          transition: 'all 0.3s ease',
+                          border: '1px solid #ff6b6b',
+                          color: '#ff6b6b',
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#ff6b6b';
+                          e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      >
+                        View Detail
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

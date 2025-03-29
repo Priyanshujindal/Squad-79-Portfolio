@@ -25,9 +25,9 @@ const Home = () => {
       title: "2 days workshop",
       description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
       image: './images/workshop.JPG',
-      category: "Workshops",
       tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
-      link: "/experience/2"
+      link: "/experience/2",
+      category: "Workshops"
     },
     {
       id: 3,
@@ -129,15 +129,15 @@ const Home = () => {
                 fontSize: "1.25rem",
                 letterSpacing: "0.3px"
               }}>Empowering the next generation of tech innovators through hands-on learning and real-world projects.</p>
-              <Link to="/about" className="btn btn-primary btn-lg" style={{ 
+              <Link to="/about" className="btn btn-primary" style={{ 
                 color: "#ffffff",
                 backgroundColor: "rgba(255, 126, 95, 0.9)",
                 borderColor: "transparent",
                 fontWeight: "500",
-                padding: "0.75rem 1.5rem",
+                padding: "0.5rem 1.5rem",
                 borderRadius: "0.5rem",
                 textDecoration: "none",
-                fontSize: "1rem",
+                fontSize: "0.9rem",
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
               }}
@@ -204,7 +204,9 @@ const Home = () => {
                     '0 4px 20px rgba(0, 0, 0, 0.3)' : 
                     '0 4px 20px rgba(0, 0, 0, 0.1)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  minHeight: '400px'
+                  minHeight: '400px',
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
@@ -256,8 +258,6 @@ const Home = () => {
                   <div className="app-name" style={{
                     padding: '1rem',
                     backgroundColor: 'var(--card-bg)',
-                    borderBottomLeftRadius: '1rem',
-                    borderBottomRightRadius: '1rem'
                   }}>
                     <h5 className="app-name-title" style={{
                       color: isDarkTheme ? '#ffffff' : '#333333',
@@ -272,49 +272,63 @@ const Home = () => {
                   {/* Card body with description, and tags */}
                   <div className="card-body" style={{
                     padding: '1.5rem',
-                    backgroundColor: 'var(--card-bg)'
+                    backgroundColor: 'var(--card-bg)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%'
                   }}>
-                    <p className="card-text" style={{ 
-                      color: isDarkTheme ? '#ffffff' : '#333333',
-                      fontSize: "1rem",
-                      marginBottom: "1.5rem",
-                      lineHeight: "1.6"
-                    }}>{project.description}</p>
-                    <div className="d-flex flex-wrap gap-2 mb-3">
-                      {project.tags.map((tag, index) => (
-                        <span key={index} className="badge" style={{
-                          backgroundColor: isDarkTheme ? 'rgba(255, 126, 95, 0.2)' : 'rgba(255, 126, 95, 0.1)',
-                          color: isDarkTheme ? '#ffffff' : '#333333',
-                          padding: "0.5rem 1rem",
-                          borderRadius: "0.5rem",
-                          fontSize: "0.875rem",
-                          fontWeight: "500"
-                        }}>{tag}</span>
-                      ))}
+                    <div style={{ flex: '1' }}>
+                      <p className="card-text" style={{ 
+                        color: isDarkTheme ? '#ffffff' : '#333333',
+                        fontSize: "1rem",
+                        lineHeight: "1.6"
+                      }}>{project.description}</p>
                     </div>
+
+                    {/* Footer section with tags and button */}
                     <div>
-                      <Link 
-                        to={`/project/${project.id}`}
-                        className="btn btn-outline-danger"
-                        style={{
-                          marginTop: '1rem',
-                          padding: '0.5rem 1.5rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.9rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = 'translateY(-2px)';
-                          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.boxShadow = 'none';
-                        }}
-                      >
-                        View Detail
-                      </Link>
+                      {/* Tags */}
+                      <div className="d-flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag, index) => (
+                          <span key={index} className="badge" style={{
+                            backgroundColor: isDarkTheme ? 'rgba(255, 126, 95, 0.2)' : 'rgba(255, 126, 95, 0.1)',
+                            color: isDarkTheme ? '#ffffff' : '#333333',
+                            padding: "0.5rem 1rem",
+                            borderRadius: "0.5rem",
+                            fontSize: "0.875rem",
+                            fontWeight: "500"
+                          }}>{tag}</span>
+                        ))}
+                      </div>
+
+                      {/* Button */}
+                      <div style={{ 
+                        display: 'flex',
+                        justifyContent: 'center'
+                      }}>
+                        <Link 
+                          to={`/project/${project.id}`}
+                          className="btn btn-outline-danger"
+                          style={{
+                            padding: '0.5rem 1.5rem',
+                            borderRadius: '0.5rem',
+                            fontSize: '0.9rem',
+                            fontWeight: '500',
+                            transition: 'all 0.3s ease',
+                            display: 'inline-block'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = 'none';
+                          }}
+                        >
+                          View Detail
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>

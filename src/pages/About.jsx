@@ -37,13 +37,14 @@ const About = () => {
             transition-delay: 0.6s;
           }
           .hero {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             overflow: hidden;
             position: relative;
             padding-top: 7.5rem;
+            padding-bottom: 3rem;
           }
           .img-container {
             opacity: 0;
@@ -299,6 +300,7 @@ const About = () => {
           'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)' : 
           'linear-gradient(135deg,rgb(48, 46, 46) 0%,#8a817f 100%)',
         paddingTop: '7.5rem'
+        
       }}>
         <div className="stars">
           <div className="star"></div>
@@ -548,192 +550,6 @@ const About = () => {
               }}>
                 <h2 className="display-4 fw-bold" style={{ color: "#ff6b6b" }}>95%</h2>
                 <p style={{ color: isDarkTheme ? "#ffffff" : "#333333" }}>Success Rate</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className={`py-5 fade-in fade-in-delay-3 ${isLoaded ? 'loaded' : ''}`} style={{ 
-        backgroundColor: isDarkTheme ? 'var(--bg-primary)' : '#f5f5f5',
-        marginBottom: '-3rem'  
-      }}>
-        <div className="stars">
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-          <div className="star"></div>
-        </div>
-        <div className="twinkling"></div>
-        <div className="container">
-          <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#000000' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '3rem'}}>Our Team</h2>
-          <div className="row g-4">
-            <div className="col-md-4">
-              <div className="card border-0 shadow-sm" style={{ 
-                borderRadius: '1rem',
-                backgroundColor: isDarkTheme ? 'var(--card-bg)' : '#ffffff',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'relative',
-                  paddingTop: '100%',
-                  overflow: 'hidden'
-                }}>
-                  <img 
-                    src="/images/priyanshu.jpg" 
-                    alt="Team Member 1"
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1)';
-                    }}
-                  />
-                </div>
-                <div className="card-body text-center p-4">
-                  <h3 className="h5 mb-2" style={{ color: isDarkTheme ? '#ffffff' : '#333333', fontWeight: '600' }}>Priyanshu Jindal</h3>
-                  <p style={{ color: isDarkTheme ? '#cccccc' : '#666666' }}>Team Lead</p>
-                  <div className="d-flex justify-content-center gap-3">
-                    <a href="https://www.linkedin.com/in/priyanshu-jindal-18a103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" style={{
-                      color: "#ff6b6b",
-                      fontSize: "1.25rem",
-                      transition: "all 0.3s ease"
-                    }} onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#ff5252";
-                      e.currentTarget.style.transform = "translateY(-2px)";
-                    }} onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "#ff6b6b";
-                      e.currentTarget.style.transform = "translateY(0)";
-                    }}>
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card border-0 shadow-sm" style={{ 
-                borderRadius: '1rem',
-                backgroundColor: isDarkTheme ? 'var(--card-bg)' : '#ffffff',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'relative',
-                  paddingTop: '100%',
-                  overflow: 'hidden'
-                }}>
-                  <img 
-                    src="/images/rehat.jpg" 
-                    alt="Team Member 2"
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1)';
-                    }}
-                  />
-                </div>
-                <div className="card-body text-center p-4">
-                  <h3 className="h5 mb-2" style={{ color: isDarkTheme ? '#ffffff' : '#333333', fontWeight: '600' }}>Rehat Singh</h3>
-                  <p style={{ color: isDarkTheme ? '#cccccc' : '#666666' }}>UI/UX Designer</p>
-                  <div className="d-flex justify-content-center gap-3">
-                    <a href="https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" style={{
-                      color: "#ff6b6b",
-                      fontSize: "1.25rem",
-                      transition: "all 0.3s ease"
-                    }} onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#ff5252";
-                      e.currentTarget.style.transform = "translateY(-2px)";
-                    }} onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "#ff6b6b";
-                      e.currentTarget.style.transform = "translateY(0)";
-                    }}>
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card border-0 shadow-sm" style={{ 
-                borderRadius: '1rem',
-                backgroundColor: isDarkTheme ? 'var(--card-bg)' : '#ffffff',
-                overflow: 'hidden'
-              }}>
-                <div style={{ 
-                  position: 'relative',
-                  paddingTop: '100%',
-                  overflow: 'hidden'
-                }}>
-                  <img 
-                    src="/images/rajat.jpg" 
-                    alt="Team Member 3"
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1)';
-                    }}
-                  />
-                </div>
-                <div className="card-body text-center p-4">
-                  <h3 className="h5 mb-2" style={{ color: isDarkTheme ? '#ffffff' : '#333333', fontWeight: '600' }}>Rajatvir Pandhi</h3>
-                  <p style={{ color: isDarkTheme ? '#cccccc' : '#666666' }}>Backend Developer</p>
-                  <div className="d-flex justify-content-center gap-3">
-                    <a href="http://www.linkedin.com/in/rajatvir-pandhi-444585357" target="_blank" rel="noopener noreferrer" style={{
-                      color: "#ff6b6b",
-                      fontSize: "1.25rem",
-                      transition: "all 0.3s ease"
-                    }} onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#ff5252";
-                      e.currentTarget.style.transform = "translateY(-2px)";
-                    }} onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "#ff6b6b";
-                      e.currentTarget.style.transform = "translateY(0)";
-                    }}>
-                      <i className="bi bi-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

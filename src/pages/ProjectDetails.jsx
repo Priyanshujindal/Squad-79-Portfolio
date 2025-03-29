@@ -54,25 +54,77 @@ const ProjectDetails = () => {
   return (
     <div style={{ backgroundColor: isDarkTheme ? '#121212' : '#f8f9fa', color: isDarkTheme ? '#ffffff' : '#333333' }}>
       {/* Hero Section */}
-      <section className={`py-5 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'}`} style={{ backgroundColor: '#ff6b6b' }}>
+      <section className={`py-5 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'}`} style={{ 
+        backgroundColor: '#ff6b6b',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
         <div className="container">
           <div className="row">
-            <div className="col-lg-8 mx-auto">
-              <Link to="/experience" className="mb-4 d-inline-block" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>
-                <i className="bi bi-arrow-left me-2"></i> Back to Experience
-              </Link>
-              <h1 className="display-5 fw-bold mb-4" style={{ color: isDarkTheme ? '#ffffff' : '#333333' }}>{project.title}</h1>
-              <div className="d-flex flex-wrap mb-4">
-                {project.tags.map((tag, index) => (
-                  <span key={index} className="badge me-2 mb-2" style={{ 
-                    backgroundColor: isDarkTheme ? 'rgba(255, 126, 95, 0.2)' : 'rgba(255, 126, 95, 0.1)',
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    padding: '0.35rem 0.75rem',
-                    borderRadius: '0.5rem',
-                    fontSize: '0.875rem',
-                    fontWeight: '500'
-                  }}>{tag}</span>
-                ))}
+            <div className="col-lg-10 mx-auto">
+              <div className="ps-lg-5">
+                <Link 
+                  to="/experience" 
+                  className="btn btn-outline-light mb-4"
+                  style={{
+                    transition: 'all 0.3s ease',
+                    borderWidth: '2px',
+                    padding: '0.5rem 1.25rem',
+                    color: '#ffffff'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.color = '#ffffff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.color = '#ffffff';
+                  }}
+                >
+                  <i className="bi bi-arrow-left me-2"></i>Back to Experience
+                </Link>
+                <h1 
+                  className="display-5 fw-bold mb-4" 
+                  style={{ 
+                    color: '#ffffff',
+                    textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                  }}
+                >
+                  {project.title}
+                </h1>
+                <style>
+                  {`
+                    .tag-badge {
+                      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                      background-color: rgba(255, 255, 255, 0.9) !important;
+                      backdrop-filter: blur(8px);
+                    }
+                    .tag-badge:hover {
+                      transform: translateY(-2px) scale(1.05);
+                      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                      background-color: rgba(255, 255, 255, 1) !important;
+                    }
+                  `}
+                </style>
+                <div className="d-flex flex-wrap mb-4">
+                  {project.tags.map((tag, index) => (
+                    <span 
+                      key={index} 
+                      className="badge d-flex align-items-center me-2 mb-2 tag-badge" 
+                      style={{
+                        color: '#333333',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '999px',
+                        fontSize: '0.875rem',
+                        fontWeight: '600',
+                        height: '32px',
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
+                      }}
+                    >{tag}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -273,6 +325,22 @@ const ProjectDetails = () => {
           </div>
         </div>
       </section>
+
+      <div className="row g-5">
+        {project.team.map((member, index) => (
+          <div key={index} className="col-md-6">
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">{member}</h5>
+                <p className="card-text">{member.description}</p>
+                <Link to={`/more/${getMemberId(member)}`} className="btn btn-primary">
+                  View More
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

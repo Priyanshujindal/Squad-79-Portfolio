@@ -9,6 +9,7 @@ const InitialLoader = () => {
   const [showLoader, setShowLoader] = useState(true);
   const [soundPlayed, setSoundPlayed] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [animationComplete, setAnimationComplete] = useState(false);
   const audioRef = useRef(null);
 
   // Window onload event to ensure everything is fully loaded
