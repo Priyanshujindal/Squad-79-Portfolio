@@ -325,22 +325,6 @@ const ProjectDetails = () => {
           </div>
         </div>
       </section>
-
-      <div className="row g-5">
-        {project.team.map((member, index) => (
-          <div key={index} className="col-md-6">
-            <div className="card h-100">
-              <div className="card-body">
-                <h5 className="card-title">{member}</h5>
-                <p className="card-text">{member.description}</p>
-                <Link to={`/more/${getMemberId(member)}`} className="btn btn-primary">
-                  View More
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

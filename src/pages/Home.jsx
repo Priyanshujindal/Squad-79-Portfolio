@@ -24,7 +24,7 @@ const Home = () => {
       id: 2,
       title: "2 days workshop",
       description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
-      image: './images/workshop.JPG',
+      image: './genai.jpg',
       tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
       link: "/experience/2",
       category: "Workshops"
@@ -35,7 +35,7 @@ const Home = () => {
       description: "Event based on the real life coding questions.",
       image: "./images/leetcode.jpg",
       tags: ["Python"],
-      link: "/experience/3"
+      link: "/experience/4"
     }
   ];
 

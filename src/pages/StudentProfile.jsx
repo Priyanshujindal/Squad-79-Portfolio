@@ -69,9 +69,8 @@ const StudentProfile = () => {
         linkedin: "http://www.linkedin.com/in/rajatvir-pandhi-444585357",
         education: "B.Tech in Computer Science, Chitkara University",
         experience: [
-          "Developed RESTful APIs",
-          "Database optimization and management",
-          "Server-side application development"
+          "Mobile No: 9888913914",
+          "Email: rajat.vir@gmail.com"
         ]
       },
       {
@@ -84,9 +83,8 @@ const StudentProfile = () => {
         linkedin: "https://www.linkedin.com/in/riya-garg-98a09a334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         education: "B.Tech in Computer Science, Chitkara University",
         experience: [
-          "Designed user interfaces for multiple applications",
-          "Conducted user research and usability testing",
-          "Created wireframes and prototypes"
+          "Mobile No: 9878948495",
+          "Email: riya@gmail.com"
         ]
       },
       {
@@ -282,7 +280,7 @@ const students = [
   {
     id: 4,
       name: "Riya Garg",
-      role: "UI/UX Designer",
+      role: "Frontend Developer",
       image: "/riya.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/riya-garg-98a09a334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
@@ -298,7 +296,7 @@ const students = [
   {
     id: 5,
       name: "Rehat Singh",
-      role: "UI/UX Designer",
+      role: "Frontend Developer",
       image: "/images/rehat.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
@@ -314,7 +312,7 @@ const students = [
     {
       id: 6,
       name: "Parth Doomra",
-      role: "UI/UX Designer",
+      role: "Frontend Developer",
       image: "/pasth.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/parth-doomra-444585357',
@@ -330,7 +328,7 @@ const students = [
     {
       id: 7,
       name: "Ramanpreet Singh",
-      role: "UI/UX Designer",
+      role: "Python",
       image: "/images/raman2.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
@@ -346,7 +344,7 @@ const students = [
     {
       id: 8,
       name: "Rakshit",
-      role: "UI/UX Designer",
+      role: "Python",
       image: "/images/rakshit.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
@@ -362,7 +360,7 @@ const students = [
     {
       id: 9,
       name: "Shivani Jindal",
-      role: "UI/UX Designer",
+      role: "Python",
       image: "/images/shivani.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/shivani-jindal-7b6066329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
@@ -378,7 +376,7 @@ const students = [
     {
       id: 10,
       name: "Riddhi Garg",
-      role: "Figma",
+      role: "Frontend Developer",
       image: "/images/riddhi.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/riddhi-garg-4951b234b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
@@ -394,7 +392,7 @@ const students = [
     {
       id: 11,
       name: "Pranav Arora",
-      role: "Hacker",
+      role: "Frontend Developer",
       image: "/images/pranav2.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/pranav-arora-?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
@@ -442,7 +440,7 @@ const students = [
     {
       id: 14,
       name: "Rishab Bansal",
-      role: "Dance Enthusiast",
+      role: "Frontend Developer",
       image: "/images/rishab.jpg",
       description: "Student of 1st Year at Chitkara",
       linkedin: 'https://www.linkedin.com/in/rahul-verma-7b6066329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
@@ -833,7 +831,7 @@ const students = [
                   position: 'relative',
                   paddingBottom: '1rem'
                 }}>
-                  Experience
+                  Contacts
                   <div style={{
                     position: 'absolute',
                     bottom: 0,
