@@ -5,8 +5,8 @@ const projectsData = [
   {
     id: 1,
     title: "Spotify Clone",
-    description: "A clone of the popular music streaming platform, Spotify. This project allows users to listen to their favorite music and discover new artists.",
-    image: "public/spotify.jpg",
+    description: "A clone of the popular music streaming platform, Spotify.",
+    image: "./spotify.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript"],
     team: ["Priyanshu" , "Raksham" ],
@@ -19,13 +19,13 @@ const projectsData = [
       "Song search functionality"
     ],
     technologies: ["HTML", "CSS", "JavaScript"],
-    description_long: "This Spotify clone application provides users with a familiar music streaming interface. The web app mimics the core functionality of Spotify, allowing users to browse songs, create playlists, and play music.\n\nBuilt using vanilla JavaScript, HTML, and CSS, this project demonstrates strong front-end development skills without relying on heavy frameworks. The responsive design ensures the application works seamlessly across desktop and mobile devices.\n\nThe project incorporates best practices for audio handling in the browser and implements a clean, intuitive user interface that closely resembles the official Spotify application."
+    description_long: "This Spotify clone application provides users with a familiar music streaming interface. "
   },
   {
     id: 2,
     title: "Gen AI Workshop",
     description: "A workshop on the python libary like numpy, pandas, matplotlib, etc.",
-    image: "./images/workshop.JPG",
+    image: "./genai.jpg",
     category: "Workshops",
     tags: ["Python", "Numpy", "Pandas", "Matplotlib"],
     team: ["Raksham", "Priyanshu", "Rehat", "Rajat" , 'Pranav' , 'Priyansh' , 'Pranay'],
@@ -42,7 +42,7 @@ const projectsData = [
   {
     id: 3,
     title: "Tic Tac Toe Game",
-    description: "A classic two-player game built with modern web technologies. Features include responsive design, player turn indicators, and win detection logic.",
+    description: "A classic two-player game built with modern web technologies.",
     image: "./tiktak2.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript"],
@@ -79,7 +79,7 @@ const projectsData = [
   {
     id: 5,
     title: "Money Tracking Website",
-    description: "A comprehensive financial management application that helps users track their expenses, income, and savings. Features include expense categorization.",
+    description: "An application that helps users track their expenses, income, and savings.",
     image: "./money.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript", "React"],
@@ -97,8 +97,8 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "Classic Dino Game",
-    description: "A fun and engaging endless runner game inspired by the classic Chrome Dino game. Features include smooth animations, score tracking, and obstacle avoidance mechanics.",
+      title: "Classic Dino Game",
+      description: "A fun and engaging endless runner game inspired by the classic Chrome Dino game.",
     image: "./dino2.jpg",
     category: "Web Development",
     tags: ["HTML", "CSS", "JavaScript"],
@@ -155,7 +155,7 @@ const projectsData = [
   {
     id: 9,
     title: "Web 3 workshop",
-    description: "A workshop on the basics of Web 3.0 and blockchain technology.",
+    description: "A workshop on the basics of blockchain technology.",
     image: "./web3.jpg",
     category: "Workshops",
     tags: ["Web 3.0", "Blockchain", "Solidity"],
@@ -182,7 +182,6 @@ const projectsData = [
     category: "Events",
     tags: ['Coding' , 'Ideas' , 'Women Empowerment'],
     team: ['Riddhi Garg' , 'Piyanshi' , 'Sanchita' ],
-    demoLink: "https://simon-says-game-clone.netlify.app/",
     features: [
       "Hands-on coding sessions",
       "Ideas",
@@ -220,7 +219,6 @@ const projectsData = [
     category: "Events",
     tags: ['Azure' , 'Certification'],
     team: ['Rajat' , 'Rishab' , 'Riya Garg' , 'Piyanshi' ,'Raksham' , 'Priyanshu' , 'Pranav' , 'Prachi' , 'Pavitar' , 'Radhil' , 'Riddhi'  , 'Sanchita' , 'Pranay' , 'Sarthak' , 'Ramanpreet' , 'Raman' , 'Raghav' , 'Rishab' , 'Riya' , 'Piyanshi' , 'Sanchita' , 'Pranay' , 'Prachi' , 'Pavitar' , 'Radhil' , 'Riddhi' ],
-    demoLink: "https://simon-says-game-clone.netlify.app/",
     features: [
       "Azure",
       "Certification",  

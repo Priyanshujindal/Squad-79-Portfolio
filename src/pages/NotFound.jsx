@@ -53,22 +53,22 @@ const NotFound = () => {
       
       // Prevent reversing into self
       switch (e.key) {
-        case 'ArrowUp':
+        case 'w':
           if (directionRef.current.y !== 1) {
             directionRef.current = { x: 0, y: -1 };
           }
           break;
-        case 'ArrowDown':
+        case 's':
           if (directionRef.current.y !== -1) {
             directionRef.current = { x: 0, y: 1 };
           }
           break;
-        case 'ArrowLeft':
+        case 'a':
           if (directionRef.current.x !== 1) {
             directionRef.current = { x: -1, y: 0 };
           }
           break;
-        case 'ArrowRight':
+        case 'd':
           if (directionRef.current.x !== -1) {
             directionRef.current = { x: 1, y: 0 };
           }
@@ -376,7 +376,7 @@ const NotFound = () => {
               flexDirection: 'column'
             }}>
               <p style={{ fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>
-                Use arrow keys to control the snake<br/>
+                Use <strong>W</strong> <strong>A</strong> <strong>S</strong> <strong>D</strong> keys to control the snake<br/>
                 (or tap screen on mobile)
               </p>
               <button 
@@ -438,7 +438,9 @@ const NotFound = () => {
         </div>
         
         <div className="text-center" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
-          <p>Controls: Use Arrow Keys (⬆️ ⬇️ ⬅️ ➡️) or tap screen</p>
+          <p>
+            Controls: <strong>W</strong> (Up) <strong>A</strong> (Left) <strong>S</strong> (Down) <strong>D</strong> (Right) or tap screen
+          </p>
           <p>Pro tip: The snake can pass through walls and come out the other side!</p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
+import { useForm, ValidationError } from '@formspree/react';
 
 // Add styles for dark theme inputs
 const darkThemeStyles = `
@@ -25,6 +26,7 @@ const More = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [state, handleSubmit] = useForm("mgvalkyg");
 
   useEffect(() => {
     let interval;
@@ -73,13 +75,13 @@ const More = () => {
       title: 'Event Title',
       description: 'Description of the memorable event and its significance to the team.',
       date: 'January 1, 2024',
-      image: 'https://placehold.co/600x400?text=Event+Title'
+      image: '/class4.jpg'
     },
     {
       title: 'Team Celebration',
       description: 'Our team celebrating a successful project completion.',
       date: 'March 25, 2025',
-      image: 'https://placehold.co/600x400?text=Team+Celebration'
+      image: '/class6.jpg'
     }
   ];
 
@@ -101,14 +103,370 @@ const More = () => {
   return (
     <>
       <style>{darkThemeStyles}</style>
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+
+          @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+          }
+
+          @keyframes shine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+          }
+
+          @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+
+          @keyframes cardHover {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+            100% { transform: translateY(0) scale(1); }
+          }
+
+          @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(255, 107, 107, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(255, 107, 107, 0.5); }
+          }
+
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+
+          @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+          }
+
+          .section-title {
+            position: relative;
+            display: inline-block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+          }
+
+          .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+            background-size: 200% 100%;
+            animation: gradientFlow 3s linear infinite;
+          }
+
+          .dark-theme .section-title {
+            color: #ff8e8e;
+          }
+
+          .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-out;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+
+          .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            animation: fadeIn 1s ease-out 0.3s backwards;
+            max-width: 600px;
+            margin: 0 auto;
+          }
+
+          .card-title {
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
+            font-weight: 600;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+          }
+
+          .dark-theme .card-title {
+            color: #ff8e8e;
+          }
+
+          .skills-title {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-weight: 600;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+          }
+
+          .dark-theme .skills-title {
+            color: #ff8e8e;
+          }
+
+          .hero-section {
+            position: relative;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            padding: 6rem 0;
+            overflow: hidden;
+          }
+
+          .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            transform: translateX(-100%);
+            animation: shine 8s infinite;
+          }
+
+          .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: subtleFloat 4s infinite ease-in-out;
+          }
+
+          .dark-theme .decorative-circle {
+            background: rgba(255, 255, 255, 0.1);
+          }
+
+          .decorative-circle:nth-child(1) {
+            width: 250px;
+            height: 250px;
+            top: -50px;
+            right: -50px;
+            animation-delay: 0s;
+          }
+
+          .decorative-circle:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            bottom: -30px;
+            left: -30px;
+            animation-delay: 1s;
+          }
+
+          .decorative-circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 15%;
+            animation-delay: 2s;
+          }
+
+          .decorative-circle:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 20%;
+            left: 15%;
+            animation-delay: 1.5s;
+          }
+
+          .decorative-circle:nth-child(5) {
+            width: 180px;
+            height: 180px;
+            bottom: 20%;
+            right: 20%;
+            animation-delay: 2.5s;
+          }
+
+          .decorative-circle:nth-child(6) {
+            width: 120px;
+            height: 120px;
+            top: 70%;
+            left: 25%;
+            animation-delay: 3s;
+          }
+
+          .team-card {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          }
+
+          .team-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 107, 107, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+          }
+
+          .img-container {
+            overflow: hidden;
+            border-radius: 1rem 1rem 0 0;
+            position: relative;
+          }
+
+          .img-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+            z-index: 1;
+          }
+
+          .card-img-top {
+            objectFit: "cover";
+            width: "100%";
+            height: "300px";
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          .card-img-top:hover {
+            transform: scale(1.08);
+          }
+
+          .card-body {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+          }
+
+          .role-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+          }
+
+          .skill-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.3rem;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+            letter-spacing: 0.3px;
+          }
+
+          .skill-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+          }
+
+          .memory-slide {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          .memory-slide.active {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          }
+
+          .memory-image {
+            transition: all 0.5s ease;
+          }
+
+          .memory-slide:hover .memory-image {
+            transform: scale(1.05);
+          }
+
+          .contact-form {
+            position: relative;
+            transition: all 0.3s ease;
+          }
+
+          .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+          }
+
+          .form-control {
+            transition: all 0.3s ease;
+          }
+
+          .form-control:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
+          }
+
+          .btn-submit {
+            position: relative;
+            transition: all 0.3s ease;
+          }
+
+          .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+          }
+
+          .btn-submit:hover::before {
+            left: 100%;
+          }
+
+          .floating-element {
+            animation: float 3s infinite ease-in-out;
+          }
+
+          .glow-effect {
+            animation: glow 2s infinite;
+          }
+
+          .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            animation: particleFloat 3s infinite;
+          }
+
+          @keyframes particleFloat {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(0); opacity: 0; }
+          }
+        `}
+      </style>
       <div>
         {/* Hero Section */}
         <section className={`py-5 ${isDarkTheme ? 'bg-dark' : 'bg-gradient-primary'}`} style={{ backgroundColor: '#ff6b6b' }}>
+          <div className="decorative-circle"></div>
+          <div className="decorative-circle"></div>
+          <div className="decorative-circle"></div>
+          
           <div className="container">
             <div className="row">
               <div className="col-lg-8 mx-auto text-center">
-                <h1 className="display-4 fw-bold mb-4" style={{ color: '#ffffff' }}>More</h1>
-                <p className="lead" style={{ color: '#ffffff' }}>Explore our team's journey, memories, and contributions</p>
+                <h1 className="hero-title">More</h1>
+                <p className="hero-subtitle">Explore our team's journey, memories, and contributions</p>
               </div>
             </div>
           </div>
@@ -117,7 +475,7 @@ const More = () => {
         {/* Team Section */}
         <section className="py-5">
           <div className="container">
-            <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#333333' , fontSize: '2.5rem', fontWeight: 'bold' , marginBottom: '3rem'}}>Our Team</h2>
+            <h2 className="section-title text-center">Our Team</h2>
             <div className="row g-4">
               {[
                 {
@@ -126,151 +484,68 @@ const More = () => {
                   role: "Team Lead",
                   image: "/priyanshu.jpg",
                   description: "Experienced team lead with expertise in project management and technical leadership.",
-                  skills: ["Project Management", "Technical Leadership", "Team Building"],
+                  skills: ['React', 'JavaScript', 'CSS', 'Bootstrap','SQL' , 'Python' , 'Java'],
                   linkedin: "https://www.linkedin.com/in/priyanshu-jindal-18a103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 },
                 {
                   id: 2,
                   name: "Raksham Sharma",
-                  role: "Frontend Developer",
+                  role: "Team Member",
                   image: "/raksham.jpg",
                   description: "Creative frontend developer passionate about creating beautiful and user-friendly interfaces.",
-                  skills: ["React", "JavaScript", "CSS", "Tailwind CSS", 'react'],
+                  skills: ["React", "JavaScript", "CSS", "Node.js", 'Express', 'Bootstrap'],
                   linkedin: "https://www.linkedin.com/in/raksham-sharma-715629330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 },
                 {
                   id: 3,
                   name: "Rajatvir Pandhi",
-                  role: "Backend Developer",
+                  role: "Team Member",
                   image: "/rajat3.jpg",
-                  description: "Backend expert focused on scalable server architecture and database optimization.",
-                  skills: ["Python", "Database Design"],
+                  description: "Crafting seamless user experiences with clean code and a passion for pixel-perfect precision.",
+                  skills: ["Python", "Database Design", 'SQL' , 'HTML' , 'CSS' , 'JavaScript'],
                   linkedin: "http://www.linkedin.com/in/rajatvir-pandhi-444585357"
                 },
                 {
                   id: 4,
                   name: "Riya Garg",
-                  role: "UI/UX Designer",
+                  role: "Team Member",
                   image: "/riya.jpg",
                   description: "Creating intuitive, user-centered designs that combine functionality and visual appeal for optimal user experiences.",
-                  skills: ["UI Design", "User Research", "Prototyping"],
-                  linkedin: "https://www.linkedin.com/in/sarah-wilson"
+                  skills: ['HTML', 'CSS', 'JavaScript', 'React', 'SQL' , 'Python' ],
+                  linkedin: "https://www.linkedin.com/in/riya-garg-98a09a334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 },
                 {
                   id: 5,
                   name: "Rehat Singh",
-                  role: "UI/UX Designer",
+                  role: "Team Member",
                   image: "/rehat.jpg",
-                  description: "Designing clean, intuitive interfaces that prioritize user needs, ensuring a seamless and enjoyable experience across digital platforms",
-                  skills: ["UI/UX Design", "User Research", "Prototyping"],
+                  description: "Dedicated to fostering collaboration, streamlining workflows, and ensuring every team member shines together.",
+                  skills: ['HTML', 'CSS', 'JavaScript', 'React', 'SQL' , 'Python' ],
                   linkedin: "https://www.linkedin.com/in/rehat-singh-jagirdar-9a6881254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                 }
               ].map(person => (
                 <div key={person.id} className="col-sm-12 col-md-6 col-lg-4">
                   <div 
-                    className="card h-100 border-0 shadow-sm position-relative" 
+                    className="card h-100 border-0 shadow-sm position-relative team-card" 
                     style={{ 
                       borderRadius: '1rem', 
                       overflow: 'visible', 
-                      backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
-                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                      transformOrigin: 'center',
-                      boxShadow: hoveredCard === person.id ? 
-                        `0 25px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 107, 107, 0.25)` : 
-                        '0 4px 8px rgba(0, 0, 0, 0.08)',
-                      border: hoveredCard === person.id ? 'none' : '1px solid transparent',
-                      background: hoveredCard === person.id ? 
-                        (isDarkTheme ? 
-                          'linear-gradient(145deg, #2d2d2d, #2d2d2d) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box' : 
-                          'linear-gradient(145deg, #ffffff, #ffffff) padding-box, linear-gradient(145deg, rgba(255,107,107,0.7), rgba(255,107,107,0.1)) border-box') :
-                        (isDarkTheme ? '#2d2d2d' : '#ffffff'),
-                      transform: hoveredCard === person.id ? 
-                        'translateY(-20px) scale(1.005) perspective(1000px) rotateX(2deg)' : 
-                        'translateY(0) scale(1) perspective(1000px) rotateX(0)',
+                      backgroundColor: isDarkTheme ? 'rgba(45, 45, 45, 0.1)' : 'rgba(255, 255, 255, 0.1)',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      backdropFilter: 'blur(10px)',
+                      transform: 'translateY(0)',
                       zIndex: 1
                     }}
                     onMouseEnter={() => setHoveredCard(person.id)}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
-                    {hoveredCard === person.id && (
-                      <>
-                        <span className="particle-1" style={{
-                          position: 'absolute',
-                          width: '8px',
-                          height: '8px',
-                          background: 'rgba(255, 107, 107, 0.7)',
-                          borderRadius: '50%',
-                          top: '20%',
-                          left: '10%',
-                          pointerEvents: 'none',
-                          zIndex: -1,
-                          boxShadow: '0 0 16px rgba(255, 107, 107, 0.7)',
-                          animation: 'particleFadeCustom 2s infinite 0.2s'
-                        }}></span>
-                        <span className="particle-2" style={{
-                          position: 'absolute',
-                          width: '6px',
-                          height: '6px',
-                          background: 'rgba(255, 107, 107, 0.6)',
-                          borderRadius: '50%',
-                          top: '40%',
-                          left: '80%',
-                          pointerEvents: 'none',
-                          zIndex: -1,
-                          boxShadow: '0 0 12px rgba(255, 107, 107, 0.6)',
-                          animation: 'particleFadeCustom 1.8s infinite 0.5s'
-                        }}></span>
-                        <span className="particle-3" style={{
-                          position: 'absolute',
-                          width: '10px',
-                          height: '10px',
-                          background: 'rgba(255, 107, 107, 0.5)',
-                          borderRadius: '50%',
-                          top: '70%',
-                          left: '30%',
-                          pointerEvents: 'none',
-                          zIndex: -1,
-                          boxShadow: '0 0 20px rgba(255, 107, 107, 0.5)',
-                          animation: 'particleFadeCustom 2.2s infinite 0.1s'
-                        }}></span>
-                        <span className="particle-4" style={{
-                          position: 'absolute',
-                          width: '5px',
-                          height: '5px',
-                          background: 'rgba(255, 107, 107, 0.8)',
-                          borderRadius: '50%',
-                          top: '50%',
-                          left: '50%',
-                          pointerEvents: 'none',
-                          zIndex: -1,
-                          boxShadow: '0 0 10px rgba(255, 107, 107, 0.8)',
-                          animation: 'particleFadeCustom 1.5s infinite 0.8s'
-                        }}></span>
-                        <span className="particle-5" style={{
-                          position: 'absolute',
-                          width: '7px',
-                          height: '7px',
-                          background: 'rgba(255, 107, 107, 0.7)',
-                          borderRadius: '50%',
-                          top: '10%',
-                          left: '60%',
-                          pointerEvents: 'none',
-                          zIndex: -1,
-                          boxShadow: '0 0 14px rgba(255, 107, 107, 0.7)',
-                          animation: 'particleFadeCustom 2.4s infinite 0.3s'
-                        }}></span>
-                        <style>
-                          {`
-                            @keyframes particleFadeCustom {
-                              0% { transform: translateY(0) scale(1); opacity: 0; }
-                              20% { opacity: 1; }
-                              100% { transform: translateY(-${Math.random() * 50 + 50}px) scale(0); opacity: 0; }
-                            }
-                          `}
-                        </style>
-                      </>
-                    )}
-                    <div className="img-container" style={{ overflow: 'hidden', borderRadius: '1rem 1rem 0 0' }}>
+                    <div className="img-container" style={{ 
+                      overflow: 'hidden', 
+                      borderRadius: '1rem 1rem 0 0',
+                      position: 'relative'
+                    }}>
                       <img 
                         src={person.image} 
                         className="card-img-top" 
@@ -281,23 +556,45 @@ const More = () => {
                           objectFit: "cover",
                           width: "100%",
                           height: "300px",
-                          transition: "all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                          transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
                           transform: hoveredCard === person.id ? 'scale(1.08)' : 'scale(1)',
-                          filter: hoveredCard === person.id ? 'brightness(1.1) contrast(1.05)' : 'brightness(1) contrast(1)'
+                          filter: 'brightness(1) contrast(1)'
                         }}
                       />
+                      <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%)',
+                        zIndex: 1
+                      }}></div>
                     </div>
-                    <div className="card-body" style={{ backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff' }}>
+                    <div className="card-body" style={{ 
+                      backgroundColor: isDarkTheme ? 'rgba(45, 45, 45, 0.05)' : 'rgba(255, 255, 255, 0.05)',
+                      backdropFilter: 'blur(10px)',
+                      padding: '2rem'
+                    }}>
                       <h3 className="h4 mb-2" style={{ 
                         fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
-                        color: isDarkTheme ? '#ffffff' : '#333333'
+                        color: isDarkTheme ? '#ffffff' : '#333333',
+                        fontWeight: '600',
+                        letterSpacing: '0.5px'
                       }}>{person.name}</h3>
-                      <p className="text-danger mb-3" style={{ 
-                        fontSize: 'clamp(0.9rem, 3vw, 1rem)',
-                        textShadow: hoveredCard === person.id ? '0 0 8px rgba(255, 107, 107, 0.5)' : 'none',
-                        letterSpacing: hoveredCard === person.id ? '0.3px' : 'normal',
-                        transition: 'all 0.3s ease'
-                      }}>{person.role}</p>
+                      <div className="role-badge" style={{
+                        display: 'inline-block',
+                        padding: '0.5rem 1.2rem',
+                        background: 'linear-gradient(135deg, #ff6b6b, #ff8e8e)',
+                        color: 'white',
+                        borderRadius: '25px',
+                        fontSize: '0.9rem',
+                        fontWeight: '600',
+                        marginBottom: '1.5rem',
+                        boxShadow: '0 4px 15px rgba(255, 107, 107, 0.3)',
+                        letterSpacing: '0.5px',
+                        textTransform: 'uppercase'
+                      }}>{person.role}</div>
                       <p className="mb-4" style={{ 
                         fontSize: 'clamp(0.85rem, 3vw, 1rem)',
                         color: isDarkTheme ? '#b3b3b3' : '#6c757d'
@@ -405,7 +702,7 @@ const More = () => {
         {/* Modified Memories Section */}
         <section className="py-5" style={{ backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa' }}>
           <div className="container">
-            <h2 className="text-center" style={{ color: isDarkTheme ? '#ffffff' : '#333333', fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '3rem'}}>Memories</h2>
+            <h2 className="section-title text-center">Memories</h2>
             <div className="memories-slideshow" style={{ maxWidth: '1000px', margin: '0 auto' }}>
               <div className="slideshow-container" style={{ 
                 height: '500px',
@@ -492,50 +789,13 @@ const More = () => {
         </section>
 
         {/* Contacts Section */}
-        <section className="py-5" style={{ 
-          backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
-          {/* Background Decoration */}
-          <div style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            right: '0',
-            bottom: '0',
-            background: isDarkTheme 
-              ? 'radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%)'
-              : 'radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 50%)',
-            pointerEvents: 'none'
-          }}></div>
-          
+        <section className="py-5" style={{ backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa' }}>
           <div className="container">
-            <h2 className="text-center" style={{ 
-              color: isDarkTheme ? '#ffffff' : '#333333', 
-              fontSize: '2.5rem', 
-              fontWeight: 'bold', 
-              marginBottom: '3rem',
-              position: 'relative',
-              display: 'inline-block',
-              paddingBottom: '1rem'
-            }}>
-              Contact Us
-              <span style={{
-                position: 'absolute',
-                bottom: '0',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '80px',
-                height: '4px',
-                background: 'linear-gradient(90deg, #ff6b6b, #ff5252)',
-                borderRadius: '2px'
-              }}></span>
-            </h2>
+            <h2 className="section-title text-center">Contact Us</h2>
             <div className="row justify-content-center">
               <div className="col-md-8">
                 <div 
-                  className="card border-0 shadow-lg" 
+                  className="card border-0 shadow-lg contact-form" 
                   style={{ 
                     borderRadius: '20px',
                     backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
@@ -543,44 +803,9 @@ const More = () => {
                     transition: 'all 0.3s ease',
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
                     position: 'relative',
-                    overflow: 'hidden',
-                    backdropFilter: 'blur(10px)',
-                    border: `1px solid ${isDarkTheme ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`
+                    overflow: 'hidden'
                   }}
                 >
-                  {/* Decorative Elements */}
-                  <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '5px',
-                    background: 'linear-gradient(90deg, #ff6b6b, #ff5252)',
-                    borderRadius: '20px 20px 0 0'
-                  }}></div>
-                  <div style={{
-                    position: 'absolute',
-                    top: '20%',
-                    right: '-50px',
-                    width: '100px',
-                    height: '100px',
-                    background: 'linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(255, 82, 82, 0.1))',
-                    borderRadius: '50%',
-                    transform: 'rotate(45deg)',
-                    zIndex: 0
-                  }}></div>
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '-30px',
-                    left: '-30px',
-                    width: '100px',
-                    height: '100px',
-                    background: 'linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(255, 82, 82, 0.1))',
-                    borderRadius: '50%',
-                    transform: 'rotate(45deg)',
-                    zIndex: 0
-                  }}></div>
-
                   <div className="card-body p-5" style={{ position: 'relative', zIndex: 1 }}>
                     <form onSubmit={async (e) => {
                       e.preventDefault();
@@ -589,14 +814,15 @@ const More = () => {
 
                       try {
                         const formData = new FormData(e.target);
-                        const response = await fetch('https://formspree.io/f/xpzvjvjv', {
+                        formData.append('_replyto', 'rakshamshar@gmail.com');
+                        const response = await fetch('https://formspree.io/f/mgvalkyg', {
                           method: 'POST',
                           body: formData,
                           headers: {
                             'Accept': 'application/json'
                           }
                         });
-
+                        
                         if (response.ok) {
                           setSubmitStatus('success');
                           e.target.reset();
@@ -651,6 +877,7 @@ const More = () => {
                             e.target.style.transform = 'translateY(0)';
                           }}
                         />
+                        <ValidationError prefix="Name" field="name" errors={state.errors} />
                       </div>
                       <div className="mb-4">
                         <label htmlFor="email" className="form-label" style={{ 
@@ -693,6 +920,7 @@ const More = () => {
                             e.target.style.transform = 'translateY(0)';
                           }}
                         />
+                        <ValidationError prefix="Email" field="email" errors={state.errors} />
                       </div>
                       <div className="mb-4">
                         <label htmlFor="subject" className="form-label" style={{ 
@@ -735,6 +963,7 @@ const More = () => {
                             e.target.style.transform = 'translateY(0)';
                           }}
                         />
+                        <ValidationError prefix="Subject" field="subject" errors={state.errors} />
                       </div>
                       <div className="mb-4">
                         <label htmlFor="message" className="form-label" style={{ 
@@ -779,15 +1008,16 @@ const More = () => {
                             e.target.style.transform = 'translateY(0)';
                           }}
                         ></textarea>
+                        <ValidationError prefix="Message" field="message" errors={state.errors} />
                       </div>
                       <div className="text-center">
                         <div className="d-flex justify-content-center gap-3">
                           <button 
                             type="submit" 
-                            className="btn btn-primary px-5 py-3"
-                            disabled={isSubmitting}
+                            className="btn btn-primary px-5 py-3 btn-submit"
+                            disabled={state.submitting}
                             style={{
-                              backgroundColor: isSubmitting ? '#cccccc' : '#ff6b6b',
+                              backgroundColor: state.submitting ? '#cccccc' : '#ff6b6b',
                               border: 'none',
                               borderRadius: '30px',
                               fontSize: '1.1rem',
@@ -800,17 +1030,17 @@ const More = () => {
                               alignItems: 'center',
                               gap: '0.5rem',
                               boxShadow: '0 4px 6px rgba(255, 107, 107, 0.2)',
-                              cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                              cursor: state.submitting ? 'not-allowed' : 'pointer'
                             }}
                             onMouseEnter={(e) => {
-                              if (!isSubmitting) {
+                              if (!state.submitting) {
                                 e.currentTarget.style.backgroundColor = '#ff5252';
                                 e.currentTarget.style.transform = 'translateY(-2px)';
                                 e.currentTarget.style.boxShadow = '0 6px 12px rgba(255, 107, 107, 0.3)';
                               }
                             }}
                             onMouseLeave={(e) => {
-                              if (!isSubmitting) {
+                              if (!state.submitting) {
                                 e.currentTarget.style.backgroundColor = '#ff6b6b';
                                 e.currentTarget.style.transform = 'translateY(0)';
                                 e.currentTarget.style.boxShadow = '0 4px 6px rgba(255, 107, 107, 0.2)';
@@ -818,10 +1048,10 @@ const More = () => {
                             }}
                           >
                             <span style={{ position: 'relative', zIndex: 1 }}>
-                              {isSubmitting ? 'Sending...' : 'Send Message'}
+                              {state.submitting ? 'Sending...' : 'Send Message'}
                             </span>
-                            <i className={`bi ${isSubmitting ? 'bi-hourglass-split' : 'bi-send-fill'}`} style={{ position: 'relative', zIndex: 1 }}></i>
-                            {!isSubmitting && (
+                            <i className={`bi ${state.submitting ? 'bi-hourglass-split' : 'bi-send-fill'}`} style={{ position: 'relative', zIndex: 1 }}></i>
+                            {!state.submitting && (
                               <div style={{
                                 position: 'absolute',
                                 top: 0,
@@ -837,9 +1067,9 @@ const More = () => {
                           <button 
                             type="reset" 
                             className="btn btn-secondary px-5 py-3"
-                            disabled={isSubmitting}
+                            disabled={state.submitting}
                             style={{
-                              backgroundColor: isSubmitting ? '#cccccc' : '#6c757d',
+                              backgroundColor: state.submitting ? '#cccccc' : '#6c757d',
                               border: 'none',
                               borderRadius: '30px',
                               fontSize: '1.1rem',
@@ -852,17 +1082,17 @@ const More = () => {
                               alignItems: 'center',
                               gap: '0.5rem',
                               boxShadow: '0 4px 6px rgba(108, 117, 125, 0.2)',
-                              cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                              cursor: state.submitting ? 'not-allowed' : 'pointer'
                             }}
                             onMouseEnter={(e) => {
-                              if (!isSubmitting) {
+                              if (!state.submitting) {
                                 e.currentTarget.style.backgroundColor = '#5a6268';
                                 e.currentTarget.style.transform = 'translateY(-2px)';
                                 e.currentTarget.style.boxShadow = '0 6px 12px rgba(108, 117, 125, 0.3)';
                               }
                             }}
                             onMouseLeave={(e) => {
-                              if (!isSubmitting) {
+                              if (!state.submitting) {
                                 e.currentTarget.style.backgroundColor = '#6c757d';
                                 e.currentTarget.style.transform = 'translateY(0)';
                                 e.currentTarget.style.boxShadow = '0 4px 6px rgba(108, 117, 125, 0.2)';
@@ -877,7 +1107,7 @@ const More = () => {
                         </div>
                         {submitStatus === 'success' && (
                           <div className="mt-3" style={{ color: '#28a745' }}>
-                            Message sent successfully!
+                            Message sent successfully! We'll get back to you soon.
                           </div>
                         )}
                         {submitStatus === 'error' && (
