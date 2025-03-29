@@ -55,7 +55,7 @@ const Home = () => {
     {
       name: "JavaScript",
       icon: "bi bi-filetype-js",
-      color: "#F7DF1E",
+      color: "#CCD132",
       description: "A programming language that enables interactive web pages and is an essential part of web applications."
     },
     {

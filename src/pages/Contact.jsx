@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,17 +9,46 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-  };
+  const [state, handleSubmit] = useForm("mgvalkyg");
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus('sending');
+
+    try {
+      const formData = new FormData(e.target);
+      formData.append('_replyto', 'rakshamshar@gmail.com');
+      const response = await fetch('https://formspree.io/f/mgvalkyg', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setSubmitStatus('error');
+    }
   };
 
   return (
@@ -50,7 +80,7 @@ const Contact = () => {
             <div className="col-lg-8 mx-auto">
               <div className="card border-0 shadow-sm">
                 <div className="card-body p-5">
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={onSubmit}>
                     <div className="mb-3">
                       <label htmlFor="name" className="form-label">Name</label>
                       <input
@@ -62,6 +92,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                       />
+                      <ValidationError prefix="Name" field="name" errors={state.errors} />
                     </div>
                     <div className="mb-3">
                       <label htmlFor="email" className="form-label">Email</label>
@@ -74,6 +105,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                       />
+                      <ValidationError prefix="Email" field="email" errors={state.errors} />
                     </div>
                     <div className="mb-3">
                       <label htmlFor="subject" className="form-label">Subject</label>
@@ -86,6 +118,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                       />
+                      <ValidationError prefix="Subject" field="subject" errors={state.errors} />
                     </div>
                     <div className="mb-3">
                       <label htmlFor="message" className="form-label">Message</label>
@@ -98,10 +131,25 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                       ></textarea>
+                      <ValidationError prefix="Message" field="message" errors={state.errors} />
                     </div>
-                    <button type="submit" className="btn btn-danger btn-lg">
-                      Send Message
+                    <button 
+                      type="submit" 
+                      className="btn btn-danger btn-lg"
+                      disabled={state.submitting}
+                    >
+                      {state.submitting ? 'Sending...' : 'Send Message'}
                     </button>
+                    {submitStatus === 'success' && (
+                      <div className="alert alert-success mt-3">
+                        Message sent successfully! We'll get back to you soon.
+                      </div>
+                    )}
+                    {submitStatus === 'error' && (
+                      <div className="alert alert-danger mt-3">
+                        Failed to send message. Please try again.
+                      </div>
+                    )}
                   </form>
                 </div>
               </div>

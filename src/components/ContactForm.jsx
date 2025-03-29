@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const ContactForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ const ContactForm = ({ onClose }) => {
     message: ''
   });
 
+  const [state, handleSubmit] = useForm("mgvalkyg");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -21,32 +24,42 @@ const ContactForm = ({ onClose }) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setStatus({ type: 'info', message: 'Sending message...' });
 
     try {
-      // Here you would typically make an API call to your backend
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setStatus({
-        type: 'success',
-        message: 'Thank you for your message! We will get back to you soon.'
+      const formData = new FormData(e.target);
+      formData.append('_replyto', 'rakshamshar@gmail.com');
+      const response = await fetch('https://formspree.io/f/mgvalkyg', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
       
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      if (response.ok) {
+        setStatus({
+          type: 'success',
+          message: 'Thank you for your message! We will get back to you soon.'
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
 
-      // Close modal after 2 seconds
-      setTimeout(() => {
-        onClose();
-      }, 2000);
+        // Close modal after 2 seconds
+        setTimeout(() => {
+          onClose();
+        }, 2000);
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
       setStatus({
         type: 'error',
@@ -64,7 +77,7 @@ const ContactForm = ({ onClose }) => {
             <button type="button" className="btn-close btn-close-white" onClick={onClose}></button>
           </div>
           <div className="modal-body">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={onSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name</label>
                 <input
@@ -76,6 +89,7 @@ const ContactForm = ({ onClose }) => {
                   onChange={handleChange}
                   required
                 />
+                <ValidationError prefix="Name" field="name" errors={state.errors} />
               </div>
               
               <div className="mb-3">
@@ -89,6 +103,7 @@ const ContactForm = ({ onClose }) => {
                   onChange={handleChange}
                   required
                 />
+                <ValidationError prefix="Email" field="email" errors={state.errors} />
               </div>
               
               <div className="mb-3">
@@ -107,6 +122,7 @@ const ContactForm = ({ onClose }) => {
                   <option value="partnership">Partnership</option>
                   <option value="other">Other</option>
                 </select>
+                <ValidationError prefix="Subject" field="subject" errors={state.errors} />
               </div>
               
               <div className="mb-3">
@@ -120,6 +136,7 @@ const ContactForm = ({ onClose }) => {
                   onChange={handleChange}
                   required
                 ></textarea>
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
 
               {status.message && (
@@ -129,8 +146,8 @@ const ContactForm = ({ onClose }) => {
               )}
 
               <div className="d-grid gap-2">
-                <button type="submit" className="btn btn-danger">
-                  Send Message
+                <button type="submit" className="btn btn-danger" disabled={state.submitting}>
+                  {state.submitting ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </form>

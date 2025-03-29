@@ -41,9 +41,8 @@ const StudentProfile = () => {
         linkedin: "https://www.linkedin.com/in/priyanshu-jindal-18a103324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         education: "B.Tech in Computer Science, Chitkara University",
         experience: [
-          "Worked on multiple frontend projects",
-          "Proficient in React and modern JavaScript",
-          "Good at problem solving and team collaboration"
+          "Mobile No: 9464939035",
+          "Email: priyanshu.jindal@gmail.com"
         ]
       },
       {
@@ -52,13 +51,12 @@ const StudentProfile = () => {
         role: "Frontend Developer",
         image: "/raksham.jpg",
         description: "Creative frontend developer passionate about creating beautiful and user-friendly interfaces.",
-        skills: ["React", "JavaScript", "CSS", "Tailwind CSS"],
+        skills: ["React", "JavaScript", "CSS", "HTML" , 'Bootstrap'],
         linkedin: "https://www.linkedin.com/in/raksham-sharma-715629330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         education: "B.Tech in Computer Science, Chitkara University",
         experience: [
-          "Developed responsive web applications",
-          "Experienced in modern frontend frameworks",
-          "Strong problem-solving skills"
+          "Mobile No: 9906280034",
+          "Email: rakshamshar@gmail.com"
         ]
       },
       {
@@ -67,7 +65,7 @@ const StudentProfile = () => {
         role: "Backend Developer",
         image: "/rajat3.jpg",
         description: "Backend expert focused on scalable server architecture and database optimization.",
-        skills: ["Python", "Database Design"],
+        skills: ["Python", ""],
         linkedin: "http://www.linkedin.com/in/rajatvir-pandhi-444585357",
         education: "B.Tech in Computer Science, Chitkara University",
         experience: [
@@ -83,7 +81,7 @@ const StudentProfile = () => {
         image: "/riya.jpg",
         description: "Creating intuitive, user-centered designs that combine functionality and visual appeal for optimal user experiences.",
         skills: ["UI Design", "User Research", "Prototyping"],
-        linkedin: "https://www.linkedin.com/in/sarah-wilson",
+        linkedin: "https://www.linkedin.com/in/riya-garg-98a09a334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         education: "B.Tech in Computer Science, Chitkara University",
         experience: [
           "Designed user interfaces for multiple applications",
@@ -246,9 +244,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Passionate frontend developer with expertise in modern web technologies",
       experience: [
-        "Worked on multiple frontend projects",
-        "Proficient in React and modern JavaScript",
-        "Good at problem solving and team collaboration"
+        "Mobile No: 9464939035",
+          "Email: priyanshu.jindal@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
   },
@@ -262,9 +259,8 @@ const students = [
       skills: ["React", "JavaScript", "UI/UX", "CSS"],
       bio: "Creative frontend developer passionate about building beautiful interfaces",
       experience: [
-        "Developed responsive web applications",
-        "Experienced in modern frontend frameworks",
-        "Strong problem-solving skills"
+        "Mobile No: 9906280034",
+          "Email: rakshamshar@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
   },
@@ -278,9 +274,8 @@ const students = [
       skills: ["Python", "Node.js", "Database Design", "API Development"],
       bio: "Backend developer focused on building scalable server architectures",
       experience: [
-        "Developed RESTful APIs",
-        "Database optimization and management",
-        "Server-side application development"
+        "Mobile No: 9888913914",
+          "Email: rajatvirpandhi@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
   },
@@ -622,43 +617,189 @@ const students = [
 
   return (
     <div style={{ 
-      backgroundColor: isDarkTheme ? '#000000' : '#ffffff',
+      backgroundColor: isDarkTheme ? '#2d2d2d' : '#ffffff',
       minHeight: '100vh',
       transition: 'background-color 0.8s ease'
     }}>
       {/* Hero Section */}
       <section className="text-white py-5" style={{ 
-        backgroundColor: isDarkTheme ? '#000000' : '#ff6b6b',
-        transition: 'background-color 0.8s ease'
+        background: isDarkTheme 
+          ? 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
+          : 'linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 50%, #ff6b6b 100%)',
+        transition: 'background-color 0.8s ease',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
       }}>
+        {/* Decorative gradient overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: isDarkTheme
+            ? 'radial-gradient(circle at 30% 30%, rgba(255, 107, 107, 0.1), transparent 70%)'
+            : 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+
+        {/* Decorative circles with enhanced effects */}
+        <div style={{
+          position: 'absolute',
+          top: '-50px',
+          right: '-50px',
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+          background: isDarkTheme
+            ? 'radial-gradient(circle, rgba(255, 107, 107, 0.15), transparent 70%)'
+            : 'radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%)',
+          filter: 'blur(8px)',
+          animation: 'pulse 3s infinite'
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '-30px',
+          left: '-30px',
+          width: '150px',
+          height: '150px',
+          borderRadius: '50%',
+          background: isDarkTheme
+            ? 'radial-gradient(circle, rgba(255, 107, 107, 0.15), transparent 70%)'
+            : 'radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%)',
+          filter: 'blur(8px)',
+          animation: 'pulse 3s infinite 1s'
+        }} />
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          right: '10%',
+          width: '100px',
+          height: '100px',
+          borderRadius: '50%',
+          background: isDarkTheme
+            ? 'radial-gradient(circle, rgba(255, 107, 107, 0.15), transparent 70%)'
+            : 'radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%)',
+          filter: 'blur(8px)',
+          animation: 'pulse 3s infinite 2s'
+        }} />
+
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-4">
-              <div className="profile-image-container">
+              <div className="profile-image-container" style={{
+                width: '300px',
+                height: '300px',
+                margin: '0 auto',
+                position: 'relative',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                border: '5px solid #ffffff',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+                background: 'linear-gradient(45deg, #ff6b6b, #ff8e8e)',
+                padding: '5px'
+              }}>
                 <img 
                   src={student.image} 
                   alt={student.name}
                   className="profile-image"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '50%',
+                    transition: 'transform 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 />
+                {/* Decorative rings with enhanced effects */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-5px',
+                  left: '-5px',
+                  right: '-5px',
+                  bottom: '-5px',
+                  border: '2px solid rgba(255, 255, 255, 0.4)',
+                  borderRadius: '50%',
+                  animation: 'wave 3s ease-in-out infinite'
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  top: '-15px',
+                  left: '-15px',
+                  right: '-15px',
+                  bottom: '-15px',
+                  border: '2px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '50%',
+                  animation: 'wave 4s ease-in-out infinite reverse'
+                }} />
               </div>
             </div>
             <div className="col-lg-8">
-              <h1 className="display-4 fw-bold mb-3">{student.name}</h1>
-              <p className="lead text-white mb-4">{student.role}</p>
-              <p className="mb-4">{student.bio}</p>
-              <div className="d-flex gap-3">
+              <h1 className="display-4 fw-bold mb-3 profile-name" style={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)',
+                background: 'linear-gradient(45deg, #ffffff, #f8f9fa)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>{student.name}</h1>
+              <p className="lead text-white mb-4 profile-role" style={{
+                fontSize: '1.5rem',
+                opacity: 0.9,
+                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
+              }}>{student.role}</p>
+              <p className="mb-4 profile-bio" style={{
+                fontSize: '1.1rem',
+                opacity: 0.8,
+                lineHeight: '1.6',
+                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
+              }}>{student.bio}</p>
+              <div className="d-flex gap-3 profile-buttons">
                 <Link 
                   to={window.location.pathname.includes('/more') ? '/more' : '/students'} 
                   className="btn btn-outline-light"
+                  style={{
+                    padding: '0.8rem 1.5rem',
+                    borderRadius: '30px',
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                    transition: 'all 0.3s ease',
+                    borderWidth: '2px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
                   <i className="bi bi-arrow-left me-2"></i>
                   {window.location.pathname.includes('/more') ? 'Back to More' : 'Back to Students'}
                 </Link>
-                  <a 
-                    href={student.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <a 
+                  href={student.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-outline-light"
+                  style={{
+                    padding: '0.8rem 1.5rem',
+                    borderRadius: '30px',
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                    transition: 'all 0.3s ease',
+                    borderWidth: '2px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
                   <i className="bi bi-linkedin me-2"></i>LinkedIn Profile
                 </a>
@@ -672,49 +813,116 @@ const students = [
       <section style={{
         backgroundColor: isDarkTheme ? '#000000' : '#ffffff',
         transition: 'background-color 0.8s ease',
-        padding: '3rem 0'
+        padding: '4rem 0',
+        position: 'relative'
       }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
-              <h2 className="h3 mb-4" style={{ 
-                color: isDarkTheme ? '#ffffff' : '#333333',
-                transition: 'color 2s ease',
-                animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
-              }}>Experience</h2>
-              <ul className="list-unstyled">
-                {student.experience.map((exp, index) => (
-                  <li 
-                    key={index} 
-                    className="mb-3 d-flex align-items-start"
-                    style={{
-                      color: isDarkTheme ? '#ffffff' : '#333333',
-                      transition: 'color 2s ease',
-                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
-                    }}
-                  >
-                    <i className="bi bi-check-circle-fill text-danger me-2 mt-1"></i>
-                    <span>{exp}</span>
-                  </li>
-                ))}
-              </ul>
+              <div style={{
+                backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                borderRadius: '20px',
+                padding: '2rem',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease'
+              }}>
+                <h2 className="h3 mb-4" style={{ 
+                  color: isDarkTheme ? '#ffffff' : '#333333',
+                  transition: 'color 2s ease',
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  position: 'relative',
+                  paddingBottom: '1rem'
+                }}>
+                  Experience
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '50px',
+                    height: '3px',
+                    background: 'linear-gradient(90deg, #ff6b6b, #ff8e8e)',
+                    borderRadius: '3px'
+                  }} />
+                </h2>
+                <ul className="list-unstyled">
+                  {student.experience.map((exp, index) => (
+                    <li 
+                      key={index} 
+                      className="mb-4 d-flex align-items-start"
+                      style={{
+                        color: isDarkTheme ? '#ffffff' : '#333333',
+                        transition: 'color 2s ease',
+                        animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                        padding: '1rem',
+                        borderRadius: '10px',
+                        backgroundColor: isDarkTheme ? '#2d2d2d' : '#f8f9fa',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateX(10px)';
+                        e.currentTarget.style.backgroundColor = isDarkTheme ? '#333333' : '#f1f1f1';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateX(0)';
+                        e.currentTarget.style.backgroundColor = isDarkTheme ? '#2d2d2d' : '#f8f9fa';
+                      }}
+                    >
+                      <i className="bi bi-check-circle-fill text-danger me-3 mt-1" style={{ fontSize: '1.2rem' }}></i>
+                      <span style={{ fontSize: '1.1rem' }}>{exp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div className="col-lg-4">
               <div style={{ 
                 backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                borderRadius: '1rem',
-                padding: '1.5rem',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                transition: 'background-color 0.8s ease'
+                borderRadius: '20px',
+                padding: '2rem',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease',
+                height: '100%'
               }}>
                 <h3 className="h4 mb-4" style={{ 
                   color: isDarkTheme ? '#ffffff' : '#333333',
                   transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
-                }}>Skills</h3>
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  position: 'relative',
+                  paddingBottom: '1rem'
+                }}>
+                  Skills
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '50px',
+                    height: '3px',
+                    background: 'linear-gradient(90deg, #ff6b6b, #ff8e8e)',
+                    borderRadius: '3px'
+                  }} />
+                </h3>
                 <div className="d-flex flex-wrap gap-2">
                   {student.skills.map((skill, index) => (
-                    <span key={index} className="badge bg-danger">
+                    <span key={index} className="badge" style={{
+                      backgroundColor: isDarkTheme ? '#2d2d2d' : '#f8f9fa',
+                      color: isDarkTheme ? '#ffffff' : '#333333',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '20px',
+                      fontSize: '0.9rem',
+                      border: `1px solid ${isDarkTheme ? '#404040' : '#e9ecef'}`,
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#ff6b6b';
+                      e.currentTarget.style.color = '#ffffff';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = isDarkTheme ? '#2d2d2d' : '#f8f9fa';
+                      e.currentTarget.style.color = isDarkTheme ? '#ffffff' : '#333333';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                    >
                       {skill}
                     </span>
                   ))}
@@ -722,12 +930,27 @@ const students = [
                 <h3 className="h4 mt-4 mb-3" style={{ 
                   color: isDarkTheme ? '#ffffff' : '#333333',
                   transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
-                }}>Education</h3>
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  position: 'relative',
+                  paddingBottom: '1rem'
+                }}>
+                  Education
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    width: '50px',
+                    height: '3px',
+                    background: 'linear-gradient(90deg, #ff6b6b, #ff8e8e)',
+                    borderRadius: '3px'
+                  }} />
+                </h3>
                 <p className="mb-0" style={{ 
                   color: isDarkTheme ? '#ffffff' : '#6c757d',
                   transition: 'color 2s ease',
-                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
+                  animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                  fontSize: '1.1rem',
+                  lineHeight: '1.6'
                 }}>{student.education}</p>
               </div>
             </div>
@@ -739,566 +962,715 @@ const students = [
       <section style={{
         backgroundColor: isDarkTheme ? '#000000' : '#ffffff',
         transition: 'background-color 0.8s ease',
-        padding: '3rem 0'
+        padding: '4rem 0',
+        position: 'relative'
       }}>
+        {/* Decorative background elements */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '100%',
+          background: isDarkTheme 
+            ? 'radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.1), transparent 50%)'
+            : 'radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.05), transparent 50%)',
+          pointerEvents: 'none'
+        }} />
+        
         <div className="container">
           {/* Projects Section */}
-          <h2 className="h3 mb-4" style={{ 
-            color: isDarkTheme ? '#ffffff' : '#333333',
-            transition: 'color 2s ease',
-            animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
-          }}>Web Development</h2>
-          <div className="horizontal-scroll mb-5" style={{
-            overflowX: 'auto',
-            paddingBottom: '1rem',
-            display: 'flex',
-            gap: '1.5rem'
+          <div style={{
+            position: 'relative',
+            marginBottom: '4rem'
           }}>
-            {getWebDevelopmentProjects().length > 0 ? (
-              getWebDevelopmentProjects().map((project, index) => (
-                <div 
-                  key={index}
-                  style={{
-                    flex: '0 0 400px',
-                    backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                    borderRadius: '1rem',
-                    padding: '1.5rem',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
-                    transform: 'translateY(0)',
-                    border: '1px solid transparent',
-                    position: 'relative',
-                     marginTop: '5px'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
-                    e.currentTarget.style.borderColor = '#ff6b6b';
-                    // Add zoom effect to the image
-                    const img = e.currentTarget.querySelector('img');
-                    if (img) {
-                      img.style.transform = 'scale(1.1)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                    e.currentTarget.style.borderColor = 'transparent';
-                    // Reset zoom effect on the image
-                    const img = e.currentTarget.querySelector('img');
-                    if (img) {
-                      img.style.transform = 'scale(1)';
-                    }
-                  }}
-                >
-                  <div style={{
-                    width: '100%',
-                    height: '200px',
-                    marginBottom: '1.5rem',
-                    borderRadius: '0.5rem',
-                    overflow: 'hidden',
-                    backgroundColor: '#f8f9fa'
-                  }}>
-                    <img 
-                      src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
-                      alt={project.title}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.3s ease'
-                      }}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/images/project-placeholder.jpg';
-                      }}
-                    />
-                  </div>
-                  <h4 style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    transition: 'color 2s ease',
-                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                    fontSize: '1.25rem',
-                    marginBottom: '1rem'
-                  }}>{project.title}</h4>
-                  <p style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#6c757d',
-                    transition: 'color 2s ease',
-                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                    marginBottom: '1rem',
-                    fontSize: '0.9rem',
-                    lineHeight: '1.5'
-                  }}>{project.description}</p>
-                  <div className="d-flex gap-2 flex-wrap">
-                    {project.tags.map((tech, i) => (
-                      <span key={i} className="badge bg-danger">{tech}</span>
-                    ))}
-                  </div>
-                  
-                  {project.demoLink && (
-                    <div className="mt-3">
-                      <a 
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-sm"
+            <h2 className="h3 mb-4" style={{ 
+              color: isDarkTheme ? '#ffffff' : '#333333',
+              transition: 'color 2s ease',
+              animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+              position: 'relative',
+              display: 'inline-block',
+              paddingBottom: '0.5rem'
+            }}>
+              Web Development
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                height: '3px',
+                background: 'linear-gradient(90deg, #ff6b6b, #ff8e8e)',
+                borderRadius: '3px'
+              }} />
+            </h2>
+            <div className="horizontal-scroll mb-5" style={{
+              overflowX: 'auto',
+              paddingBottom: '1rem',
+              display: 'flex',
+              gap: '1.5rem',
+              position: 'relative'
+            }}>
+              {getWebDevelopmentProjects().length > 0 ? (
+                getWebDevelopmentProjects().map((project, index) => (
+                  <div 
+                    key={index}
+                    style={{
+                      flex: '0 0 400px',
+                      backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                      borderRadius: '20px',
+                      padding: '1.5rem',
+                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      transform: 'translateY(0)',
+                      border: '1px solid transparent',
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.2)';
+                      e.currentTarget.style.borderColor = '#ff6b6b';
+                      // Add zoom effect to the image
+                      const img = e.currentTarget.querySelector('img');
+                      if (img) {
+                        img.style.transform = 'scale(1.1)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+                      e.currentTarget.style.borderColor = 'transparent';
+                      // Reset zoom effect on the image
+                      const img = e.currentTarget.querySelector('img');
+                      if (img) {
+                        img.style.transform = 'scale(1)';
+                      }
+                    }}
+                  >
+                    {/* Project image container */}
+                    <div style={{
+                      width: '100%',
+                      height: '200px',
+                      marginBottom: '1.5rem',
+                      borderRadius: '15px',
+                      overflow: 'hidden',
+                      backgroundColor: '#f8f9fa',
+                      position: 'relative'
+                    }}>
+                      <img 
+                        src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                        alt={project.title}
                         style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/images/project-placeholder.jpg';
+                        }}
+                      />
+                      {/* Overlay gradient */}
+                      <div style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '50%',
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)',
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease'
+                      }} />
+                    </div>
+
+                    {/* Project content */}
+                    <h4 style={{ 
+                      color: isDarkTheme ? '#ffffff' : '#333333',
+                      transition: 'color 2s ease',
+                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                      fontSize: '1.4rem',
+                      marginBottom: '1rem',
+                      fontWeight: '600'
+                    }}>{project.title}</h4>
+                    <p style={{ 
+                      color: isDarkTheme ? '#ffffff' : '#6c757d',
+                      transition: 'color 2s ease',
+                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                      marginBottom: '1.5rem',
+                      fontSize: '1rem',
+                      lineHeight: '1.6'
+                    }}>{project.description}</p>
+                    
+                    {/* Tech stack */}
+                    <div className="d-flex gap-2 flex-wrap mb-3">
+                      {project.tags.map((tech, i) => (
+                        <span key={i} className="badge" style={{
+                          backgroundColor: isDarkTheme ? '#2d2d2d' : '#f8f9fa',
+                          color: isDarkTheme ? '#ffffff' : '#333333',
                           padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
+                          borderRadius: '20px',
+                          fontSize: '0.9rem',
+                          border: `1px solid ${isDarkTheme ? '#404040' : '#e9ecef'}`,
+                          transition: 'all 0.3s ease'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.color = '#ffffff';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.backgroundColor = isDarkTheme ? '#2d2d2d' : '#f8f9fa';
+                          e.currentTarget.style.color = isDarkTheme ? '#ffffff' : '#333333';
+                          e.currentTarget.style.transform = 'translateY(0)';
                         }}
-                      >
-                        View Demo
-                      </a>
-                        
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Action buttons */}
+                    <div className="d-flex gap-2">
+                      {project.demoLink && (
+                        <a 
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn"
+                          style={{
+                            padding: '0.6rem 1.2rem',
+                            borderRadius: '30px',
+                            fontSize: '0.9rem',
+                            fontWeight: '500',
+                            transition: 'all 0.3s ease',
+                            border: '2px solid #ff6b6b',
+                            color: '#ff6b6b',
+                            backgroundColor: 'transparent',
+                            flex: 1,
+                            textAlign: 'center'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#ff6b6b';
+                            e.currentTarget.style.color = 'white';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                            e.currentTarget.style.color = '#ff6b6b';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                          }}
+                        >
+                          <i className="bi bi-play-circle me-2"></i>View Demo
+                        </a>
+                      )}
                       <Link 
                         to={`/project/${project.id}`}
-                        className="btn btn-sm ms-2"
+                        className="btn"
                         style={{
-                          padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
+                          padding: '0.6rem 1.2rem',
+                          borderRadius: '30px',
+                          fontSize: '0.9rem',
                           fontWeight: '500',
                           transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
+                          border: '2px solid #ff6b6b',
+                          color: '#ff6b6b',
+                          backgroundColor: 'transparent',
+                          flex: 1,
+                          textAlign: 'center'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
                           e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = 'transparent';
                           e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.transform = 'translateY(0)';
                         }}
                       >
-                        View Detail
+                        <i className="bi bi-info-circle me-2"></i>View Detail
                       </Link>
                     </div>
-                  )}
-                  
-                  {!project.demoLink && (
-                    <div className="mt-3">
-                      <Link 
-                        to={`/project/${project.id}`}
-                        className="btn btn-sm"
-                        style={{
-                          padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
-                        }}
-                      >
-                        View Detail
-                      </Link>
-                    </div>
-                  )}
+                  </div>
+                ))
+              ) : (
+                <div className="text-center w-100" style={{
+                  padding: '3rem',
+                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa',
+                  borderRadius: '20px',
+                  color: isDarkTheme ? '#ffffff' : '#6c757d'
+                }}>
+                  <i className="bi bi-code-square display-4 mb-3"></i>
+                  <h4>No web development projects found.</h4>
+                  <p className="mb-0">This student hasn't participated in any web development projects yet.</p>
                 </div>
-              ))
-            ) : (
-              <div className="text-center">
-                <h4>No web development projects found.</h4>
-              </div>
-            )}
+              )}
+            </div>
           </div>
+
           {/* Events Section */}
-          <h2 className="h3 mb-4" style={{ 
-            color: isDarkTheme ? '#ffffff' : '#333333',
-            transition: 'color 2s ease',
-            animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
-          }}>Events</h2>
-          <div className="horizontal-scroll mb-5" style={{
-            overflowX: 'auto',
-            paddingBottom: '1rem',
-            display: 'flex',
-            gap: '1.5rem'
+          <div style={{
+            position: 'relative',
+            marginBottom: '4rem'
           }}>
-            {getStudentEvents().length > 0 ? (
-              getStudentEvents().map((project, index) => (
-                <div 
-                  key={index}
-                  style={{
-                    flex: '0 0 400px',
-                    backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                    borderRadius: '1rem',
-                    padding: '1.5rem',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
-                    transform: 'translateY(0)',
-                    border: '1px solid transparent',
-                    position: 'relative',
-                     marginTop: '5px'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
-                    e.currentTarget.style.borderColor = '#ff6b6b';
-                    // Add zoom effect to the image
-                    const img = e.currentTarget.querySelector('img');
-                    if (img) {
-                      img.style.transform = 'scale(1.1)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                    e.currentTarget.style.borderColor = 'transparent';
-                    // Reset zoom effect on the image
-                    const img = e.currentTarget.querySelector('img');
-                    if (img) {
-                      img.style.transform = 'scale(1)';
-                    }
-                  }}
-                >
-                  <div style={{
-                    width: '100%',
-                    height: '200px',
-                    marginBottom: '1.5rem',
-                    borderRadius: '0.5rem',
-                    overflow: 'hidden',
-                    backgroundColor: '#f8f9fa'
-                  }}>
-                    <img 
-                      src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
-                      alt={project.title}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.3s ease'
-                      }}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/images/project-placeholder.jpg';
-                      }}
-                    />
-                  </div>
-                  <h4 style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    transition: 'color 2s ease',
-                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                    fontSize: '1.25rem',
-                    marginBottom: '1rem'
-                  }}>{project.title}</h4>
-                  <p style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#6c757d',
-                    transition: 'color 2s ease',
-                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                    marginBottom: '1rem',
-                    fontSize: '0.9rem',
-                    lineHeight: '1.5'
-                  }}>{project.description}</p>
-                  <div className="d-flex gap-2 flex-wrap">
-                    {project.tags.map((tech, i) => (
-                      <span key={i} className="badge bg-danger">{tech}</span>
-                    ))}
-                  </div>
-                  
-                  {project.demoLink && (
-                    <div className="mt-3">
-                      <a 
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-sm"
+            <h2 className="h3 mb-4" style={{ 
+              color: isDarkTheme ? '#ffffff' : '#333333',
+              transition: 'color 2s ease',
+              animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+              position: 'relative',
+              display: 'inline-block',
+              paddingBottom: '0.5rem'
+            }}>
+              Events
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                height: '3px',
+                background: 'linear-gradient(90deg, #ff6b6b, #ff8e8e)',
+                borderRadius: '3px'
+              }} />
+            </h2>
+            <div className="horizontal-scroll mb-5" style={{
+              overflowX: 'auto',
+              paddingBottom: '1rem',
+              display: 'flex',
+              gap: '1.5rem',
+              position: 'relative'
+            }}>
+              {getStudentEvents().length > 0 ? (
+                getStudentEvents().map((project, index) => (
+                  <div 
+                    key={index}
+                    style={{
+                      flex: '0 0 400px',
+                      backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                      borderRadius: '20px',
+                      padding: '1.5rem',
+                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      transform: 'translateY(0)',
+                      border: '1px solid transparent',
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.2)';
+                      e.currentTarget.style.borderColor = '#ff6b6b';
+                      // Add zoom effect to the image
+                      const img = e.currentTarget.querySelector('img');
+                      if (img) {
+                        img.style.transform = 'scale(1.1)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+                      e.currentTarget.style.borderColor = 'transparent';
+                      // Reset zoom effect on the image
+                      const img = e.currentTarget.querySelector('img');
+                      if (img) {
+                        img.style.transform = 'scale(1)';
+                      }
+                    }}
+                  >
+                    {/* Project image container */}
+                    <div style={{
+                      width: '100%',
+                      height: '200px',
+                      marginBottom: '1.5rem',
+                      borderRadius: '15px',
+                      overflow: 'hidden',
+                      backgroundColor: '#f8f9fa',
+                      position: 'relative'
+                    }}>
+                      <img 
+                        src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                        alt={project.title}
                         style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/images/project-placeholder.jpg';
+                        }}
+                      />
+                      {/* Overlay gradient */}
+                      <div style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '50%',
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)',
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease'
+                      }} />
+                    </div>
+
+                    {/* Project content */}
+                    <h4 style={{ 
+                      color: isDarkTheme ? '#ffffff' : '#333333',
+                      transition: 'color 2s ease',
+                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                      fontSize: '1.4rem',
+                      marginBottom: '1rem',
+                      fontWeight: '600'
+                    }}>{project.title}</h4>
+                    <p style={{ 
+                      color: isDarkTheme ? '#ffffff' : '#6c757d',
+                      transition: 'color 2s ease',
+                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                      marginBottom: '1.5rem',
+                      fontSize: '1rem',
+                      lineHeight: '1.6'
+                    }}>{project.description}</p>
+                    
+                    {/* Tech stack */}
+                    <div className="d-flex gap-2 flex-wrap mb-3">
+                      {project.tags.map((tech, i) => (
+                        <span key={i} className="badge" style={{
+                          backgroundColor: isDarkTheme ? '#2d2d2d' : '#f8f9fa',
+                          color: isDarkTheme ? '#ffffff' : '#333333',
                           padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
+                          borderRadius: '20px',
+                          fontSize: '0.9rem',
+                          border: `1px solid ${isDarkTheme ? '#404040' : '#e9ecef'}`,
+                          transition: 'all 0.3s ease'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.color = '#ffffff';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.backgroundColor = isDarkTheme ? '#2d2d2d' : '#f8f9fa';
+                          e.currentTarget.style.color = isDarkTheme ? '#ffffff' : '#333333';
+                          e.currentTarget.style.transform = 'translateY(0)';
                         }}
-                      >
-                        View Demo
-                      </a>
-                        
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Action buttons */}
+                    <div className="d-flex gap-2">
+                      {project.demoLink && (
+                        <a 
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn"
+                          style={{
+                            padding: '0.6rem 1.2rem',
+                            borderRadius: '30px',
+                            fontSize: '0.9rem',
+                            fontWeight: '500',
+                            transition: 'all 0.3s ease',
+                            border: '2px solid #ff6b6b',
+                            color: '#ff6b6b',
+                            backgroundColor: 'transparent',
+                            flex: 1,
+                            textAlign: 'center'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#ff6b6b';
+                            e.currentTarget.style.color = 'white';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                            e.currentTarget.style.color = '#ff6b6b';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                          }}
+                        >
+                          <i className="bi bi-play-circle me-2"></i>View Demo
+                        </a>
+                      )}
                       <Link 
                         to={`/project/${project.id}`}
-                        className="btn btn-sm ms-2"
+                        className="btn"
                         style={{
-                          padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
+                          padding: '0.6rem 1.2rem',
+                          borderRadius: '30px',
+                          fontSize: '0.9rem',
                           fontWeight: '500',
                           transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
+                          border: '2px solid #ff6b6b',
+                          color: '#ff6b6b',
+                          backgroundColor: 'transparent',
+                          flex: 1,
+                          textAlign: 'center'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
                           e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = 'transparent';
                           e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.transform = 'translateY(0)';
                         }}
                       >
-                        View Detail
+                        <i className="bi bi-info-circle me-2"></i>View Detail
                       </Link>
                     </div>
-                  )}
-                  
-                  {!project.demoLink && (
-                    <div className="mt-3">
-                      <Link 
-                        to={`/project/${project.id}`}
-                        className="btn btn-sm"
-                        style={{
-                          padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
-                        }}
-                      >
-                        View Detail
-                      </Link>
-                    </div>
-                  )}
+                  </div>
+                ))
+              ) : (
+                <div className="text-center w-100" style={{
+                  padding: '3rem',
+                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa',
+                  borderRadius: '20px',
+                  color: isDarkTheme ? '#ffffff' : '#6c757d'
+                }}>
+                  <i className="bi bi-calendar-event display-4 mb-3"></i>
+                  <h4>No events found.</h4>
+                  <p className="mb-0">This student hasn't participated in any events yet.</p>
                 </div>
-              ))
-            ) : (
-              <div className="text-center">
-                <h4>No events found.</h4>
-              </div>
-            )}
+              )}
+            </div>
           </div>
+
           {/* Workshops Section */}
-          <h2 className="h3 mb-4" style={{ 
-            color: isDarkTheme ? '#ffffff' : '#333333',
-            transition: 'color 2s ease',
-            animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none'
-          }}>Workshops</h2>
-          <div className="horizontal-scroll" style={{
-            overflowX: 'auto',
-            paddingBottom: '1rem',
-            display: 'flex',
-            gap: '1.5rem'
+          <div style={{
+            position: 'relative'
           }}>
-            {getStudentWorkshops().length > 0 ? (
-              getStudentWorkshops().map((project, index) => (
-                <div 
-                  key={index}
-                  style={{
-                    flex: '0 0 400px',
-                    backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
-                    borderRadius: '1rem',
-                    padding: '1.5rem',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer',
-                    transform: 'translateY(0)',
-                    border: '1px solid transparent',
-                    position: 'relative',
-                     marginTop: '5px'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.15)';
-                    e.currentTarget.style.borderColor = '#ff6b6b';
-                    // Add zoom effect to the image
-                    const img = e.currentTarget.querySelector('img');
-                    if (img) {
-                      img.style.transform = 'scale(1.1)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                    e.currentTarget.style.borderColor = 'transparent';
-                    // Reset zoom effect on the image
-                    const img = e.currentTarget.querySelector('img');
-                    if (img) {
-                      img.style.transform = 'scale(1)';
-                    }
-                  }}
-                >
-                  <div style={{
-                    width: '100%',
-                    height: '200px',
-                    marginBottom: '1.5rem',
-                    borderRadius: '0.5rem',
-                    overflow: 'hidden',
-                    backgroundColor: '#f8f9fa'
-                  }}>
-                    <img 
-                      src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
-                      alt={project.title}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.3s ease'
-                      }}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/images/project-placeholder.jpg';
-                      }}
-                    />
-                  </div>
-                  <h4 style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#333333',
-                    transition: 'color 2s ease',
-                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                    fontSize: '1.25rem',
-                    marginBottom: '1rem'
-                  }}>{project.title}</h4>
-                  <p style={{ 
-                    color: isDarkTheme ? '#ffffff' : '#6c757d',
-                    transition: 'color 2s ease',
-                    animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
-                    marginBottom: '1rem',
-                    fontSize: '0.9rem',
-                    lineHeight: '1.5'
-                  }}>{project.description}</p>
-                  <div className="d-flex gap-2 flex-wrap">
-                    {project.tags.map((tech, i) => (
-                      <span key={i} className="badge bg-danger">{tech}</span>
-                    ))}
-                  </div>
-                  
-                  {project.demoLink && (
-                    <div className="mt-3">
-                      <a 
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-sm"
+            <h2 className="h3 mb-4" style={{ 
+              color: isDarkTheme ? '#ffffff' : '#333333',
+              transition: 'color 2s ease',
+              animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+              position: 'relative',
+              display: 'inline-block',
+              paddingBottom: '0.5rem'
+            }}>
+              Workshops
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                height: '3px',
+                background: 'linear-gradient(90deg, #ff6b6b, #ff8e8e)',
+                borderRadius: '3px'
+              }} />
+            </h2>
+            <div className="horizontal-scroll" style={{
+              overflowX: 'auto',
+              paddingBottom: '1rem',
+              display: 'flex',
+              gap: '1.5rem'
+            }}>
+              {getStudentWorkshops().length > 0 ? (
+                getStudentWorkshops().map((project, index) => (
+                  <div 
+                    key={index}
+                    style={{
+                      flex: '0 0 400px',
+                      backgroundColor: isDarkTheme ? '#1a1a1a' : '#ffffff',
+                      borderRadius: '20px',
+                      padding: '1.5rem',
+                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      transform: 'translateY(0)',
+                      border: '1px solid transparent',
+                      position: 'relative',
+                      overflow: 'hidden'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.2)';
+                      e.currentTarget.style.borderColor = '#ff6b6b';
+                      // Add zoom effect to the image
+                      const img = e.currentTarget.querySelector('img');
+                      if (img) {
+                        img.style.transform = 'scale(1.1)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+                      e.currentTarget.style.borderColor = 'transparent';
+                      // Reset zoom effect on the image
+                      const img = e.currentTarget.querySelector('img');
+                      if (img) {
+                        img.style.transform = 'scale(1)';
+                      }
+                    }}
+                  >
+                    {/* Project image container */}
+                    <div style={{
+                      width: '100%',
+                      height: '200px',
+                      marginBottom: '1.5rem',
+                      borderRadius: '15px',
+                      overflow: 'hidden',
+                      backgroundColor: '#f8f9fa',
+                      position: 'relative'
+                    }}>
+                      <img 
+                        src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                        alt={project.title}
                         style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/images/project-placeholder.jpg';
+                        }}
+                      />
+                      {/* Overlay gradient */}
+                      <div style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: '50%',
+                        background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)',
+                        opacity: 0,
+                        transition: 'opacity 0.3s ease'
+                      }} />
+                    </div>
+
+                    {/* Project content */}
+                    <h4 style={{ 
+                      color: isDarkTheme ? '#ffffff' : '#333333',
+                      transition: 'color 2s ease',
+                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                      fontSize: '1.4rem',
+                      marginBottom: '1rem',
+                      fontWeight: '600'
+                    }}>{project.title}</h4>
+                    <p style={{ 
+                      color: isDarkTheme ? '#ffffff' : '#6c757d',
+                      transition: 'color 2s ease',
+                      animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
+                      marginBottom: '1.5rem',
+                      fontSize: '1rem',
+                      lineHeight: '1.6'
+                    }}>{project.description}</p>
+                    
+                    {/* Tech stack */}
+                    <div className="d-flex gap-2 flex-wrap mb-3">
+                      {project.tags.map((tech, i) => (
+                        <span key={i} className="badge" style={{
+                          backgroundColor: isDarkTheme ? '#2d2d2d' : '#f8f9fa',
+                          color: isDarkTheme ? '#ffffff' : '#333333',
                           padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
+                          borderRadius: '20px',
+                          fontSize: '0.9rem',
+                          border: `1px solid ${isDarkTheme ? '#404040' : '#e9ecef'}`,
+                          transition: 'all 0.3s ease'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.color = '#ffffff';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.backgroundColor = isDarkTheme ? '#2d2d2d' : '#f8f9fa';
+                          e.currentTarget.style.color = isDarkTheme ? '#ffffff' : '#333333';
+                          e.currentTarget.style.transform = 'translateY(0)';
                         }}
-                      >
-                        View Demo
-                      </a>
-                        
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Action buttons */}
+                    <div className="d-flex gap-2">
+                      {project.demoLink && (
+                        <a 
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn"
+                          style={{
+                            padding: '0.6rem 1.2rem',
+                            borderRadius: '30px',
+                            fontSize: '0.9rem',
+                            fontWeight: '500',
+                            transition: 'all 0.3s ease',
+                            border: '2px solid #ff6b6b',
+                            color: '#ff6b6b',
+                            backgroundColor: 'transparent',
+                            flex: 1,
+                            textAlign: 'center'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#ff6b6b';
+                            e.currentTarget.style.color = 'white';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                            e.currentTarget.style.color = '#ff6b6b';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                          }}
+                        >
+                          <i className="bi bi-play-circle me-2"></i>View Demo
+                        </a>
+                      )}
                       <Link 
                         to={`/project/${project.id}`}
-                        className="btn btn-sm ms-2"
+                        className="btn"
                         style={{
-                          padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
+                          padding: '0.6rem 1.2rem',
+                          borderRadius: '30px',
+                          fontSize: '0.9rem',
                           fontWeight: '500',
                           transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
+                          border: '2px solid #ff6b6b',
+                          color: '#ff6b6b',
+                          backgroundColor: 'transparent',
+                          flex: 1,
+                          textAlign: 'center'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
                           e.currentTarget.style.color = 'white';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = 'transparent';
                           e.currentTarget.style.color = '#ff6b6b';
+                          e.currentTarget.style.transform = 'translateY(0)';
                         }}
                       >
-                        View Detail
+                        <i className="bi bi-info-circle me-2"></i>View Detail
                       </Link>
                     </div>
-                  )}
-                  
-                  {!project.demoLink && (
-                    <div className="mt-3">
-                      <Link 
-                        to={`/project/${project.id}`}
-                        className="btn btn-sm"
-                        style={{
-                          padding: '0.5rem 1rem',
-                          borderRadius: '0.5rem',
-                          fontSize: '0.8rem',
-                          fontWeight: '500',
-                          transition: 'all 0.3s ease',
-                          border: isDarkTheme ? '1px solid #ff6b6b' : '1px solid #ff6b6b',
-                          color: isDarkTheme ? '#ff6b6b' : '#ff6b6b',
-                          backgroundColor: 'transparent'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#ff6b6b';
-                          e.currentTarget.style.color = 'white';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = '#ff6b6b';
-                        }}
-                      >
-                        View Detail
-                      </Link>
-                    </div>
-                  )}
+                  </div>
+                ))
+              ) : (
+                <div className="text-center w-100" style={{
+                  padding: '3rem',
+                  backgroundColor: isDarkTheme ? '#1a1a1a' : '#f8f9fa',
+                  borderRadius: '20px',
+                  color: isDarkTheme ? '#ffffff' : '#6c757d'
+                }}>
+                  <i className="bi bi-works display-4 mb-3"></i>
+                  <h4>No workshops found.</h4>
+                  <p className="mb-0">This student hasn't participated in any workshops yet.</p>
                 </div>
-              ))
-            ) : (
-              <div className="text-center">
-                <h4>No workshops found.</h4>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -1320,38 +1692,69 @@ const students = [
           object-fit: cover;
         }
 
+        .profile-name {
+          animation: fadeIn 1s ease-out;
+        }
+
+        .profile-role {
+          animation: fadeIn 1s ease-out 0.3s;
+          animation-fill-mode: both;
+        }
+
+        .profile-bio {
+          animation: fadeIn 1s ease-out 0.6s;
+          animation-fill-mode: both;
+        }
+
+        .profile-buttons {
+          animation: fadeIn 1s ease-out 0.9s;
+          animation-fill-mode: both;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .profile-buttons .btn {
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .profile-buttons .btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
         .horizontal-scroll {
           -webkit-overflow-scrolling: touch;
-          scrollbar-width: none; /* Firefox */
-          -ms-overflow-style: none;  /* Internet Explorer 10+ */
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
 
         .horizontal-scroll::-webkit-scrollbar {
-          display: none; /* WebKit */
-        }
-
-        /* Remove the unused scrollbar styles */
-        .horizontal-scroll::-webkit-scrollbar-track {
           display: none;
         }
 
-        .horizontal-scroll::-webkit-scrollbar-thumb {
-          display: none;
+        .project-card {
+          animation: float 6s ease-in-out infinite;
         }
 
-        @keyframes fadeInOut {
-          0% {
-            opacity: 1;
-          }
-          15% {
-            opacity: 0;
-          }
-          30% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
+        .project-card:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+
+        .project-card:nth-child(4) {
+          animation-delay: 0.6s;
+        }
+
+        .project-card:nth-child(5) {
+          animation-delay: 0.8s;
         }
       `}</style>
     </div>
