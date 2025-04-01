@@ -257,6 +257,58 @@ const projectsData = [
     ],
     technologies: ["Technova" , "Hackathon"],
     description_long: "This certification focused on the basics of Azure. Participants gained hands-on experience with Azure and its applications. The workshop was designed to help students understand the core concepts of Azure and its applications in the decentralized web. Through interactive coding sessions and real-world examples, participants learned how to create and deploy their own smart contracts and build DApps using popular frameworks like Truffle and OpenZeppelin.\n\nBy the end of the workshop, students had created a basic DApp and gained a solid foundation in blockchain development."
+  },
+  {
+    id: 15,
+    title: "Alarm",
+    description: "A simple alarm clock app.",
+    image: "./alarm.png",
+    category: "Web Development",
+    tags: ["HTML" , "CSS" , "JS"],
+    team: ["Priyanshu"],
+    demoLink: "https://best-alarm.netlify.app/",
+    features: ["Alarm","Alarm Clock","Alarm Timer"],
+    technologies: ["HTML" , "CSS" , "JS"],
+    description_long: "This project is a simple alarm clock app that allows users to set alarms and wake up on time."
+  },
+  {
+    id: 16,
+    title: "Cricket game",
+    description: "A simple cricket game app.",
+    image: "./cricket.png",
+    category: "Web Development",
+    tags: ["HTML" , "CSS" , "JS"],
+    team: ["Priyanshu"],
+    demoLink: "https://cricketgames.netlify.app/",
+    features: ["Cricket","Cricket Game"],
+    technologies: ["HTML" , "CSS" , "JS"],
+    description_long: "This project is a simple cricket game app that allows users to play cricket and have fun."
+  },
+  {
+    id: 17,
+    title: "Todo-list",
+    description: "A simple todo list app.",
+    image: "./todo-list.png",
+    category: "Web Development",
+    tags: ["HTML" , "CSS" , "JS","React","Bootstrap"],
+    team: ["Priyanshu"],
+    demoLink: "https://react-to-do-list-free.netlify.app/",
+    features: ["Todo","Todo List"],
+    technologies: ["HTML" , "CSS" , "JS","React","Bootstrap"],
+    description_long: "This project is a simple todo list app that allows users to add, delete, and mark tasks as completed."
+  },
+  {
+    id: 18,
+    title: "A textutils",
+    description: "A simple textutils app.",
+    image: "./textutils.png",
+    category: "Web Development",
+    tags: ["HTML" , "CSS" , "JS","React","Bootstrap"],
+    team: ["Priyanshu"],
+    demoLink: "https://free-textutils79.netlify.app/",
+    features: ["Textutils","Text Utils"],
+    technologies: ["HTML" , "CSS" , "JS","React","Bootstrap"],
+    description_long: "This project is a simple textutils app that allows users to add, delete, and mark tasks as completed."
   }
 ];
 
