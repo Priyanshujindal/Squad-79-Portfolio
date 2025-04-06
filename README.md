@@ -102,6 +102,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Your Name - your.email@example.com
+Your Name - priyanshujindal2006@gmail.com
 
-Project Link: [https://github.com/yourusername/kalvium-portal](https://github.com/yourusername/kalvium-portal)
+Project Link: [https://squad79portfolio.netlify.app/](https://squad79portfolio.netlify.app/)
