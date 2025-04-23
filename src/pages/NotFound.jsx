@@ -355,8 +355,10 @@ const NotFound = () => {
         </div>
         
         <div className="canvas-wrapper mb-4" style={{ 
-          width: '480px', // Increased from 320px
-          height: '480px', // Increased from 320px
+          width: '100%', 
+          maxWidth: '480px', 
+          height: 'auto', 
+          aspectRatio: '1/1', 
           margin: '0 auto',
           border: isDarkTheme ? '2px solid #444' : '2px solid #ddd',
           borderRadius: '8px',
@@ -432,7 +434,10 @@ const NotFound = () => {
             height={canvasHeight}
             style={{ 
               display: (gameStarted && !gameOver) ? 'block' : 'none',
-              backgroundColor: isDarkTheme ? 'rgba(20, 20, 20, 0.9)' : 'rgba(250, 250, 250, 0.9)'
+              backgroundColor: isDarkTheme ? 'rgba(20, 20, 20, 0.9)' : 'rgba(250, 250, 250, 0.9)',
+              width: '100%', 
+              height: '100%',
+              objectFit: 'contain'
             }}
           />
         </div>

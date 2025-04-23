@@ -1,0 +1,41 @@
+/* Offline page styles */
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #9d50bb;
+    --dark-bg: #1a1a1a;
+    --light-bg: #f8f9fa;
+    --dark-text: #333333;
+    --light-text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body.light-mode {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+}
+
+.offline-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}

@@ -608,6 +608,168 @@ section {
   }
 }
 
+/* Global Responsive Enhancements */
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  section {
+    padding: 4rem 0;
+  }
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+  .profile-image-container {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+  section {
+    padding: 3rem 0;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  .profile-image-container {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1.5rem;
+  }
+  .btn {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  .btn-lg {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  .horizontal-scroll {
+    padding-bottom: 1rem;
+  }
+  footer {
+    padding: 3rem 0 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+  .navbar-toggler {
+    padding: 0.4rem;
+  }
+  section {
+    padding: 2.5rem 0;
+  }
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-title::after {
+    bottom: -10px;
+    width: 40px;
+    height: 3px;
+  }
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .hero-subtitle {
+    font-size: 0.85rem;
+  }
+  .profile-image-container {
+    width: 180px;
+    height: 180px;
+  }
+  .team-card, .project-card {
+    margin-bottom: 1.5rem;
+  }
+  .btn {
+    padding: 0.35rem 1rem;
+    font-size: 0.75rem;
+  }
+  .card-body {
+    padding: 1rem;
+  }
+  .team-img {
+    height: 200px;
+  }
+  .project-details .hero-title {
+    font-size: 1.5rem;
+  }
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+  .feature-icon i {
+    font-size: 20px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Fix for tiny mobile screens */
+@media (max-width: 360px) {
+  .navbar-brand {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.4rem;
+  }
+  .hero-title {
+    font-size: 1.6rem;
+  }
+  .profile-image-container {
+    width: 150px;
+    height: 150px;
+  }
+  .card-title {
+    font-size: 1.1rem;
+  }
+  .btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
+
 /* Animation Classes */
 .fade-in {
   animation: fadeIn 0.5s ease-in;

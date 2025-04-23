@@ -205,7 +205,7 @@ const Chatbot = () => {
           addBotMessage({ 
             sender: 'bot', 
             text: `How many team members do you need?`,
-            numberOptions: [1, 2, 3]
+            numberOptions: [1, 2, 3,4,5]
           });
         }, 1000);
       } else if (!selectedNumber) {
@@ -686,7 +686,7 @@ const Chatbot = () => {
                             <span className="experience-level">Experience: {member.experience}</span>
                             <span className="project-type">Projects: {member.projects.join(', ')}</span>
                           </div>
-                          <a href={`/more/${member.id}`} className="view-profile">View Profile</a>
+                          <a href={`/more/${member.id}?chatbot=true`} className="view-profile">View Profile</a>
                         </div>
                       ))}
                     </div>

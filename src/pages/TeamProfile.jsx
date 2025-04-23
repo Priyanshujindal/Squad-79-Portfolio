@@ -133,7 +133,13 @@ const TeamProfile = () => {
               <ul className="list-unstyled">
                 {person.experience.map((exp, index) => (
                   <li key={index} className="mb-3">
-                    <i className="bi bi-check-circle-fill text-danger me-2"></i>
+                    {exp.toLowerCase().includes('mobile') || exp.toLowerCase().includes('phone') ? (
+                      <i className="bi bi-telephone-fill text-danger me-2"></i>
+                    ) : exp.toLowerCase().includes('email') ? (
+                      <i className="bi bi-envelope-fill text-danger me-2"></i>
+                    ) : (
+                      <i className="bi bi-check-circle-fill text-danger me-2"></i>
+                    )}
                     {exp}
                   </li>
                 ))}

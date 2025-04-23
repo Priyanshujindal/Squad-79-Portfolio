@@ -31,10 +31,10 @@ const Home = () => {
     },
     {
       id: 3,
-      title: "LeetCode Events",
-      description: "Event based on the real life coding questions.",
-      image: "./images/leetcode.jpg",
-      tags: ["Python"],
+      title: "TIC TAC TOE",
+      description: "A classic two-player game built with modern web technologies.",
+      image: "./tiktak2.jpg",
+      tags: ["HTML", "CSS", "JavaScript"],
       link: "/experience/4"
     }
   ];

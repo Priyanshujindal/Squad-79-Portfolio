@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import LazyLoad from 'react-lazyload'; // Add this import for lazy loading
 import { projectsData, getMemberId } from '../data/projects';
 
 const StudentProfile = () => {
@@ -287,9 +288,8 @@ const students = [
       skills: ["UI Design", "User Research", "Prototyping", "Figma"],
       bio: "Creative UI/UX designer passionate about creating intuitive user experiences",
       experience: [
-        "Designed user interfaces for web applications",
-        "Conducted user research and testing",
-        "Created interactive prototypes"
+        "Mobile No: 9888913914",
+        "Email: riya@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
   },
@@ -303,9 +303,8 @@ const students = [
       skills: ["UI/UX Design", "Wireframing", "User Testing", "Adobe XD"],
       bio: "Detail-oriented UI/UX designer focused on creating seamless user experiences",
       experience: [
-        "Created wireframes and prototypes",
-        "Conducted usability testing",
-        "Collaborated with development teams"
+        "Mobile No: 9888913914",
+        "Email: rehat@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -319,9 +318,8 @@ const students = [
       skills: ["UI Design", "Visual Design", "Interaction Design", "Sketch"],
       bio: "UI/UX designer with a strong focus on visual aesthetics and user interaction",
       experience: [
-        "Designed mobile and web interfaces",
-        "Created design systems",
-        "Improved user experience metrics"
+        "Mobile No: 9888913914",
+        "Email: parth@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -335,9 +333,8 @@ const students = [
       skills: ["UI/UX Design", "Information Architecture", "User Research", "InVision"],
       bio: "UI/UX designer specializing in creating user-centered digital experiences",
       experience: [
-        "Developed user personas and journeys",
-        "Created responsive designs",
-        "Conducted design workshops"
+        "Mobile No: 9888913914",
+        "Email: ramanpreet@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -351,9 +348,8 @@ const students = [
       skills: ["UI Design", "Prototyping", "User Testing", "Adobe Creative Suite"],
       bio: "Creative designer focused on building engaging digital experiences",
       experience: [
-        "Designed user interfaces",
-        "Created interactive prototypes",
-        "Conducted usability testing"
+        "Mobile No: 9888913914",
+        "Email: rakshit@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -367,9 +363,8 @@ const students = [
       skills: ["UI Design", "Visual Design", "Prototyping", "Figma"],
       bio: "UI/UX designer passionate about creating beautiful and functional interfaces",
       experience: [
-        "Designed web and mobile interfaces",
-        "Created design systems",
-        "Conducted user research"
+        "Mobile No: 9888913914",
+        "Email: shivani@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -383,9 +378,8 @@ const students = [
       skills: ["Figma", "UI Design", "Prototyping", "Visual Design"],
       bio: "Figma specialist focused on creating modern and responsive designs",
       experience: [
-        "Created UI components in Figma",
-        "Developed design systems",
-        "Collaborated with development teams"
+        "Mobile No: 9888913914",
+        "Email: riddhi@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -399,9 +393,8 @@ const students = [
       skills: ["Ethical Hacking", "Cybersecurity", "Network Security", "Penetration Testing"],
       bio: "Security enthusiast focused on identifying and fixing vulnerabilities",
       experience: [
-        "Conducted security audits",
-        "Performed penetration testing",
-        "Implemented security measures"
+        "Mobile No: 9888913914",
+        "Email: pranav@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -415,9 +408,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer specializing in modern web technologies",
       experience: [
-        "Built responsive web applications",
-        "Implemented UI components",
-        "Optimized website performance"
+        "Mobile No: 9888913914",
+        "Email: priyansh@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -431,9 +423,8 @@ const students = [
       skills: ["React", "Redux", "JavaScript", "Web Development"],
       bio: "React developer focused on building scalable web applications",
       experience: [
-        "Developed React components",
-        "Implemented state management",
-        "Built responsive interfaces"
+        "Mobile No: 9888913914",
+        "Email: raghav@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -447,9 +438,8 @@ const students = [
       skills: ["Choreography", "Performance", "Dance Instruction", "Event Management"],
       bio: "Passionate dancer combining technical skills with creative expression",
       experience: [
-        "Choreographed dance performances",
-        "Led dance workshops",
-        "Organized dance events"
+        "Mobile No: 9888913914",
+        "Email: rishab@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -463,9 +453,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer passionate about creating engaging web experiences",
       experience: [
-        "Developed web applications",
-        "Created responsive layouts",
-        "Implemented UI/UX designs"
+        "Mobile No: 9888913914",
+        "Email: piyanshi@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -479,9 +468,8 @@ const students = [
       skills: ["UI Design", "UX Research", "Prototyping", "Wireframing"],
       bio: "UI/UX designer focused on creating intuitive digital experiences",
       experience: [
-        "Designed user interfaces",
-        "Conducted user research",
-        "Created interactive prototypes"
+        "Mobile No: 9888913914",
+        "Email: sarthak@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -495,9 +483,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer with a passion for clean and efficient code",
       experience: [
-        "Built responsive websites",
-        "Implemented UI components",
-        "Optimized web performance"
+        "Mobile No: 9888913914",
+        "Email: sanchita@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -511,9 +498,8 @@ const students = [
       skills: ["Graphic Design", "UI Design", "Visual Design", "Adobe Creative Suite"],
       bio: "Creative designer specializing in visual communication and branding",
       experience: [
-        "Created brand identities",
-        "Designed marketing materials",
-        "Developed visual guidelines"
+        "Mobile No: 9888913914",
+        "Email: pranay@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -527,9 +513,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer passionate about creating engaging web experiences",
       experience: [
-        "Built responsive web applications",
-        "Implemented modern UI components",
-        "Collaborated on team projects"
+        "Mobile No: 9888913914",
+        "Email: prachi@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -543,9 +528,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer focused on creating modern web applications",
       experience: [
-        "Developed responsive websites",
-        "Built interactive UI components",
-        "Worked on frontend optimization"
+        "Mobile No: 9888913914",
+        "Email: pavitar@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -559,9 +543,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer passionate about building modern web applications",
       experience: [
-        "Developed responsive websites",
-        "Built interactive UI components",
-        "Collaborated on team projects"
+        "Mobile No: 9888913914",
+        "Email: radhil@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -575,9 +558,8 @@ const students = [
       skills: ["C++", "Data Structures", "Algorithms", "Object-Oriented Programming"],    
       bio: "C++ developer with a passion for building efficient and scalable applications",
       experience: [
-        "Developed C++ applications",
-        "Implemented data structures",
-        "Optimized code performance"
+        "Mobile No: 9888913914",
+        "Email: pukhraj@gmail.com"
       ],    
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -591,9 +573,8 @@ const students = [
       skills: ['Python loops not included'  ],    
       bio: "C++ developer with a passion for building efficient and scalable applications",
       experience: [
-        "Developed C++ applications",
-        "Implemented data structures",
-        "Optimized code performance"
+        "Mobile No: 9888913914",
+        "Email: riya@gmail.com"
       ],    
       education: "B.Tech in Computer Science, Chitkara University"
     }
@@ -698,20 +679,22 @@ const students = [
                 background: 'linear-gradient(45deg, #ff6b6b, #ff8e8e)',
                 padding: '5px'
               }}>
-                <img 
-                  src={student.image} 
-                  alt={student.name}
-                  className="profile-image"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '50%',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                />
+                <LazyLoad height={200} offset={100}>
+                  <img 
+                    src={student.image} 
+                    alt={student.name}
+                    className="profile-image"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      borderRadius: '50%',
+                      transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  />
+                </LazyLoad>
                 {/* Decorative rings with enhanced effects */}
                 <div style={{
                   position: 'absolute',
@@ -753,17 +736,23 @@ const students = [
                 lineHeight: '1.6',
                 textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)'
               }}>{student.bio}</p>
-              <div className="d-flex gap-3 profile-buttons">
+              <div className="d-flex gap-3 profile-buttons" style={{
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                marginTop: '1.5rem'
+              }}>
                 <Link 
                   to={window.location.pathname.includes('/more') ? '/more' : '/students'} 
                   className="btn btn-outline-light"
                   style={{
-                    padding: '0.8rem 1.5rem',
+                    padding: 'clamp(0.5rem, 2vw, 0.8rem) clamp(0.8rem, 3vw, 1.5rem)',
                     borderRadius: '30px',
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.8rem, 2vw, 1rem)',
                     fontWeight: '500',
                     transition: 'all 0.3s ease',
-                    borderWidth: '2px'
+                    borderWidth: '2px',
+                    marginBottom: '0.5rem',
+                    minWidth: '120px'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-2px)';
@@ -783,12 +772,14 @@ const students = [
                   rel="noopener noreferrer"
                   className="btn btn-outline-light"
                   style={{
-                    padding: '0.8rem 1.5rem',
+                    padding: 'clamp(0.5rem, 2vw, 0.8rem) clamp(0.8rem, 3vw, 1.5rem)',
                     borderRadius: '30px',
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.8rem, 2vw, 1rem)',
                     fontWeight: '500',
                     transition: 'all 0.3s ease',
-                    borderWidth: '2px'
+                    borderWidth: '2px',
+                    marginBottom: '0.5rem',
+                    minWidth: '120px'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-2px)';
@@ -849,12 +840,11 @@ const students = [
                       className="mb-4 d-flex align-items-start"
                       style={{
                         color: isDarkTheme ? '#ffffff' : '#333333',
-                        transition: 'color 2s ease',
+                        transition: 'all 0.3s ease',
                         animation: shouldAnimate ? 'fadeInOut 12s ease' : 'none',
                         padding: '1rem',
                         borderRadius: '10px',
-                        backgroundColor: isDarkTheme ? '#2d2d2d' : '#f8f9fa',
-                        transition: 'all 0.3s ease'
+                        backgroundColor: isDarkTheme ? '#2d2d2d' : '#f8f9fa'
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'translateX(10px)';
@@ -865,7 +855,11 @@ const students = [
                         e.currentTarget.style.backgroundColor = isDarkTheme ? '#2d2d2d' : '#f8f9fa';
                       }}
                     >
-                      <i className="bi bi-check-circle-fill text-danger me-3 mt-1" style={{ fontSize: '1.2rem' }}></i>
+                      {exp.toLowerCase().includes('email') ? (
+                        <i className="bi bi-envelope-fill text-danger me-3 mt-1" style={{ fontSize: '1.2rem' }}></i>
+                      ) : (
+                        <i className="bi bi-telephone-fill text-danger me-3 mt-1" style={{ fontSize: '1.2rem' }}></i>
+                      )}
                       <span style={{ fontSize: '1.1rem' }}>{exp}</span>
                     </li>
                   ))}
@@ -1023,7 +1017,8 @@ const students = [
                       transform: 'translateY(0)',
                       border: '1px solid transparent',
                       position: 'relative',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      marginTop: '20px'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
@@ -1033,6 +1028,7 @@ const students = [
                       const img = e.currentTarget.querySelector('img');
                       if (img) {
                         img.style.transform = 'scale(1.1)';
+                        img.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -1043,6 +1039,7 @@ const students = [
                       const img = e.currentTarget.querySelector('img');
                       if (img) {
                         img.style.transform = 'scale(1)';
+                        img.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                       }
                     }}
                   >
@@ -1056,20 +1053,23 @@ const students = [
                       backgroundColor: '#f8f9fa',
                       position: 'relative'
                     }}>
-                      <img 
-                        src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
-                        alt={project.title}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = '/images/project-placeholder.jpg';
-                        }}
-                      />
+                      <LazyLoad height={200} offset={100}>
+                        <img 
+                          src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                          alt={project.title}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            borderRadius: '15px',
+                            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                          }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = '/images/project-placeholder.jpg';
+                          }}
+                        />
+                      </LazyLoad>
                       {/* Overlay gradient */}
                       <div style={{
                         position: 'absolute',
@@ -1130,7 +1130,10 @@ const students = [
                     </div>
                     
                     {/* Action buttons */}
-                    <div className="d-flex gap-2">
+                    <div className="d-flex gap-2" style={{
+                      flexWrap: 'wrap',
+                      justifyContent: 'center'
+                    }}>
                       {project.demoLink && (
                         <a 
                           href={project.demoLink}
@@ -1138,16 +1141,19 @@ const students = [
                           rel="noopener noreferrer"
                           className="btn"
                           style={{
-                            padding: '0.6rem 1.2rem',
+                            padding: 'clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem)',
                             borderRadius: '30px',
-                            fontSize: '0.9rem',
+                            fontSize: 'clamp(0.75rem, 1.5vw, 0.9rem)',
                             fontWeight: '500',
                             transition: 'all 0.3s ease',
                             border: '2px solid #ff6b6b',
                             color: '#ff6b6b',
                             backgroundColor: 'transparent',
-                            flex: 1,
-                            textAlign: 'center'
+                            flex: '1 1 auto',
+                            textAlign: 'center',
+                            marginBottom: '0.5rem',
+                            minWidth: '110px',
+                            maxWidth: '160px'
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = '#ff6b6b';
@@ -1167,16 +1173,19 @@ const students = [
                         to={`/project/${project.id}`}
                         className="btn"
                         style={{
-                          padding: '0.6rem 1.2rem',
+                          padding: 'clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem)',
                           borderRadius: '30px',
-                          fontSize: '0.9rem',
+                          fontSize: 'clamp(0.75rem, 1.5vw, 0.9rem)',
                           fontWeight: '500',
                           transition: 'all 0.3s ease',
                           border: '2px solid #ff6b6b',
                           color: '#ff6b6b',
                           backgroundColor: 'transparent',
-                          flex: 1,
-                          textAlign: 'center'
+                          flex: '1 1 auto',
+                          textAlign: 'center',
+                          marginBottom: '0.5rem',
+                          minWidth: '110px',
+                          maxWidth: '160px'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
@@ -1255,7 +1264,8 @@ const students = [
                       transform: 'translateY(0)',
                       border: '1px solid transparent',
                       position: 'relative',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      marginTop: '20px'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
@@ -1265,6 +1275,7 @@ const students = [
                       const img = e.currentTarget.querySelector('img');
                       if (img) {
                         img.style.transform = 'scale(1.1)';
+                        img.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -1275,6 +1286,7 @@ const students = [
                       const img = e.currentTarget.querySelector('img');
                       if (img) {
                         img.style.transform = 'scale(1)';
+                        img.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                       }
                     }}
                   >
@@ -1288,20 +1300,23 @@ const students = [
                       backgroundColor: '#f8f9fa',
                       position: 'relative'
                     }}>
-                      <img 
-                        src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
-                        alt={project.title}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = '/images/project-placeholder.jpg';
-                        }}
-                      />
+                      <LazyLoad height={200} offset={100}>
+                        <img 
+                          src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                          alt={project.title}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            borderRadius: '15px',
+                            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                          }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = '/images/project-placeholder.jpg';
+                          }}
+                        />
+                      </LazyLoad>
                       {/* Overlay gradient */}
                       <div style={{
                         position: 'absolute',
@@ -1362,7 +1377,10 @@ const students = [
                     </div>
                     
                     {/* Action buttons */}
-                    <div className="d-flex gap-2">
+                    <div className="d-flex gap-2" style={{
+                      flexWrap: 'wrap',
+                      justifyContent: 'center'
+                    }}>
                       {project.demoLink && (
                         <a 
                           href={project.demoLink}
@@ -1370,16 +1388,19 @@ const students = [
                           rel="noopener noreferrer"
                           className="btn"
                           style={{
-                            padding: '0.6rem 1.2rem',
+                            padding: 'clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem)',
                             borderRadius: '30px',
-                            fontSize: '0.9rem',
+                            fontSize: 'clamp(0.75rem, 1.5vw, 0.9rem)',
                             fontWeight: '500',
                             transition: 'all 0.3s ease',
                             border: '2px solid #ff6b6b',
                             color: '#ff6b6b',
                             backgroundColor: 'transparent',
-                            flex: 1,
-                            textAlign: 'center'
+                            flex: '1 1 auto',
+                            textAlign: 'center',
+                            marginBottom: '0.5rem',
+                            minWidth: '110px',
+                            maxWidth: '160px'
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = '#ff6b6b';
@@ -1399,16 +1420,19 @@ const students = [
                         to={`/project/${project.id}`}
                         className="btn"
                         style={{
-                          padding: '0.6rem 1.2rem',
+                          padding: 'clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem)',
                           borderRadius: '30px',
-                          fontSize: '0.9rem',
+                          fontSize: 'clamp(0.75rem, 1.5vw, 0.9rem)',
                           fontWeight: '500',
                           transition: 'all 0.3s ease',
                           border: '2px solid #ff6b6b',
                           color: '#ff6b6b',
                           backgroundColor: 'transparent',
-                          flex: 1,
-                          textAlign: 'center'
+                          flex: '1 1 auto',
+                          textAlign: 'center',
+                          marginBottom: '0.5rem',
+                          minWidth: '110px',
+                          maxWidth: '160px'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';
@@ -1485,7 +1509,8 @@ const students = [
                       transform: 'translateY(0)',
                       border: '1px solid transparent',
                       position: 'relative',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      marginTop: '20px'
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
@@ -1495,6 +1520,7 @@ const students = [
                       const img = e.currentTarget.querySelector('img');
                       if (img) {
                         img.style.transform = 'scale(1.1)';
+                        img.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -1505,6 +1531,7 @@ const students = [
                       const img = e.currentTarget.querySelector('img');
                       if (img) {
                         img.style.transform = 'scale(1)';
+                        img.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                       }
                     }}
                   >
@@ -1518,20 +1545,23 @@ const students = [
                       backgroundColor: '#f8f9fa',
                       position: 'relative'
                     }}>
-                      <img 
-                        src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
-                        alt={project.title}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = '/images/project-placeholder.jpg';
-                        }}
-                      />
+                      <LazyLoad height={200} offset={100}>
+                        <img 
+                          src={project.image.startsWith('./') ? project.image.substring(1) : project.image} 
+                          alt={project.title}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            borderRadius: '15px',
+                            transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                          }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = '/images/project-placeholder.jpg';
+                          }}
+                        />
+                      </LazyLoad>
                       {/* Overlay gradient */}
                       <div style={{
                         position: 'absolute',
@@ -1592,7 +1622,10 @@ const students = [
                     </div>
                     
                     {/* Action buttons */}
-                    <div className="d-flex gap-2">
+                    <div className="d-flex gap-2" style={{
+                      flexWrap: 'wrap',
+                      justifyContent: 'center'
+                    }}>
                       {project.demoLink && (
                         <a 
                           href={project.demoLink}
@@ -1600,16 +1633,19 @@ const students = [
                           rel="noopener noreferrer"
                           className="btn"
                           style={{
-                            padding: '0.6rem 1.2rem',
+                            padding: 'clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem)',
                             borderRadius: '30px',
-                            fontSize: '0.9rem',
+                            fontSize: 'clamp(0.75rem, 1.5vw, 0.9rem)',
                             fontWeight: '500',
                             transition: 'all 0.3s ease',
                             border: '2px solid #ff6b6b',
                             color: '#ff6b6b',
                             backgroundColor: 'transparent',
-                            flex: 1,
-                            textAlign: 'center'
+                            flex: '1 1 auto',
+                            textAlign: 'center',
+                            marginBottom: '0.5rem',
+                            minWidth: '110px',
+                            maxWidth: '160px'
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = '#ff6b6b';
@@ -1629,16 +1665,19 @@ const students = [
                         to={`/project/${project.id}`}
                         className="btn"
                         style={{
-                          padding: '0.6rem 1.2rem',
+                          padding: 'clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem)',
                           borderRadius: '30px',
-                          fontSize: '0.9rem',
+                          fontSize: 'clamp(0.75rem, 1.5vw, 0.9rem)',
                           fontWeight: '500',
                           transition: 'all 0.3s ease',
                           border: '2px solid #ff6b6b',
                           color: '#ff6b6b',
                           backgroundColor: 'transparent',
-                          flex: 1,
-                          textAlign: 'center'
+                          flex: '1 1 auto',
+                          textAlign: 'center',
+                          marginBottom: '0.5rem',
+                          minWidth: '110px',
+                          maxWidth: '160px'
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = '#ff6b6b';

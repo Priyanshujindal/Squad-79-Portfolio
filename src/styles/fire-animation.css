@@ -180,6 +180,24 @@
   transform: translateY(-5px);
 }
 
+@media (max-width: 768px) {
+  .team-card {
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    width: 90vw;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 576px) {
+  .team-card {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    width: 95vw;
+    max-width: 320px;
+  }
+}
+
 /* Animation keyframes */
 @keyframes flameAnimation1 {
   0% { height: 50px; opacity: 0.7; }

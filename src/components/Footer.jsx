@@ -65,10 +65,10 @@ const Footer = () => {
               <a href="https://youtube.com/@kalvium" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
                 <i className="bi bi-youtube fs-5"></i>
               </a>
-              <a href="https://linkedin.com/company/kalvium" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
+              <a href="https://www.linkedin.com/school/kalvium/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
                 <i className="bi bi-linkedin fs-5"></i>
               </a>
-              <a href="https://instagram.com/kalvium" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
+              <a href="https://www.instagram.com/kalvium_official/" target="_blank" rel="noopener noreferrer" className="text-white bg-secondary bg-opacity-25 p-2 rounded footer-link">
                 <i className="bi bi-instagram fs-5"></i>
               </a>
             </div>

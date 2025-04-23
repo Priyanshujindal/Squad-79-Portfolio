@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
@@ -7,6 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isDarkTheme } = useTheme();
+  const navbarRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +24,29 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isOpen && navbarRef.current && !navbarRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleNavLinkClick = () => {
+    if (window.innerWidth < 992) { 
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <nav className={`navbar navbar-expand-lg navbar-dark`} 
+    <nav 
+      ref={navbarRef}
+      className={`navbar navbar-expand-lg navbar-dark`} 
       style={{
         position: 'sticky',
         top: 0,
@@ -57,18 +79,18 @@ const Navbar = () => {
             e.currentTarget.style.boxShadow = "none";
           }}>
             <span style={{
-              fontSize: "24px",
+              fontSize: window.innerWidth < 576 ? "20px" : "24px",
               fontWeight: "600",
               color: "#ffffff",
-              letterSpacing: "3px",
+              letterSpacing: window.innerWidth < 576 ? "2px" : "3px",
               textTransform: "uppercase",
               fontFamily: "monospace"
             }}>Squad</span>
             <span style={{
-              fontSize: "26px",
+              fontSize: window.innerWidth < 576 ? "22px" : "26px",
               fontWeight: "700",
               color: "#ff4d4d",
-              marginLeft: "10px",
+              marginLeft: window.innerWidth < 576 ? "6px" : "10px",
               fontFamily: "monospace"
             }}>79</span>
           </div>
@@ -121,6 +143,26 @@ const Navbar = () => {
             .nav-link.active::after {
               width: 75px;
             }
+            
+            @media (max-width: 991px) {
+              .navbar-nav {
+                padding: 1rem 0;
+              }
+              .nav-item {
+                margin: 0.25rem 0;
+              }
+              .nav-link {
+                padding: 0.5rem 0 !important;
+              }
+              .nav-link::after {
+                left: 0;
+                transform: none;
+              }
+              .nav-link:hover::after,
+              .nav-link.active::after {
+                width: 50px;
+              }
+            }
           `}</style>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
@@ -129,6 +171,7 @@ const Navbar = () => {
                   isActive ? "nav-link active" : "nav-link"
                 } 
                 to="/"
+                onClick={handleNavLinkClick}
               >
                 Home
               </NavLink>
@@ -139,6 +182,7 @@ const Navbar = () => {
                   isActive ? "nav-link active" : "nav-link"
                 } 
                 to="/about"
+                onClick={handleNavLinkClick}
               >
                 About
               </NavLink>
@@ -149,6 +193,7 @@ const Navbar = () => {
                   isActive ? "nav-link active" : "nav-link"
                 } 
                 to="/experience"
+                onClick={handleNavLinkClick}
               >
                 Experience
               </NavLink>
@@ -159,6 +204,7 @@ const Navbar = () => {
                   isActive ? "nav-link active" : "nav-link"
                 } 
                 to="/mentors"
+                onClick={handleNavLinkClick}
               >
                 Mentors
               </NavLink>
@@ -169,6 +215,7 @@ const Navbar = () => {
                   isActive ? "nav-link active" : "nav-link"
                 } 
                 to="/students"
+                onClick={handleNavLinkClick}
               >
                 Students
               </NavLink>
@@ -179,6 +226,7 @@ const Navbar = () => {
                   isActive ? "nav-link active" : "nav-link"
                 } 
                 to="/more"
+                onClick={handleNavLinkClick}
               >
                 More
               </NavLink>

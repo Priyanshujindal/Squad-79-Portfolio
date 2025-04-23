@@ -152,4 +152,24 @@ h6, .h6 {
   .lead {
     font-size: var(--font-size-base);
   }
+  
+  .card-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: 0.5rem;
+  }
+  .card-text {
+    font-size: var(--font-size-base);
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-title {
+    font-size: var(--font-size-base);
+    margin-bottom: 0.4rem;
+  }
+  .card-text {
+    font-size: var(--font-size-sm);
+    margin-bottom: 0.6rem;
+  }
 }

@@ -317,6 +317,22 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+  .btn, button {
+    margin: 0.75rem 0.5rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn, button {
+    margin: 0.5rem 0.4rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
   .btn {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;

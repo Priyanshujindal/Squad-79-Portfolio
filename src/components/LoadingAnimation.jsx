@@ -56,13 +56,17 @@ const LoadingAnimation = () => {
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          gap: '20px',
-          animation: 'textAnimation 5s ease forwards'
+          gap: 'clamp(10px, 2vw, 20px)',
+          animation: 'textAnimation 5s ease forwards',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          padding: '0 20px',
+          maxWidth: '100%'
         }}>
           {/* Logo Container */}
           <div style={{
-            width: '80px',
-            height: '80px',
+            width: 'clamp(50px, 10vw, 80px)',
+            height: 'clamp(50px, 10vw, 80px)',
             position: 'relative',
             overflow: 'hidden',
             display: 'flex',
@@ -83,8 +87,8 @@ const LoadingAnimation = () => {
                 src="/kalvium2.jpg" 
                 alt="Kalvium Logo"
                 style={{
-                  width: '80px',
-                  height: '80px',
+                  width: '100%',
+                  height: '100%',
                   objectFit: 'contain',
                   filter: 'drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3))'
                 }}
@@ -105,8 +109,8 @@ const LoadingAnimation = () => {
                 src="/chitkara2.jpg" 
                 alt="Kalvium Logo 2"
                 style={{
-                  width: '60px',
-                  height: '60px',
+                  width: '80%',
+                  height: '80%',
                   objectFit: 'contain',
                   filter: 'drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3))'
                 }}
@@ -116,17 +120,18 @@ const LoadingAnimation = () => {
 
           {/* Main text */}
           <div style={{
-            fontSize: '48px',
+            fontSize: 'clamp(24px, 5vw, 48px)',
             fontWeight: '800',
             textAlign: 'center',
             textTransform: 'uppercase',
-            letterSpacing: '4px',
+            letterSpacing: 'clamp(2px, 0.5vw, 4px)',
             fontFamily: "'Poppins', sans-serif",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-start',
-            gap: '8px',
-            whiteSpace: 'nowrap'
+            gap: 'clamp(4px, 1vw, 8px)',
+            whiteSpace: 'nowrap',
+            flexWrap: 'wrap'
           }}>
             <span style={{
               background: 'linear-gradient(45deg, #ff8c00, #ffa500)',
