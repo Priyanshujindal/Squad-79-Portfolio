@@ -1,13 +1,13 @@
 // Service Worker for Squad 79 Portfolio
-const CACHE_NAME = 'squad79-portfolio-v3'; // Updated cache version
+const CACHE_NAME = 'squad79-portfolio-v4'; // Updated cache version
 const OFFLINE_URL = '/404-offline';
 const OFFLINE_ASSETS = [
   '/',
   '/index.html',
+  '/favicon.ico', // Updated favicon path
   '/404',
   '/404-offline',
-  '/favicon.ico',
-  '/assets/images/logo.png', // Ensure this path is correct
+  '/assets/images/logo.png',
   '/assets/css/index.css',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
   'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
