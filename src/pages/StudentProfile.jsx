@@ -287,9 +287,8 @@ const students = [
       skills: ["UI Design", "User Research", "Prototyping", "Figma"],
       bio: "Creative UI/UX designer passionate about creating intuitive user experiences",
       experience: [
-        "Designed user interfaces for web applications",
-        "Conducted user research and testing",
-        "Created interactive prototypes"
+        "Mobile No: 9878948495",
+          "Email: riyagargg47@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
   },
@@ -303,9 +302,8 @@ const students = [
       skills: ["UI/UX Design", "Wireframing", "User Testing", "Adobe XD"],
       bio: "Detail-oriented UI/UX designer focused on creating seamless user experiences",
       experience: [
-        "Created wireframes and prototypes",
-        "Conducted usability testing",
-        "Collaborated with development teams"
+         "Mobile No: 9888388889",
+          "Email: rehatsinghjagirdar@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -319,9 +317,8 @@ const students = [
       skills: ["UI Design", "Visual Design", "Interaction Design", "Sketch"],
       bio: "UI/UX designer with a strong focus on visual aesthetics and user interaction",
       experience: [
-        "Designed mobile and web interfaces",
-        "Created design systems",
-        "Improved user experience metrics"
+        "Mobile No: 6284532645",
+          "Email: parthdoomra@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -335,9 +332,8 @@ const students = [
       skills: ["UI/UX Design", "Information Architecture", "User Research", "InVision"],
       bio: "UI/UX designer specializing in creating user-centered digital experiences",
       experience: [
-        "Developed user personas and journeys",
-        "Created responsive designs",
-        "Conducted design workshops"
+         "Mobile No: 7988968281",
+          "Email: ramanpreet.connects@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -351,9 +347,8 @@ const students = [
       skills: ["UI Design", "Prototyping", "User Testing", "Adobe Creative Suite"],
       bio: "Creative designer focused on building engaging digital experiences",
       experience: [
-        "Designed user interfaces",
-        "Created interactive prototypes",
-        "Conducted usability testing"
+        "Mobile No: 9306709929",
+          "Email: sharmarakshit195@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -367,9 +362,8 @@ const students = [
       skills: ["UI Design", "Visual Design", "Prototyping", "Figma"],
       bio: "UI/UX designer passionate about creating beautiful and functional interfaces",
       experience: [
-        "Designed web and mobile interfaces",
-        "Created design systems",
-        "Conducted user research"
+         "Mobile No: 7719531458",
+          "Email: shivanijindal1805@gmail.com "
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -383,9 +377,8 @@ const students = [
       skills: ["Figma", "UI Design", "Prototyping", "Visual Design"],
       bio: "Figma specialist focused on creating modern and responsive designs",
       experience: [
-        "Created UI components in Figma",
-        "Developed design systems",
-        "Collaborated with development teams"
+        "Mobile No: 889167983",
+          "Email: riddhig778@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -399,9 +392,8 @@ const students = [
       skills: ["Ethical Hacking", "Cybersecurity", "Network Security", "Penetration Testing"],
       bio: "Security enthusiast focused on identifying and fixing vulnerabilities",
       experience: [
-        "Conducted security audits",
-        "Performed penetration testing",
-        "Implemented security measures"
+        "Mobile No: 9815252112",
+          "Email: arorapranav0129@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -415,9 +407,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer specializing in modern web technologies",
       experience: [
-        "Built responsive web applications",
-        "Implemented UI components",
-        "Optimized website performance"
+         "Mobile No: 8082047539",
+          "Email: priyanshthakur17012007@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -431,9 +422,8 @@ const students = [
       skills: ["React", "Redux", "JavaScript", "Web Development"],
       bio: "React developer focused on building scalable web applications",
       experience: [
-        "Developed React components",
-        "Implemented state management",
-        "Built responsive interfaces"
+        "Mobile No:  8307203698",
+          "Email: sharmarghav032006@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -447,9 +437,8 @@ const students = [
       skills: ["Choreography", "Performance", "Dance Instruction", "Event Management"],
       bio: "Passionate dancer combining technical skills with creative expression",
       experience: [
-        "Choreographed dance performances",
-        "Led dance workshops",
-        "Organized dance events"
+        "Mobile No: 9646440577",
+          "Email: rishabbansal577@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -463,9 +452,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer passionate about creating engaging web experiences",
       experience: [
-        "Developed web applications",
-        "Created responsive layouts",
-        "Implemented UI/UX designs"
+        "Mobile No: 8307260644",
+          "Email: piyanshii.k@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -479,9 +467,8 @@ const students = [
       skills: ["UI Design", "UX Research", "Prototyping", "Wireframing"],
       bio: "UI/UX designer focused on creating intuitive digital experiences",
       experience: [
-        "Designed user interfaces",
-        "Conducted user research",
-        "Created interactive prototypes"
+         "Mobile No:  9417482006",
+          "Email: khuranasarthak003@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -495,15 +482,14 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer with a passion for clean and efficient code",
       experience: [
-        "Built responsive websites",
-        "Implemented UI components",
-        "Optimized web performance"
+        "Mobile No:  8360459981",
+          "Email: sanchitabhandari0088@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
     {
       id: 18,
-      name: "Pranay Obero",
+      name: "Pranay Oberoi",
       role: "Designer",
       image: "/pranay.jpg",
       description: "Student of 1st Year at Chitkara",
@@ -511,9 +497,8 @@ const students = [
       skills: ["Graphic Design", "UI Design", "Visual Design", "Adobe Creative Suite"],
       bio: "Creative designer specializing in visual communication and branding",
       experience: [
-        "Created brand identities",
-        "Designed marketing materials",
-        "Developed visual guidelines"
+        "Mobile No:  7889613049",
+          "Email: oberoipranay0@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -527,9 +512,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer passionate about creating engaging web experiences",
       experience: [
-        "Built responsive web applications",
-        "Implemented modern UI components",
-        "Collaborated on team projects"
+         "Mobile No: 8360200462",
+          "Email: pbehal311@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -543,9 +527,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer focused on creating modern web applications",
       experience: [
-        "Developed responsive websites",
-        "Built interactive UI components",
-        "Worked on frontend optimization"
+        "Mobile No: 9306604268",
+          "Email: pavitarrukhaya65@gmail.com"
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -559,9 +542,8 @@ const students = [
       skills: ["React", "JavaScript", "HTML", "CSS"],
       bio: "Frontend developer passionate about building modern web applications",
       experience: [
-        "Developed responsive websites",
-        "Built interactive UI components",
-        "Collaborated on team projects"
+        "Mobile No:  9750777724",
+          "Email:radhilnarula@gmail.com "
       ],
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -575,9 +557,8 @@ const students = [
       skills: ["C++", "Data Structures", "Algorithms", "Object-Oriented Programming"],    
       bio: "C++ developer with a passion for building efficient and scalable applications",
       experience: [
-        "Developed C++ applications",
-        "Implemented data structures",
-        "Optimized code performance"
+        "Mobile No: 9041408214",
+          "Email: pukhrajsoni0027@gmail.com"
       ],    
       education: "B.Tech in Computer Science, Chitkara University"
     },
@@ -591,9 +572,8 @@ const students = [
       skills: ['Python loops not included'  ],    
       bio: "C++ developer with a passion for building efficient and scalable applications",
       experience: [
-        "Developed C++ applications",
-        "Implemented data structures",
-        "Optimized code performance"
+         "Mobile No: 9671572525",
+          "Email: riya06144@gmail.com"
       ],    
       education: "B.Tech in Computer Science, Chitkara University"
     }
