@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import PropTypes from 'prop-types';
 
 const ContactForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -156,6 +157,10 @@ const ContactForm = ({ onClose }) => {
       </div>
     </div>
   );
+};
+
+ContactForm.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ContactForm; 

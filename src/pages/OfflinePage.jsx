@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 
 const OfflinePage = () => {
@@ -27,13 +27,15 @@ const OfflinePage = () => {
   const lastRenderTimeRef = useRef(0);
   const lastFoodTimeRef = useRef(0);
 
+  const navigate = useNavigate();
+
   // Check connection status
   useEffect(() => {
     const checkConnection = () => {
       if (navigator.onLine) {
         // If back online, refresh the page after a small delay
         setTimeout(() => {
-          window.location.href = '/';
+          navigate('/');
         }, 2000);
       } else {
         setReconnectAttempts(prev => prev + 1);

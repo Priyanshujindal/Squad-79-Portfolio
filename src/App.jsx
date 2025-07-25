@@ -87,6 +87,7 @@ const TitleUpdater = () => {
 
 // Component to monitor network status
 const NetworkStatusMonitor = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     // Function to show offline toast message
     const showOfflineToast = () => {
@@ -116,7 +117,7 @@ const NetworkStatusMonitor = () => {
         if (!navigator.onLine && 
             !window.location.pathname.includes('404') && 
             !window.location.pathname.includes('offline')) {
-          window.location.href = '/404-offline';
+          navigate('/404-offline');
         }
         // Remove the toast after 5 seconds
         setTimeout(() => {
